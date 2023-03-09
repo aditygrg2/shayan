@@ -1,2 +1,0 @@
-# night_gschallenge
- 
