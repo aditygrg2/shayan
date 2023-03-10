@@ -8,21 +8,28 @@ void main() => runApp(Main());
 
 class Main extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Night_GSChallenge',
       theme: ThemeData(
-        /**Define themes here - Appwide */
-
-      ),
+          /**Define themes here - Appwide */
+          textTheme: const TextTheme(
+              headlineLarge: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w300,
+                color: Colors.black,
+              ),
+              headlineSmall: TextStyle(
+                fontSize: 15,
+              ))),
       home: HomeScreen(),
-      routes:{
-        LibraryScreen.routeName : (ctx) => LibraryScreen(),
-        MySleepScreen.routeName : (ctx) => MySleepScreen(),
-        MenuScreen.routeName : (ctx) => MenuScreen(),
+      routes: {
+        LibraryScreen.routeName: (ctx) => LibraryScreen(),
+        MySleepScreen.routeName: (ctx) => MySleepScreen(),
+        MenuScreen.routeName: (ctx) => MenuScreen(),
       },
       onUnknownRoute: (settings) {
-        return MaterialPageRoute(builder: (context){
+        return MaterialPageRoute(builder: (context) {
           return HomeScreen();
         });
       },

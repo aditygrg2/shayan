@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/reusable_card_list.dart';
+import 'package:night_gschallenge/widgets/UI/block_cards.dart';
+import 'package:night_gschallenge/widgets/home_screen/reusable_card_list.dart';
 
 class ReusableCard extends StatefulWidget {
   final data;
@@ -17,7 +18,8 @@ class _ReusableCardState extends State<ReusableCard> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return BlockCards(
+      padding: const EdgeInsets.all(20),
       child: Column(
         children: [
           Container(
@@ -48,10 +50,6 @@ class _ReusableCardState extends State<ReusableCard> {
           ),
         ],
       ),
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 2),
-          borderRadius: BorderRadius.circular(10)),
     );
   }
 }
