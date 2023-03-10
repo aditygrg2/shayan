@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/calm_tune_card_list.dart';
+import 'package:night_gschallenge/widgets/reusable_card_list.dart';
 
 class ReusableCard extends StatefulWidget {
-  const ReusableCard({super.key});
+  final data;
+
+  ReusableCard(this.data);
 
   @override
   State<ReusableCard> createState() => _ReusableCardState();
 }
 
 class _ReusableCardState extends State<ReusableCard> {
+
+  void goToPage(context){
+    Navigator.of(context).pushNamed(widget.data['buttonLink']);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,7 +22,7 @@ class _ReusableCardState extends State<ReusableCard> {
         children: [
           Container(
             alignment: Alignment.topLeft,
-            child: Text('Calm Tunes'),
+            child: Text(widget.data['title'].toString()),
           ),
           Container(
             alignment: Alignment.center,
@@ -24,7 +30,7 @@ class _ReusableCardState extends State<ReusableCard> {
           ),
           Container(
             child: ElevatedButton(
-              onPressed: null,
+              onPressed: () => goToPage(context),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 disabledBackgroundColor: Colors.amber,

@@ -9,6 +9,9 @@ import '../../navigators/bottomNavigator.dart';
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
 
+  final calmData= {'title':'Calm Tunes','tunes':[],'buttonLink':'/Home'};
+  final recents= {'title':'Recents Added','tunes':[],'buttonLink':'/Home'};
+  final newsData = {'title':'News Update','news':['a','b','c'],'buttonLink':'/Home'};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,12 +25,12 @@ class HomeScreen extends StatelessWidget {
         padding: EdgeInsets.all(10),
         child: ListView(
           children: [
-            ReusableCard(),
+            ReusableCard(calmData),
             SizedBox(
               height: 2,
             ),
             Container(
-              child: NewsUpdate(),
+              child: NewsUpdate(newsData),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black, width: 2),
@@ -36,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 2,
             ),
-            ReusableCard(),
+            ReusableCard(recents),
           ],
         ),
       ),
