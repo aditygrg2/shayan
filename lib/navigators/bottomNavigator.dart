@@ -13,22 +13,22 @@ class BottomNavigator extends StatefulWidget {
 class _BottomNavigatorState extends State<BottomNavigator> {
   final List<Map<String,dynamic>> _pages = [
     {
-      'icon' : Icon(Icons.home),
+      'icon' : Icon(Icons.home,color: Colors.black),
       'label' : 'Home',
       'page' : HomeScreen.routeName,
     },
     {
-      'icon' : Icon(Icons.bar_chart),
+      'icon' : Icon(Icons.bar_chart, color: Colors.black),
       'label' : 'My Sleep',
       'page' : MySleepScreen.routeName,
     },
     {
-      'icon' : Icon(Icons.library_add),
+      'icon' : Icon(Icons.library_add, color: Colors.black),
       'label' : 'Library',
       'page' : LibraryScreen.routeName,
     },
     {
-      'icon' : Icon(Icons.menu),
+      'icon' : Icon(Icons.menu, color: Colors.black),
       'label' : 'Menu',
       'page': MenuScreen.routeName,
     }
@@ -52,6 +52,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       onTap: _bottomTabHandler,
       items: _pages.map((page) => BottomNavigationBarItem(icon: page['icon'], label: page['label'])).toList(),
       currentIndex: selectedPageIndex,
+      selectedItemColor: Colors.blue,
     );
   }
 }
