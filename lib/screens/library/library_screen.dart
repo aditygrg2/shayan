@@ -11,12 +11,8 @@ class LibraryScreen extends StatefulWidget {
 class _LibraryScreenState extends State<LibraryScreen> {
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Library'),
-      ),
-      bottomNavigationBar: BottomNavigator(),
-      body: Text('Curating a beautiful list of sleep content!'),
+    return Center(
+      child: Text('Curating a beautiful list of sleep content!'),
     );
   }
 }

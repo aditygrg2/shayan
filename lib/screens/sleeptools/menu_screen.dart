@@ -6,9 +6,8 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      bottomNavigationBar: BottomNavigator(),
-      body: Text('Menu'),
+    return Center(
+      child: Text('Menu'),
     );
   }
 }
