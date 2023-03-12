@@ -24,7 +24,7 @@ class _ReusableCardState extends State<ReusableCard> {
         children: [
           Container(
             alignment: Alignment.topLeft,
-            child: Text(widget.data['title'].toString()),
+            child: Text(widget.data['title'].toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
           ),
           Container(
             alignment: Alignment.center,
@@ -34,6 +34,7 @@ class _ReusableCardState extends State<ReusableCard> {
             child: ElevatedButton(
               onPressed: () => goToPage(context),
               style: ElevatedButton.styleFrom(
+                maximumSize: Size(150, 40),
                 backgroundColor: Colors.red,
                 disabledBackgroundColor: Colors.amber,
               ),
