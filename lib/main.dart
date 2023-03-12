@@ -12,18 +12,26 @@ class Main extends StatelessWidget {
     return MaterialApp(
       title: 'Night_GSChallenge',
       theme: ThemeData(
-          /**Define themes here - Appwide */
-          textTheme: const TextTheme(
-              headlineLarge: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w300,
-                color: Colors.black,
-              ),
-              headlineSmall: TextStyle(
-                fontSize: 15,
-              ))),
-      home: HomeScreen(),
+        /**Define themes here - Appwide */
+        primaryColor: Colors.grey,
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 15,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          )
+        ),
+      ),
       routes: {
+        '/' :(context) => HomeScreen(),
         LibraryScreen.routeName: (ctx) => LibraryScreen(),
         MySleepScreen.routeName: (ctx) => MySleepScreen(),
         MenuScreen.routeName: (ctx) => MenuScreen(),

@@ -4,7 +4,7 @@ import 'package:night_gschallenge/widgets/UI/block_cards.dart';
 class WelcomeUser extends StatelessWidget {
   String user = 'demo';
 
-  WelcomeUser(this.user);
+  WelcomeUser(this.user, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,15 @@ class WelcomeUser extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Good Morning, $user!',
-                        style: Theme.of(context).textTheme.headlineLarge,),
+                    Text(
+                      'Good Morning, $user!',
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
                     const SizedBox(
                       height: 5,
                     ),
@@ -33,7 +35,10 @@ class WelcomeUser extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.sunny, size: 50,),
+              const Icon(
+                Icons.sunny,
+                size: 50,
+              ),
             ],
           ),
         ),

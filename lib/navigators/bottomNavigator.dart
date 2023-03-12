@@ -1,57 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/home/home_body.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/mysleep/my_sleep_screen.dart';
 import '../screens/library/library_screen.dart';
 import '../screens/sleeptools/menu_screen.dart';
 
 class BottomNavigator extends StatefulWidget {
+  Function navigationHandler;
+  final int selectedPageIndex;
+
+  BottomNavigator(this.navigationHandler, this.selectedPageIndex);
 
   @override
   State<BottomNavigator> createState() => _BottomNavigatorState();
 }
 
 class _BottomNavigatorState extends State<BottomNavigator> {
+
   final List<Map<String,dynamic>> _pages = [
     {
-      'icon' : Icon(Icons.home),
+      'icon' : Icon(Icons.home,color: Colors.black),
       'label' : 'Home',
-      'page' : HomeScreen.routeName,
+      'page' : HomeBody(),
     },
     {
-      'icon' : Icon(Icons.bar_chart),
+      'icon' : Icon(Icons.bar_chart, color: Colors.black),
       'label' : 'My Sleep',
-      'page' : MySleepScreen.routeName,
+      'page' : MySleepScreen(),
     },
     {
-      'icon' : Icon(Icons.library_add),
+      'icon' : Icon(Icons.library_add, color: Colors.black),
       'label' : 'Library',
-      'page' : LibraryScreen.routeName,
+      'page' : LibraryScreen(),
     },
     {
-      'icon' : Icon(Icons.menu),
+      'icon' : Icon(Icons.menu, color: Colors.black),
       'label' : 'Menu',
-      'page': MenuScreen.routeName,
+      'page': MenuScreen(),
     }
   ];
-
-  int selectedPageIndex = 0;
-
-  void _bottomTabHandler(int selectedIndex){
-    if(selectedPageIndex == selectedIndex){
-      return;
-    }
-    setState(() {
-      selectedPageIndex = selectedIndex;
-    });
-    Navigator.of(context).pushNamed(_pages[selectedIndex]['page']);
-  }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      onTap: _bottomTabHandler,
+      onTap: (index) {
+        widget.navigationHandler(index);
+      },
       items: _pages.map((page) => BottomNavigationBarItem(icon: page['icon'], label: page['label'])).toList(),
-      currentIndex: selectedPageIndex,
+      currentIndex: widget.selectedPageIndex,
+      selectedItemColor: Colors.blue,
     );
   }
 }

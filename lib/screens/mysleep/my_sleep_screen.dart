@@ -6,9 +6,8 @@ class MySleepScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      bottomNavigationBar: BottomNavigator(),
-      body: Text('My Sleep Page'),
+    return Center(
+      child: Text('My Sleep Page'),
     );
   }
 }
