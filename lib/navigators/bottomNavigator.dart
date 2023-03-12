@@ -49,6 +49,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       items: _pages.map((page) => BottomNavigationBarItem(icon: page['icon'], label: page['label'])).toList(),
       currentIndex: widget.selectedPageIndex,
       selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.black,
     );
   }
 }
