@@ -25,7 +25,7 @@ class _NewsUpdateState extends State<NewsUpdate> {
         children: [
           Container(
             alignment: Alignment.centerLeft,
-            child: Text(widget.newData['title']),
+            child: Text(widget.newData['title'],style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
           ),
           Container(
             child: Column(
@@ -42,13 +42,17 @@ class _NewsUpdateState extends State<NewsUpdate> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             elevation: 10,
+                            minimumSize: Size(300, 50),
+                            backgroundColor: Colors.grey,
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: double.infinity),
+                              vertical: 5,
+                              horizontal: 1,
+                            ),
                           ),
                           onPressed: null,
                           child: Container(
-                            child: const Text(
-                              'ele',
+                            child: Text(
+                              ele.toString(),
                               style: TextStyle(color: Colors.red),
                             ),
                           ),
@@ -62,6 +66,7 @@ class _NewsUpdateState extends State<NewsUpdate> {
                     onPressed: () => goToPage(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
+                      maximumSize: Size(150, 40),
                       disabledBackgroundColor: Colors.amber,
                     ),
                     child: Row(

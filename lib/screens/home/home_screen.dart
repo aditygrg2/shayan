@@ -29,8 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: AppDrawer(),
       bottomNavigationBar: BottomNavigator(),
       body: Container(
+        padding: EdgeInsets.all(0),
         width: double.infinity,
         child: ListView(
+          padding: EdgeInsets.all(0),
           children: [
             WelcomeUser('Name'),
             ReusableCard(calmData),
