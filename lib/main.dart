@@ -13,7 +13,9 @@ class Main extends StatelessWidget {
       title: 'Night_GSChallenge',
       theme: ThemeData(
         /**Define themes here - Appwide */
-        primaryColor: Colors.grey,
+        primaryColor: Color.fromRGBO(225, 236, 232, 1),
+        backgroundColor:Color.fromRGBO(225, 236, 232, 1) ,
+        scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 25,
