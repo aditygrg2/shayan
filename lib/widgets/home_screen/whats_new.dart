@@ -91,6 +91,7 @@ class _WhatsNewState extends State<WhatsNew> {
           ),
           ListView(
             shrinkWrap: true,
+            padding: EdgeInsets.symmetric(horizontal: 10),
             physics: ClampingScrollPhysics(),
             children: widget.itemsList.map((item) {
               return Container(

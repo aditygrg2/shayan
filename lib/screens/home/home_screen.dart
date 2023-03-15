@@ -20,12 +20,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-
 class _HomeScreenState extends State<HomeScreen> {
   int selectedPageIndex = 0;
 
-  void _bottomTabHandler(int selectedIndex){
-    if(selectedPageIndex == selectedIndex){
+  void _bottomTabHandler(int selectedIndex) {
+    if (selectedPageIndex == selectedIndex) {
       return;
     }
     setState(() {
@@ -47,19 +46,28 @@ class _HomeScreenState extends State<HomeScreen> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             onPressed: () {
-                // Implement a scroll to top here, on every page! A single function will be fine.
+              // Implement a scroll to top here, on every page! A single function will be fine.
             },
           ),
         ),
-        actions: const [
-          IconButton(
-            onPressed: null,
-            icon: Icon(Icons.chat_rounded),
-          )
+        actions:  [
+          Row(
+            children: [
+              IconButton(
+                onPressed: null,
+                icon: Icon(Icons.notifications,color: Colors.black,),
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(Icons.message_rounded,color: Colors.black,),
+              ),
+            ],
+          ),
         ],
       ),
       drawer: AppDrawer(),
-      bottomNavigationBar: BottomNavigator(_bottomTabHandler, selectedPageIndex),
+      bottomNavigationBar:
+          BottomNavigator(_bottomTabHandler, selectedPageIndex),
       body: widget._pageList[selectedPageIndex],
     );
   }
