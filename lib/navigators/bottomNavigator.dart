@@ -16,40 +16,70 @@ class BottomNavigator extends StatefulWidget {
 }
 
 class _BottomNavigatorState extends State<BottomNavigator> {
-
-  final List<Map<String,dynamic>> _pages = [
+  final List<Map<String, dynamic>> _pages = [
     {
-      'icon' : Icon(Icons.home,color: Colors.black),
-      'label' : 'Home',
-      'page' : HomeBody(),
+      'icon': Icon(Icons.home, color: Colors.black),
+      'label': 'Home',
+      'page': HomeBody(),
     },
     {
-      'icon' : Icon(Icons.bar_chart, color: Colors.black),
-      'label' : 'My Sleep',
-      'page' : MySleepScreen(),
+      'icon': Icon(Icons.bar_chart, color: Colors.black),
+      'label': 'My Sleep',
+      'page': MySleepScreen(),
     },
     {
-      'icon' : Icon(Icons.library_add, color: Colors.black),
-      'label' : 'Library',
-      'page' : LibraryScreen(),
+      'icon': Icon(Icons.library_add, color: Colors.black),
+      'label': 'Library',
+      'page': LibraryScreen(),
     },
     {
-      'icon' : Icon(Icons.menu, color: Colors.black),
-      'label' : 'Menu',
+      'icon': Icon(Icons.menu, color: Colors.black),
+      'label': 'Menu',
+      'page': MenuScreen(),
+    },
+    {
+      'icon': Icon(Icons.menu, color: Colors.black),
+      'label': 'Menu',
       'page': MenuScreen(),
     }
   ];
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      onTap: (index) {
-        widget.navigationHandler(index);
-      },
-      items: _pages.map((page) => BottomNavigationBarItem(icon: page['icon'], label: page['label'])).toList(),
-      currentIndex: widget.selectedPageIndex,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.black,
+    return NavigationBarTheme(
+      data: NavigationBarThemeData(
+          height: 100,
+          indicatorColor: Theme.of(context).primaryColor,
+          labelTextStyle: MaterialStateProperty.all(TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w400,
+          ))),
+      child: NavigationBar(
+        height: 70,
+        backgroundColor: Colors.white,
+        selectedIndex: widget.selectedPageIndex,
+        onDestinationSelected: (value) {
+          widget.navigationHandler(value);
+        },
+        destinations: _pages
+            .map((item) =>
+                NavigationDestination(icon: item['icon'], label: item['label']))
+            .toList(),
+      ),
     );
+
+    // return BottomNavigationBar(
+    //     type: BottomNavigationBarType.fixed,
+    //     currentIndex: widget.selectedPageIndex,
+    //     items: _pages
+    //         .map((item) => BottomNavigationBarItem(
+    //               icon: item['icon'],
+    //               label: item['label'],
+    //             ))
+    //         .toList(),
+    //     onTap: (value) {
+    //       widget.navigationHandler(value);
+    //     },
+    // );
   }
 }

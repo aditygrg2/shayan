@@ -16,6 +16,7 @@ class Main extends StatelessWidget {
         primaryColor: Color.fromRGBO(225, 236, 232, 1),
         backgroundColor:Color.fromRGBO(225, 236, 232, 1) ,
         scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
+        fontFamily: 'JejuGothic',
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 25,
@@ -29,6 +30,17 @@ class Main extends StatelessWidget {
             fontSize: 20,
             color: Colors.black,
             fontWeight: FontWeight.w400,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 30,
+            color: Colors.black,
+            fontWeight: FontWeight.w600
+          ),
+          labelLarge: TextStyle(
+            fontSize: 25,
+          ),
+          labelMedium: TextStyle(
+            fontSize: 15,
           )
         ),
       ),

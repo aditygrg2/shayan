@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
     MySleepScreen(),
     LibraryScreen(),
     MenuScreen(),
+    MenuScreen(),
   ];
 
   @override
