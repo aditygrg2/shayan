@@ -8,9 +8,7 @@ class HomeScreenText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 30,
-      ),
+      padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

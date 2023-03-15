@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
+import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/sleeptools/menu_screen.dart';
 import './screens/home/home_screen.dart';
 
@@ -49,6 +50,7 @@ class Main extends StatelessWidget {
         LibraryScreen.routeName: (ctx) => LibraryScreen(),
         MySleepScreen.routeName: (ctx) => MySleepScreen(),
         MenuScreen.routeName: (ctx) => MenuScreen(),
+        PlanScreen.routeName: (ctx) => PlanScreen(),
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(builder: (context) {

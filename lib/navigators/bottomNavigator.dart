@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/home/home_body.dart';
+import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/mysleep/my_sleep_screen.dart';
 import '../screens/library/library_screen.dart';
@@ -29,13 +30,13 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     },
     {
       'icon': Icon(Icons.library_add, color: Colors.black),
-      'label': 'Library',
-      'page': LibraryScreen(),
+      'label': 'My Plan',
+      'page': PlanScreen(),
     },
     {
-      'icon': Icon(Icons.menu, color: Colors.black),
-      'label': 'Menu',
-      'page': MenuScreen(),
+      'icon': Icon(Icons.library_add, color: Colors.black),
+      'label': 'Library',
+      'page': LibraryScreen(),
     },
     {
       'icon': Icon(Icons.menu, color: Colors.black),

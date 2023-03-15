@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/sliding/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/sliding/home_screen_short.dart';
+import 'package:night_gschallenge/widgets/UI/sliding/home_screen_view_all.dart';
 import 'package:night_gschallenge/widgets/UI/sliding/sliding_card_rounded.dart';
 
 class MusicSection extends StatefulWidget {
@@ -40,7 +40,7 @@ class _MusicSectionState extends State<MusicSection> {
       child: Column(
         children: [
           HomeScreenText('Music Therapy'),
-          HomeScreenShort(),
+          HomeScreenViewAll(),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),

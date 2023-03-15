@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/main.dart';
 
-class HomeScreenShort extends StatelessWidget {
+class HomeScreenViewAll extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:night_gschallenge/widgets/UI/sliding/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/sliding/home_screen_view_all.dart';
 
 class WhatsNew extends StatefulWidget {
   int cardLimit = 3;
@@ -58,37 +60,10 @@ class _WhatsNewState extends State<WhatsNew> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: ,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            children: [
-              Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(
-                    "What's New?",
-                    style: Theme.of(context).textTheme.headlineLarge,
-                    textAlign: TextAlign.left,
-                  )),
-              Container(
-                padding: EdgeInsets.all(10),
-                alignment: Alignment.bottomRight,
-                child: GestureDetector(
-                  child: Text(
-                    widget.cardLimit == 3 ? 'View All' : 'View less',
-                    textAlign: TextAlign.end,
-                  ),
-                  onTap: () {
-                    setState(() {
-                      widget.cardLimit = widget.cardLimit == 3 ? 100 : 3;
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
+          HomeScreenText('Your Sleep Stats'),
+          HomeScreenViewAll(),
           ListView(
             shrinkWrap: true,
             padding: EdgeInsets.symmetric(horizontal: 10),
