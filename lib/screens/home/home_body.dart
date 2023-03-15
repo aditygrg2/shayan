@@ -30,13 +30,10 @@ class _HomeBodyState extends State<HomeBody> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height,maxWidth: MediaQuery.of(context).size.width),
       child: ListView(
         children: [
-          WelcomeUser('Name'),
-          SleepScore(),
-          ReusableCard(calmData),
-          NewsUpdate(newsData),
-          ReusableCard(recents),
+          WelcomeUser(),
         ],
       ),
     );
