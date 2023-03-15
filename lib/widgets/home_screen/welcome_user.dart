@@ -20,7 +20,6 @@ class WelcomeUser extends StatelessWidget {
       child: Stack(
         children: [
           Center(child: Image.network("https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg",width: double.infinity,fit: BoxFit.fill)),
-          // Positioned(child: Image.network("https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg"),width: 500,height: 500,),
           Positioned(child: Text(style: Theme.of(context).textTheme.headlineLarge,greeting),top: 0,),
           Positioned(child: Text(style: Theme.of(context).textTheme.headlineSmall,user),top: 30,),
           Positioned(child: Center(child: Text(qoute,)),bottom: 0,),
