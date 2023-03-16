@@ -15,7 +15,7 @@ class SlidingCardRounded extends StatelessWidget {
         width: 180,
         decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         margin: EdgeInsets.all(10),
         child: Column(
           children: [
@@ -23,8 +23,8 @@ class SlidingCardRounded extends StatelessWidget {
               height: 180,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
                 child: Image.network(
                   src,
