@@ -36,40 +36,34 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
-        shadowColor: Colors.white,
-        elevation: 0,
-        title: Center(
-          child: TextButton(
-            child: Text(
-              'Homepage',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            onPressed: () {
-              // Implement a scroll to top here, on every page! A single function will be fine.
-            },
-          ),
-        ),
-        actions:  [
-          Row(
-            children: [
-              IconButton(
-                onPressed: null,
-                icon: Icon(Icons.notifications,color: Colors.black,),
-              ),
-              IconButton(
-                onPressed: null,
-                icon: Icon(Icons.message_rounded,color: Colors.black,),
-              ),
-            ],
-          ),
-        ],
-      ),
       drawer: AppDrawer(),
       bottomNavigationBar:
           BottomNavigator(_bottomTabHandler, selectedPageIndex),
-      body: widget._pageList[selectedPageIndex],
+      body: Column(children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.notifications,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.message_rounded,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        ),
+        widget._pageList[selectedPageIndex]
+      ]),
     );
   }
 }

@@ -13,8 +13,7 @@ class WelcomeUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 200,
+      height: 300,
       child: Stack(
         children: [
           Center(
@@ -23,16 +22,24 @@ class WelcomeUser extends StatelessWidget {
                   width: double.infinity,
                   fit: BoxFit.fill)),
           Positioned(
-            child: Text(
-                style: Theme.of(context).textTheme.headlineLarge, greeting),
+            
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                  style: Theme.of(context).textTheme.headlineLarge, greeting),
+            ),
             top: 0,
           ),
           Positioned(
-            child: Text(style: Theme.of(context).textTheme.headlineSmall, user),
-            top: 30,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Text(style: Theme.of(context).textTheme.headlineSmall, user),
+            ),
+            top: 40,
           ),
           Positioned(
-            child: Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
               qoute,
             )),
