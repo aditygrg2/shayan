@@ -1,50 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class WelcomeUser extends StatelessWidget {
+class WelcomeUser extends StatefulWidget {
+  @override
+  State<WelcomeUser> createState() => _WelcomeUserState();
+}
+
+class _WelcomeUserState extends State<WelcomeUser>
+    with TickerProviderStateMixin {
   String user = 'Ronaldo';
 
   String greeting = 'Good Morning,';
-  String quote = "Hope you had a restful night's sleep!";
-  String animation = 'dummy animation';
-  // one Animation according to day night
-  // WelcomeUser(this.user, {super.key});
 
+  String quote = "Hope you had a restful night's sleep!";
+
+  String animation = 'dummy animation';
+
+  // one Animation according to day night
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
-      child: Stack(
+      padding: EdgeInsets.all(15),
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(
-              child: Image.network(
-                  "https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg",
-                  width: double.infinity,
-                  fit: BoxFit.fill)),
-          Positioned(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                  style: Theme.of(context).textTheme.headlineLarge, greeting),
-            ),
-            top: 0,
+          Text(
+            greeting,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
-          Positioned(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child:
-                  Text(style: Theme.of(context).textTheme.headlineSmall, user),
-            ),
-            top: 40,
+          SizedBox(
+            height: 10,
           ),
-          Positioned(
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  quote,
-                )),
-            bottom: 0,
+          Text(
+            user,
+            style: TextStyle(fontSize: 25),
           ),
+          Container(
+            height: 150,
+            width: double.infinity,
+              child: Image.asset(
+            'assets/sun.gif',
+            fit: BoxFit.cover,
+          ))
         ],
       ),
     );

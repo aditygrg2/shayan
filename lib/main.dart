@@ -33,7 +33,7 @@ class Main extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
           bodyLarge: TextStyle(
-            fontSize: 30,
+            fontSize: 40,
             color: Colors.black,
             fontWeight: FontWeight.w600
           ),
