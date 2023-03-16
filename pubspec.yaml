@@ -79,7 +79,7 @@ flutter:
   fonts:
     - family: JejuGothic
       fonts:
-        - asset: assets/Jejugothic-Regular.ttf
+        - asset: assets/JejuGothic-Regular.ttf
           weight: 300
   #   - family: Trajan Pro
   #     fonts:
