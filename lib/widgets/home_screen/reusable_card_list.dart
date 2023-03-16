@@ -13,8 +13,9 @@ class ImageWithTextCard extends StatelessWidget {
         children: [
           Container(
             child: Image.network(
-                'https://www.heysigmund.com/wp-content/uploads/2014/10/Most-Relaxing-Song.jpeg',
-                fit: BoxFit.contain),
+              'https://www.heysigmund.com/wp-content/uploads/2014/10/Most-Relaxing-Song.jpeg',
+              fit: BoxFit.contain,
+            ),
           ),
           Container(
             child: Text(''), //'text displayed on Image'
