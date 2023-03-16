@@ -68,20 +68,19 @@ class _WhatsNewState extends State<WhatsNew> {
             height: 10,
           ),
           HomeScreenViewAll(),
-          ListView(
-            shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            physics: ClampingScrollPhysics(),
+          Column(
             children: widget.itemsList.map((item) {
               return Container(
-                margin: EdgeInsets.symmetric(vertical: 5),
-                padding: EdgeInsets.all(15),
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(color: Color.fromARGB(240, 249, 249, 248))
-                    ],
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(164, 255, 255, 255)),
+                  border: Border.all(
+                    width: 1,
+                    color: Color.fromRGBO(250, 195, 68, 1),
+                  ),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
                 child: ListTile(
                   // mouseCursor: MouseCursor.defer,
                   title: Container(

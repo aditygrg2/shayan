@@ -5,9 +5,9 @@ class WelcomeUser extends StatelessWidget {
   String user = 'Ronaldo';
 
   String greeting = 'Good Morning,';
-  String qoute = "Hope you had a restful night's sleep!";
+  String quote = "Hope you had a restful night's sleep!";
   String animation = 'dummy animation';
-  //one Animation according to day night
+  // one Animation according to day night
   // WelcomeUser(this.user, {super.key});
 
   @override
@@ -22,7 +22,6 @@ class WelcomeUser extends StatelessWidget {
                   width: double.infinity,
                   fit: BoxFit.fill)),
           Positioned(
-            
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
@@ -33,16 +32,17 @@ class WelcomeUser extends StatelessWidget {
           Positioned(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(style: Theme.of(context).textTheme.headlineSmall, user),
+              child:
+                  Text(style: Theme.of(context).textTheme.headlineSmall, user),
             ),
             top: 40,
           ),
           Positioned(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Text(
-              qoute,
-            )),
+                  quote,
+                )),
             bottom: 0,
           ),
         ],

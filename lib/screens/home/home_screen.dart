@@ -3,7 +3,7 @@ import 'package:night_gschallenge/screens/home/home_body.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/sleeptools/menu_screen.dart';
-import '../../navigators/drawer.dart';
+import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import '../../navigators/bottomNavigator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -36,34 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: AppDrawer(),
       bottomNavigationBar:
           BottomNavigator(_bottomTabHandler, selectedPageIndex),
-      body: Column(children: [
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.notifications,
-                  color: Colors.black,
-                ),
-              ),
-              IconButton(
-                onPressed: null,
-                icon: Icon(
-                  Icons.message_rounded,
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-        ),
-        widget._pageList[selectedPageIndex]
-      ]),
+      body: ListView(
+          children: [TopRow(), widget._pageList[selectedPageIndex]],
+      ),
     );
   }
 }
