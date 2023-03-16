@@ -60,9 +60,13 @@ class _WhatsNewState extends State<WhatsNew> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 30, bottom: 15),
       child: Column(
         children: [
           HomeScreenText('Your Sleep Stats'),
+          SizedBox(
+            height: 10,
+          ),
           HomeScreenViewAll(),
           ListView(
             shrinkWrap: true,
@@ -71,7 +75,7 @@ class _WhatsNewState extends State<WhatsNew> {
             children: widget.itemsList.map((item) {
               return Container(
                 margin: EdgeInsets.symmetric(vertical: 5),
-                padding: EdgeInsets.all(9),
+                padding: EdgeInsets.all(15),
                 decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(color: Color.fromARGB(240, 249, 249, 248))
@@ -80,16 +84,18 @@ class _WhatsNewState extends State<WhatsNew> {
                     color: Color.fromARGB(164, 255, 255, 255)),
                 child: ListTile(
                   // mouseCursor: MouseCursor.defer,
-                  title: Text(item['title'].toString()),
-                  subtitle: Text(item['description'].toString()),
+                  title: Container(
+                      padding: EdgeInsets.symmetric(vertical: 5),
+                      child: Text(item['title'].toString())),
+                  subtitle: Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Text(item['description'].toString())),
                   trailing: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(19)),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(19),
+                    ),
                     child: Image.network(
                       "https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg",
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.fill,
                     ),
                   ),
                 ),
