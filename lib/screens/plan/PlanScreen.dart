@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../config/watch_provider.dart';
 
-class PlanScreen extends StatelessWidget {
+class PlanScreen extends StatefulWidget {
   static const routeName = '/plan';
 
   @override
+  State<PlanScreen> createState() => _PlanScreenState();
+}
+
+class _PlanScreenState extends State<PlanScreen> {
+
+  
+  
+  @override
   Widget build(BuildContext context){
-    return Container();
+        return Container();
   }
 }

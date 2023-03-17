@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.18.0
   percent_indicator: ^4.2.3
+  health: ^4.6.0
+  provider: any
 
 dev_dependencies:
   flutter_test:
