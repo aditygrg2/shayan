@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/sliding/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/score_card.dart';
 
 class SleepScore extends StatelessWidget {
@@ -13,7 +14,7 @@ class SleepScore extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(child: Text('Sleep Score',style: Theme.of(context).textTheme.headlineLarge,textAlign: TextAlign.left,)),
+          HomeScreenText('Sleep Score'),
           SizedBox(height: 30,),
           Container(
             width: MediaQuery.of(context).size.width - 40,
