@@ -17,13 +17,13 @@ class SleepScore extends StatelessWidget {
           SizedBox(height: 30,),
           Container(
             width: MediaQuery.of(context).size.width - 40,
-            height: 108,
+            height: 120,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 ScoreCard(),
-                Container(child: Image.network("https://i.ibb.co/W30txZS/10701320-43710-removebg-preview-1.png",fit: BoxFit.fill,))
+                Container(width: (MediaQuery.of(context).size.width - 40)*0.32,child: Image.network("https://i.ibb.co/W30txZS/10701320-43710-removebg-preview-1.png",fit: BoxFit.cover,))
               ],
             ),
           )

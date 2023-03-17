@@ -17,7 +17,7 @@ class PropertyCard extends StatelessWidget {
           description.isEmpty ? Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(child: Flexible(child: Text(property,style: Theme.of(context).textTheme.headlineMedium,)),),
+              Container(child: Flexible(child: Text(property,style: Theme.of(context).textTheme.headlineSmall,)),),
               Container(child: Text(percentage,style: TextStyle(fontSize: 25),),)
             ],
           ):Column(
