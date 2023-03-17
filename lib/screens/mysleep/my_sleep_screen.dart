@@ -13,10 +13,10 @@ class MySleepScreen extends StatelessWidget {
       children: [
         SleepScore(),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.009),
           child: Wrap(
             
-            spacing: 20,
+            spacing: MediaQuery.of(context).size.width*0.05,
             runSpacing:12 ,
             children: [
               PropertyCard(width: 140 ,height: 140,),

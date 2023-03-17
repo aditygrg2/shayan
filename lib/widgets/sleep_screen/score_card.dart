@@ -37,6 +37,7 @@ class ScoreCard extends StatelessWidget {
             child: Flexible(
                 child: Text(
               suggestion,
+              textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodySmall,
             )),
           )
