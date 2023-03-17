@@ -24,7 +24,7 @@ class PropertyCard extends StatelessWidget {
                 children: [
                   Container(child: Flexible(child: Text(property,style: Theme.of(context).textTheme.headlineMedium,)),),
                   Container(child: Text(percentage,style: TextStyle(fontSize: 15),),),
-                  Flexible(child: Text(description,style: TextStyle(fontSize: 10),))
+                  Container(width: width*0.8,height: height*0.4,child: Flexible(child: Text(description,style: TextStyle(fontSize: 10),)))
                 ],
               ),
             

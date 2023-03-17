@@ -20,7 +20,7 @@ class MySleepScreen extends StatelessWidget {
               PropertyCard(width: 170 ,height: 140,),
               PropertyCard(width: 170 ,height: 140,),
               PropertyCard(width: 170 ,height: 140,),
-              PropertyCard(width: 170 ,height: 140),
+              PropertyCard(width: 170 ,height: 140,),
             ],
           ),
         )
