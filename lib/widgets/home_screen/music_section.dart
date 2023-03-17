@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/UI/sliding/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/sliding/home_screen_view_all.dart';
-import 'package:night_gschallenge/widgets/UI/sliding/sliding_card_rounded.dart';
+import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/home_screen_view_all.dart';
+import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
 
 class MusicSection extends StatefulWidget {
   @override

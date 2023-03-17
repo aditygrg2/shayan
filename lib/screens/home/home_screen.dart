@@ -3,6 +3,7 @@ import 'package:night_gschallenge/screens/home/home_body.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/sleeptools/menu_screen.dart';
+import 'package:night_gschallenge/widgets/UI/form.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import '../../navigators/bottomNavigator.dart';
 
@@ -13,7 +14,7 @@ class HomeScreen extends StatefulWidget {
     HomeBody(),
     MySleepScreen(),
     LibraryScreen(),
-    MenuScreen(),
+    SleepForm(),
     MenuScreen(),
   ];
 

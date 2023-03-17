@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/config/watch_provider.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
@@ -27,7 +27,17 @@ class Main extends StatelessWidget {
           primaryColor: Color.fromRGBO(225, 236, 232, 1),
           backgroundColor: Color.fromRGBO(225, 236, 232, 1),
           scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
+          canvasColor: Color.fromRGBO(143, 227, 221, 1),
           fontFamily: 'JejuGothic',
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(250, 195, 68, 1)),
+            foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+          )),
+          radioTheme: RadioThemeData(
+            fillColor: MaterialStateProperty.all<Color>(Color.fromRGBO(250, 195, 68, 1)),
+            visualDensity: VisualDensity.comfortable,
+          ),
           textTheme: const TextTheme(
               headlineLarge: TextStyle(
                 fontSize: 25,
