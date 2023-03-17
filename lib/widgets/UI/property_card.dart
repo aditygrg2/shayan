@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 class PropertyCard extends StatelessWidget {
-  String property = "Efficiency";
-  String percentage = "96%";
-  String description;
+  String title ;
+  String description,score;
   double width,height;
-  PropertyCard({required this.width,required this.height,this.description = ""});
+  PropertyCard({required this.width,required this.height,this.description = "",this.score='96%',this.title="Efficiency"});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +16,16 @@ class PropertyCard extends StatelessWidget {
           description.isEmpty ? Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(child: Flexible(child: Text(property,style: Theme.of(context).textTheme.headlineSmall,)),),
-              Container(child: Text(percentage,style: TextStyle(fontSize: 25),),)
+              Container(child: Flexible(child: Text(title,style: Theme.of(context).textTheme.headlineSmall,)),),
+              Container(child: Text(score,style: TextStyle(fontSize: 25),),)
             ],
           ):Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(child: Flexible(child: Text(property,style: Theme.of(context).textTheme.headlineMedium,)),),
-                  Container(child: Text(percentage,style: TextStyle(fontSize: 15),),),
-                  Container(width: width*0.8,height: height*0.4,child: Flexible(child: Text(description,style: TextStyle(fontSize: 10),)))
+                  Container(child: Flexible(child: Text(title,style: Theme.of(context).textTheme.headlineSmall,)),),
+                  Container(child: Text(score,style: TextStyle(fontSize: 15),),),
+                  SizedBox(height: 13,),
+                  Container(width: width*0.8,height: height*0.6,child: Flexible(child: Text(description,style: Theme.of(context).textTheme.bodySmall,)))
                 ],
               ),
             
