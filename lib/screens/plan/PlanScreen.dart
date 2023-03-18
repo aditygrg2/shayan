@@ -10,8 +10,6 @@ class PlanScreen extends StatefulWidget {
 }
 
 class _PlanScreenState extends State<PlanScreen> {
-
-  
   
   @override
   Widget build(BuildContext context){
