@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
+import 'package:night_gschallenge/providers/text_to_speech.dart';
+import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
-import 'package:night_gschallenge/screens/sleeptools/menu_screen.dart';
+import 'package:night_gschallenge/screens/menu/menu_screen.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -23,9 +28,14 @@ class Main extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) {
-            return FlutterTextSpeech();
+            return LightProvider();
           },
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return FlutterTextSpeech();;
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
@@ -61,6 +71,9 @@ class Main extends StatelessWidget {
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
               ),
+              titleLarge: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
               bodyLarge: TextStyle(
                   fontSize: 40,
                   color: Colors.black,
@@ -78,6 +91,9 @@ class Main extends StatelessWidget {
           MySleepScreen.routeName: (ctx) => MySleepScreen(),
           MenuScreen.routeName: (ctx) => MenuScreen(),
           PlanScreen.routeName: (ctx) => PlanScreen(),
+          LightPollution.routeName: (ctx) => LightPollution(),
+          Temperature.routeName: (ctx) => Temperature(),
+          NoisePollution.routeName: (ctx) => NoisePollution()
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) {
