@@ -88,6 +88,9 @@ flutter:
     - assets/noise.png
     - assets/light.png
     - assets/scanload.gif
+    - assets/good_feedback.png
+    - assets/great_feedback.png
+    - assets/make_it_good.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -105,6 +108,10 @@ flutter:
       fonts:
         - asset: assets/JejuGothic-Regular.ttf
           weight: 300
+    - family: ReadexPro
+      fonts:
+        - asset: assets/ReadexPro.ttf
+          weight: 700
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

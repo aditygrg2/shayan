@@ -12,14 +12,14 @@ class MenuScreen extends StatelessWidget {
     {
       'text': 'Test My Bedroom',
       'imagePath': 'assets/test_my_environment.png',
-      'routes': TestMyBedroom.routeName
+      //'routes': TestMyBedroom.routeName
     },
     {'text': 'Phone-Free time', 'imagePath': 'assets/phone_free.png'},
     {'text': 'Meditation Timer', 'imagePath': 'assets/meditation_timer.png'},
     {
       'text': 'Listen to your stories',
       'imagePath': 'assets/nap_timer.png',
-      'routes': TextToSpeechComponent.routeName
+      //'routes': TextToSpeechComponent.routeName
     },
     {
       'text': 'Sleep Cycle Calculator',
@@ -42,12 +42,12 @@ class MenuScreen extends StatelessWidget {
         HomeScreenText(text: 'Sleep Tools'),
         Container(
           width: MediaQuery.of(context).size.width - 20,
-          height: (MediaQuery.of(context).size.height/8)*items.length ,
+          height: (MediaQuery.of(context).size.height / 8) * items.length,
           padding: EdgeInsets.all(10),
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 2/2,
+              childAspectRatio: 2 / 2,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
