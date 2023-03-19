@@ -12,6 +12,7 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dar
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
+import 'package:night_gschallenge/widgets/menu/text_to_speech.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -96,6 +97,7 @@ class Main extends StatelessWidget {
           Temperature.routeName: (ctx) => Temperature(),
           NoisePollution.routeName: (ctx) => NoisePollution(),
           TestMyBedroom.routeName: (ctx) => TestMyBedroom(),
+          TextToSpeechComponent.routeName: (ctx) => TextToSpeechComponent(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) {
