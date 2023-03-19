@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/text_to_speech.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
@@ -18,6 +19,11 @@ class Main extends StatelessWidget {
           create: (context) {
             return WatchData();
           },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return TextSpeech();
+          },
         )
       ],
       child: MaterialApp(
@@ -31,11 +37,13 @@ class Main extends StatelessWidget {
           fontFamily: 'JejuGothic',
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(250, 195, 68, 1)),
+            backgroundColor: MaterialStateProperty.all<Color>(
+                Color.fromRGBO(250, 195, 68, 1)),
             foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
           )),
           radioTheme: RadioThemeData(
-            fillColor: MaterialStateProperty.all<Color>(Color.fromRGBO(250, 195, 68, 1)),
+            fillColor: MaterialStateProperty.all<Color>(
+                Color.fromRGBO(250, 195, 68, 1)),
             visualDensity: VisualDensity.comfortable,
           ),
           textTheme: const TextTheme(
