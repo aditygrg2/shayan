@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/text_to_speech.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
@@ -31,7 +33,7 @@ class Main extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) {
-            return TextSpeech();
+            return FlutterTextSpeech();;
           },
         ),
       ],
