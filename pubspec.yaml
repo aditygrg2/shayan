@@ -45,6 +45,7 @@ dependencies:
   light: ^2.1.0
   location: ^4.4.0
   weather: ^2.0.1
+  noise_meter: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -90,7 +91,10 @@ flutter:
     - assets/noise.png
     - assets/light.png
     - assets/scanload.gif
-
+    - assets/goodlight.png
+    - assets/badlight.png
+    - assets/averagelight.png
+    - assets/noisepollution.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

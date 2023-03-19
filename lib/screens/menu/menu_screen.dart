@@ -45,7 +45,7 @@ class MenuScreen extends StatelessWidget {
           height: (MediaQuery.of(context).size.height/8)*items.length ,
           padding: EdgeInsets.all(10),
           child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 2/2,
               crossAxisSpacing: 20,
