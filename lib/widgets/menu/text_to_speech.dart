@@ -10,6 +10,8 @@ import 'package:volume_controller/volume_controller.dart';
 
 
 class TextToSpeechComponent extends StatefulWidget {
+
+  static String routeName = '/textToSpeech';
   final textController = TextEditingController();
   List<Object?> voicesMap = [];
   String dropDown = "Microsoft David - English (United States)";

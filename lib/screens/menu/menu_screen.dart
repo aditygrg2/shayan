@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
+import 'package:night_gschallenge/widgets/menu/text_to_speech.dart';
 import './menu.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class MenuScreen extends StatelessWidget {
     {'text':'Test My Bedroom','imagePath':'images/test_my_environment.png','routes':TestMyBedroom.routeName},
     {'text':'Phone-Free time','imagePath':'images/phone_free.png'},
     {'text':'Meditation Timer','imagePath':'images/meditation_timer.png'},
-    {'text':'Listen to your stories','imagePath':'images/nap_timer.png'},
+    {'text':'Listen to your stories','imagePath':'images/nap_timer.png','routes':TextToSpeechComponent.routeName},
     {'text':'Sleep Cycle Calculator','imagePath':'images/sleep_cycle_calculator.png'},
     {'text':'Sleep Diet Suggestions','imagePath':'images/sleep_diet.png'},
     {'text':'Mental Exercises','imagePath':'images/mental_exercises.png'},
