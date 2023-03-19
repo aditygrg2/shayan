@@ -39,7 +39,9 @@ dependencies:
   percent_indicator: ^4.2.3
   health: ^4.6.0
   provider: any
-  text_to_speech: ^0.2.3
+  language_picker: ^0.4.3
+  flutter_tts: ^3.6.3
+  volume_controller: ^2.0.6
 
 dev_dependencies:
   flutter_test:
