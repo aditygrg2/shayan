@@ -54,7 +54,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
     return Container(
       child: Column(
         children: [
-          HomeScreenText("Text to Speech"),
+          HomeScreenText(),
           Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
