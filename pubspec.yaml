@@ -74,7 +74,16 @@ flutter:
     - assets/sun.gif
     - assets/kid.png
     - assets/form.gif
-    - assets/images/
+    - assets/meditation_timer.png
+    - assets/mental_exercises.png
+    - assets/nap_timer.png
+    - assets/phone_free.png
+    - assets/podcasts_stories.png
+    - assets/sleep_achievement.png
+    - assets/sleep_cycle_calculator.png
+    - assets/sleep_diet.png
+    - assets/test_my_environment.png
+    - assets/worry_list.png
     - assets/temperature.png
     - assets/noise.png
     - assets/light.png

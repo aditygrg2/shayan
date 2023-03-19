@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Menu extends StatelessWidget {
@@ -26,7 +24,7 @@ class Menu extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                "${text}",
+                text,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
