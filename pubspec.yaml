@@ -75,6 +75,7 @@ flutter:
     - assets/sun.gif
     - assets/kid.png
     - assets/form.gif
+    - assets/images/
     - assets/temperature.png
     - assets/noise.png
     - assets/light.png
