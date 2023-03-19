@@ -9,6 +9,7 @@ import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
 
 class TestMyBedroom extends StatefulWidget {
 
+  static String routeName = '/testMyBedroom';
   @override
   State<TestMyBedroom> createState() => _TestMyBedroomState();
 }

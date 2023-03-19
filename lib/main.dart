@@ -8,6 +8,7 @@ import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
@@ -93,7 +94,8 @@ class Main extends StatelessWidget {
           PlanScreen.routeName: (ctx) => PlanScreen(),
           LightPollution.routeName: (ctx) => LightPollution(),
           Temperature.routeName: (ctx) => Temperature(),
-          NoisePollution.routeName: (ctx) => NoisePollution()
+          NoisePollution.routeName: (ctx) => NoisePollution(),
+          TestMyBedroom.routeName: (ctx) => TestMyBedroom(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) {
