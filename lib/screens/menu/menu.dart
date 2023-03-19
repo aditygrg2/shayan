@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Menu extends StatelessWidget {
@@ -8,8 +10,8 @@ class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
-      width: 100,
+      height: 300,
+      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       decoration: BoxDecoration(
           gradient: const RadialGradient(colors: [
             Color.fromARGB(255, 255, 255, 255),
@@ -18,17 +20,18 @@ class Menu extends StatelessWidget {
           border: Border.all(color: Colors.black),
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(left: 5),
-            child: Text(
-              "${text}",
-              style: TextStyle(fontWeight: FontWeight.bold),
+          Expanded(
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "${text}",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
             ),
           ),
-          Container(
-            height: 50,
+          Expanded(
             child: Image.asset(imagePath),
           )
         ],
