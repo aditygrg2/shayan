@@ -4,6 +4,8 @@ import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/text_to_speech.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
+import 'package:night_gschallenge/providers/location_provider.dart';
+import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
@@ -35,9 +37,15 @@ class Main extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) {
-            return FlutterTextSpeech();;
+            return FlutterTextSpeech();
           },
         ),
+        ChangeNotifierProvider(create: (context){
+          return LocationProvider();
+        },),
+        ChangeNotifierProvider(create: (context){
+          return WeatherProvider();
+        })
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',

@@ -43,6 +43,8 @@ dependencies:
   flutter_tts: ^3.6.3
   volume_controller: ^2.0.6
   light: ^2.1.0
+  location: ^4.4.0
+  weather: ^2.0.1
 
 dev_dependencies:
   flutter_test:
