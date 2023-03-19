@@ -44,7 +44,7 @@ class _MySleepReportState extends State<MySleepReport> {
       child: widget.getReport
           ? Column(
               children: [
-                HomeScreenText('Sleep Report'),
+                HomeScreenText(text: 'Sleep Report'),
                 Container(
                   height: 250,
                   child: Image.network(

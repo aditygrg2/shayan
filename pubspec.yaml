@@ -40,6 +40,7 @@ dependencies:
   health: ^4.6.0
   provider: any
   text_to_speech: ^0.2.3
+  light: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,11 @@ flutter:
     - assets/kid.png
     - assets/form.gif
     - assets/images/
+    - assets/temperature.png
+    - assets/noise.png
+    - assets/light.png
+    - assets/scanload.gif
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
