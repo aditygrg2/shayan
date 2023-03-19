@@ -1,17 +1,26 @@
-import 'package:flutter/material.dart';
-import 'package:light/light.dart';
-import 'package:collection/collection.dart';
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:noise_meter/noise_meter.dart';
+import 'package:collection/collection.dart';
 
 
-class LightProvider with ChangeNotifier{
-  late Light _light;
-  late StreamSubscription _subscription;
-  List<int>data_points = [];
+class NoiseProvider with ChangeNotifier {
+  late StreamSubscription<NoiseReading> _noiseSubscription;
+  late NoiseMeter _noiseMeter;
+  List<double>data_points = [];
   double average_data_points = 100;
   bool success = false;
-  int luxOnScreen = 0;
+  double dbOnScreen = 100;
   bool state = false;
+
+  void start() async {
+      _noiseMeter =  NoiseMeter();
+      _noiseSubscription = _noiseMeter.noiseStream.listen(onData);
+  }
+
+  double get db{
+    return dbOnScreen;
+  }
 
   final List<Map<String,String>> _modalData = [
     {
@@ -31,20 +40,6 @@ class LightProvider with ChangeNotifier{
     },
   ];
 
-
-  int get LUX{
-    return luxOnScreen;
-  }
-
-  void startListening() {
-    _light = Light();
-    try {
-      _subscription = _light.lightSensorStream.listen(onData);
-    } on LightException catch (exception) {
-      print(exception);
-    }
-  }
-
   Map<String,String> get dataValue{
     if(average_data_points<=5){
       return _modalData[0];
@@ -56,22 +51,16 @@ class LightProvider with ChangeNotifier{
     return _modalData[2];
   }
 
-  void stopListening() {
-    success = false;
+  void onData(NoiseReading noiseReading) {
+    dbOnScreen = noiseReading.meanDecibel;
+    
     notifyListeners();
-    _subscription.cancel();
-  }
+    data_points.add(dbOnScreen);
 
-  void onData(int luxValue) async {
-    luxOnScreen = luxValue;
-    notifyListeners();
-
-    data_points.add(luxValue);
-
-    if (data_points.length >= 50) {
+    if (data_points.length >= 5) {
       final sum = data_points.sum;
       average_data_points = sum/data_points.length;
-      stopListening();
+      stopRecorder();
       state = false;
       success = true;
       data_points.clear();
@@ -79,8 +68,20 @@ class LightProvider with ChangeNotifier{
     }
   }
 
+  void onError(Object error) {
+    print(error.toString());
+  }
+
+  void stopRecorder() async {
+      if (_noiseSubscription != null) {
+        _noiseSubscription.cancel();
+        success = false;
+        notifyListeners();
+      }
+  }
+
   Future<void> initPlatformState() async {
-    startListening();
+    start();
     state = true;
     notifyListeners();
   }
