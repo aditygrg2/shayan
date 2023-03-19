@@ -12,7 +12,7 @@ class MySleepScreen extends StatelessWidget {
   Widget build(BuildContext context){
     return Column(
       children: [
-        HomeScreenText('Sleep Score'),
+        HomeScreenText(text: 'Sleep Score'),
         SleepScoreCard(),
         Container(
           padding: EdgeInsets.all(MediaQuery.of(context).size.width*0.009),

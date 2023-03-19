@@ -39,7 +39,7 @@ class _MusicSectionState extends State<MusicSection> {
       margin: EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
-          HomeScreenText('Music Therapy'),
+          HomeScreenText(text: 'Music Therapy'),
           HomeScreenViewAll(),
           Container(
             decoration: BoxDecoration(

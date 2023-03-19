@@ -5,7 +5,7 @@ import 'package:night_gschallenge/widgets/UI/form.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/mysleep/my_sleep_screen.dart';
 import '../screens/library/library_screen.dart';
-import '../screens/sleeptools/menu_screen.dart';
+import '../screens/menu/menu_screen.dart';
 
 class BottomNavigator extends StatefulWidget {
   Function navigationHandler;

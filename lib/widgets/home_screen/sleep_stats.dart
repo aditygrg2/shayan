@@ -63,10 +63,7 @@ class _WhatsNewState extends State<WhatsNew> {
       margin: EdgeInsets.only(top: 30, bottom: 15),
       child: Column(
         children: [
-          HomeScreenText('Your Sleep Stats'),
-          SizedBox(
-            height: 10,
-          ),
+          HomeScreenText(text: 'Your Sleep Stats'),
           HomeScreenViewAll(),
           Column(
             children: widget.itemsList.map((item) {
