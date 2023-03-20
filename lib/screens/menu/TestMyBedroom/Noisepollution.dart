@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
-import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_light.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_noise.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/noiseModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/statusModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
@@ -116,7 +114,7 @@ class _NoisePollutionState extends State<NoisePollution> {
                       showModalBottomSheet(
                         context: context,
                         builder: (context) {
-                          return StatusModal();
+                          return NoiseModal();
                         },
                       );
                     },

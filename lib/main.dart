@@ -42,20 +42,21 @@ class Main extends StatelessWidget {
             return FlutterTextSpeech();
           },
         ),
-
-        ChangeNotifierProvider(create: (context){
-          return LocationProvider();
-        },),
-        ChangeNotifierProvider(create: (context){
-          return WeatherProvider();
-        })
-        ,
         ChangeNotifierProvider(
           create: (context) {
-            return NoiseProvider();;
+            return LocationProvider();
           },
         ),
-
+        ChangeNotifierProvider(
+          create: (context) {
+            return WeatherProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return NoiseProvider();
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
@@ -91,9 +92,7 @@ class Main extends StatelessWidget {
                 color: Colors.black,
                 fontWeight: FontWeight.w400,
               ),
-              titleLarge: TextStyle(
-                fontWeight: FontWeight.bold
-              ),
+              titleLarge: TextStyle(fontWeight: FontWeight.bold),
               bodyLarge: TextStyle(
                   fontSize: 40,
                   color: Colors.black,

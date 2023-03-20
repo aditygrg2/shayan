@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
 
-class StatusModal extends StatelessWidget {
+class NoiseModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var data = Provider.of<LightProvider>(context).dataValue;
+    var data = Provider.of<NoiseProvider>(context).dataValue;
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -38,8 +39,8 @@ class StatusModal extends StatelessWidget {
           ElevatedButtonWithoutIcon(
             text: 'Close',
             onPressedButton: () {
-              Provider.of<LightProvider>(context, listen: false)
-                  .stopListening();
+              Provider.of<NoiseProvider>(context, listen: false)
+                  .stopRecorder();
               Navigator.of(context).pop();
             },
           ),

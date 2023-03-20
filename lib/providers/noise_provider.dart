@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:noise_meter/noise_meter.dart';
 import 'package:collection/collection.dart';
-
+import 'package:permission_handler/permission_handler.dart';
 
 class NoiseProvider with ChangeNotifier {
   late StreamSubscription<NoiseReading> _noiseSubscription;
@@ -25,26 +25,26 @@ class NoiseProvider with ChangeNotifier {
   final List<Map<String,String>> _modalData = [
     {
       "image": "assets/goodlight.png",
-      "heading" : "Great! Your average lux is below 05",
-      "subheading": "You got the perfect bedroom light intensity for sleep! Happy sleeping",
+      "heading" : "Sweet Dreams!",
+      "subheading": "Sleep tight! Your environment noise level is optimal for a restful slumber.",
     },
     {
       "image": "assets/averagelight.png",
-      "heading" : "Good! Your average lux is between 05 and 20",
-      "subheading": "Your bedroom light intensity is good for sleeping,try to keep it under 5 for best conditions",
+      "heading" : "Sleep Tight!",
+      "subheading": "A quiet hum in the air... Your environment noise level is suitable for sleeping, but for optimal conditions try to reduce the sound volumes",
     },
     {
       "image": "assets/badlight.png",
-      "heading" : "Your average lux is above 20. You can do better!",
-      "subheading": "Your bedroom light intensity is not apt for sleeping, improve to keep it below 20",
+      "heading" : "Wake Up Call!",
+      "subheading": "Wakey-wakey! Your environment noise level is too high for sleeping. Please look around and shut down the disturbances",
     },
   ];
 
   Map<String,String> get dataValue{
-    if(average_data_points<=5){
+    if(average_data_points<=30){
       return _modalData[0];
     }
-    else if(average_data_points<20 && average_data_points>5){
+    else if(average_data_points<50 && average_data_points>30){
       return _modalData[1];
     }
 
@@ -57,7 +57,7 @@ class NoiseProvider with ChangeNotifier {
     notifyListeners();
     data_points.add(dbOnScreen);
 
-    if (data_points.length >= 5) {
+    if (data_points.length >= 100) {
       final sum = data_points.sum;
       average_data_points = sum/data_points.length;
       stopRecorder();
@@ -81,8 +81,19 @@ class NoiseProvider with ChangeNotifier {
   }
 
   Future<void> initPlatformState() async {
-    start();
-    state = true;
-    notifyListeners();
+    var status = await Permission.microphone.status;
+
+    print(status);
+
+    if(status.isGranted){
+      start();
+      state = true;
+      notifyListeners();
+    }
+
+    else{
+      
+    }
+    
   }
 }

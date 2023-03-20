@@ -3,8 +3,8 @@ import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_light.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/statusModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/lightModal.dart';
 import 'package:provider/provider.dart';
 
 class LightPollution extends StatefulWidget {
@@ -112,7 +112,7 @@ class _LightPollutionState extends State<LightPollution> {
                       showModalBottomSheet(
                         context: context,
                         builder: (context) {
-                          return StatusModal();
+                          return LightModal();
                         },
                       );
                     },
