@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
+import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class MeditationTimer extends StatefulWidget {
   static String routeName = '/meditation';
-  bool isPlaying = false;
+  bool isPlaying ;
+  MeditationTimer({this.isPlaying = false});
   List<Map<dynamic, dynamic>> options = [
     {
       'icon': Icons.notifications,
@@ -35,8 +38,12 @@ class MeditationTimer extends StatefulWidget {
   @override
   State<MeditationTimer> createState() => _MeditationTimerState();
 }
-
 class _MeditationTimerState extends State<MeditationTimer> {
+  void handleClick(){
+    setState(() {
+      widget.isPlaying =! widget.isPlaying;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,6 +86,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
               ],
             ),
           ),
+          widget.isPlaying? CountDownTimerComponent():TimePicker(),
           Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
@@ -91,7 +99,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   radius: 30,
                   backgroundColor: Color.fromRGBO(143, 227, 221, 1),
                   child: IconButton(
-                    onPressed: null,
+                    onPressed: handleClick,
                     icon: Icon(
                       widget.isPlaying
                           ? Icons.stop_rounded
@@ -104,7 +112,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   radius: 30,
                   backgroundColor: Color.fromRGBO(143, 227, 221, 1),
                   child: IconButton(
-                      onPressed: null,
+                      onPressed: handleClick,
                       icon: Icon(
                         widget.isPlaying ? Icons.pause : Icons.play_arrow,
                         color: Colors.black,
