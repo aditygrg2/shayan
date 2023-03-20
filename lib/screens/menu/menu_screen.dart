@@ -18,7 +18,7 @@ class MenuScreen extends StatelessWidget {
     {'text': 'Meditation Timer', 'imagePath': 'assets/meditation_timer.png'},
     {
       'text': 'Listen to your stories',
-      'imagePath': 'assets/nap_timer.png',
+      'imagePath': 'assets/listen_to_your_stories.png',
       //'routes': TextToSpeechComponent.routeName
     },
     {
