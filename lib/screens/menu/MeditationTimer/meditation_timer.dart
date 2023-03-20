@@ -7,6 +7,7 @@ import 'package:night_gschallenge/widgets/UI/top_row.dart';
 class MeditationTimer extends StatefulWidget {
   static String routeName = '/meditation';
   bool isPlaying ;
+  late DateTime datetime;
   MeditationTimer({this.isPlaying = false});
   List<Map<dynamic, dynamic>> options = [
     {
@@ -42,6 +43,12 @@ class _MeditationTimerState extends State<MeditationTimer> {
   void handleClick(){
     setState(() {
       widget.isPlaying =! widget.isPlaying;
+    });
+  }
+
+  void callBackDateTime( DateTime datetime){
+    setState(() {
+      widget.datetime = datetime;
     });
   }
   @override
@@ -86,12 +93,12 @@ class _MeditationTimerState extends State<MeditationTimer> {
               ],
             ),
           ),
-          widget.isPlaying? CountDownTimerComponent():TimePicker(),
+          widget.isPlaying? CountDownTimerComponent(widget.datetime):TimePicker(callBackDateTime),
           Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
             // decoration: BoxDecoration(color: Colors.red),
-            padding: EdgeInsets.symmetric(horizontal: 60),
+            padding: EdgeInsets.symmetric(horizontal: 60,vertical: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -129,11 +136,11 @@ class _MeditationTimerState extends State<MeditationTimer> {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 200,vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
             child: GestureDetector(
               onTap: null,
               child: Container(
-                width: 50,
+                width: MediaQuery.of(context).size.width - 20,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Color.fromRGBO(250, 195, 68, 1),
