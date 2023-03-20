@@ -18,7 +18,7 @@ class _SliderInputState extends State<SliderInput> {
     return Column(
       children: [
         Container(width: MediaQuery.of(context).size.width - 20 ,alignment: Alignment.centerLeft,padding: EdgeInsets.all(5), child: Text(widget.title,style: Theme.of(context).textTheme.headlineMedium,),),
-        Slider(value: widget.value,min: 0,max: 100, onChanged: (newVal){
+        Slider(value: widget.value,min: 0,max: 1, onChanged: (newVal){
           setState(() {
             widget.value = newVal;
             widget.callback(newVal);

@@ -6,10 +6,7 @@ class FlutterTextSpeech extends ChangeNotifier {
   FlutterTts flutterTts = FlutterTts();
   String text = "Please enter text";
 
-  // FlutterTextSpeech(){
-  //   flutterTts.setPitch(1);
-  //   flutterTts.setSpeechRate(1);
-  // }
+
   void setText(String string) {
     text = string;
   }
@@ -48,5 +45,13 @@ class FlutterTextSpeech extends ChangeNotifier {
      return element['name']==value;
     });
     return flutterTts.setVoice({'name':voice['name'],'locale':voice['locale']});
+  }
+
+  Future<dynamic> pause(){
+    return flutterTts.pause();
+  }
+
+  Future<dynamic> stop(){
+    return flutterTts.stop();
   }
 }
