@@ -15,7 +15,7 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dar
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
-import 'package:night_gschallenge/widgets/menu/text_to_speech.dart';
+import 'package:night_gschallenge/screens/menu/text_to_speech.dart/text_to_speech.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +48,7 @@ class Main extends StatelessWidget {
         ChangeNotifierProvider(create: (context){
           return WeatherProvider();
         })
-
+        ,
         ChangeNotifierProvider(
           create: (context) {
             return NoiseProvider();;

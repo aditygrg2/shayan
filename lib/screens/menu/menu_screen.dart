@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/menu/text_to_speech.dart';
 import './menu.dart';
+import './text_to_speech.dart/text_to_speech.dart';
 
 class MenuScreen extends StatelessWidget {
   static const routeName = '/menu';
