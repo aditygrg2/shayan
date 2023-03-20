@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_countdown_timer/index.dart';
 
 void onEnd() {
@@ -10,9 +7,13 @@ void onEnd() {
 
 class CountDownTimerComponent extends StatefulWidget {
 
-  int endTime = DateTime.now().millisecondsSinceEpoch + 1000 * /*seconds*/10;
+  DateTime endTime;
   late CountdownTimerController controller;
-
+  //DateTime.now().millisecondsSinceEpoch + 1000 * /*seconds*/10;
+  CountDownTimerComponent(this.endTime);
+  int get getTime{
+    return DateTime.now().microsecondsSinceEpoch + endTime.day*24*60*60+endTime.minute*60+endTime.second;
+  }
   @override
   State<CountDownTimerComponent> createState() =>
       _CountDownTimerComponentState();
@@ -22,7 +23,9 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
   @override
   Widget build(BuildContext context) {
   widget.controller=  
-      CountdownTimerController(endTime: DateTime.now().millisecondsSinceEpoch + 1000 * /*seconds*/10, onEnd: onEnd);
+      CountdownTimerController(endTime: widget.getTime, onEnd: onEnd);
+      print(widget.endTime);
+      print(widget.getTime);
     return Center(
       child: CountdownTimer(
         widgetBuilder: (context, time) {
@@ -47,7 +50,7 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
               ),
               child: Center(
                 child: Text(
-                  time== null?"hi": "${time!.hours}:${time!.min}:${time!.sec}",
+                  time== null?"hi": "${time!.hours==null?0:time.hours}:${time!.min==null?0:time.min}:${time!.sec==null?0:time.sec}",
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
@@ -55,7 +58,7 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
           );
         },
         controller:widget.controller,
-        endTime: widget.endTime,
+        endTime: widget.getTime,
         onEnd: onEnd,
       ),
     );
