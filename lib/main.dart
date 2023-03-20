@@ -8,6 +8,7 @@ import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
+import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
@@ -115,6 +116,7 @@ class Main extends StatelessWidget {
           NoisePollution.routeName: (ctx) => NoisePollution(),
           TestMyBedroom.routeName: (ctx) => TestMyBedroom(),
           TextToSpeechComponent.routeName: (ctx) => TextToSpeechComponent(),
+          MeditationTimer.routeName: (ctx) => MeditationTimer(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) {

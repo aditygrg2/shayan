@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
+import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './menu.dart';
@@ -15,7 +16,11 @@ class MenuScreen extends StatelessWidget {
       'routes': TestMyBedroom.routeName
     },
     {'text': 'Phone-Free time', 'imagePath': 'assets/phone_free.png'},
-    {'text': 'Meditation Timer', 'imagePath': 'assets/meditation_timer.png'},
+    {
+      'text': 'Meditation Timer',
+      'imagePath': 'assets/meditation_timer.png',
+      'routes': MeditationTimer.routeName
+    },
     {
       'text': 'Listen to your stories',
       'imagePath': 'assets/nap_timer.png',
@@ -42,12 +47,12 @@ class MenuScreen extends StatelessWidget {
         HomeScreenText(text: 'Sleep Tools'),
         Container(
           width: MediaQuery.of(context).size.width - 20,
-          height: (MediaQuery.of(context).size.height/8)*items.length ,
+          height: (MediaQuery.of(context).size.height / 8) * items.length,
           padding: EdgeInsets.all(10),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 2/2,
+              childAspectRatio: 2 / 2,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),

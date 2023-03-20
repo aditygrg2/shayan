@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'dart:io';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/slider_input.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:volume_controller/volume_controller.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 class TextToSpeechComponent extends StatefulWidget {
@@ -29,12 +27,14 @@ class TextToSpeechComponent extends StatefulWidget {
 class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
   void initState() {
     super.initState();
+    // if(Platform.isAndroid)
     VolumeController().listener((volume) {
       widget.volume = volume;
     });
   }
 
   void dispose() {
+    // if(Platform.isAndroid)
     VolumeController().removeListener();
     super.dispose();
   }
@@ -205,10 +205,11 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                         textSpeech.setText(widget.textController.text);
                         textSpeech.speak();
                       }else if(widget.options[index] == 'Resume'){
-
+                        textSpeech.speak();
                       }else if(widget.options[index] == 'Stop'){
                         textSpeech.stop();
                       }else{
+                        print('pU');
                         textSpeech.pause();
                       }
                     },
