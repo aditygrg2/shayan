@@ -20,12 +20,15 @@ class _TimePickerState extends State<TimePicker> {
           decoration: BoxDecoration(
             color: Color.fromRGBO(143, 227, 221, 1),
             borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Color.fromRGBO(250, 195, 68, 1),
+            ),
           ),
           child: TimePickerSpinner(
             is24HourMode: true,
             isShowSeconds: true,
-            normalTextStyle: TextStyle(fontSize: 24, color: Colors.black12),
-            highlightedTextStyle: TextStyle(fontSize: 24, color: Colors.black),
+            normalTextStyle: TextStyle(fontSize: 24, color: Colors.black54),
+            highlightedTextStyle: TextStyle(fontSize: 28, color: Colors.black87),
             spacing: 45,
             itemHeight: 80,
             isForce2Digits: true,
