@@ -19,6 +19,13 @@ class _LightPollutionState extends State<LightPollution> {
   bool state = false;
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    Provider.of<LightProvider>(context, listen: false).stopListening();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
@@ -110,6 +117,7 @@ class _LightPollutionState extends State<LightPollution> {
                         state = false;
                       });
                       showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {
                           return LightModal();

@@ -1,56 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class MeditationTimer extends StatefulWidget {
   static String routeName = '/meditation';
-  bool isPlaying ;
+  bool isPlaying;
   late DateTime datetime;
   MeditationTimer({this.isPlaying = false});
   List<Map<dynamic, dynamic>> options = [
     {
       'icon': Icons.notifications,
-      'title': 'default',
+      'title': 'Default',
     },
     {
       'icon': Icons.forest_outlined,
-      'title': 'forest',
+      'title': 'Forest',
     },
     {
       'icon': Icons.nightlight,
-      'title': 'summer night',
+      'title': 'Summer Night',
     },
     {
       'icon': Icons.beach_access_rounded,
-      'title': 'beach',
+      'title': 'Beach',
     },
     {
       'icon': Icons.nightlife,
-      'title': 'summer rain',
+      'title': 'Summer Rain',
     },
     {
       'icon': Icons.fireplace,
-      'title': 'stove fire',
+      'title': 'Stove Fire',
     },
   ];
 
   @override
   State<MeditationTimer> createState() => _MeditationTimerState();
 }
+
 class _MeditationTimerState extends State<MeditationTimer> {
-  void handleClick(){
+  void handleClick() {
     setState(() {
-      widget.isPlaying =! widget.isPlaying;
+      widget.isPlaying = !widget.isPlaying;
     });
   }
 
-  void callBackDateTime( DateTime datetime){
+  void callBackDateTime(DateTime datetime) {
     setState(() {
       widget.datetime = datetime;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,12 +96,14 @@ class _MeditationTimerState extends State<MeditationTimer> {
               ],
             ),
           ),
-          widget.isPlaying? CountDownTimerComponent(widget.datetime):TimePicker(callBackDateTime),
+          widget.isPlaying
+              ? CountDownTimerComponent(widget.datetime)
+              : TimePicker(callBackDateTime),
           Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
             // decoration: BoxDecoration(color: Colors.red),
-            padding: EdgeInsets.symmetric(horizontal: 60,vertical: 30),
+            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -130,25 +135,15 @@ class _MeditationTimerState extends State<MeditationTimer> {
           ),
           Container(
             padding: EdgeInsets.all(10),
-                child: Text(
+            child: Text(
               'Consult our meditation tips for better results!',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-            child: GestureDetector(
-              onTap: null,
-              child: Container(
-                width: MediaQuery.of(context).size.width - 20,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(250, 195, 68, 1),
-                    boxShadow: [
-                      BoxShadow(color: Colors.black12, offset: Offset(5, 5))
-                    ]),
-                child: Text("Explore",textAlign: TextAlign.center,),
-              ),
+          Center(
+            child: ElevatedButtonWithoutIcon(
+              text: "Explore",
+              onPressedButton: null,
             ),
           ),
         ],

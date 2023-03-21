@@ -11,6 +11,10 @@ class LightModal extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(25.0),
+          topRight: const Radius.circular(25.0),
+        ),
       ),
       padding: EdgeInsets.all(30),
       child: Column(

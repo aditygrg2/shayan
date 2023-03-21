@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_temperature.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperatureModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class Temperature extends StatefulWidget {
@@ -18,6 +20,8 @@ class Temperature extends StatefulWidget {
 class _TemperatureState extends State<Temperature> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool state = false;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -85,15 +89,36 @@ class _TemperatureState extends State<Temperature> {
             Center(
               child: ElevatedButtonWithoutIcon(
                 text: "Fetch Temperature",
-                onPressedButton: () {
+                onPressedButton: () async {
                   if (state == true) {
                     null;
                   } else {
-                    Provider.of<LightProvider>(context, listen: false)
-                        .initPlatformState();
-                    setState(() {
-                      state = true;
-                    });
+                    var permit = await Permission.location.status;
+
+                    if (permit == PermissionStatus.permanentlyDenied ||
+                        permit == PermissionStatus.denied) {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) {
+                          return PermissionModal(
+                            permissionName: 'Location',
+                            icon: Icons.location_off,
+                          );
+                        },
+                      );
+                    } else if (permit == PermissionStatus.granted)  {
+                      await Provider.of<LocationProvider>(context, listen: false).initPlatformState();
+                      double latitude =  Provider.of<LocationProvider>(context, listen: false).latitude;
+                      double longitude = Provider.of<LocationProvider>(context, listen: false).longitude;
+
+                      await Provider.of<WeatherProvider>(context, listen: false)
+                          .getWeather(latitude, longitude);
+                      setState(() {
+                        state = true;
+                      });
+                    } else {
+                      await Permission.location.request();
+                    }
                   }
                 },
               ),
@@ -111,6 +136,8 @@ class _TemperatureState extends State<Temperature> {
                         state = false;
                       });
                       showModalBottomSheet(
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {
                           return TemperatureModal();

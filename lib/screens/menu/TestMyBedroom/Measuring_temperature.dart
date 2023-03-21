@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MeasuringTemperature extends StatefulWidget {
-
-  @override
-  _MeasuringTemperatureState createState() => _MeasuringTemperatureState();
-}
-
-class _MeasuringTemperatureState extends State<MeasuringTemperature> {
-
+class MeasuringTemperature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(

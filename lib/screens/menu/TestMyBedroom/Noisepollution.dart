@@ -4,7 +4,9 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_noise.dar
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/noiseModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class NoisePollution extends StatefulWidget {
@@ -86,15 +88,28 @@ class _NoisePollutionState extends State<NoisePollution> {
             Center(
               child: ElevatedButtonWithoutIcon(
                 text: "Measure",
-                onPressedButton: () {
+                onPressedButton: () async {
                   if (state == true) {
                     null;
                   } else {
-                    Provider.of<NoiseProvider>(context, listen: false)
-                        .initPlatformState();
-                    setState(() {
-                      state = true;
-                    });
+                    var permit = await Permission.microphone.status;
+
+                    if (permit == PermissionStatus.permanentlyDenied || permit == PermissionStatus.denied) {
+                      showDialog(
+                        context: context,
+                        builder: (ctx) {
+                          return PermissionModal(permissionName: 'Microphone', icon: Icons.mic,);
+                        },
+                      );
+                    } else if (permit == PermissionStatus.granted) {
+                      Provider.of<NoiseProvider>(context, listen: false)
+                          .initPlatformState();
+                      setState(() {
+                        state = true;
+                      });
+                    } else{
+                      await Permission.microphone.request();
+                    }
                   }
                 },
               ),
@@ -112,6 +127,7 @@ class _NoisePollutionState extends State<NoisePollution> {
                         state = false;
                       });
                       showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {
                           return NoiseModal();

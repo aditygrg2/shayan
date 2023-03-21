@@ -81,19 +81,8 @@ class NoiseProvider with ChangeNotifier {
   }
 
   Future<void> initPlatformState() async {
-    var status = await Permission.microphone.status;
-
-    print(status);
-
-    if(status.isGranted){
       start();
       state = true;
       notifyListeners();
-    }
-
-    else{
-      
-    }
-    
   }
 }

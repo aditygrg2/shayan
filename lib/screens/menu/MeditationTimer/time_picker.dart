@@ -14,17 +14,19 @@ class _TimePickerState extends State<TimePicker> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50,vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
         child: Container(
-          width: MediaQuery.of(context).size.width - 50,
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-          decoration: BoxDecoration(color: Color.fromRGBO(143, 227, 221, 1),borderRadius: BorderRadius.circular(10)),
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(143, 227, 221, 1),
+            borderRadius: BorderRadius.circular(10),
+          ),
           child: TimePickerSpinner(
             is24HourMode: true,
             isShowSeconds: true,
             normalTextStyle: TextStyle(fontSize: 24, color: Colors.black12),
             highlightedTextStyle: TextStyle(fontSize: 24, color: Colors.black),
-            spacing: 50,
+            spacing: 45,
             itemHeight: 80,
             isForce2Digits: true,
             onTimeChange: (time) {
