@@ -1,8 +1,9 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
+import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
-import 'package:night_gschallenge/providers/text_to_speech.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
@@ -57,6 +58,12 @@ class Main extends StatelessWidget {
             return NoiseProvider();
           },
         ),
+        ChangeNotifierProvider(create: (context){
+          return CountDownProvider();
+        }),
+        ChangeNotifierProvider(create: (context){
+          return AudioProvider();
+        })
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',

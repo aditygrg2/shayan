@@ -46,9 +46,10 @@ dependencies:
   location: ^4.4.0
   weather: ^2.0.1
   noise_meter: ^3.1.0
-  flutter_countdown_timer: ^4.1.0
   flutter_time_picker_spinner: ^2.0.0
   permission_handler: ^10.2.0
+  neon_circular_timer: ^0.0.7
+  audioplayers: ^0.16.1
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +104,13 @@ flutter:
     - assets/hightemperature.png
     - assets/goodtemperature.png
     - assets/error.png
+    - assets/beach.mp3
+    - assets/default.mp3
+    - assets/forest.mp3
+    - assets/stove_fire.mp3
+    - assets/summer_night.mp3
+    - assets/summer_rain.mp3
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

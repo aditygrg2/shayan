@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/slider_input.dart';
 import 'package:provider/provider.dart';
@@ -186,34 +187,19 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                     Container(
                       height: 400,
                       child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,crossAxisSpacing: 10,childAspectRatio: 8/2 ,mainAxisSpacing: 10),itemBuilder: (context, index) {
-                        return GestureDetector(
-                    child: Container(
-                      height: 20,
-                      alignment: Alignment.center,
-                      child: Text(
-                        widget.options[index],
-                        style: TextStyle(color: Colors.white,fontSize: 15),
-                      ),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(14, 65, 195, 1),
-                          borderRadius: BorderRadius.circular(10)),
-                    ),
-                    onTap: () {
-                      if(widget.options[index] == 'Speak'){
-                        textSpeech.setText(widget.textController.text);
-                        textSpeech.speak();
-                      }else if(widget.options[index] == 'Resume'){
-                        textSpeech.speak();
-                      }else if(widget.options[index] == 'Stop'){
-                        textSpeech.stop();
-                      }else{
-                        print('pU');
-                        textSpeech.pause();
-                      }
-                    },
-                  );
+                        return ElevatedButtonWithoutIcon(text: widget.options[index],onPressedButton: (){
+                          if(widget.options[index] == 'Speak'){
+                            textSpeech.setText(widget.textController.text);
+                            textSpeech.speak();
+                          }else if(widget.options[index] == 'Resume'){
+                            textSpeech.speak();
+                          }else if(widget.options[index] == 'Stop'){
+                            textSpeech.stop();
+                            
+                          }else{
+                            textSpeech.pause();
+                          }
+                        },);
                       },itemCount: 4,),
                     )
                     
