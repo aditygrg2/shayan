@@ -5,12 +5,14 @@ import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
@@ -59,12 +61,21 @@ class Main extends StatelessWidget {
             return NoiseProvider();
           },
         ),
-        ChangeNotifierProvider(create: (context){
-          return CountDownProvider();
-        }),
-        ChangeNotifierProvider(create: (context){
-          return AudioProvider();
-        })
+        ChangeNotifierProvider(
+          create: (context) {
+            return CountDownProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return AudioProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return SpeechToText();
+          },
+        )
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
@@ -125,6 +136,7 @@ class Main extends StatelessWidget {
           TextToSpeechComponent.routeName: (ctx) => TextToSpeechComponent(),
           MeditationTimer.routeName: (ctx) => MeditationTimer(),
           MentalExercise.routeName: (ctx) => MentalExercise(),
+          MentalExerciseSolution.routeName: (ctx) => MentalExerciseSolution(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(builder: (context) {
