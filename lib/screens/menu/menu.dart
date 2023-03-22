@@ -9,12 +9,15 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-          gradient: const RadialGradient(colors: [
-            Color.fromARGB(255, 255, 255, 255),
-            Color.fromARGB(255, 143, 227, 221),
-          ], radius: 1),
+          gradient: const RadialGradient(
+            colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(255, 143, 227, 221),
+            ],
+            radius: 1,
+          ),
           border: Border.all(color: Colors.black),
           borderRadius: const BorderRadius.all(Radius.circular(10))),
       child: Column(

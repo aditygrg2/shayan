@@ -112,6 +112,7 @@ flutter:
     - assets/summer_night.mp3
     - assets/summer_rain.mp3
     - assets/check-mark.png
+    - assets/sleepcyclecalculator.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -14,6 +14,7 @@ import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
+import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
@@ -82,52 +83,57 @@ class Main extends StatelessWidget {
             return MentalSolutionProvider();
           },
         ),
+        ChangeNotifierProvider(create: (context) {
+          return CountDownProvider();
+        }),
+        ChangeNotifierProvider(create: (context) {
+          return AudioProvider();
+        })
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
         theme: ThemeData(
-          /**Define themes here - Appwide */
           primaryColor: Color.fromRGBO(225, 236, 232, 1),
           backgroundColor: Color.fromRGBO(225, 236, 232, 1),
           scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
           canvasColor: Color.fromRGBO(143, 227, 221, 1),
           fontFamily: 'JejuGothic',
           elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
-                Color.fromRGBO(250, 195, 68, 1)),
-            foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-          )),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Color.fromRGBO(250, 195, 68, 1)),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+            ),
+          ),
           radioTheme: RadioThemeData(
             fillColor: MaterialStateProperty.all<Color>(
                 Color.fromRGBO(250, 195, 68, 1)),
             visualDensity: VisualDensity.comfortable,
           ),
           textTheme: const TextTheme(
-              headlineLarge: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-                color: Colors.black,
-              ),
-              headlineSmall: TextStyle(
-                fontSize: 15,
-              ),
-              headlineMedium: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-              ),
-              titleLarge: TextStyle(fontWeight: FontWeight.bold),
-              bodyLarge: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600),
-              labelLarge: TextStyle(
-                fontSize: 25,
-              ),
-              labelMedium: TextStyle(
-                fontSize: 15,
-              )),
+            headlineLarge: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.w500,
+              color: Colors.black,
+            ),
+            headlineSmall: TextStyle(
+              fontSize: 15,
+            ),
+            headlineMedium: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+            ),
+            titleLarge: TextStyle(fontWeight: FontWeight.bold),
+            bodyLarge: TextStyle(
+                fontSize: 40, color: Colors.black, fontWeight: FontWeight.w600),
+            labelLarge: TextStyle(
+              fontSize: 25,
+            ),
+            labelMedium: TextStyle(
+              fontSize: 15,
+            ),
+          ),
         ),
         routes: {
           '/': (context) => HomeScreen(),
@@ -143,11 +149,14 @@ class Main extends StatelessWidget {
           MeditationTimer.routeName: (ctx) => MeditationTimer(),
           MentalExercise.routeName: (ctx) => MentalExercise(),
           MentalExerciseSolution.routeName: (ctx) => MentalExerciseSolution(),
+          SleepCycleCalculator.routeName: (ctx) => SleepCycleCalculator(),
         },
         onUnknownRoute: (settings) {
-          return MaterialPageRoute(builder: (context) {
-            return HomeScreen();
-          });
+          return MaterialPageRoute(
+            builder: (context) {
+              return HomeScreen();
+            },
+          );
         },
       ),
     );

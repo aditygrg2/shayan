@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
+import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './menu.dart';
@@ -29,7 +30,8 @@ class MenuScreen extends StatelessWidget {
     },
     {
       'text': 'Sleep Cycle Calculator',
-      'imagePath': 'assets/sleep_cycle_calculator.png'
+      'imagePath': 'assets/sleep_cycle_calculator.png',
+      'routes': SleepCycleCalculator.routeName
     },
     {'text': 'Sleep Diet Suggestions', 'imagePath': 'assets/sleep_diet.png'},
     {
