@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './menu.dart';
@@ -31,7 +32,11 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/sleep_cycle_calculator.png'
     },
     {'text': 'Sleep Diet Suggestions', 'imagePath': 'assets/sleep_diet.png'},
-    {'text': 'Mental Exercises', 'imagePath': 'assets/mental_exercises.png'},
+    {
+      'text': 'Mental Exercises',
+      'imagePath': 'assets/mental_exercises.png',
+      'routes': MentalExercise.routeName
+    },
     {'text': 'Sleep Achievement', 'imagePath': 'assets/sleep_achievement.png'},
     {'text': 'Music Therapy', 'imagePath': 'assets/podcasts_stories.png'},
     {'text': 'Worry List', 'imagePath': 'assets/worry_list.png'},

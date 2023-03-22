@@ -128,27 +128,29 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                   builder: (context, snapshot) {
                                     widget.voicesMap = snapshot.data;
                                     widget.dropDown = snapshot.data[0]['name'];
-                                    return DropdownButton<String>(
-                                      dropdownColor: Colors.white,
-                                        items: snapshot.data
-                                            .map<DropdownMenuItem<String>>(
-                                                (ele) => DropdownMenuItem<String>(
-                                                      value: ele['name'],
-                                                      key: Key(ele['locale']),
-                                                      child: Text(
-                                                          ele['name'] as String),
-                                                    ))
-                                            .toList(),
-                                        isExpanded: true,
-                                        hint: Text('Select voice',overflow: TextOverflow.ellipsis),
-                                        value: widget.dropDown,
-                                        onChanged: (String? value) {
-                                          setState(() {
-                                            textSpeech.setVoice(
-                                                widget.voicesMap, value);
-                                            widget.dropDown = value!;
-                                          });
-                                        });
+                                    return Expanded(
+                                      child: DropdownButton<String>(
+                                        dropdownColor: Colors.white,
+                                          items: snapshot.data
+                                              .map<DropdownMenuItem<String>>(
+                                                  (ele) => DropdownMenuItem<String>(
+                                                        value: ele['name'],
+                                                        key: Key(ele['locale']),
+                                                        child: Text(
+                                                            ele['name'] as String,overflow: TextOverflow.ellipsis),
+                                                      ))
+                                              .toList(),
+                                          isExpanded: true,
+                                          hint: Text('Select voice',overflow: TextOverflow.ellipsis),
+                                          value: widget.dropDown,
+                                          onChanged: (String? value) {
+                                            setState(() {
+                                              textSpeech.setVoice(
+                                                  widget.voicesMap, value);
+                                              widget.dropDown = value!;
+                                            });
+                                          }),
+                                    );
                                   },
                                   initialData: ["loading"],
                                   future: Provider.of<FlutterTextSpeech>(context)
