@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -19,7 +20,7 @@ class MentalExercise extends StatelessWidget {
       'subtitle':
           'used to controlstress and anxiety, relieveinsomnia, and reduce symptoms of certain types of chronic pain',
       "image": 'relaxation.png',
-      "route": '',
+      "route": MentalExerciseSolution.routeName,
     },
     {
       'title': 'Meditation',
