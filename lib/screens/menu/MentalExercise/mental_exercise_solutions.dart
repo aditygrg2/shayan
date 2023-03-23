@@ -26,26 +26,26 @@ class MentalExerciseSolution extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(143, 227, 221, 1),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
+                        color: Color.fromRGBO(143, 227, 221, 1),
+                        borderRadius: BorderRadius.circular(10)),
                     padding: EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width -60,
+                          width: MediaQuery.of(context).size.width - 60,
                           alignment: Alignment.center,
-                          child: Expanded(
-                            child: Text(
-                              title,
-                              style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Container(
                           alignment: Alignment.center,
                           child: Text(
@@ -68,25 +68,13 @@ class MentalExerciseSolution extends StatelessWidget {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         ...(solution['tips'] as List).map((element) {
-                          return Row(
-                            children: [
-                              Container(
-                                width: 30,
-                                height: 30,
-                                child: Image.asset(
-                                  'check-mark.png',
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              Container(
-                                child: Expanded(child: Text(element)),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                            ],
+                          return ListTile(
+                            leading: Image.asset('assets/check-mark.png'),
+                            subtitle: Text(element),
                           );
                         }).toList(),
                       ],

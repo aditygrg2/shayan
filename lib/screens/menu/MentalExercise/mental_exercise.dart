@@ -57,22 +57,29 @@ class MentalExercise extends StatelessWidget {
         HomeScreenText(
           text: "Mental Exercises",
         ),
+        MenuHeroImage(
+          image: 'assets/mentalExercises.gif',
+        ),
         Container(
-          padding: EdgeInsets.all(10),
           child: Column(
             children: [
-            MenuHeroImage(
-              image: 'assets/mentalExercises.gif',
-            ),
-            ...options.map((card) {
-              return TmbDescriptionCards(
-                title: card['title'],
-                subtitle: card['subtitle'],
-                image: card['image'],
-                route: card['route'],
-              );
-            }).toList()
-          ]),
+              Container(
+                child: Column(children: [
+                  ...options.map((card) {
+                    return TmbDescriptionCards(
+                      title: card['title'],
+                      subtitle: card['subtitle'],
+                      image: card['image'],
+                      route: card['route'],
+                    );
+                  }).toList(),
+                  SizedBox(
+                    height: 50,
+                  )
+                ]),
+              ),
+            ],
+          ),
         ),
       ]),
     );

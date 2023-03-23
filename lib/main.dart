@@ -10,6 +10,7 @@ import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
+import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
@@ -19,6 +20,8 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_one.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
@@ -83,12 +86,21 @@ class Main extends StatelessWidget {
             return MentalSolutionProvider();
           },
         ),
-        ChangeNotifierProvider(create: (context) {
-          return CountDownProvider();
-        }),
-        ChangeNotifierProvider(create: (context) {
-          return AudioProvider();
-        })
+        ChangeNotifierProvider(
+          create: (context) {
+            return CountDownProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return AudioProvider();
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return WorryListProvider();
+          },
+        )
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
@@ -111,7 +123,7 @@ class Main extends StatelessWidget {
             visualDensity: VisualDensity.comfortable,
           ),
           timePickerTheme: TimePickerThemeData(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           ),
           textTheme: TextTheme(
             headlineLarge: TextStyle(
@@ -153,6 +165,8 @@ class Main extends StatelessWidget {
           MentalExercise.routeName: (ctx) => MentalExercise(),
           MentalExerciseSolution.routeName: (ctx) => MentalExerciseSolution(),
           SleepCycleCalculator.routeName: (ctx) => SleepCycleCalculator(),
+          Worrylist.routeName: (ctx) => Worrylist(),
+          StepOne.routeName: (ctx) => StepOne(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(

@@ -4,6 +4,7 @@ import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './menu.dart';
 import './text_to_speech.dart/text_to_speech.dart';
@@ -17,7 +18,10 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/test_my_environment.png',
       'routes': TestMyBedroom.routeName
     },
-    {'text': 'Phone-Free time', 'imagePath': 'assets/phone_free.png'},
+    {
+      'text': 'Phone-Free time',
+      'imagePath': 'assets/phone_free.png',
+    },
     {
       'text': 'Meditation Timer',
       'imagePath': 'assets/meditation_timer.png',
@@ -41,7 +45,11 @@ class MenuScreen extends StatelessWidget {
     },
     {'text': 'Sleep Achievement', 'imagePath': 'assets/sleep_achievement.png'},
     {'text': 'Music Therapy', 'imagePath': 'assets/podcasts_stories.png'},
-    {'text': 'Worry List', 'imagePath': 'assets/worry_list.png'},
+    {
+      'text': 'Worry List',
+      'imagePath': 'assets/worry_list.png',
+      'routes': Worrylist.routeName
+    },
   ];
   @override
   void navigate(BuildContext context, int index) {
