@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
+import 'package:night_gschallenge/screens/menu/text_to_speech.dart/drop_down_menu.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/slider_input.dart';
@@ -128,31 +128,9 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                   builder: (context, snapshot) {
                                     widget.voicesMap = snapshot.data;
                                     widget.dropDown = snapshot.data[0]['name'];
-                                    return Expanded(
-                                      child: DropdownButton<String>(
-                                        dropdownColor: Colors.white,
-                                          items: snapshot.data
-                                              .map<DropdownMenuItem<String>>(
-                                                  (ele) => DropdownMenuItem<String>(
-                                                        value: ele['name'],
-                                                        key: Key(ele['locale']),
-                                                        child: Text(
-                                                            ele['name'] as String,overflow: TextOverflow.ellipsis),
-                                                      ))
-                                              .toList(),
-                                          isExpanded: true,
-                                          hint: Text('Select voice',overflow: TextOverflow.ellipsis),
-                                          value: widget.dropDown,
-                                          onChanged: (String? value) {
-                                            setState(() {
-                                              textSpeech.setVoice(
-                                                  widget.voicesMap, value);
-                                              widget.dropDown = value!;
-                                            });
-                                          }),
-                                    );
+                                    return DropDownMenu(widget.voicesMap);
                                   },
-                                  initialData: ["loading"],
+                                  initialData: [1],
                                   future: Provider.of<FlutterTextSpeech>(context)
                                       .getVoices(),
                                 ),

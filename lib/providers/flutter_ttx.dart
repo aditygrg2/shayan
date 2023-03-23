@@ -7,7 +7,7 @@ class FlutterTextSpeech extends ChangeNotifier {
   String text = "Please enter text";
 
   FlutterTextSpeech(){
-    flutterTts.setQueueMode(0);
+    // flutterTts.setQueueMode(0);
   }
   void setText(String string) {
     text = string;

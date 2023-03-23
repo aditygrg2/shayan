@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
+import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
@@ -75,7 +76,12 @@ class Main extends StatelessWidget {
           create: (context) {
             return SpeechToText();
           },
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (contetx) {
+            return MentalSolutionProvider();
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',
