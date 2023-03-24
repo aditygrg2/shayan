@@ -21,6 +21,8 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dar
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_one.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_three.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_two.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
@@ -167,6 +169,8 @@ class Main extends StatelessWidget {
           SleepCycleCalculator.routeName: (ctx) => SleepCycleCalculator(),
           Worrylist.routeName: (ctx) => Worrylist(),
           StepOne.routeName: (ctx) => StepOne(),
+          StepTwo.routeName: (ctx) => StepTwo(),
+          StepThree.routeName: (ctx) => StepThree(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(

@@ -15,9 +15,4 @@ class WorryListProvider with ChangeNotifier{
     return _worriesList;
   }
 
-  
-
-
-
-
 }

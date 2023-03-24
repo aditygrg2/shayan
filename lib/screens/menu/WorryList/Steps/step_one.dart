@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_two.dart';
+import 'package:night_gschallenge/screens/menu/WorryList/worrycard.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -22,6 +24,9 @@ class StepOne extends StatelessWidget {
           HomeScreenText(
             text: 'Worry List',
           ),
+          SizedBox(
+            height: 20,
+          ),
           if (data.length == 0)
             const Padding(
               padding: EdgeInsets.all(20.0),
@@ -32,6 +37,13 @@ class StepOne extends StatelessWidget {
                 ),
               ),
             ),
+          if (data.length > 0)
+            ...data.map((worry) {
+              return Worrycard(
+                worry: worry['worry'],
+                situation: worry['situation'],
+              );
+            }),
           Center(
             child: ElevatedButtonWithoutIcon(
               text: 'Add worry',
@@ -41,82 +53,101 @@ class StepOne extends StatelessWidget {
                   context: context,
                   isScrollControlled: true,
                   builder: (context) {
-                    return Padding(
+                    return Container(
                       padding: EdgeInsets.only(
                         bottom: MediaQuery.of(context).viewInsets.bottom,
+                        top: 20,
+                        left: 20,
+                        right: 20,
                       ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Write down your worry here..',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Write down your worry here..',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextField(
-                            style: TextStyle(
-                              fontSize: 20,
+                            SizedBox(
+                              height: 25,
                             ),
-                            maxLines: 3,
-                            cursorHeight: 20,
-                            textAlign: TextAlign.left,
-                            decoration: const InputDecoration(
-                              labelText: 'List your worry here!',
-                              fillColor: Colors.white,
-                              filled: true,
-                            ),
-                            onChanged: (value) {
-                              worry = value;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 25,
-                          ),
-                          TextField(
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                            maxLines: 3,
-                            cursorHeight: 20,
-                            textAlign: TextAlign.left,
-                            decoration: const InputDecoration(
-                              labelText: 'List your situation here!',
-                              fillColor: Colors.white,
-                              filled: true,
-                            ),
-                            onChanged: (value) {
-                              situation = value;
-                            },
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Center(
-                            child: ElevatedButtonWithoutIcon(
-                              text: 'Submit',
-                              onPressedButton: () {
-                                Provider.of<WorryListProvider>(context)
-                                    .updateWorriesList(
-                                  {
-                                    'id': 1,
-                                    'worry': worry,
-                                    'situation': situation,
-                                  },
-                                );
-                                Navigator.of(context).pop();
+                            TextField(
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                              maxLines: 3,
+                              cursorHeight: 20,
+                              textAlign: TextAlign.left,
+                              decoration: const InputDecoration(
+                                labelText: 'List your worry here!',
+                                fillColor: Colors.white,
+                                filled: true,
+                              ),
+                              onChanged: (value) {
+                                worry = value;
                               },
                             ),
-                          ),
-                        ],
+                            const SizedBox(
+                              height: 25,
+                            ),
+                            TextField(
+                              style: const TextStyle(
+                                fontSize: 20,
+                              ),
+                              maxLines: 3,
+                              cursorHeight: 20,
+                              textAlign: TextAlign.left,
+                              decoration: const InputDecoration(
+                                labelText: 'List your situation here!',
+                                fillColor: Colors.white,
+                                filled: true,
+                              ),
+                              onChanged: (value) {
+                                situation = value;
+                              },
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Center(
+                              child: ElevatedButtonWithoutIcon(
+                                text: 'Submit',
+                                onPressedButton: () {
+                                  Provider.of<WorryListProvider>(context,
+                                          listen: false)
+                                      .updateWorriesList(
+                                    {
+                                      'worry': worry,
+                                      'situation': situation,
+                                      'notes': [],
+                                      'controller': TextEditingController(),
+                                    },
+                                  );
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },
                 );
+              },
+            ),
+          ),
+          if (data.length > 0)
+          Center(
+            child: ElevatedButtonWithoutIcon(
+              text: 'Continue',
+              onPressedButton: (){
+                Navigator.of(context).pushNamed(StepTwo.routeName);
               },
             ),
           )
