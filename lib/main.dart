@@ -110,7 +110,10 @@ class Main extends StatelessWidget {
                 Color.fromRGBO(250, 195, 68, 1)),
             visualDensity: VisualDensity.comfortable,
           ),
-          textTheme: const TextTheme(
+          timePickerTheme: TimePickerThemeData(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          ),
+          textTheme: TextTheme(
             headlineLarge: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w500,
