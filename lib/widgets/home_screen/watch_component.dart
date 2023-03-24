@@ -20,8 +20,11 @@ class _WatchComponentState extends State<WatchComponent> {
             text: 'Connect your device',
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12,vertical: 10),
-            decoration: BoxDecoration(color: Color.fromRGBO(143, 227, 221, 1),borderRadius: BorderRadius.circular(10)),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(143, 227, 221, 1),
+                borderRadius: BorderRadius.circular(15),
+                border: Border.all(color: Colors.black)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,29 +32,36 @@ class _WatchComponentState extends State<WatchComponent> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset('watch.png'),
-                    ),
-                    Container(
-                      child: Text(
-                        'Make sleep tracking simple',
-                      ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 50,
+                          child: Image.asset('watch.png'),
+                        ),
+                        Container(
+                          child: Text(
+                            'Make Sleep Tracking Simple',
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 40,
                   child: Text(
-                      'Let’s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker'),
+                    'Let’s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                SizedBox(height: 6,),
+                SizedBox(
+                  height: 6,
+                ),
                 ElevatedButtonWithoutIcon(
-                  onPressedButton: (){
-                    setState(() {
-                      
-                    });
+                  onPressedButton: () {
+                    setState(() {});
                   },
                   text: 'get Synced',
                 ),
