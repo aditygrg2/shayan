@@ -120,6 +120,8 @@ flutter:
     - assets/relaxation.png
     - assets/visualization.png
     - assets/worry.gif
+    - assets/music_therapy_joyful.png
+    - assets/music_therapy_worried.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

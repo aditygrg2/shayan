@@ -1,52 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy_modal.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
-class MusicTherapy extends StatelessWidget {
+class MusicTherapy extends StatefulWidget {
   static String routeName = '/music-therapy';
+  int index = -1;
+
+  @override
+  State<MusicTherapy> createState() => _MusicTherapyState();
+}
+
+class _MusicTherapyState extends State<MusicTherapy> {
   List<Map<dynamic, dynamic>> therapies = [
     {
       'mood': 'TENSE',
       'color': Color.fromRGBO(219, 74, 72, 1),
+      'tunes': [],
     },
     {
       'mood': 'EXCITED',
       'color': Color.fromRGBO(234, 162, 71, 1),
+      'tunes': [],
     },
     {
       'mood': 'RELAXED',
       'color': Color.fromRGBO(108, 187, 226, 1),
+      'tunes': [],
     },
     {
       'mood': 'Sad',
       'color': Color.fromRGBO(160, 161, 163, 1),
+      'tunes': [],
     },
     {
       'mood': 'Bored',
       'color': Color.fromRGBO(252, 244, 122, 1),
+      'tunes': [],
     },
     {
       'mood': 'JOYFUL',
       'color': Color.fromRGBO(233, 167, 157, 1),
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+        {'tune': '', 'title': 'River Tune','image':''},
+        {'tune': '', 'title': 'River Tune','image':''},
+        {'tune': '', 'title': 'River Tune','image':''},
+      ],
     },
     {
       'mood': 'ATTENTIVE',
       'color': Color.fromRGBO(129, 193, 108, 1),
+      'tunes': [],
     },
     {
       'mood': 'WORRIED',
       'color': Color.fromRGBO(187, 137, 196, 1),
+      'image': 'music_therapy_worried.png',
+      'tunes': [],
     },
     {
       'mood': 'SLEEPY',
       'color': Color.fromRGBO(77, 78, 159, 1),
+      'tunes': [],
     },
     {
       'mood': 'NEUTRAL',
       'color': Color.fromRGBO(255, 255, 255, 1),
+      'tunes': [],
     },
-    
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +95,9 @@ class MusicTherapy extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
                   padding: EdgeInsets.all(15),
                   child: Text(
@@ -80,7 +106,9 @@ class MusicTherapy extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 500,
@@ -91,18 +119,34 @@ class MusicTherapy extends StatelessWidget {
                         childAspectRatio: 4 / 2,
                         crossAxisSpacing: 10),
                     itemBuilder: (context, index) {
-                      return Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          gradient: RadialGradient(
-                            colors: [Color.fromRGBO(255, 255, 255, 1), therapies[index]['color']],
-                            tileMode: TileMode.clamp,
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            widget.index = index;
+                            showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return MusicTherapyModal(therapies[index]);
+                                },
+                                backgroundColor: therapies[index]['color']);
+                          });
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            gradient: RadialGradient(
+                              colors: [
+                                Color.fromRGBO(255, 255, 255, 1),
+                                therapies[index]['color']
+                              ],
+                              tileMode: TileMode.clamp,
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          therapies[index]['mood'],
-                          style: Theme.of(context).textTheme.headlineMedium,
+                          child: Text(
+                            therapies[index]['mood'],
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
                         ),
                       );
                     },
