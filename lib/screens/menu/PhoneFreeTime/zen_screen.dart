@@ -22,7 +22,11 @@ class _ZenScreenState extends State<ZenScreen> {
     var controller = Provider.of<CountDownProvider>(context).controller;
     return WillPopScope(
       onWillPop: ()async {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [Text('You are in Zen Mode Wait for '),Expanded(child: ElevatedButton(onPressed: (){Navigator.of(context).pop();}, child: Text('Exit Mode',),)),],) ));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [Text('You are in Zen Mode Wait for '),Expanded(child: ElevatedButton(onPressed: (){
+          VolumeController().setVolume(100);
+          Provider.of<ScreenBrightnessProvider>(context).resetBrightness();
+          Navigator.of(context).pop();
+          }, child: Text('Exit Mode',),)),],) ));
         return false;
       },
       child: Scaffold(

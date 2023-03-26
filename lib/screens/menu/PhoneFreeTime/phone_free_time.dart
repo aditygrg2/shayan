@@ -14,9 +14,9 @@ class PhoneFreeTime extends StatelessWidget {
     "You can still answer phone calls and make emergency phone calls",
     "All apps will be temporarily locked except the camera",
   ];
-  double duration = 0;
+  int duration = 0;
   void callbackSetDuration(String time){
-    this.duration = double.parse(time);
+    this.duration = int.parse(time);
   }
   @override
   Widget build(BuildContext context) {
