@@ -122,6 +122,15 @@ flutter:
     - assets/worry.gif
     - assets/music_therapy_joyful.png
     - assets/music_therapy_worried.png
+    - assets/music_therapy_excited_tune.mp3
+    - assets/music_therapy_happy_tune.mp3
+    - assets/music_therapy_joyful_tune.mp3
+    - assets/music_therapy_neutral_tune.mp3
+    - assets/music_therapy_relaxed_tune.mp3
+    - assets/music_therapy_sad_tune.mp3
+    - assets/music_therapy_sleepy_tune.mp3
+    - assets/music_therapy_tensed_tune.mp3
+    - assets/music_therapy_worried_tune.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -5,7 +5,6 @@ import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class MusicTherapy extends StatefulWidget {
   static String routeName = '/music-therapy';
-  int index = -1;
 
   @override
   State<MusicTherapy> createState() => _MusicTherapyState();
@@ -16,58 +15,91 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'TENSE',
       'color': Color.fromRGBO(219, 74, 72, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+        {'tune': 'assets/music_therapy_tense_tune.mp3', 'title': 'River Tune','image':''},
+
+      ],
     },
     {
       'mood': 'EXCITED',
       'color': Color.fromRGBO(234, 162, 71, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+        {'tune': 'assets/music_therapy_excited_tune.mp3', 'title': 'River Tune','image':''},
+
+      ],
     },
     {
       'mood': 'RELAXED',
       'color': Color.fromRGBO(108, 187, 226, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+        {'tune': 'assets/music_therapy_relaxed_tune.mp3', 'title': 'River Tune','image':''},
+
+      ],
     },
     {
       'mood': 'Sad',
       'color': Color.fromRGBO(160, 161, 163, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+        {'tune': 'assets/music_therapy_sad_tune.mp3', 'title': 'River Tune','image':''},
+
+      ],
     },
     {
       'mood': 'Bored',
       'color': Color.fromRGBO(252, 244, 122, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+
+        {'tune': 'assets/music_therapy_bored_tune.mp3', 'title': 'River Tune','image':''},
+      ],
     },
     {
       'mood': 'JOYFUL',
       'color': Color.fromRGBO(233, 167, 157, 1),
       'image': 'music_therapy_joyful.png',
       'tunes': [
-        {'tune': '', 'title': 'River Tune','image':''},
-        {'tune': '', 'title': 'River Tune','image':''},
-        {'tune': '', 'title': 'River Tune','image':''},
+        {'tune': 'assets/music_therapy_joyful_tune.mp3', 'title': 'River Tune','image':''},
       ],
     },
     {
       'mood': 'ATTENTIVE',
+      'image': 'music_therapy_joyful.png',
       'color': Color.fromRGBO(129, 193, 108, 1),
-      'tunes': [],
+      'tunes': [
+
+        {'tune': 'assets/music_therapy_joyful_tune.mp3', 'title': 'River Tune','image':''},
+      ],
     },
     {
       'mood': 'WORRIED',
       'color': Color.fromRGBO(187, 137, 196, 1),
       'image': 'music_therapy_worried.png',
-      'tunes': [],
+      'tunes': [
+        {'tune': 'assets/music_therapy_worried_tune.mp3', 'title': 'River Tune','image':''},
+
+      ],
     },
     {
       'mood': 'SLEEPY',
       'color': Color.fromRGBO(77, 78, 159, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+
+        {'tune': 'music_therapy_sleepy_tune.mp3', 'title': 'River Tune','image':''},
+      ],
     },
     {
       'mood': 'NEUTRAL',
       'color': Color.fromRGBO(255, 255, 255, 1),
-      'tunes': [],
+      'image': 'music_therapy_joyful.png',
+      'tunes': [
+
+        {'tune': 'music_therapy_neutral_tune.mp3', 'title': 'River Tune','image':''},
+      ],
     },
   ];
 
@@ -122,13 +154,13 @@ class _MusicTherapyState extends State<MusicTherapy> {
                       return GestureDetector(
                         onTap: () {
                           setState(() {
-                            widget.index = index;
                             showModalBottomSheet(
                                 context: context,
                                 builder: (context) {
                                   return MusicTherapyModal(therapies[index]);
                                 },
-                                backgroundColor: therapies[index]['color']);
+                                backgroundColor: therapies[index]['color'],
+                                );
                           });
                         },
                         child: Container(
