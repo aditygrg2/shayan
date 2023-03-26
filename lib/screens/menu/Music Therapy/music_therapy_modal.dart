@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
+import 'package:provider/provider.dart';
 
 class MusicTherapyModal extends StatefulWidget {
   Map<dynamic, dynamic> therapy = {};
@@ -12,10 +14,17 @@ class MusicTherapyModal extends StatefulWidget {
 class _MusicTherapyModalState extends State<MusicTherapyModal> {
   @override
   Widget build(BuildContext context) {
+    var audioPlayer=Provider.of<AudioProvider>(context,listen: false);
     return Center(
       child: Column(
         children: [
-          Container(alignment: Alignment.topRight,child: IconButton(icon: Icon(Icons.close),onPressed: () => Navigator.of(context).pop(),),),
+          Container(
+            alignment: Alignment.topRight,
+            child: IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ),
           Container(
             width: 100,
             height: 150,
@@ -24,6 +33,7 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               fit: BoxFit.cover,
             ),
           ),
+          SizedBox(height: 10,),
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
@@ -31,34 +41,39 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
+          SizedBox(height: 10,),
           Container(
-            height: 200,
             width: MediaQuery.of(context).size.width - 20,
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
-                  margin: EdgeInsets.all(5),
-                  padding: EdgeInsets.all(10),
-                  child: ListTile(
-                    
-                    leading: Container(width: 50,height: 50,child: Image.asset('music_therapy_joyful.png',fit: BoxFit.cover,),decoration: BoxDecoration(shape: BoxShape.circle),),
-                    title: Text(widget.therapy['tunes'][index]['title'],style: Theme.of(context).textTheme.headlineMedium,),
-                    trailing: CircleAvatar(
-                      child: IconButton(
-                        icon:Icon(widget.isPlaying?Icons.pause: Icons.play_arrow_rounded),
-                        onPressed: (){
-                          setState(() {
-                            widget.isPlaying=!widget.isPlaying;
-                          });
-                        },
-
-                      ),
-                    ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: EdgeInsets.all(5),
+              padding: EdgeInsets.all(10),
+              child: ListTile(
+                title: Text(
+                  widget.therapy['tunes'][0]['title'],
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                trailing: CircleAvatar(
+                  child: IconButton(
+                    icon: Icon(widget.isPlaying
+                        ? Icons.pause
+                        : Icons.play_arrow_rounded),
+                    onPressed: () {
+                      setState(() {
+                        widget.isPlaying = !widget.isPlaying;
+                        if(widget.isPlaying)
+                        {
+                          audioPlayer.play(widget.therapy['tunes'][0]['tune']);
+                        }else{
+                          
+                          audioPlayer.stop();
+                        }
+                      });
+                    },
                   ),
-                );
-              },
-              itemCount: (widget.therapy['tunes'] as List<dynamic>).length,
+                ),
+              ),
             ),
           )
         ],
