@@ -3,6 +3,7 @@ import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
+import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
@@ -22,6 +23,7 @@ class MenuScreen extends StatelessWidget {
     {
       'text': 'Phone-Free time',
       'imagePath': 'assets/phone_free.png',
+      'routes':PhoneFreeTime.routeName,
     },
     {
       'text': 'Meditation Timer',

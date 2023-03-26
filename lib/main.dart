@@ -16,6 +16,7 @@ import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
+import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
@@ -173,6 +174,7 @@ class Main extends StatelessWidget {
           StepTwo.routeName: (ctx) => StepTwo(),
           StepThree.routeName: (ctx) => StepThree(),
           MusicTherapy.routeName: (ctx) => MusicTherapy(),
+          PhoneFreeTime.routeName: (ctx) => PhoneFreeTime(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(
