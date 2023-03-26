@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/time_duration_picker.dart';
+import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -91,7 +92,9 @@ class PhoneFreeTime extends StatelessWidget {
           SizedBox(height: 20,),
           Center(
             child: ElevatedButtonWithoutIcon(
-              onPressedButton: null,
+              onPressedButton: (){
+                Navigator.of(context).pushNamed(ZenScreen.routeName,arguments: duration);
+              },
               text: 'Start',
             ),
           ),

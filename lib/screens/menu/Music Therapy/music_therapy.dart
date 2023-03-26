@@ -17,7 +17,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': Color.fromRGBO(219, 74, 72, 1),
       'image': 'music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_tense_tune.mp3', 'title': 'River Tune','image':''},
+        {'tune': 'assets/music_therapy_tensed_tune.mp3', 'title': 'River Tune','image':''},
 
       ],
     },
@@ -89,7 +89,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'image': 'music_therapy_joyful.png',
       'tunes': [
 
-        {'tune': 'music_therapy_sleepy_tune.mp3', 'title': 'River Tune','image':''},
+        {'tune': 'assets/music_therapy_sleepy_tune.mp3', 'title': 'River Tune','image':''},
       ],
     },
     {
@@ -98,7 +98,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'image': 'music_therapy_joyful.png',
       'tunes': [
 
-        {'tune': 'music_therapy_neutral_tune.mp3', 'title': 'River Tune','image':''},
+        {'tune': 'assets/music_therapy_neutral_tune.mp3', 'title': 'River Tune','image':''},
       ],
     },
   ];
