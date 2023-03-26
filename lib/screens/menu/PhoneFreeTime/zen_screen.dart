@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
+import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:volume_controller/volume_controller.dart';
 
 class ZenScreen extends StatefulWidget {
 
@@ -14,6 +16,8 @@ class ZenScreen extends StatefulWidget {
 class _ZenScreenState extends State<ZenScreen> {
   @override
   Widget build(BuildContext context) {
+    Provider.of<ScreenBrightnessProvider>(context).setBrightness(0);
+    VolumeController().setVolume(0);
     final args = ModalRoute.of(context)!.settings.arguments;
     var controller = Provider.of<CountDownProvider>(context).controller;
     return WillPopScope(
@@ -25,6 +29,8 @@ class _ZenScreenState extends State<ZenScreen> {
         body: Center(
           child: NeonCircularTimer(
             onComplete: (){
+              Provider.of<ScreenBrightnessProvider>(context).resetBrightness();
+              VolumeController().setVolume(100);
               Navigator.of(context).pop();
             },
             controller: controller,

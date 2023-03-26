@@ -6,6 +6,7 @@ import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
 import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
@@ -105,7 +106,12 @@ class Main extends StatelessWidget {
           create: (context) {
             return WorryListProvider();
           },
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) {
+            return ScreenBrightnessProvider();
+          },
+        ),
       ],
       child: MaterialApp(
         title: 'Night_GSChallenge',

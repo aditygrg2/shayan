@@ -51,6 +51,7 @@ dependencies:
   neon_circular_timer: ^0.0.7
   audioplayers: ^0.16.1
   speech_to_text: ^6.1.1
+  screen_brightness: ^0.2.2
 
 dev_dependencies:
   flutter_test:
