@@ -20,6 +20,7 @@ import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dar
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
+import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
@@ -183,6 +184,7 @@ class Main extends StatelessWidget {
           MusicTherapy.routeName: (ctx) => MusicTherapy(),
           PhoneFreeTime.routeName: (ctx) => PhoneFreeTime(),
           ZenScreen.routeName: (ctx) => ZenScreen(),
+          SleepDietSuggestion.routeName: (ctx) => SleepDietSuggestion(),
         },
         onUnknownRoute: (settings) {
           return MaterialPageRoute(

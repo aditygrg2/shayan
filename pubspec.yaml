@@ -52,6 +52,7 @@ dependencies:
   audioplayers: ^0.16.1
   speech_to_text: ^6.1.1
   screen_brightness: ^0.2.2
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/sun.gif
+    - assets/sleep_diet_suggestion.gif
     - assets/kid.png
     - assets/form.gif
     - assets/meditation_timer.png

@@ -5,6 +5,7 @@ import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.da
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
+import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
@@ -23,7 +24,7 @@ class MenuScreen extends StatelessWidget {
     {
       'text': 'Phone-Free time',
       'imagePath': 'assets/phone_free.png',
-      'routes':PhoneFreeTime.routeName,
+      'routes': PhoneFreeTime.routeName,
     },
     {
       'text': 'Meditation Timer',
@@ -40,14 +41,22 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/sleep_cycle_calculator.png',
       'routes': SleepCycleCalculator.routeName
     },
-    {'text': 'Sleep Diet Suggestions', 'imagePath': 'assets/sleep_diet.png'},
+    {
+      'text': 'Sleep Diet Suggestions',
+      'imagePath': 'assets/sleep_diet.png',
+      'routes': SleepDietSuggestion.routeName
+    },
     {
       'text': 'Mental Exercises',
       'imagePath': 'assets/mental_exercises.png',
       'routes': MentalExercise.routeName
     },
     {'text': 'Sleep Achievement', 'imagePath': 'assets/sleep_achievement.png'},
-    {'text': 'Music Therapy', 'imagePath': 'assets/podcasts_stories.png','routes':MusicTherapy.routeName},
+    {
+      'text': 'Music Therapy',
+      'imagePath': 'assets/podcasts_stories.png',
+      'routes': MusicTherapy.routeName
+    },
     {
       'text': 'Worry List',
       'imagePath': 'assets/worry_list.png',
