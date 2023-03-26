@@ -22,7 +22,12 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
             alignment: Alignment.topRight,
             child: IconButton(
               icon: Icon(Icons.close),
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                if(widget.isPlaying){
+                  audioPlayer.stop();
+                }
+                 Navigator.of(context).pop();
+                 },
             ),
           ),
           Container(
