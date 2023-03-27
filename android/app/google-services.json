@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "204315791797",
+    "project_id": "schallenge-8848e",
+    "storage_bucket": "schallenge-8848e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204315791797:android:b170ee9007dace8054c9fc",
+        "android_client_info": {
+          "package_name": "com.example.night_gschallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "204315791797-tecknc1ntdlmjt3mosmc7c1rjlhnoo27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmfkw3I6Ijn6ePbRcp37tpQB8NzWY4x7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "204315791797-tecknc1ntdlmjt3mosmc7c1rjlhnoo27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

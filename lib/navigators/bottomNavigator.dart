@@ -58,7 +58,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
           ))),
       child: NavigationBar(
         height: 70,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).primaryColor,
         selectedIndex: widget.selectedPageIndex,
         onDestinationSelected: (value) {
           widget.navigationHandler(value);

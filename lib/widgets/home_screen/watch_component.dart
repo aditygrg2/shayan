@@ -37,7 +37,7 @@ class _WatchComponentState extends State<WatchComponent> {
                         Container(
                           width: 50,
                           height: 50,
-                          child: Image.asset('watch.png'),
+                          child: Image.asset('assets/watch.png'),
                         ),
                         Container(
                           child: Text(

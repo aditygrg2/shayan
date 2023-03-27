@@ -13,92 +13,123 @@ class MusicTherapy extends StatefulWidget {
 class _MusicTherapyState extends State<MusicTherapy> {
   List<Map<dynamic, dynamic>> therapies = [
     {
-      'mood': 'TENSE',
+      'mood': 'Tense',
       'color': Color.fromRGBO(219, 74, 72, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_tensed_tune.mp3', 'title': 'River Tune','image':''},
-
+        {
+          'tune': 'assets/music_therapy_tensed_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'EXCITED',
+      'mood': 'Excited',
       'color': Color.fromRGBO(234, 162, 71, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_excited_tune.mp3', 'title': 'River Tune','image':''},
-
+        {
+          'tune': 'assets/music_therapy_excited_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'RELAXED',
+      'mood': 'Relaxed',
       'color': Color.fromRGBO(108, 187, 226, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_relaxed_tune.mp3', 'title': 'River Tune','image':''},
-
+        {
+          'tune': 'assets/music_therapy_relaxed_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
       'mood': 'Sad',
       'color': Color.fromRGBO(160, 161, 163, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_sad_tune.mp3', 'title': 'River Tune','image':''},
-
+        {
+          'tune': 'assets/music_therapy_sad_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
       'mood': 'Bored',
       'color': Color.fromRGBO(252, 244, 122, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-
-        {'tune': 'assets/music_therapy_bored_tune.mp3', 'title': 'River Tune','image':''},
+        {
+          'tune': 'assets/music_therapy_bored_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'JOYFUL',
+      'mood': 'Joyful',
       'color': Color.fromRGBO(233, 167, 157, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_joyful_tune.mp3', 'title': 'River Tune','image':''},
+        {
+          'tune': 'assets/music_therapy_joyful_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'ATTENTIVE',
-      'image': 'music_therapy_joyful.png',
+      'mood': 'Attentive',
+      'image': 'assets/music_therapy_joyful.png',
       'color': Color.fromRGBO(129, 193, 108, 1),
       'tunes': [
-
-        {'tune': 'assets/music_therapy_joyful_tune.mp3', 'title': 'River Tune','image':''},
+        {
+          'tune': 'assets/music_therapy_joyful_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'WORRIED',
+      'mood': 'Worried',
       'color': Color.fromRGBO(187, 137, 196, 1),
-      'image': 'music_therapy_worried.png',
+      'image': 'assets/music_therapy_worried.png',
       'tunes': [
-        {'tune': 'assets/music_therapy_worried_tune.mp3', 'title': 'River Tune','image':''},
-
+        {
+          'tune': 'assets/music_therapy_worried_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'SLEEPY',
+      'mood': 'Sleepy',
       'color': Color.fromRGBO(77, 78, 159, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-
-        {'tune': 'assets/music_therapy_sleepy_tune.mp3', 'title': 'River Tune','image':''},
+        {
+          'tune': 'assets/music_therapy_sleepy_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
     {
-      'mood': 'NEUTRAL',
+      'mood': 'Neutral',
       'color': Color.fromRGBO(255, 255, 255, 1),
-      'image': 'music_therapy_joyful.png',
+      'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-
-        {'tune': 'assets/music_therapy_neutral_tune.mp3', 'title': 'River Tune','image':''},
+        {
+          'tune': 'assets/music_therapy_neutral_tune.mp3',
+          'title': 'River Tune',
+          'image': ''
+        },
       ],
     },
   ];
@@ -122,8 +153,8 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 150,
-                  child: Image.network(
-                    "https://s3-alpha-sig.figma.com/img/ccb7/0445/73a0959fd468190300e646ca6dc725a7?Expires=1680480000&Signature=doRC4fU6qFF88AMTWkPq-0h-T20e9frXhmqQ5xXM6VkEn~oK85YLIYhrHDQ8tnytQ-tmoTZtYddDimofUTg953v7qeeWzBstBNa2hwKyx0NT10tfgNYgOvs56YbUCAQsi1w3hJGxYlM3Bwb6MZGaJ7sPpPBYSMuuLqcUHFSvERcqI9zVDN3zfRKB1P6M1RADi~L2XKDrUBpfBOpzaAqNK07~DCDIvaFKjzxxXNCZ55bEkKsQPdboPmjNFAbUZdzRNNknLzgpdp5O~kJhilCuExAc0rgr2Karp-TXh-U9pyfjWfPQHfks7OMpmqsIVkQeb-OFlO5Huy6yAbP-x3-IFQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+                  child: Image.asset(
+                    'assets/music_therapy.gif',
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -150,17 +181,18 @@ class _MusicTherapyState extends State<MusicTherapy> {
                         mainAxisSpacing: 10,
                         childAspectRatio: 4 / 2,
                         crossAxisSpacing: 10),
+                    physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
                           setState(() {
                             showModalBottomSheet(
-                                context: context,
-                                builder: (context) {
-                                  return MusicTherapyModal(therapies[index]);
-                                },
-                                backgroundColor: therapies[index]['color'],
-                                );
+                              context: context,
+                              builder: (context) {
+                                return MusicTherapyModal(therapies[index]);
+                              },
+                              backgroundColor: therapies[index]['color'],
+                            );
                           });
                         },
                         child: Container(

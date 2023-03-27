@@ -49,10 +49,13 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   permission_handler: ^10.2.0
   neon_circular_timer: ^0.0.7
-  audioplayers: ^0.16.1
+  audioplayers: ^0.20.1
   speech_to_text: ^6.1.1
   screen_brightness: ^0.2.2
   url_launcher: ^6.1.10
+  cloud_firestore: ^4.4.5
+  firebase_auth: ^4.2.2
+  firebase_core: ^2.8.0
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +84,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/login.gif
+    - assets/splash.gif
     - assets/sun.gif
     - assets/sleep_diet_suggestion.gif
     - assets/kid.png
@@ -95,9 +100,13 @@ flutter:
     - assets/sleep_diet.png
     - assets/test_my_environment.png
     - assets/worry_list.png
+    - assets/loading.gif
     - assets/temperature.png
     - assets/noise.png
+    - assets/logout.png
+    - assets/login_menu.png
     - assets/light.png
+    - assets/signup.gif
     - assets/scanload.gif
     - assets/goodlight.png
     - assets/badlight.png
@@ -135,6 +144,8 @@ flutter:
     - assets/music_therapy_tensed_tune.mp3
     - assets/music_therapy_worried_tune.mp3
     - assets/music_therapy_bored_tune.mp3
+    - assets/watch.png
+    - assets/music_therapy.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

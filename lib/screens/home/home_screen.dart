@@ -9,7 +9,7 @@ import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import '../../navigators/bottomNavigator.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = '/';
+  static const routeName = '/home';
 
   final _pageList = [
     HomeBody(),

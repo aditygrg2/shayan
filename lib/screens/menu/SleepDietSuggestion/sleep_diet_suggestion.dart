@@ -50,7 +50,7 @@ class SleepDietSuggestion extends StatelessWidget {
               height: 200,
               alignment: Alignment.center,
               child: Image.asset(
-                'sleep_diet_suggestion.gif',
+                'assets/sleep_diet_suggestion.gif',
                 fit: BoxFit.cover,
               ),
             ),

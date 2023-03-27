@@ -14,7 +14,7 @@ class MusicTherapyModal extends StatefulWidget {
 class _MusicTherapyModalState extends State<MusicTherapyModal> {
   @override
   Widget build(BuildContext context) {
-    var audioPlayer=Provider.of<AudioProvider>(context,listen: false);
+    var audioPlayer = Provider.of<AudioProvider>(context, listen: false);
     return Center(
       child: Column(
         children: [
@@ -23,11 +23,11 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
             child: IconButton(
               icon: Icon(Icons.close),
               onPressed: () {
-                if(widget.isPlaying){
+                if (widget.isPlaying) {
                   audioPlayer.stop();
                 }
-                 Navigator.of(context).pop();
-                 },
+                Navigator.of(context).pop();
+              },
             ),
           ),
           Container(
@@ -38,7 +38,9 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
@@ -46,7 +48,9 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             width: MediaQuery.of(context).size.width - 20,
             child: Container(
@@ -64,16 +68,14 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
                     icon: Icon(widget.isPlaying
                         ? Icons.pause
                         : Icons.play_arrow_rounded),
-                    onPressed: () {
-                      setState(() {
-                        widget.isPlaying = !widget.isPlaying;
-                        if(widget.isPlaying)
-                        {
-                          audioPlayer.play(widget.therapy['tunes'][0]['tune']);
-                        }else{
-                          
+                    onPressed: ()  {
+                       if (!widget.isPlaying) {
+                           audioPlayer.play(widget.therapy['tunes'][0]['tune']);
+                        } else {
                           audioPlayer.stop();
                         }
+                      setState(() {
+                        widget.isPlaying = !widget.isPlaying;
                       });
                     },
                   ),
