@@ -146,6 +146,12 @@ flutter:
     - assets/music_therapy_bored_tune.mp3
     - assets/watch.png
     - assets/music_therapy.gif
+    - assets/library_articles.png
+    - assets/library_community.png
+    - assets/library_music.png
+    - assets/library_podcast.png
+    - assets/library_stories.png
+    - assets/phone_free_time.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

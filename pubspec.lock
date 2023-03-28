@@ -21,10 +21,10 @@ packages:
     dependency: transitive
     description:
       name: audio_streamer
-      sha256: b788a7f12b95a035129ccc66d70b8d0fcbc2c1ca73770d107204df38201dd700
+      sha256: c5a310e4d3e622f17249f36840688304bcd62bcdfbd46189c8b3cfa6721b0a64
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0+1"
+    version: "2.3.0"
   audioplayers:
     dependency: "direct main"
     description:
@@ -468,10 +468,10 @@ packages:
     dependency: transitive
     description:
       name: permission_handler_apple
-      sha256: "9c370ef6a18b1c4b2f7f35944d644a56aa23576f23abee654cf73968de93f163"
+      sha256: ee96ac32f5a8e6f80756e25b25b9f8e535816c8e6665a96b6d70681f8c4f7e85
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.7"
+    version: "9.0.8"
   permission_handler_platform_interface:
     dependency: transitive
     description:

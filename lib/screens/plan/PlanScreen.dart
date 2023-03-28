@@ -13,6 +13,6 @@ class _PlanScreenState extends State<PlanScreen> {
   
   @override
   Widget build(BuildContext context){
-        return Container();
+        return Container(child: Text('my plan screen'),);
   }
 }
