@@ -19,7 +19,9 @@ class _WatchComponentState extends State<WatchComponent> {
           HomeScreenText(
             text: 'Connect your device',
           ),
+          SizedBox(height: 20,),
           Container(
+            width: MediaQuery.of(context).size.width - 20,
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
             decoration: BoxDecoration(
                 color: Color.fromRGBO(143, 227, 221, 1),
@@ -40,24 +42,32 @@ class _WatchComponentState extends State<WatchComponent> {
                           child: Image.asset('assets/watch.png'),
                         ),
                         Container(
-                          child: Text(
-                            'Make Sleep Tracking Simple',
-                            style: Theme.of(context).textTheme.headlineMedium,
+                          width: MediaQuery.of(context).size.width-96,
+                          height: 50,
+                          child: Expanded(
+                            child: Text(
+                              'Make Sleep Tracking Simple',
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
                           ),
                         )
                       ],
                     )
                   ],
                 ),
+                SizedBox(height: 22,),
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
-                  child: Text(
-                    'Let’s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
-                    textAlign: TextAlign.center,
+                  width: MediaQuery.of(context).size.width - 44,
+                  child: Expanded(
+                    child: Text(
+                      'Let’s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
                 ),
                 SizedBox(
-                  height: 6,
+                  height: 20,
                 ),
                 ElevatedButtonWithoutIcon(
                   onPressedButton: () {

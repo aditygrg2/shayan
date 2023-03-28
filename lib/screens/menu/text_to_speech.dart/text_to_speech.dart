@@ -84,58 +84,62 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                 hintText: 'Enter Text For Speech',
                                 border: InputBorder.none),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        widget.modalIndex = 0;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.volume_down,
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          widget.modalIndex = 0;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.volume_down,
+                                      ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        widget.modalIndex = 1;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.volume_down,
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          widget.modalIndex = 1;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.volume_down,
+                                      ),
                                     ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        widget.modalIndex = 2;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.volume_down,
+                                    IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          widget.modalIndex = 2;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.volume_down,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                width: 200,
-                                height: 50,
-                                child: new FutureBuilder(
-                                  builder: (context, snapshot) {
-                                    widget.voicesMap = snapshot.data;
-                                    widget.dropDown = snapshot.data[0]['name'];
-                                    return DropDownMenu(widget.voicesMap);
-                                  },
-                                  initialData: [1],
-                                  future: Provider.of<FlutterTextSpeech>(context)
-                                      .getVoices(),
+                                  ],
                                 ),
-                              )
-                            ],
+                                Expanded(
+                                  child: Container(
+                                    width: 200,
+                                    height: 50,
+                                    child: new FutureBuilder(
+                                      builder: (context, snapshot) {
+                                        widget.voicesMap = snapshot.data;
+                                        widget.dropDown = snapshot.data[0]['name'];
+                                        return DropDownMenu(widget.voicesMap);
+                                      },
+                                      initialData: [1],
+                                      future: Provider.of<FlutterTextSpeech>(context)
+                                          .getVoices(),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
                           )
                         ],
                       ),

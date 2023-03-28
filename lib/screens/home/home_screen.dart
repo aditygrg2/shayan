@@ -4,6 +4,7 @@ import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
+import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/widgets/UI/form.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import '../../navigators/bottomNavigator.dart';
@@ -14,8 +15,9 @@ class HomeScreen extends StatefulWidget {
   final _pageList = [
     HomeBody(),
     MySleepScreen(),
+    PlanScreen(),
     LibraryScreen(),
-    SleepForm(),
+    // SleepForm(),
     MenuScreen()
   ];
 

@@ -17,8 +17,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
   @override
   Widget build(BuildContext context) {
     var textSpeech = Provider.of<FlutterTextSpeech>(context);
-    return Expanded(
-      child: DropdownButton<String>(
+    return DropdownButton<String>(
           dropdownColor: Colors.white,
           items: widget.voices
               .map<DropdownMenuItem<String>>((ele) => DropdownMenuItem<String>(
@@ -36,7 +35,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
               textSpeech.setVoice(widget.voices, value);
               widget.dropDown = value!;
             });
-          }),
+          },
     );
   }
 }
