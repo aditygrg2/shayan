@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 class DialogflowProvider extends ChangeNotifier {
   Future<DetectIntentResponse?> setFlow(String text) async {
-    DialogAuthCredentials credentials = await DialogAuthCredentials.fromFile('assets/secret-key.json');
+    DialogAuthCredentials credentials = await DialogAuthCredentials.fromFile('assets/secret_key.json');
     DialogFlowtter instance = DialogFlowtter(
       credentials: credentials,
     );
