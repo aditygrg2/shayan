@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/UI/mcq_options.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
 
-class McqWidget extends StatelessWidget {
+class McqWidget extends StatefulWidget {
   final String? question;
   final List<String>? options;
+  Function(String, int)? onPressedNext;
+  void Function()? onPressedBack;
+  int? currentQuestion;
 
-  McqWidget({Key? key, this.question, this.options}) : super(key: key);
+  McqWidget({Key? key, this.question, this.options, this.onPressedNext,this.onPressedBack, this.currentQuestion}) : super(key: key);
+
+  @override
+  State<McqWidget> createState() => _McqWidgetState();
+}
+
+class _McqWidgetState extends State<McqWidget> {
+  num? valueSelected = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +31,55 @@ class McqWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(question!,
-                textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
+            Text(
+              widget.question!,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18),
+            ),
             SizedBox(
               height: 15,
             ),
-            McqOptions(option_list: options),
+            Column(
+              children: [
+                ...widget.options!.map((e) {
+                  return ListTile(
+                    leading: Radio(
+                      value: widget.options?.indexOf(e),
+                      groupValue: valueSelected,
+                      onChanged: (value) {
+                        setState(() {
+                          valueSelected = value;
+                        });
+                      },
+                    ),
+                    title: Text(e),
+                  );
+                }).toList(),
+                SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButtonsWithIcon(
+                icon: Icons.navigate_before_rounded,
+                onPressed: widget.currentQuestion! <= 0 ? null : widget.onPressedBack,
+                title: "Back",
+              ),
+              ElevatedButtonsWithIcon(
+                icon: Icons.navigate_next_rounded,
+                onPressed: (){
+                  widget.onPressedNext!(valueSelected.toString(), widget.currentQuestion!);
+                },
+                title: "Next",
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 35,
+          ),
+              ],
+            )
           ],
         ),
       ),
