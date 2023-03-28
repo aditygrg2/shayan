@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:night_gschallenge/widgets/home_screen/watch_modal.dart';
 
 class WatchComponent extends StatefulWidget {
   const WatchComponent({super.key});
@@ -13,7 +15,7 @@ class _WatchComponentState extends State<WatchComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(15),
       child: Column(
         children: [
           HomeScreenText(
@@ -55,25 +57,37 @@ class _WatchComponentState extends State<WatchComponent> {
                     )
                   ],
                 ),
-                SizedBox(height: 22,),
+                SizedBox(
+                  height: 10,
+                ),
                 Container(
-                  width: MediaQuery.of(context).size.width - 44,
-                  child: Expanded(
-                    child: Text(
-                      'Let’s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+                  width: MediaQuery.of(context).size.width - 40,
+                  child: Text(
+                    'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 ElevatedButtonWithoutIcon(
                   onPressedButton: () {
-                    setState(() {});
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          height: MediaQuery.of(context).size.height,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor),
+                          child: Container(
+                            margin: EdgeInsets.all(15),
+                            child: Scaffold(body: WatchModal())
+                          ),
+                        );
+                      },
+                    );
                   },
-                  text: 'get Synced',
+                  text: 'Connect to your watch',
                 ),
               ],
             ),

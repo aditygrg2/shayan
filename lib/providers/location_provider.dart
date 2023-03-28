@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
-import 'package:provider/provider.dart';
 
 class LocationProvider extends ChangeNotifier {
   Location location = Location();
   late bool _serviceEnabled;
-  late PermissionStatus _permissionGranted;
   late LocationData _locationData;
 
 

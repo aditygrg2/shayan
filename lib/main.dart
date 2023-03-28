@@ -58,7 +58,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: Firebase.initializeApp(),
+      // future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -69,7 +69,7 @@ class Main extends StatelessWidget {
           providers: [
             ChangeNotifierProvider(
               create: (context) {
-                return WatchData();
+                return WatchDataProvider();
               },
             ),
             ChangeNotifierProvider(
@@ -162,6 +162,7 @@ class Main extends StatelessWidget {
             title: 'Night_GSChallenge',
             theme: ThemeData(
               primaryColor: Color.fromRGBO(225, 236, 232, 1),
+              // 	E1ECE8
               backgroundColor: Color.fromRGBO(225, 236, 232, 1),
               scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
               canvasColor: Color.fromRGBO(143, 227, 221, 1),
@@ -212,16 +213,16 @@ class Main extends StatelessWidget {
                 ),
               ),
             ),
-            home: StreamBuilder(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return HomeScreen();
-                }
+            // home: StreamBuilder(
+            //   stream: FirebaseAuth.instance.authStateChanges(),
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return HomeScreen();
+            //     }
 
-                return SplashScreen();
-              },
-            ),
+            //     return SplashScreen();
+            //   },
+            // ),
             routes: {
               LibraryScreen.routeName: (ctx) => LibraryScreen(),
               MySleepScreen.routeName: (ctx) => MySleepScreen(),

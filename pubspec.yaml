@@ -95,6 +95,10 @@ flutter:
     - assets/meditation_timer.png
     - assets/mental_exercises.png
     - assets/nap_timer.png
+    - assets/samsunghealth.png
+    - assets/gfit.png
+    - assets/fitbit.png
+    - assets/garmin.png
     - assets/phone_free.png
     - assets/podcasts_stories.png
     - assets/sleep_achievement.png
@@ -160,6 +164,7 @@ flutter:
     - assets/my_plan.png
     - assets/meditation_timer_person.gif
     - assets/library_music_categories_page.png
+    - assets/watch.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

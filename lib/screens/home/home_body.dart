@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
 import 'package:night_gschallenge/widgets/home_screen/welcome_user.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_stats.dart';
+import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({Key? key}) : super(key: key);
