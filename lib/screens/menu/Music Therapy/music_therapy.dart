@@ -200,6 +200,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                             gradient: RadialGradient(
+                              radius: 0.8,
                               colors: [
                                 Color.fromRGBO(255, 255, 255, 1),
                                 therapies[index]['color']

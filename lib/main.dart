@@ -17,6 +17,8 @@ import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
+import 'package:night_gschallenge/screens/library/podcast.dart';
+import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
@@ -233,6 +235,8 @@ class Main extends StatelessWidget {
               SplashScreen.routeName: (ctx) => SplashScreen(),
               ProfileScreen.routeName: (ctx) => ProfileScreen(),
               ChatScreen.routeName: (ctx) => ChatScreen(),
+              Podcast.routeName: (ctx) => Podcast(),
+              PodcastScreenPlay.routeName: (ctx) => PodcastScreenPlay(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(
