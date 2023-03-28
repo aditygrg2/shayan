@@ -155,6 +155,8 @@ flutter:
     - assets/library_podcast.png
     - assets/library_stories.png
     - assets/phone_free_time.gif
+    - assets/articles_sleep_disorder.png
+    - assets/articles_sleep_issues.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

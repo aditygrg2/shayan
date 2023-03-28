@@ -18,6 +18,7 @@ import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
@@ -244,6 +245,7 @@ class Main extends StatelessWidget {
               ChatScreen.routeName: (ctx) => ChatScreen(),
               Podcast.routeName: (ctx) => Podcast(),
               PodcastScreenPlay.routeName: (ctx) => PodcastScreenPlay(),
+              ArticlesScreen.routeName: (ctx) => ArticlesScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(
