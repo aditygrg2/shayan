@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ElevatedButtonsWithIcon extends StatelessWidget {
-  final Function? onPressed;
+  void Function()? onPressed;
   final String? title;
   final IconData? icon;
 
@@ -10,7 +10,7 @@ class ElevatedButtonsWithIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => {},
+      onPressed: onPressed,
       child: Container(
         margin: EdgeInsets.all(8),
         child: Row(

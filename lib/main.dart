@@ -7,6 +7,7 @@ import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
+import 'package:night_gschallenge/providers/form_provider.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
@@ -16,6 +17,7 @@ import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
+import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
@@ -138,6 +140,11 @@ class Main extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) {
                 return AuthenticationProvider();
+              },
+            ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return SleepFormProvider();
               },
             ),
           ],

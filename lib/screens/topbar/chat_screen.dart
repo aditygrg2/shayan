@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/screens/topbar/chat_input.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -94,7 +90,6 @@ class _ChatScreenState extends State<ChatScreen> {
                   .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) return Text("No data");
-                print(snapshot.data?.docs.length);
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Text('Please wait..');
