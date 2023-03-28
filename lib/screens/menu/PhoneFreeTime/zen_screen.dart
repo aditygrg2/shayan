@@ -24,8 +24,10 @@ class _ZenScreenState extends State<ZenScreen> {
       onWillPop: ()async {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [Text('You are in Zen Mode Wait for '),Expanded(child: ElevatedButton(onPressed: (){
           VolumeController().setVolume(100);
-          Provider.of<ScreenBrightnessProvider>(context).resetBrightness();
+          Provider.of<ScreenBrightnessProvider>(context).resetBrightness().then((value) {
           Navigator.of(context).pop();
+
+          });
           }, child: Text('Exit Mode',),)),],) ));
         return false;
       },
