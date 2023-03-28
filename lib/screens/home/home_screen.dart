@@ -41,7 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar:
           BottomNavigator(_bottomTabHandler, selectedPageIndex),
       body: ListView(
-          children: [TopRow(), widget._pageList[selectedPageIndex]],
+        children: [
+          TopRow(),
+          widget._pageList[selectedPageIndex],
+        ],
       ),
     );
   }

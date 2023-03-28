@@ -56,6 +56,7 @@ dependencies:
   cloud_firestore: ^4.4.5
   firebase_auth: ^4.2.2
   firebase_core: ^2.8.0
+  dialog_flowtter: ^0.3.3
 
 dev_dependencies:
   flutter_test:
@@ -88,6 +89,7 @@ flutter:
     - assets/splash.gif
     - assets/sun.gif
     - assets/sleep_diet_suggestion.gif
+    - assets/secret-key.json
     - assets/kid.png
     - assets/form.gif
     - assets/meditation_timer.png
@@ -103,6 +105,7 @@ flutter:
     - assets/loading.gif
     - assets/temperature.png
     - assets/noise.png
+    - assets/bot.png
     - assets/logout.png
     - assets/login_menu.png
     - assets/light.png

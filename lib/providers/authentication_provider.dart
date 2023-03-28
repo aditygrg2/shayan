@@ -1,23 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
-  final _auth = FirebaseAuth.instance;
   String text = '';
+  User? user;
 
-  String name = '';
-
-  String get textMessage{
+  String get textMessage {
     return text;
   }
 
-  String get userName{
-    return name;
+  String? getId() {
+    return FirebaseAuth.instance.currentUser?.uid;
   }
 
-  void submitAuthForm(String email, String password, bool isLogin, {String name = ''}) async {
+  Future<void> submitAuthForm(String email, String password, bool isLogin,
+      {String name = ''}) async {
+    final _auth = FirebaseAuth.instance;
     UserCredential authResult;
     try {
       if (isLogin) {
@@ -32,24 +33,33 @@ class AuthenticationProvider extends ChangeNotifier {
         );
       }
 
-      if(!isLogin){
-        await FirebaseFirestore.instance.collection('users').doc(authResult.user!.uid).set({
-          'name':name,
-          'email': email,
-        });
+      if (!isLogin) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(authResult.user!.uid)
+            .set(
+          {
+            'name': name,
+            'email': email,
+          },
+        );
       }
 
-      if (FirebaseAuth.instance.currentUser != null) {
+      if (authResult.user!.uid != null) {
         if (isLogin) {
           text = 'Login successful';
         } else {
           text = 'Thank you for signing up!';
         }
       }
+
+      notifyListeners();
     } on PlatformException catch (err) {
       text = err.message.toString();
+      notifyListeners();
     } catch (err) {
       text = err.toString();
+      notifyListeners();
     }
 
     notifyListeners();

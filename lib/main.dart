@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
+import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
@@ -36,6 +37,8 @@ import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
 import 'package:night_gschallenge/screens/menu/text_to_speech.dart/text_to_speech.dart';
+import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
+import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
@@ -124,6 +127,11 @@ class Main extends StatelessWidget {
             ),
             ChangeNotifierProvider(
               create: (context) {
+                return DialogflowProvider();
+              },
+            ),
+            ChangeNotifierProvider(
+              create: (context) {
                 return ScreenBrightnessProvider();
               },
             ),
@@ -157,7 +165,7 @@ class Main extends StatelessWidget {
               timePickerTheme: TimePickerThemeData(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               ),
-              textTheme: TextTheme(
+              textTheme: const TextTheme(
                 headlineLarge: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
@@ -223,6 +231,8 @@ class Main extends StatelessWidget {
               LoginScreen.routeName: (ctx) => LoginScreen(),
               SignupScreen.routeName: (ctx) => SignupScreen(),
               SplashScreen.routeName: (ctx) => SplashScreen(),
+              ProfileScreen.routeName: (ctx) => ProfileScreen(),
+              ChatScreen.routeName: (ctx) => ChatScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

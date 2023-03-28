@@ -50,15 +50,18 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   Widget build(BuildContext context) {
     return NavigationBarTheme(
       data: NavigationBarThemeData(
-          height: 100,
-          indicatorColor: Theme.of(context).primaryColor,
-          labelTextStyle: MaterialStateProperty.all(TextStyle(
+        height: 100,
+        indicatorColor: Theme.of(context).canvasColor,
+        labelTextStyle: MaterialStateProperty.all(
+          TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w400,
-          ))),
+          ),
+        ),
+      ),
       child: NavigationBar(
         height: 70,
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.white,
         selectedIndex: widget.selectedPageIndex,
         onDestinationSelected: (value) {
           widget.navigationHandler(value);

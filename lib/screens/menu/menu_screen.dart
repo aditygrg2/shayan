@@ -67,53 +67,14 @@ class MenuScreen extends StatelessWidget {
       'routes': Worrylist.routeName
     },
     {
-      'text': 'Logout',
-      'imagePath': 'assets/logout.png',
-      'onClick': (BuildContext context) {
-        FirebaseAuth.instance.signOut();
-        Navigator.of(context).popAndPushNamed(HomeScreen.routeName);
-      },
-      'routes': ''
-      // Please leave it blank!
+      'text': 'Login/Signup',
+      'imagePath': 'assets/login_menu.png',
+      'routes': SplashScreen.routeName,
     }
   ];
   @override
   void navigate(BuildContext context, int index) {
     Navigator.of(context).pushNamed(items[index]['routes'].toString());
-  }
-
-  Widget menuItem(int index, BuildContext context) {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return GestureDetector(
-        child: Menu(
-          text: items[index]['text'],
-          imagePath: items[index]['imagePath'],
-        ),
-        onTap: () => items[index]['routes'] == ''
-            ? items[index]['onClick'](context)
-            : navigate(context, index),
-      );
-    } else {
-      if (items[index]['text'] != 'Logout') {
-        return GestureDetector(
-          child: Menu(
-            text: items[index]['text'],
-            imagePath: items[index]['imagePath'],
-          ),
-          onTap: () => navigate(context, index),
-        );
-      } else {
-        return GestureDetector(
-          child: const Menu(
-            text: 'Login/Signup',
-            imagePath: 'assets/login_menu.png',
-          ),
-          onTap: () {
-            Navigator.of(context).pushNamed(SplashScreen.routeName);
-          },
-        );
-      }
-    }
   }
 
   Widget build(BuildContext context) {
@@ -133,7 +94,26 @@ class MenuScreen extends StatelessWidget {
             ),
             physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              return menuItem(index, context);
+              if (FirebaseAuth.instance.currentUser != null) {
+                if (items[index]['text'] != 'Login/Signup') {
+                  return GestureDetector(
+                    child: Menu(
+                      text: items[index]['text'],
+                      imagePath: items[index]['imagePath'],
+                    ),
+                    onTap: () => navigate(context, index),
+                  );
+                }
+              }
+              else{
+                return GestureDetector(
+                    child: Menu(
+                      text: items[index]['text'],
+                      imagePath: items[index]['imagePath'],
+                    ),
+                    onTap: () => navigate(context, index),
+                  );
+              }
             },
             itemCount: items.length,
           ),

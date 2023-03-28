@@ -22,36 +22,47 @@ class _SignupScreenState extends State<SignupScreen> {
   String? user_email;
   String? user_password;
   String? re_password;
+  bool loading = false;
   String? name;
 
   var isLoading = false;
 
-  
-
-  void trySubmit()async {
+  void trySubmit() async {
     final isValid = _formKey.currentState!.validate();
 
     FocusScope.of(context).unfocus();
 
-    if(isValid){
-      
+    if (isValid) {
       _formKey.currentState!.save();
 
-      if(user_password == re_password){
-        await Provider.of<AuthenticationProvider>(context, listen: false)..submitAuthForm(user_email!.trim(), user_password!.trim(),name: name!.trim(), false);
+      if (user_password == re_password) {
+        setState(() {
+          loading = true;
+        });
+        // ignore: avoid_single_cascade_in_expression_statements
+        await Provider.of<AuthenticationProvider>(context, listen: false)
+            .submitAuthForm(
+          user_email!.trim(),
+          user_password!.trim(),
+          false,
+          name: name!.trim(),
+        );
       }
 
-      if(FirebaseAuth.instance.currentUser != null){
-        Navigator.of(context).popUntil((route) => route==SplashScreen.routeName);
-        Navigator.of(context).pushNamed(HomeScreen.routeName);
+      if (FirebaseAuth.instance.currentUser != null) {
+        setState(() {
+          loading = false;
+        });
+        Navigator.of(context).pushNamedAndRemoveUntil(
+            HomeScreen.routeName, (Route<dynamic> route) => false);
       }
-
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    var string = Provider.of<AuthenticationProvider>(context, listen: true).textMessage;
+    var string =
+        Provider.of<AuthenticationProvider>(context, listen: true).textMessage;
     return Scaffold(
       body: ListView(
         children: [
@@ -102,13 +113,13 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('Name'),
-                          decoration:
-                              const InputDecoration(labelText: 'Name'),
+                          decoration: const InputDecoration(labelText: 'Name'),
                           onSaved: (value) {
                             name = value!;
                           },
                           validator: (value) {
-                            if (value!.isEmpty || !value.contains(RegExp('[a-zA-Z]+\\.?'))) {
+                            if (value!.isEmpty ||
+                                !value.contains(RegExp('[a-zA-Z]+\\.?'))) {
                               return 'Please enter correct name';
                             }
                             return null;
@@ -210,8 +221,8 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
           SplashButton(
-            text: 'Signup',
-            onPressed: () {
+            text: loading ? 'Loading..' :'Signup',
+            onPressed: () async {
               trySubmit();
               if (string != '') {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -219,6 +230,9 @@ class _SignupScreenState extends State<SignupScreen> {
                     content: Text(string),
                   ),
                 );
+                setState(() {
+                  loading = false;
+                });
               }
             },
           ),

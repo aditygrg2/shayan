@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   String user_email = '';
+  bool loading = false;
   String user_password = '';
 
   void trySubmit() async {
@@ -27,16 +28,20 @@ class _LoginScreenState extends State<LoginScreen> {
     FocusScope.of(context).unfocus();
 
     if (isValid) {
+      setState(() {
+        loading = true;
+      });
       _formKey.currentState!.save();
 
       await Provider.of<AuthenticationProvider>(context, listen: false)
-        ..submitAuthForm(user_email.trim(), user_password.trim(), true);
+        .submitAuthForm(user_email.trim(), user_password.trim(), true);
     }
 
     if (FirebaseAuth.instance.currentUser != null) {
-      Navigator.of(context)
-          .popUntil((route) => route == SplashScreen.routeName);
-      Navigator.of(context).pushNamed(HomeScreen.routeName);
+      setState(() {
+        loading = false;
+      });
+      Navigator.of(context).pushNamedAndRemoveUntil(HomeScreen.routeName, (Route<dynamic> route) => false);
     }
   }
 
@@ -118,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           SplashButton(
-            text: 'Login',
+            text: loading ? 'Please wait' : 'Login' ,
             onPressed: () {
               trySubmit();
               if (string != '') {
@@ -127,6 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     content: Text(string),
                   ),
                 );
+                setState(() {
+                  loading = false;
+                });
               }
             },
           ),
