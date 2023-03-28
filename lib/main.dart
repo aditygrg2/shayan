@@ -18,7 +18,6 @@ import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
-import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
@@ -58,7 +57,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      // future: Firebase.initializeApp(),
+      future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
@@ -213,16 +212,16 @@ class Main extends StatelessWidget {
                 ),
               ),
             ),
-            // home: StreamBuilder(
-            //   stream: FirebaseAuth.instance.authStateChanges(),
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasData) {
-            //       return HomeScreen();
-            //     }
+            home: StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return HomeScreen();
+                }
 
-            //     return SplashScreen();
-            //   },
-            // ),
+                return SplashScreen();
+              },
+            ),
             routes: {
               LibraryScreen.routeName: (ctx) => LibraryScreen(),
               MySleepScreen.routeName: (ctx) => MySleepScreen(),

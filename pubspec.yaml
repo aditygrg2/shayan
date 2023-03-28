@@ -89,7 +89,7 @@ flutter:
     - assets/splash.gif
     - assets/sun.gif
     - assets/sleep_diet_suggestion.gif
-    - assets/secret-key.json
+    - assets/secret_key.json
     - assets/kid.png
     - assets/form.gif
     - assets/meditation_timer.png

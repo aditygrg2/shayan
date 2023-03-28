@@ -6,7 +6,12 @@ class WatchCompanyProvider extends StatelessWidget {
   final String? subtitle;
   void Function()? onPressed;
 
-  WatchCompanyProvider({this.title, this.imagePath, this.subtitle, this.onPressed});
+  WatchCompanyProvider({
+    this.title,
+    this.imagePath,
+    this.subtitle,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
