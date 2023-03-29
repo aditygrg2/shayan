@@ -35,7 +35,7 @@ class Menu extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
+          FittedBox(
             child: Image.asset(imagePath),
           )
         ],

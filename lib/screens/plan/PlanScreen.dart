@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:night_gschallenge/providers/timeline_provider.dart';
+import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
 import 'package:night_gschallenge/screens/plan/timeline_card.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/UI/home_screen_heading.dart';
 
 class PlanScreen extends StatefulWidget {
@@ -13,27 +16,19 @@ class PlanScreen extends StatefulWidget {
 
 class _PlanScreenState extends State<PlanScreen> {
   bool showPlan = false;
- 
-  List<Map<dynamic, dynamic>> timeline = [
-    {"time": "08:00", "task": "I will wake up at 8 am"},
-    {"time": "08:00", "task": "I will wake up at 8 am"},
-    {"time": "08:00", "task": "I will wake up at 8 am"},
-    {"time": "08:00", "task": "I will wake up at 8 am"},
-    {"time": "08:00", "task": "I will wake up at 8 am"},
-    {"time": "11:34", "task": "I will wake up at 8 am"},
-    {"time": "11:40", "task": "I will wake up at 8 am"},
-    {"time": "12:00", "task": "I will wake up at 8 am"},
-  ];
-  Duration isActiveCheck(String str){
+
+  Duration isActiveCheck(String str) {
     var format = DateFormat("HH:mm");
-    var first= format.parse(str);
-    var now= DateTime.now();
+    var first = format.parse(str);
+    var now = DateTime.now();
     var second = format.parse("${now.hour}:${now.minute}");
     return first.difference(second);
- 
   }
+
   @override
   Widget build(BuildContext context) {
+    var timelineProvider = Provider.of<TimelineProvider>(context);
+    var timeline = timelineProvider.getTimeline;
     return Container(
       width: double.infinity,
       child: Column(
@@ -189,24 +184,60 @@ class _PlanScreenState extends State<PlanScreen> {
               : Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ...(timeline.map((e) {
-                      var difference= isActiveCheck(e['time']);
-                      if(difference.compareTo(Duration.zero)>=0)
-                      return TimelineCard(
-                        duration: difference.toString(),
-                        isActive: difference.compareTo(Duration.zero)==0,
-                        task: e['task'],
-                        time: e['time'],
-                      );
-                      else return null;
-                    }).toList().where((element) => element!=null).toList() as List<Widget>),
-                    Container(padding: EdgeInsets.all(10),child: Text("There's more in the Store",style: Theme.of(context).textTheme.headlineMedium,),),
-                    Container(padding: EdgeInsets.all(10),child: Text("Share your sleep experience, daily habits and overall lifestyle patterns. we’ll match you up with training items which specifically suit your needs",style: Theme.of(context).textTheme.bodySmall,textAlign: TextAlign.center,),),
-                    Center(child: ElevatedButtonWithoutIcon(onPressedButton: (){
-                      setState(() {
-                        showPlan=!showPlan;
-                      });
-                    },text: "get your Plan"),)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(onPressed: (){
+                          showModalBottomSheet(context: context, builder: (context){
+                            return  SingleChildScrollView(child: AddEditTimeline(-1));
+                          
+                          },backgroundColor: Colors.white);
+                        }, icon: Icon(Icons.add,color: Colors.black,size: 34,))
+                      ],
+                    ),
+                    ...(timeline
+                        .map((e) {
+                          var difference = isActiveCheck(e['time']);
+                          int index = timeline.indexOf(e);
+                          if (difference.compareTo(Duration.zero) >= 0)
+                            return TimelineCard(
+                              index: index,
+                              duration: difference.toString(),
+                              isActive:
+                                  difference.compareTo(Duration.zero) == 0,
+                              task: e['task'],
+                              time: e['time'],
+                            );
+                          else
+                            return null;
+                        })
+                        .toList()
+                        .where((element) => element != null)
+                        .toList() as List<Widget>),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "There's more in the Store",
+                        style: Theme.of(context).textTheme.headlineMedium,
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Share your sleep experience, daily habits and overall lifestyle patterns. we’ll match you up with training items which specifically suit your needs",
+                        style: Theme.of(context).textTheme.bodySmall,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Center(
+                      child: ElevatedButtonWithoutIcon(
+                          onPressedButton: () {
+                            setState(() {
+                              showPlan = !showPlan;
+                            });
+                          },
+                          text: "get your Plan"),
+                    )
                   ],
                 ),
         ],

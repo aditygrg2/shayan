@@ -13,6 +13,7 @@ import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
 import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
+import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
@@ -20,6 +21,7 @@ import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
+import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
@@ -150,6 +152,11 @@ class Main extends StatelessWidget {
                 return SleepFormProvider();
               },
             ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return TimelineProvider();
+              },
+            ),
           ],
           child: MaterialApp(
             title: 'Night_GSChallenge',
@@ -246,6 +253,7 @@ class Main extends StatelessWidget {
               Podcast.routeName: (ctx) => Podcast(),
               PodcastScreenPlay.routeName: (ctx) => PodcastScreenPlay(),
               ArticlesScreen.routeName: (ctx) => ArticlesScreen(),
+              MusicGalleryScreen.routeName: (ctx) => MusicGalleryScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

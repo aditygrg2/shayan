@@ -14,7 +14,7 @@ class _TimePickerState extends State<TimePicker> {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: BoxDecoration(

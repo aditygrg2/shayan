@@ -22,10 +22,10 @@ class PropertyCard extends StatelessWidget {
           ):Column(
             crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(child: Flexible(child: Text(title,style: Theme.of(context).textTheme.headlineSmall,)),),
+                  Container(child: Expanded(child: Text(title,style: Theme.of(context).textTheme.headlineSmall,)),),
                   Container(child: Text(score,style: TextStyle(fontSize: 15),),),
                   SizedBox(height: 13,),
-                  Container(width: width*0.8,height: height*0.6,child: Flexible(child: Text(description,style: Theme.of(context).textTheme.bodySmall,)))
+                  Container(width: width*0.8,height: height*0.6,child: Expanded(child: Text(description,style: Theme.of(context).textTheme.bodySmall,)))
                 ],
               ),
             
