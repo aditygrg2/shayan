@@ -131,8 +131,6 @@ class _MySleepReportState extends State<MySleepReport> {
                       return Container(
                           padding: EdgeInsets.all(10),
                           child: PropertyCard(
-                            width: 180,
-                            height: 160,
                             description: element['description'].toString(),
                             title: element['title'].toString(),
                             score: element['score'].toString(),

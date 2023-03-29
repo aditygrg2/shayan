@@ -5,9 +5,10 @@ class SleepScoreCard extends StatelessWidget {
   final String? text;
   final int? sleepscore;
 
-  SleepScoreCard(
-      {this.text =
-          "To maintain optimal performance, you may require more rest", this.sleepscore = 89});
+  SleepScoreCard({
+    this.text = "To maintain optimal performance, you may require more rest",
+    this.sleepscore = 89,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,17 @@ class SleepScoreCard extends StatelessWidget {
             child: Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(300)),
                       color: Colors.white,
                     ),
                     padding: const EdgeInsets.all(20.0),
-                    child: Text(sleepscore.toString(), style: Theme.of(context).textTheme.headlineLarge,),
+                    child: Text(
+                      sleepscore.toString(),
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
                   ),
                 ),
                 Expanded(

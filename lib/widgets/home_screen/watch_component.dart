@@ -21,39 +21,37 @@ class _WatchComponentState extends State<WatchComponent> {
           HomeScreenText(
             text: 'Connect your device',
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Container(
-            width: MediaQuery.of(context).size.width - 20,
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
+            padding: EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 15,
+            ),
             decoration: BoxDecoration(
-                color: Color.fromRGBO(143, 227, 221, 1),
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.black)),
+              color: Color.fromRGBO(143, 227, 221, 1),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: Colors.black),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          child: Image.asset('assets/watch.png'),
+                    Container(
+                      width: 50,
+                      height: 50,
+                      child: Image.asset('assets/watch.png'),
+                    ),
+                    Container(
+                      child: Expanded(
+                        child: Text(
+                          'Make Sleep Tracking Simple',
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width-96,
-                          height: 50,
-                          child: Expanded(
-                            child: Text(
-                              'Make Sleep Tracking Simple',
-                              style: Theme.of(context).textTheme.headlineMedium,
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     )
                   ],
                 ),
@@ -61,7 +59,6 @@ class _WatchComponentState extends State<WatchComponent> {
                   height: 10,
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
                   child: Text(
                     'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
                     textAlign: TextAlign.center,
@@ -80,9 +77,8 @@ class _WatchComponentState extends State<WatchComponent> {
                           decoration: BoxDecoration(
                               color: Theme.of(context).primaryColor),
                           child: Container(
-                            margin: EdgeInsets.all(15),
-                            child: Scaffold(body: WatchModal())
-                          ),
+                              margin: EdgeInsets.all(15),
+                              child: Scaffold(body: WatchModal())),
                         );
                       },
                     );

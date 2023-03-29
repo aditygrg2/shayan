@@ -165,6 +165,7 @@ flutter:
     - assets/meditation_timer_person.gif
     - assets/library_music_categories_page.png
     - assets/watch.gif
+    - assets/secret_key.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

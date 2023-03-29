@@ -20,8 +20,6 @@ class HomeScreen extends StatefulWidget {
     MySleepScreen(),
     PlanScreen(),
     LibraryScreen(),
-    // SleepForm(),
-    //MainForm(),
     MenuScreen()
   ];
 

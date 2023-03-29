@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_company_provider.dart';
 import 'package:provider/provider.dart';
 
