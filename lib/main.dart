@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
+import 'package:night_gschallenge/providers/chart_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
@@ -155,6 +156,11 @@ class Main extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) {
                 return TimelineProvider();
+              },
+            ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return ChartProvider();
               },
             ),
           ],
