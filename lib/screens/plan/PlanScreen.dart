@@ -283,7 +283,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       },
                                       text: "I'm ready"),
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 20,
                                 ),
                               ],
@@ -295,20 +295,21 @@ class _PlanScreenState extends State<PlanScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     IconButton(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (context) {
-                                                return SingleChildScrollView(
-                                                    child: AddEditTimeline(-1));
-                                              },
-                                              backgroundColor: Colors.white);
-                                        },
-                                        icon: Icon(
-                                          Icons.add,
-                                          color: Colors.black,
-                                          size: 34,
-                                        ))
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) {
+                                              return SingleChildScrollView(
+                                                  child: AddEditTimeline(-1));
+                                            },
+                                            backgroundColor: Colors.white);
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: 34,
+                                      ),
+                                    )
                                   ],
                                 ),
                                 ...(timeline
@@ -368,6 +369,8 @@ class _PlanScreenState extends State<PlanScreen> {
                   ),
                 );
               }
+
+              print(snapshot.data?.get('healthState'));
               return const AlertDialog(
                 title: Text('An error occurred!'),
               );

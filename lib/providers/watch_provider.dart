@@ -13,7 +13,7 @@ class WatchDataProvider extends ChangeNotifier {
     HealthDataType.SLEEP_IN_BED,
     HealthDataType.HEIGHT,
     HealthDataType.SLEEP_AWAKE,
-    HealthDataType.SLEEP_ASLEEP    
+    HealthDataType.SLEEP_ASLEEP,
   ];
 
   Future<bool> getPermission()async{
