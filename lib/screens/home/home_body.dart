@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
+import 'package:night_gschallenge/widgets/home_screen/sleep_score.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
 import 'package:night_gschallenge/widgets/home_screen/welcome_user.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_stats.dart';
@@ -35,6 +36,7 @@ class _HomeBodyState extends State<HomeBody> {
       child: Column(
         children: [
           WelcomeUser(),
+          SleepScore(),
           WhatsNew(),
           WatchComponent(),
           MusicSection(),

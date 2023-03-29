@@ -37,15 +37,12 @@ class _MainFormState extends State<MainForm> {
     var data =
         await FirebaseFirestore.instance.collection('users').doc(id).get();
 
-    print(data['questionNumber'] + 1);
     setState(() {
       if (data['questionNumber'] + 1 == no_of_questions) {
         _currentQuestion = data['questionNumber'];
       } else
         _currentQuestion = data['questionNumber'] + 1;
-    });
-    print(_currentQuestion);
-    setState(() {
+
       loading = false;
     });
   }
