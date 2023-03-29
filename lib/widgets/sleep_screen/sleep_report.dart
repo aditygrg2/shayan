@@ -47,8 +47,8 @@ class _MySleepReportState extends State<MySleepReport> {
                 HomeScreenText(text: 'Sleep Report'),
                 Container(
                   height: 250,
-                  child: Image.network(
-                      "https://s3-alpha-sig.figma.com/img/f599/e051/346e193f4cdc20b86a34b91db9ad5550?Expires=1679875200&Signature=SkIrpsSAKiNyhHGFbgp5CJIT5WmZ4rPBwzanvM48FC~HWnDdC7TEfATTl7P1BXBtLiA~aA~jgULv543aiXA7dUXpOzkIawHYvv~9GEExVo6hF-v0brKgdQmXn8GJYp~0uyYpAfaExQ-5DFb2ADGZQvQGSuMU8wAUlre6C9rZOTYwNCrOWLN8yNTHfda-~O035m3EQQiT~oihUfy8b7aZoEGkJNQ0t0twUJjDRY0faXagi6tJdTKChm2up2Z-0GjSQ1L1JzVjk-KNFCiz05uyCfNdhMHFBIgmnC1PlWfxQW6kVd0mp2MA1deZm1gWFpxHTejed4XF1a5D1jcDTnAN1w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"),
+                  child: Image.asset(
+                      "assets/my_sleep_report.gif"),
                 ),
                 Container(
                   child: Text(

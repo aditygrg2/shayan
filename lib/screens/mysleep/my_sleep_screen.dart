@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
+import 'package:night_gschallenge/screens/mysleep/weeky_sleep_analysis.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report.dart';
@@ -26,6 +27,7 @@ class MySleepScreen extends StatelessWidget {
             ],
           ),
         ),
+        WeeklySleepAnalysis(),
         MySleepReport()
       ],
     );
