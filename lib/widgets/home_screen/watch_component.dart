@@ -83,7 +83,7 @@ class _WatchComponentState extends State<WatchComponent> {
                       },
                     );
                   },
-                  text: 'Connect to your watch',
+                  text: 'Fetch data from your watch',
                 ),
               ],
             ),

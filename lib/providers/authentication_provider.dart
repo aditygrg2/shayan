@@ -55,8 +55,8 @@ class AuthenticationProvider extends ChangeNotifier {
           text = 'Thank you for signing up!';
         }
       }
-
       notifyListeners();
+
     } on PlatformException catch (err) {
       text = err.message.toString();
       notifyListeners();

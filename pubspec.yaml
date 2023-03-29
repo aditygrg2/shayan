@@ -49,7 +49,7 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   permission_handler: ^10.2.0
   neon_circular_timer: ^0.0.7
-  audioplayers: ^0.20.1
+  audioplayers: 0.20.1
   speech_to_text: ^6.1.1
   screen_brightness: ^0.2.2
   url_launcher: ^6.1.10
@@ -89,6 +89,8 @@ flutter:
     - assets/splash.gif
     - assets/sun.gif
     - assets/sleep_diet_suggestion.gif
+    - assets/questionsleft.png
+    - assets/checklist.png
     - assets/secret_key.json
     - assets/kid.png
     - assets/form.gif

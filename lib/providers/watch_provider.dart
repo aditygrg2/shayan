@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -14,14 +16,16 @@ class WatchDataProvider extends ChangeNotifier {
     HealthDataType.SLEEP_ASLEEP    
   ];
 
+  Future<bool> getPermission()async{
+    return await health.requestAuthorization(types);
+  }
+
   Future getData() async {
     var permissions = [
       HealthDataAccess.READ,
     ];
 
     var permit = await Permission.activityRecognition.request();
-
-    await health.requestAuthorization(types);
 
     var now = DateTime.now();
     print(permit);

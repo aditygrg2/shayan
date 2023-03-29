@@ -1,10 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:light/light.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
-import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:collection/collection.dart';
 
 class MeasuringLight extends StatefulWidget {
 

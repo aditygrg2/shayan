@@ -71,7 +71,7 @@ class _McqWidgetState extends State<McqWidget> {
                 onPressed: (){
                   widget.onPressedNext!(valueSelected.toString(), widget.currentQuestion!);
                 },
-                title: "Next",
+                title: widget.currentQuestion == 33 ? "Submit" :"Next",
               ),
             ],
           ),

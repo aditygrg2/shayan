@@ -1,31 +1,106 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/form_provider.dart';
+import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
+import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:night_gschallenge/widgets/form/mcq_widget.dart';
 import 'package:provider/provider.dart';
 
 class MainForm extends StatefulWidget {
+  static const routeName = 'forms/main';
   _MainFormState createState() => _MainFormState();
 }
 
 enum InputTypes { TimeInput, NumberInput, HourMinuteInput, DateInput }
 
 class _MainFormState extends State<MainForm> {
+  bool once = true;
+  bool loading = false;
   int _currentQuestion = 0;
+  var id = FirebaseAuth.instance.currentUser?.uid;
   // Change if you are changing number of questions!
   int no_of_questions = 34;
-  final _answers = List.filled(34, '');
+  final _answers = List.filled(34, '-1');
 
-  void _nextQuestion(String answer, int index) {
-    if (_currentQuestion < no_of_questions) {
+  void getQuestion() async {
+    once = false;
+    setState(() {
+      loading = true;
+    });
+    var data =
+        await FirebaseFirestore.instance.collection('users').doc(id).get();
+
+    print(data['questionNumber'] + 1);
+    setState(() {
+      if (data['questionNumber'] + 1 == no_of_questions) {
+        _currentQuestion = data['questionNumber'];
+      } else
+        _currentQuestion = data['questionNumber'] + 1;
+    });
+    print(_currentQuestion);
+    setState(() {
+      loading = false;
+    });
+  }
+
+  void _nextQuestion(String answer, int index) async {
+    setState(() {
+      loading = true;
+    });
+
+    try {
+      await FirebaseFirestore.instance
+          .collection('planForm')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .collection('question')
+          .doc('${index + 1}')
+          .set(
+        {
+          'answer': answer,
+        },
+      );
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .update(
+        {
+          'healthState': 'false',
+          'questionNumber': index + 1,
+        },
+      );
+    } catch (err) {
+      print(err.toString());
+    }
+    setState(() {
+      loading = false;
+    });
+
+    if (_currentQuestion < no_of_questions-1) {
       setState(() {
         _answers[index] = answer;
         _currentQuestion++;
       });
-    }
+    } else{
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser?.uid)
+          .update(
+        {
+          'healthState': 'true',
+          'questionNumber': _currentQuestion + 1,
+        },
+      );
 
-    print(_answers);
+      Navigator.of(context).pushNamed(HomeScreen.routeName); 
+    }
   }
 
   void _previousQuestion() {
@@ -36,6 +111,8 @@ class _MainFormState extends State<MainForm> {
 
   @override
   Widget build(BuildContext context) {
+    if (once) getQuestion();
+    var notificationBarHeight = MediaQuery.of(context).padding.top;
     final List<Widget> forms_details = [
       InputBox(
         key: Key('1'),
@@ -424,15 +501,58 @@ class _MainFormState extends State<MainForm> {
         onPressedBack: _previousQuestion,
       ),
     ];
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 20,
-      ),
-      child: Column(
+
+    // LEFT THIS SPACE EXPLICITLY
+
+    return Scaffold(
+      body: ListView(
         children: [
-          Image.asset('assets/form.gif'),
-          Text('Question ${_currentQuestion + 1}'),
-          forms_details[_currentQuestion],
+          Container(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    left: 10,
+                    right: 10,
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () async {
+                          Navigator.of(context)
+                              .popAndPushNamed(HomeScreen.routeName);
+                        },
+                        icon: Icon(
+                          Icons.arrow_back_rounded,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(15),
+                  child: Column(
+                    children: [
+                      HomeScreenText(
+                        text: 'Plan Creation Form',
+                      ),
+                      Image.asset('assets/form.gif'),
+                      if (loading) CircularProgressIndicator(),
+                      if (!loading)
+                        Text(
+                          'Question ${_currentQuestion + 1}',
+                        ),
+                      if (!loading) forms_details[_currentQuestion],
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
