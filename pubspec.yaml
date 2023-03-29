@@ -58,6 +58,7 @@ dependencies:
   firebase_core: ^2.8.0
   dialog_flowtter: ^0.3.3
   fl_chart: ^0.61.0
+  bottom_drawer: ^0.0.5
 
 dev_dependencies:
   flutter_test:
@@ -170,6 +171,9 @@ flutter:
     - assets/watch.gif
     - assets/secret_key.json
     - assets/my_sleep_report.gif
+    - assets/splash_screen.png
+    - assets/ellipse_splash_screen.png
+    - assets/ellipse_splash_screen_2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
