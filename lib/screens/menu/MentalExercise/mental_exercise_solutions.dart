@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/audio_player.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -80,7 +78,7 @@ class MentalExerciseSolution extends StatelessWidget {
                       ],
                     ),
                   ),
-                  AudioPlayerWithSlider(),
+                  AudioPlayerWithSlider("assets/music_therapy_joyful_tune.mp3"),
                 ],
               )),
         ],
