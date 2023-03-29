@@ -158,6 +158,8 @@ flutter:
     - assets/articles_sleep_disorder.png
     - assets/articles_sleep_issues.png
     - assets/my_plan.png
+    - assets/meditation_timer_person.gif
+    - assets/library_music_categories_page.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

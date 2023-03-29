@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 
 
 class TimelineCard extends StatelessWidget {
@@ -6,7 +8,8 @@ class TimelineCard extends StatelessWidget {
   String time;
   String task;
   String duration;
-  TimelineCard({this.isActive=false,required this.task,required this.time,required this.duration});
+  int index;
+  TimelineCard({required this.index,this.isActive=false,required this.task,required this.time,required this.duration});
 
   String processDuration(String str){
     var arr=str.split(':');
@@ -33,7 +36,17 @@ class TimelineCard extends StatelessWidget {
           ),
           Container(width: double.infinity,height: 1,child: Text(""),decoration: BoxDecoration(border: Border.all(color: Colors.black)),),
           Container(padding: EdgeInsets.all(10),child: Text(time),),
-          Container(padding: EdgeInsets.all(10),child: Text(task),)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(padding: EdgeInsets.all(10),child: Text(task),),
+              Container(child: IconButton(icon:Icon(Icons.edit,color: Colors.black,),onPressed: (){
+                showModalBottomSheet(context: context, builder: (context) {
+                  return SingleChildScrollView(child: AddEditTimeline(index));
+                },backgroundColor: Colors.white);
+              },),)
+            ],
+          )
         ],
       ),
     );

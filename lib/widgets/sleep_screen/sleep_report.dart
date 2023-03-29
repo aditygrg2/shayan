@@ -105,7 +105,7 @@ class _MySleepReportState extends State<MySleepReport> {
                           width: MediaQuery.of(context).size.width * 0.50,
                           height: 140,
                           padding: EdgeInsets.all(8),
-                          child: Flexible(
+                          child: Expanded(
                               child: Text(
                             "Give us insights into your sleep, lifestyle and daily behaviors and we'll create a personalized plan that suits your needs.",
                             style: Theme.of(context).textTheme.bodySmall,

@@ -22,7 +22,7 @@ class MeditationTimer extends StatefulWidget {
       'music': 'assets/default.mp3'
     },
     {
-      'icon': Icons.forest_outlined,
+      'icon': Icons.forest,
       'title': 'Forest',
       'music': 'assets/forest.mp3'
     },
@@ -79,14 +79,14 @@ class _MeditationTimerState extends State<MeditationTimer> {
             text: 'Meditation Timer',
           ),
           Container(
-            padding: EdgeInsets.all(14),
+            padding: EdgeInsets.all(10),
             child: Column(
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width - 30,
+                  width: MediaQuery.of(context).size.width - 20,
                   height: 200,
-                  child: Image.network(
-                    "https://s3-alpha-sig.figma.com/img/6be6/74f2/3d268a7deeda15506065256569c5fa43?Expires=1680480000&Signature=Ef9e0KX5K6M2MRcoHDV~fEMKTdtCdrf2CzqE5mUcIctPr0~85thiZ7cI1VqeNFCuyKKMerURsS5O5LlCTy5s1arsZDJH9MILz356BgACjK3PZIlLldT7vYZyDFmJgwMdU1rgoWILP6EPVjU6QVfevXvrnI45jCQwX378jrKViAxG0CZHkwqasuf1EXemTnTvRfdZbp0zFrMgLTiw58Mt6Ti60YMwlMTl~-Na2TqlsXOA-39q5wUznQewMmoaXdiNG4~33-7pJe7Z~UIdB6e7m7bTtn7HlfdjoB0yhZRSGa7wxVnaBA77YaubXi18WtxnvNI3SDQB7lgySfYyukk32g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+                  child: Image.asset(
+                    "assets/meditation_timer_person.gif",
                     fit: BoxFit.contain,
                   ),
                 ),
