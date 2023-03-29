@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/chart_provider.dart';
+import 'package:night_gschallenge/providers/community_post.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
@@ -21,6 +22,7 @@ import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
+import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
@@ -163,6 +165,11 @@ class Main extends StatelessWidget {
                 return ChartProvider();
               },
             ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return CommunityPostPRovider();
+              },
+            ),
           ],
           child: MaterialApp(
             title: 'Night_GSChallenge',
@@ -262,6 +269,7 @@ class Main extends StatelessWidget {
               ArticlesScreen.routeName: (ctx) => ArticlesScreen(),
               MusicGalleryScreen.routeName: (ctx) => MusicGalleryScreen(),
               MainForm.routeName: (ctx) => MainForm(),
+              CommunityScreen.routeName: (ctx) => CommunityScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

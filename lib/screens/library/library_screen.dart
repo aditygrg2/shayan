@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
+import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
@@ -43,7 +44,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
       "title":"Community",
       "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
       "image":"assets/library_community.png",
-      "route":"",
+      "route":CommunityScreen.routeName,
     },
   ];
   @override
