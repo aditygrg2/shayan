@@ -4,18 +4,23 @@ import 'package:audioplayers/audioplayers.dart';
 
 class AudioProvider extends ChangeNotifier {
   AudioPlayer player = AudioPlayer();
-
+  Duration duration=Duration();
+  Duration progress=Duration();
   dynamic play(String uri) async {
     String audioasset = uri;
     ByteData bytes = await rootBundle.load(uri); //load sound from assets
     Uint8List soundbytes =
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
-    int result = await player.playBytes(soundbytes);
-    // if (result == 1) {
-    //   print("Sound playing successful.");
-    // } else {
-    //   print("Error while playing sound.");
-    // }
+
+    getProgress();
+
+    player.onDurationChanged.listen((event) {
+      duration=event;
+      notifyListeners();
+    });
+    await player.playBytes(soundbytes);
+
+    
   }
 
   dynamic stop() async {
@@ -40,5 +45,19 @@ class AudioProvider extends ChangeNotifier {
     } else {
       throw new Error();
     }
+  }
+  Future<int> getDuration()async{
+    int result= await player.getDuration();
+    return result;
+  }
+  void getProgress(){
+      player.onAudioPositionChanged.forEach((element) { 
+      progress =  element;
+      notifyListeners();
+     });
+  }
+  dynamic getPosition()async{
+    int result = await player.getCurrentPosition();
+    return result;
   }
 }
