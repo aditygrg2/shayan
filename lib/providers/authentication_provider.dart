@@ -41,6 +41,9 @@ class AuthenticationProvider extends ChangeNotifier {
           {
             'name': name,
             'email': email,
+            'healthState': 'NA',
+            'questionNumber':-1,
+            'formStarted': false
           },
         );
       }
