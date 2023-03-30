@@ -61,6 +61,7 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     var id = FirebaseAuth.instance.currentUser?.uid;
+    print(id);
     if (once) {
       data();
       once = false;
@@ -124,7 +125,7 @@ class _HomeBodyState extends State<HomeBody> {
                         child: Column(
                           children: [
                             HomeScreenText(
-                              text: 'Start your journey',
+                              text: 'Start Your Journey',
                             ),
                             SizedBox(
                               height: 20,
@@ -192,7 +193,7 @@ class _HomeBodyState extends State<HomeBody> {
                           ],
                         ),
                       )
-                    : WhatsNew(),
+                    : isSS! ? WhatsNew() : Container(),
                 WatchComponent(),
                 MusicSection(),
               ],

@@ -38,21 +38,23 @@ class _WatchComponentState extends State<WatchComponent> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Container(
+                  width: 70,
+                  height: 70,
+                  child: Image.asset('assets/watch.png'),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
-                      child: Image.asset('assets/watch.png'),
-                    ),
-                    Container(
-                      child: Expanded(
-                        child: Text(
-                          'Make Sleep Tracking Simple',
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
+                      child: Text(
+                        'Make Sleep Tracking Simple',
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(
