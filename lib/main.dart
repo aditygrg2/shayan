@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/chart_provider.dart';
@@ -58,8 +59,12 @@ import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(Main());
-
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  runApp(Main());
+}
 class Main extends StatelessWidget {
   
   @override

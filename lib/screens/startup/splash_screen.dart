@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_drawer/bottom_drawer.dart';
+import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
@@ -14,7 +15,7 @@ class SplashScreen extends StatelessWidget {
         alignment: AlignmentDirectional.center,
         children: [
           Positioned(
-            top: MediaQuery.of(context).size.height/2-200,
+            top: MediaQuery.of(context).size.height / 2 - 200,
             child: Container(
               child: Column(
                 children: [
@@ -29,11 +30,12 @@ class SplashScreen extends StatelessWidget {
                   Container(
                     child: Text(
                       "App Name",
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width-20,
+                    width: MediaQuery.of(context).size.width - 20,
                     padding: EdgeInsets.all(10),
                     child: Text(
                       "Sleep related app tagline will be placed here only",
@@ -48,51 +50,72 @@ class SplashScreen extends StatelessWidget {
               left: 0,
               width: 80,
               child: Container(
-                child: Image.asset("assets/ellipse_splash_screen.png"),
+                child: Image.asset("assets/ellipse_splash_screen_left.png"),
               )),
           Positioned(
             right: 0,
             width: 140,
             top: 0,
             child: Container(
-              child: Image.asset("assets/ellipse_splash_screen_2.png"),
+              child: Image.asset("assets/ellipse_splash_screen_right.png"),
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).padding.top+5,
+            right: 25,
+            child: GestureDetector(
+              onTap: (){
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
+              },
+              child: Container(
+                child: Text("Skip",style: TextStyle(fontSize: 20),),
+              ),
             ),
           ),
           BottomDrawer(
-              header: Container(
-                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+            color: Color.fromARGB(255, 234, 229, 229),
+            header: Container(
+              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+              width: double.infinity,
+              child: Center(
+                  child: Container(
                 width: double.infinity,
-                child: Center(
-                    child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  height: 2,
-                  child: Text(""),
-                  decoration: BoxDecoration(color: Colors.grey),
-                )),
-              ),
-              body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 80,vertical: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    ElevatedButtonWithoutIcon(
-                        text: "Login",
-                        onPressedButton: () {
-                          Navigator.of(context)
-                              .pushNamed(LoginScreen.routeName);
-                        }),
-                    ElevatedButtonWithoutIcon(
-                      text: "Sign Up",
-                      onPressedButton: () {
+                alignment: Alignment.center,
+                height: 2,
+                child: Text(""),
+                decoration: BoxDecoration(color: Colors.black),
+              )),
+            ),
+            body: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("Login",style: Theme.of(context).textTheme.headlineSmall,),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(LoginScreen.routeName);
+                      }),
+                  ElevatedButton(
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text("SignUp",style: Theme.of(context).textTheme.headlineSmall,),
+                      ),
+                      onPressed: () {
                         Navigator.of(context).pushNamed(SignupScreen.routeName);
-                      },
-                    ),
-                  ],
-                ),
+                      }),
+                ],
               ),
-              headerHeight: 32,
-              drawerHeight: 150,boxShadow: [BoxShadow(color: Colors.grey)],)
+            ),
+            headerHeight: 29,
+            drawerHeight: 150,
+            boxShadow: [BoxShadow(color: Colors.grey)],
+          )
         ],
       ),
     );
