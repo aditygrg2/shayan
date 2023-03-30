@@ -6,11 +6,12 @@ import 'package:provider/provider.dart';
 
 class MentalExerciseSolution extends StatelessWidget {
   static String routeName = '/mental-exercise-solution';
-  String title = 'Progressive Muscle Relaxation';
   @override
   Widget build(BuildContext context) {
+    final args=ModalRoute.of(context)?.settings.arguments;
+
     final solution =
-        Provider.of<MentalSolutionProvider>(context).getSolution(title);
+        Provider.of<MentalSolutionProvider>(context).getSolution(args as String);
     // get title  from routes
     return Scaffold(
       body: ListView(
@@ -35,7 +36,7 @@ class MentalExerciseSolution extends StatelessWidget {
                           width: MediaQuery.of(context).size.width - 60,
                           alignment: Alignment.center,
                           child: Text(
-                            title,
+                            args.toString(),
                             style: TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
@@ -55,7 +56,7 @@ class MentalExerciseSolution extends StatelessWidget {
                         Container(
                           width: MediaQuery.of(context).size.width - 150,
                           height: 300,
-                          child: Image.network(
+                          child: Image.asset(
                             solution['image'],
                             fit: BoxFit.cover,
                           ),
@@ -78,7 +79,7 @@ class MentalExerciseSolution extends StatelessWidget {
                       ],
                     ),
                   ),
-                  AudioPlayerWithSlider("assets/music_therapy_joyful_tune.mp3"),
+                  AudioPlayerWithSlider(solution['audio']),
                 ],
               )),
         ],
