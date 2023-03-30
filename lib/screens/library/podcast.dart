@@ -9,39 +9,37 @@ class Podcast extends StatelessWidget {
   static String routeName = "/podcast";
   final _musicData = [
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':
-          'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'Get Sleepy',
+      'subHeading': 'Want to hear a story to get Sleepy?Use GetSleepy.',
+      'src': 'https://getsleepy.simplecast.com/',
     },
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':
-          'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'Sleep With Me',
+      'subHeading':
+          'Insomnia? Can\'t fall asleep? Mind racing at night? Worries keeping you awake? Watch this podcast and see the results.',
+      'src': 'https://soundcloud.com/sleepwithmepodcast',
     },
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':
-          'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'Sleep Meditation Podcast',
+      'subHeading': 'Hear Relaxing Sleep Sounds To improve your sleep.',
+      'src': 'https://open.spotify.com/show/0OqwG23cqvPundxNPArv5Z',
     },
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':
-          'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'The Infinite Monkey Cage',
+      'subHeading': 'Get a deep knowledge about insomnia and sleep sciene.',
+      'src': 'https://www.bbc.co.uk/programmes/b07knqxy',
     },
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':
-          'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'Slow Radio',
+      'subHeading':
+          'Want to fall in love with nature along with improved sleep quality? Slow Radio is best for you.',
+      'src': 'https://www.bbc.co.uk/programmes/p05k5bq0/episodes/downloads',
     },
     {
-      'heading': 'River Flow',
-      'subHeading': 'calm, soothing music',
-      'src':'https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg',
+      'heading': 'Tracks to Relax',
+      'subHeading': 'Watch weekly Guided Meditations for napping and sleeping.',
+      'src':
+          'https://open.spotify.com/show/75BvaaxemjYBSLP03xpm3m?si=8fpsmnAYRQyEjRtO68Z5mA&nd=1',
     },
   ];
   @override
@@ -58,21 +56,28 @@ class Podcast extends StatelessWidget {
           Container(
             // padding: EdgeInsets.symmetric(horizontal: 10),
             child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 2 / 2,
-                  ),
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  padding: EdgeInsets.all(10),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(onTap: (){
-                      Navigator.of(context).pushNamed(PodcastScreenPlay.routeName);
-                    },child: LibraryCard(heading: _musicData[index]['heading'],src: _musicData[index]['src'],subHeading: _musicData[index]['subHeading']));
-                  },
-                  itemCount: _musicData.length,),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 2 / 2,
+              ),
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.all(10),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed(PodcastScreenPlay.routeName);
+                    },
+                    child: LibraryCard(
+                        heading: _musicData[index]['heading'],
+                        src: _musicData[index]['src'],
+                        subHeading: _musicData[index]['subHeading']));
+              },
+              itemCount: _musicData.length,
+            ),
           ),
         ],
       ),

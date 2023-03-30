@@ -188,6 +188,10 @@ flutter:
     - assets/mental_exercises_4.png
     - assets/mental_exercises_5.png
     - assets/data.gif
+    - assets/slow_radio_podcast.jpg
+    - assets/mantra_1.png
+    - assets/mantra_2.png
+    - assets/mantra_3.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
