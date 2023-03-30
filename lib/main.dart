@@ -15,6 +15,7 @@ import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
+import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
@@ -179,10 +180,13 @@ class Main extends StatelessWidget {
               },
             ),
             ChangeNotifierProvider(
-                create: (context) {
-                  return SleepElements();
-                },
-            )
+              create: (context) {
+                return SleepReportDataProvider();
+              },
+            ),
+            ChangeNotifierProvider(create: (context){
+              return SleepElements();
+            })
           ],
           child: MaterialApp(
             title: 'Night_GSChallenge',

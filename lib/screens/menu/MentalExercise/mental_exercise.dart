@@ -49,6 +49,7 @@ class MentalExercise extends StatelessWidget {
   static String routeName = '/mental-exercise';
   @override
   Widget build(BuildContext context) {
+    var widthi = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(children: [
         TopRow(
@@ -66,12 +67,49 @@ class MentalExercise extends StatelessWidget {
               Container(
                 child: Column(children: [
                   ...options.map((card) {
-                    return TmbDescriptionCards(
-                      title: card['title'],
-                      subtitle: card['subtitle'],
-                      image: card['image'],
-                      route: card['route'],
-                    );
+                    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).pushNamed(card['route'] as String);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).canvasColor,
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          )
+        ),
+        width: double.infinity,
+        margin: EdgeInsets.all(15),
+        padding: EdgeInsets.all(15),
+        child: Row(
+          children: [
+            Container(
+              width: widthi * 0.5,
+              padding: EdgeInsets.only(left: 20, right: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    card['title'].toString(),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    card['subtitle'].toString(),
+                    style: Theme.of(context).textTheme.titleMedium,
+                  )
+                ],
+              ),
+            ),
+            Expanded(child: Image.asset(card['image'].toString())),
+          ],
+        ),
+      ),
+    );
                   }).toList(),
                   SizedBox(
                     height: 50,

@@ -200,10 +200,9 @@ class SleepDiseaseProvider extends ChangeNotifier{
         if(isDisease(querySnapshot.get("answer"), index, 2)){
           insomia++;
         }
-        var date=DateTime.now();
-        FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").get().then((DocumentSnapshot value){
+        FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc(getId()).get().then((DocumentSnapshot value){
           if(value.exists){     
-            FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").update({
+            FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc(getId()).update({
               "apnea":apnea + value.get("apnea"),
               "insomia":insomia+ value.get("insomia"),
               "sleep_deprivation":sleep_deprivation+value.get("sleep_deprivation"),
@@ -213,7 +212,7 @@ class SleepDiseaseProvider extends ChangeNotifier{
             } );
           }else{
 
-          FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").set({
+          FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc(getId()).set({
             "apnea":apnea,
             "insomia":insomia,
             "sleep_deprivation":sleep_deprivation,

@@ -10,6 +10,7 @@ import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report.dart';
+import 'package:night_gschallenge/widgets/sleep_screen/sleep_repot_analysis.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/sleep_screen/sleep_score_card.dart';
 
@@ -103,8 +104,19 @@ class _MySleepScreenState extends State<MySleepScreen> {
                 height: 50,
               )
             ],
-          )
-
+          ),
+        ElevatedButtonWithoutIcon(
+          text: "get Your Sleep Report",
+          onPressedButton: () {
+            showModalBottomSheet(
+              context: context,
+              backgroundColor: Colors.transparent,
+              builder: (context) {
+                return SleepReportAnalysis();
+              },
+            );
+          },
+        )
         // MySleepReport()
       ],
     );
