@@ -7,9 +7,9 @@ import 'package:intl/intl.dart';
 import 'package:night_gschallenge/widgets/UI/block_cards.dart';
 
 class SleepScore extends StatefulWidget {
-  double? sleepscore;
+  int? sleepscore;
 
-  SleepScore({this.sleepscore = 50.0});
+  SleepScore({this.sleepscore = 50});
 
   @override
   State<SleepScore> createState() => _SleepScoreState();

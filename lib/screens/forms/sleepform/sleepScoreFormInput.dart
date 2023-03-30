@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/time_boxes.dart';
+import 'package:provider/provider.dart';
 
 class SleepScoreFormInput extends StatefulWidget {
   String keya;
@@ -11,9 +13,18 @@ class SleepScoreFormInput extends StatefulWidget {
   InputTypes? type;
   Function? onSubmit;
   Function? value;
+  TimeOfDay? initialValue;
+  int? initialText;
 
   SleepScoreFormInput(
-      {this.keya = '2', this.question, this.type, this.onSubmit, this.value});
+      {this.keya = '2',
+      this.question,
+      this.type,
+      this.onSubmit,
+      this.value,
+      this.initialValue,
+      this.initialText
+      });
 
   @override
   State<SleepScoreFormInput> createState() => _SleepScoreFormInputState();
@@ -21,11 +32,31 @@ class SleepScoreFormInput extends StatefulWidget {
 
 class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
   TextEditingController _controller = TextEditingController();
-  String? valueSelected = '';
+  TextEditingController _controller2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TimeOfDay startDate = TimeOfDay.now();
+    num? something = widget.initialValue?.hour ?? -1;
+    String? hour = something != -1
+        ? something! > 12
+            ? (something - 12).toString()
+            : widget.initialValue?.hour.toString()
+        : '';
+    String? minutes =
+        something != -1 ? widget.initialValue?.minute.toString() ?? '' : '';
+    String? mode = something != -1
+        ? something > 12
+            ? 'PM'
+            : 'AM'
+        : '';
+    String? valueSelected = '$hour:$minutes $mode';
 
+    Future.delayed(Duration.zero, () async {
+      _controller.text = something == -1 ? '' : valueSelected;
+      _controller2.text = widget.initialText.toString() == '-1' ? '' : widget.initialText.toString();
+    });
+
+    TimeOfDay startDate = TimeOfDay.now();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,7 +74,7 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
             key: ValueKey(widget.keya),
             onTap: () => showTimePicker(
               context: context,
-              initialTime: startDate,
+              initialTime: TimeOfDay.now(),
             ).then((pickedDate) {
               num? something = pickedDate?.hour;
               String? hour = something! > 12
@@ -71,7 +102,7 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
         if (widget.type == InputTypes.NumberInput)
           TextFormField(
             key: ValueKey(widget.keya),
-            controller: _controller,
+            controller: _controller2,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
