@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
@@ -74,8 +75,22 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
           if (FirebaseAuth.instance.currentUser == null)
-            Text(
-              'Please sign in to see your profile',
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(padding: const EdgeInsets.all(10),child: Text("Please Login/SignUp",style: Theme.of(context).textTheme.headlineLarge,),),
+                  SizedBox(height: 10,),
+                ElevatedButtonWithoutIcon(text: "Login",onPressedButton: (){
+                    Navigator.of(context).popUntil((route) => route=="");
+                    Navigator.of(context).pushNamed(SplashScreen.routeName);
+                  },)
+                ],
+              ),
             ),
           if (FirebaseAuth.instance.currentUser != null)
             Column(
@@ -90,7 +105,8 @@ class ProfileScreen extends StatelessWidget {
                     onPressedButton: () {
                       FirebaseAuth.instance.signOut();
                       Navigator.of(context)
-                          .popAndPushNamed(HomeScreen.routeName);
+                          .popUntil((route) => route=="");
+                      Navigator.of(context).pushNamed(SplashScreen.routeName);
                     },
                   ),
                 ),

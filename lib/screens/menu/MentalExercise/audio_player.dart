@@ -41,13 +41,6 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
           height: 20,
         ),
         Container(
-          width: double.infinity,
-          child: Text(
-            "${(diff.inSeconds / 60).ceil()}:${diff.inSeconds % 60}",
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Container(
             width: MediaQuery.of(context).size.width - 15,
             child: LinearProgressIndicator(
               value: getTime(audioProvider.progress) /
@@ -55,9 +48,19 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                       ? 1
                       : getTime(audioProvider.duration)),
               minHeight: 5,
-              semanticsLabel: "cdfc",
-              semanticsValue: "f",
             )),
+        SizedBox(height: 10,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Container(
+              child: Text(
+                "${(diff.inSeconds / 60).ceil()}:${diff.inSeconds % 60}",
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
+        ),
         SizedBox(
           height: 20,
         ),

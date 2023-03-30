@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
@@ -8,7 +7,6 @@ import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_
 import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
-import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './menu.dart';
 import './text_to_speech.dart/text_to_speech.dart';
@@ -63,11 +61,6 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/worry_list.png',
       'routes': Worrylist.routeName
     },
-    {
-      'text': 'Login/Signup',
-      'imagePath': 'assets/login_menu.png',
-      'routes': SplashScreen.routeName,
-    }
   ];
   @override
   void navigate(BuildContext context, int index) {
@@ -91,26 +84,13 @@ class MenuScreen extends StatelessWidget {
             ),
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
-              if (FirebaseAuth.instance.currentUser != null) {
-                if (items[index]['text'] != 'Login/Signup') {
-                  return GestureDetector(
-                    child: Menu(
-                      text: items[index]['text'],
-                      imagePath: items[index]['imagePath'],
-                    ),
-                    onTap: () => navigate(context, index),
-                  );
-                }
-              }
-              else{
-                return GestureDetector(
-                    child: Menu(
-                      text: items[index]['text'],
-                      imagePath: items[index]['imagePath'],
-                    ),
-                    onTap: () => navigate(context, index),
-                  );
-              }
+              return GestureDetector(
+                child: Menu(
+                  text: items[index]['text'],
+                  imagePath: items[index]['imagePath'],
+                ),
+                onTap: () => navigate(context, index),
+              );
             },
             itemCount: items.length,
           ),

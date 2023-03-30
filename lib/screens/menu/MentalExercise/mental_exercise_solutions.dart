@@ -46,6 +46,7 @@ class MentalExerciseSolution extends StatelessWidget {
                           height: 20,
                         ),
                         Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                           alignment: Alignment.center,
                           child: Text(
                             solution['subtitle'],
@@ -55,13 +56,14 @@ class MentalExerciseSolution extends StatelessWidget {
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width - 150,
-                          height: 300,
+                          height: 250,
                           child: Image.asset(
                             solution['image'],
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         ),
                         Container(
+                          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 8),
                           child: Text(
                             solution['description'],
                             textAlign: TextAlign.center,

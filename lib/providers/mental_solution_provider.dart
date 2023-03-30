@@ -43,7 +43,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'MEDITATION',
       'subtitle':
           'A mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
-      'image': 'assets/mental_exercise_3.png',
+      'image': 'assets/mental_exercises_3.png',
       'audio':'assets/meditation.mp3',
       'description':
           'Meditation is a technique that has been practiced for thousands of years, primarily for its mental, emotional, and spiritual benefits. It involves focusing one\'s attention on a particular object, thought, or activity to calm the mind and promote relaxation.',
@@ -60,7 +60,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'AUTOGENIC RELAXATION',
       'subtitle':
           'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
-      'image': 'assets/mental_exercise_2.png',
+      'image': 'assets/mental_exercises_2.png',
       'audio':"assets/autogencic_relaxation.mp3",
       'description':
           'It involves a series of self-induced sensations of warmth, heaviness, and relaxation in different parts of the body, which can promote a deep state of relaxation and reduce stress and anxiety.It is a non-invasive and self-directed technique that can be practiced almost anywhere, making it a popular choice for anyone looking to manage stress and promote relaxation in their daily life.',
