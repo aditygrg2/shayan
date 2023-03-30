@@ -65,12 +65,20 @@ class ProfileScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor,
                       borderRadius: const BorderRadius.only(
-                         
                           bottomLeft: Radius.circular(800),
                           bottomRight: Radius.circular(800))),
                 ),
               ),
-              Positioned(top: 10,left: MediaQuery.of(context).size.width/2-90,child: Container(child: const Icon(Icons.person_outline_sharp,color: Colors.black,size: 170,),))
+              Positioned(
+                  top: 10,
+                  left: MediaQuery.of(context).size.width / 2 - 90,
+                  child: Container(
+                    child: const Icon(
+                      Icons.person_outline_sharp,
+                      color: Colors.black,
+                      size: 170,
+                    ),
+                  ))
             ],
           ),
           if (FirebaseAuth.instance.currentUser == null)
@@ -82,12 +90,25 @@ class ProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(padding: const EdgeInsets.all(10),child: Text("Please Login/SignUp",style: Theme.of(context).textTheme.headlineLarge,),),
-                  SizedBox(height: 10,),
-                ElevatedButtonWithoutIcon(text: "Login",onPressedButton: (){
-                    Navigator.of(context).popUntil((route) => route=="");
-                    Navigator.of(context).pushNamed(SplashScreen.routeName);
-                  },)
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      "Please Login/SignUp",
+                      style: Theme.of(context).textTheme.headlineLarge,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButtonWithoutIcon(
+                    text: "Login",
+                    onPressedButton: () {
+                      Navigator.of(context).popUntil(
+                        (route) => route == "",
+                      );
+                      Navigator.of(context).pushNamed(SplashScreen.routeName);
+                    },
+                  )
                 ],
               ),
             ),
@@ -103,8 +124,7 @@ class ProfileScreen extends StatelessWidget {
                     text: 'Logout',
                     onPressedButton: () {
                       FirebaseAuth.instance.signOut();
-                      Navigator.of(context)
-                          .popUntil((route) => route=="");
+                      Navigator.of(context).popUntil((route) => route == "");
                       Navigator.of(context).pushNamed(SplashScreen.routeName);
                     },
                   ),

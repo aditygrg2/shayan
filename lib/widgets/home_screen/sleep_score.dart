@@ -24,7 +24,7 @@ class _SleepScoreState extends State<SleepScore> {
         horizontal: 50,
         vertical: 20,
       ),
-      backgroundColor: Theme.of(context).canvasColor,
+      backgroundColor: Theme.of(context).cardColor,
       child: Column(
         children: [
           Text(
@@ -43,8 +43,8 @@ class _SleepScoreState extends State<SleepScore> {
               ),
               linearGradient: LinearGradient(
                 colors: [
-                  Theme.of(context).buttonColor,
-                  Color.fromRGBO(247, 219, 198, 2)
+                  Theme.of(context).canvasColor,
+                  Theme.of(context).primaryColor,
                 ],
               ),
               backgroundColor: Colors.white,

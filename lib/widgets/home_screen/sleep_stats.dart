@@ -62,8 +62,8 @@ class WhatsNew extends StatefulWidget {
 class _WhatsNewState extends State<WhatsNew> {
   @override
   Widget build(BuildContext context) {
-    int? tst = Provider.of<SleepElements>(context, listen: false).TST;
-    int? SE = Provider.of<SleepElements>(context, listen: false).SE;
+    int? tst = Provider.of<SleepElements>(context, listen: false).totalSleepTime;
+    int? SE = Provider.of<SleepElements>(context, listen: false).sleepEfficiency;
     return Container(
       margin: EdgeInsets.only(
         top: 30,
@@ -78,7 +78,7 @@ class _WhatsNewState extends State<WhatsNew> {
                 margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
                 child: PropertyCard(
                   color: Theme.of(context).splashColor,
-                  score: tst == null ? 'Data not available' : tst.toString(),
+                  score: tst == null ? 'Data not available' : '${((int.parse(tst.toString())) / 60).round()} hr ${(int.parse(tst.toString())) % 60} min',
                   title: 'Total Sleep Time',
                 ),
               ),
@@ -86,7 +86,7 @@ class _WhatsNewState extends State<WhatsNew> {
                 margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
                 child: PropertyCard(
                   color: Theme.of(context).splashColor,
-                  score: SE == null ? 'Data not available' : SE.toString(),
+                  score: SE == null ? 'Data not available' : '${SE.toString()}%',
                   title: 'Sleep Efficiency',
                 ),
               ),

@@ -85,9 +85,7 @@ class SleepElements extends ChangeNotifier {
             .doc(id)
             .get()
             .then((value) {
-          if (value != null) {
-            data = value;
-          }
+          data = value;
         });
 
         print(sleepScore);

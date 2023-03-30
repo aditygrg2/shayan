@@ -196,7 +196,8 @@ class Main extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white,
               canvasColor: Color.fromRGBO(251, 145, 92, 1),
               accentColor: Color.fromRGBO(251, 145, 92, 0.85),
-              fontFamily: 'JejuGothic',
+              cardColor: Color.fromARGB(153, 248, 222, 55),
+              fontFamily: 'OpenSans',
               buttonColor: Color.fromRGBO(247, 219, 198, 1),
               splashColor: Color.fromRGBO(251, 167, 14, 0.5),
               elevatedButtonTheme: ElevatedButtonThemeData(
