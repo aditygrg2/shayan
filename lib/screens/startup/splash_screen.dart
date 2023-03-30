@@ -72,7 +72,7 @@ class SplashScreen extends StatelessWidget {
                 )),
               ),
               body: Container(
-                padding: EdgeInsets.symmetric(horizontal: 80),
+                padding: EdgeInsets.symmetric(horizontal: 80,vertical: 8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -91,7 +91,7 @@ class SplashScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              headerHeight: 20,
+              headerHeight: 28,
               drawerHeight: 150)
         ],
       ),

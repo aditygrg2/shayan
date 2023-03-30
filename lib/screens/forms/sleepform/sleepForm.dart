@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepScoreFormInput.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
@@ -9,6 +10,7 @@ import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/watchstatus.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
+import 'package:provider/provider.dart';
 
 class SleepForm extends StatefulWidget {
   static const routeName = 'sleepform';
@@ -47,30 +49,121 @@ class _SleepFormState extends State<SleepForm> {
 
   void _submitHandler() async {
     String? id = FirebaseAuth.instance.currentUser?.uid;
+
     setState(() {
       loading = true;
     });
 
-    DateTime wakeUpTime = DateFormat.jm().parse(value5!);
-    DateTime RealWakeUpTime = DateFormat.jm().parse(value6!);
-    DateTime RealSleepingTime = DateFormat.jm()
-        .parse(value1!)
-        .add(Duration(minutes: int.parse(value2!)));
+    QuerySnapshot dataForLength = await FirebaseFirestore.instance
+        .collection('sleepData')
+        .doc(id)
+        .collection('dates')
+        .get();
+    List<DocumentSnapshot> _myDocCount = dataForLength.docs;
+    int length = _myDocCount.length;
 
-    int TST =
-        RealSleepingTime.difference(wakeUpTime).inMinutes - int.parse(value4!);
-    int WFN = int.parse(value3!);
-    int SL = int.parse(value2!);
-    int WASO = 7 -
-        TST; // can be negative, more sleep than required. Do not deduct points.
-    int WASF = RealWakeUpTime.difference(wakeUpTime).inMinutes;
+    var sleepElements = Provider.of<SleepElements>(context, listen: false);
+    sleepElements.getData(
+        value1, value2, value3, value4, value5, value6, length);
 
     await FirebaseFirestore.instance
         .collection('sleepData')
         .doc(id)
         .collection('dates')
         .doc(valueSelected.split(' ')[0])
-        .set({'TST': TST, 'WFN': WFN, 'SL': SL, 'WASO': WASO, 'WASF': WASF});
+        .set({
+      'TST': sleepElements.TST,
+      'WFN': sleepElements.WFN,
+      'SL': sleepElements.SL,
+      'WASO': sleepElements.WASO,
+      'WASF': sleepElements.WASF,
+      'SE': sleepElements.SE
+    });
+
+    // This constitutes average data.
+    if (length > 1) {
+      final prevState = await FirebaseFirestore.instance
+          .collection('sleepData')
+          .doc(id)
+          .get();
+      await FirebaseFirestore.instance.collection('sleepData').doc(id).set({
+        'TST': ((sleepElements.TST! + prevState['TST']) / (length + 1)),
+        'WFN': (sleepElements.WFN! + prevState['WFN']) / (length + 1),
+        'SL': (sleepElements.SL! + prevState['SL']) / (length + 1),
+        'WASO': (sleepElements.WASO! + prevState['WASO']) / (length + 1),
+        'WASF': (sleepElements.WASF! + prevState['WASF']) / (length + 1),
+        'SE': (sleepElements.WASO! + prevState['WASO']) / (length + 1),
+      });
+    } else if (length <= 1) {
+      await FirebaseFirestore.instance.collection('sleepData').doc(id).set({
+        'TST': sleepElements.TST,
+        'WFN': sleepElements.WFN,
+        'SL': sleepElements.SL,
+        'WASO': sleepElements.WASO,
+        'WASF': sleepElements.WASF,
+        'SE': sleepElements.SE
+      });
+    }
+
+    // This is not supporting average currently, like if same date data is changed, the average needs to remove the previous data.
+    // Can be done later.
+    final value = await
+        FirebaseFirestore.instance.collection('sleepData').doc(id).get();
+
+    int sleepScore = 0;
+
+    if(value['TST']>8){
+      sleepScore += 35;
+    }
+    else{
+      sleepScore+= (((value['TST'] as int)/8) * 35).toInt();
+    }
+
+    if(value['SL']<10){
+      sleepScore += 20;
+    }
+    else{
+      var increment = value['SL'] - 10;
+      sleepScore += (20-((increment as int)/20)).toInt();
+    }
+
+    int sleepCycles = ((value['TST'] as int)/90).toInt();
+    if(sleepCycles >= 5){
+      sleepScore += 20;
+    }
+    else{
+      if(sleepCycles>=0){
+        sleepScore += sleepCycles*5;
+      }
+    }
+
+    if(value['WASO']<0){
+      sleepScore += 10;
+    }
+    else{
+      if(value['WASO']<100){
+        sleepScore += (10 - (value['WASO']/10)).toInt();
+      }
+    }
+
+    if(value['WASO']<0){
+      sleepScore += 10;
+    }
+    else{
+      if(value['WASO']<100){
+        sleepScore += (10 - (value['WASO']/10)).toInt();
+      }
+    }
+
+    if(value['WFN']<2){
+      sleepScore += 5;
+    }
+
+    await FirebaseFirestore.instance.collection('sleepData').doc(id).update(
+      {
+        'SS':sleepScore
+      }
+    );
 
     Navigator.of(context).pop();
   }
@@ -160,18 +253,20 @@ class _SleepFormState extends State<SleepForm> {
                         onPressed: () {
                           showDatePicker(
                             context: context,
-                            initialDate: DateTime(2000, 1, 1),
-                            firstDate: DateTime(1900, 1, 1),
-                            lastDate: DateTime.now().subtract(
-                              Duration(days: 18 * 365),
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now().subtract(
+                              Duration(days: 30),
                             ),
+                            lastDate: DateTime.now(),
                           ).then(
                             (value) {
-                              setState(
-                                () {
-                                  valueSelected = value.toString();
-                                },
-                              );
+                              if(value!=null){
+                                setState(
+                                  () {
+                                    valueSelected = value.toString();
+                                  },
+                                );
+                              }
                             },
                           );
                         },
