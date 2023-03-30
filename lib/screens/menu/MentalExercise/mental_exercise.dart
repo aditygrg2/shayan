@@ -49,6 +49,7 @@ class MentalExercise extends StatelessWidget {
   static String routeName = '/mental-exercise';
   @override
   Widget build(BuildContext context) {
+    var widthi = MediaQuery.of(context).size.width;
     return Scaffold(
       body: ListView(children: [
         TopRow(
@@ -68,7 +69,7 @@ class MentalExercise extends StatelessWidget {
                   ...options.map((card) {
                     return GestureDetector(
       onTap: (){
-        Navigator.of(context).pushNamed(card['route']);
+        Navigator.of(context).pushNamed(card['route'] as String);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -91,20 +92,20 @@ class MentalExercise extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title!,
+                    card['title'].toString(),
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Text(
-                    subtitle!,
+                    card['subtitle'].toString(),
                     style: Theme.of(context).textTheme.titleMedium,
                   )
                 ],
               ),
             ),
-            Expanded(child: Image.asset(image!)),
+            Expanded(child: Image.asset(card['image'].toString())),
           ],
         ),
       ),
