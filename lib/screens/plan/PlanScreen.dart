@@ -1,19 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
 import 'package:night_gschallenge/screens/plan/timeline_card.dart';
+import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/widgets/sleep_screen/sleep_repot_analysis.dart';
+import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_analysis.dart';
 import '../../widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/UI/home_screen_heading.dart';
 
 class PlanScreen extends StatefulWidget {
   static const routeName = '/plan';
@@ -95,7 +92,7 @@ class _PlanScreenState extends State<PlanScreen> {
                         height: 20,
                       ),
                       const Text(
-                        'Please complete a questionnaire so we can create your personalized plan',
+                        'Please complete a questionnaire so that we can create your personalized plan',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
@@ -120,24 +117,6 @@ class _PlanScreenState extends State<PlanScreen> {
                       HomeScreenText(
                         text: "My Plan",
                       ),
-                      Container(
-                        width: 180,
-                        height: 180,
-                        child: Image.asset(
-                          "assets/my_plan.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: Text(
-                          'Our smart mix to shape your plan',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
                       SizedBox(
                         height: 15,
                       ),
@@ -146,23 +125,33 @@ class _PlanScreenState extends State<PlanScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  child: Text(
-                                    "We'll support you on your way to more restful, natural sleep, which will lead you to be more energetic and alert. Follow your dynamic timeline schedule for step-by-step guidance.",
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
+                                  width: 180,
+                                  height: 180,
+                                  child: Image.asset(
+                                    "assets/my_plan.png",
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 18,
+                                  height: 10,
                                 ),
                                 Container(
                                   child: Text(
-                                    "We promise to ease the change and support you with all we can",
-                                    textAlign: TextAlign.center,
+                                    'Let\'s make your dream weaver plan',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .headlineSmall,
+                                        .headlineLarge,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  child: Text(
+                                    "Craft your perfect sleep with a personalized timeline.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: 12),
                                   ),
                                 ),
                                 SizedBox(
@@ -338,36 +327,43 @@ class _PlanScreenState extends State<PlanScreen> {
                                     .where((element) => element != null)
                                     .toList() as List<Widget>),
                                 Container(
-                                  padding: EdgeInsets.all(10),
-                                  child: Text(
-                                    "There's more in the Store",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.all(10),
-                                  child: Text(
-                                    "Share your sleep experience, daily habits and overall lifestyle patterns. we’ll match you up with training items which specifically suit your needs",
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                Center(
-                                  child: ElevatedButtonWithoutIcon(
-                                    onPressedButton: () {
-                                      showModalBottomSheet(
-                                        context: context,
-                                        backgroundColor: Colors.transparent,
-                                        builder: (context) {
-                                          return SleepReportAnalysis();
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ListTileIconCreators(
+                                          title:
+                                              'Fetch your sleep report again',
+                                          icon: Icons.search,
+                                          onTap: () async {
+                                            await FirebaseFirestore.instance
+                                                .collection('users')
+                                                .doc(id)
+                                                .update({
+                                              'questionNumber': -1,
+                                            });
+                                            Navigator.of(context)
+                                                .pushNamed(MainForm.routeName);
+                                          }),
+                                      ListTileIconCreators(
+                                        title:
+                                            'Check out your latest sleep report',
+                                        onTap: () {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            backgroundColor: Colors.transparent,
+                                            builder: (context) {
+                                              return SleepReportAnalysis();
+                                            },
+                                          );
                                         },
-                                      );
-                                    },
-                                    text: "get your Sleep Report",
+                                        icon: Icons.change_circle,
+                                      )
+                                    ],
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 50,
                                 )
                               ],
                             ),

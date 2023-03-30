@@ -62,19 +62,20 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                           AxisTitles(sideTitles: SideTitles(showTitles: false)),
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
-                            reservedSize: 30,
-                            getTitlesWidget: (value, meta) {
-                              ;
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Text(
-                                  chartProvider.getChartData.firstWhere((ele) {
-                                    return ele.id == value;
-                                  }).name,
-                                ),
-                              );
-                            },
-                            showTitles: true),
+                          reservedSize: 30,
+                          getTitlesWidget: (value, meta) {
+                            ;
+                            return Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text(
+                                chartProvider.getChartData.firstWhere((ele) {
+                                  return ele.id == value;
+                                }).name,
+                              ),
+                            );
+                          },
+                          showTitles: true,
+                        ),
                       ),
                     ),
                     maxY: 11,

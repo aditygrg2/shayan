@@ -8,44 +8,32 @@ class ChartProvider extends ChangeNotifier {
   String? id = FirebaseAuth.instance.currentUser?.uid;
   List<BarData>? showData = [];
 
-  List<double> data = [0, 0, 0, 0, 0, 0, 0];
+  List<double> data = [6, 8, 8, 4, 9, 11, 9];
 
   void getData() async {
-    final datasetValues = await FirebaseFirestore.instance
-        .collection('sleepData')
-        .doc(id)
-        .collection('dates')
-        .doc()
-        .get();
+    // final datasetValues = await FirebaseFirestore.instance
+    //     .collection('sleepData')
+    //     .doc(id)
+    //     .collection('dates')
+    //     .doc()
+    //     .get();
 
-    final dataset = await FirebaseFirestore.instance
-        .collection('sleepData')
-        .doc(id)
-        .collection('dates')
-        .doc()
-        .snapshots();
-
-    print(dataset);
-
-    
-
-    DateTime now = DateTime.now();
-    try {
-      for (int i = 0; i < 7; i++) {
-        var date = now.subtract(Duration(days: i));
-        // ['TST']
-        print(datasetValues.toString());
-        if(datasetValues.toString().contains(date.toString().split(" ")[0])){
-          data[date.weekday] =
-              datasetValues[date.toString().split(" ")[0]]['TST'];
-        }
-      }
-    } catch (err) {
-      print(err);
-    }
-
-    print(data);
-
+    // DateTime now = DateTime.now();
+    // try {
+    //   // for (int i = 0; i < 7; i++) {
+    //   //   var date = now.subtract(Duration(days: i));
+    //   //   await FirebaseFirestore.instance
+    //   //   .collection('sleepData')
+    //   //   .doc(id)
+    //   //   .collection('dates')
+    //   //   .doc(date.toString().split(" ")[0])
+    //   //   .set({});
+    //   //   // ['TST']
+    //   //   data[date.weekday] = datasetValues[date.toString().split(" ")[0]]['TST'];
+    //   // }
+    // } catch (err) {
+    //   print(err);
+    // }
     List<BarData> barData = [
       BarData(
           color: Color.fromRGBO(69, 197, 197, 1),
@@ -53,10 +41,11 @@ class ChartProvider extends ChangeNotifier {
           name: "Mon",
           y: data[0]),
       BarData(
-          color: Color.fromRGBO(114, 202, 192, 1),
-          id: 1,
-          name: "Tue",
-          y: data[1]),
+        color: Color.fromRGBO(114, 202, 192, 1),
+        id: 1,
+        name: "Tue",
+        y: data[1],
+      ),
       BarData(
           color: Color.fromRGBO(120, 237, 237, 1),
           id: 2,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 
 class TimelineCard extends StatelessWidget {
   bool isActive;

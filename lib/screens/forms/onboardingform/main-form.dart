@@ -3,7 +3,6 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/providers/form_provider.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';

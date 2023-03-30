@@ -30,6 +30,7 @@ class SleepElements extends ChangeNotifier {
     RealSleepingTime =
         DateFormat.jm().parse(a!).add(Duration(minutes: int.parse(b!)));
     actualBedTime = RealWakeUpTime!.difference(RealSleepingTime!).inMinutes;
+    print(actualBedTime);
     if (actualBedTime! < 0) {
       actualBedTime = actualBedTime! + 24 * 60;
     }

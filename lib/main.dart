@@ -9,7 +9,6 @@ import 'package:night_gschallenge/providers/community_post.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
-import 'package:night_gschallenge/providers/form_provider.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
@@ -153,11 +152,6 @@ class Main extends StatelessWidget {
             ChangeNotifierProvider(
               create: (context) {
                 return AuthenticationProvider();
-              },
-            ),
-            ChangeNotifierProvider(
-              create: (context) {
-                return SleepFormProvider();
               },
             ),
             ChangeNotifierProvider(
