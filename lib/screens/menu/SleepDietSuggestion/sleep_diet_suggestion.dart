@@ -8,26 +8,26 @@ class SleepDietSuggestion extends StatelessWidget {
   List<Map<dynamic, dynamic>> suggestions = [
     {
       'tip':
-          'Avoid having large meals before sleep. Eat the dinner at least 1 to 1.5 hrs before your bedtime',
-      'link': 'https://google.com',
+          'Avoid caffeine based products and alcohol, especially before the bedtime.',
+      'link': 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6292246/',
       'position': false,
     },
     {
-      'tip':
-          'Avoid having large meals before sleep. Eat the dinner at least 1 to 1.5 hrs before your bedtime',
-      'link': 'https://google.com',
+      'tip': 'Drink as much water as you can. Keep yourself hydrated.',
+      'link':
+          'https://www.everydayhealth.com/sleep/how-does-hydration-affect-your-sleep/',
       'position': true,
     },
     {
       'tip':
-          'Avoid having large meals before sleep. Eat the dinner at least 1 to 1.5 hrs before your bedtime',
-      'link': 'https://google.com',
+          'Avoid eating spicy foods before sleep. Eat the dinner at least 1 to 1.5 hrs before your bedtime',
+      'link': 'https://www.nytimes.com/2008/06/17/health/17real.html',
       'position': false,
     },
     {
-      'tip':
-          'Avoid having large meals before sleep. Eat the dinner at least 1 to 1.5 hrs before your bedtime',
-      'link': 'https://google.com',
+      'tip': 'Some eatables that can help you improve your sleep',
+      'link':
+          'https://www.sleepfoundation.org/nutrition/food-and-drink-promote-good-nights-sleep',
       'position': true,
     },
   ];
@@ -35,7 +35,6 @@ class SleepDietSuggestion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-  
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
@@ -69,8 +68,8 @@ class SleepDietSuggestion extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                           color: Color.fromRGBO(143, 227, 221, 1),
-                          border:
-                              Border.all(color: Color.fromRGBO(250, 195, 68, 1)),
+                          border: Border.all(
+                              color: Color.fromRGBO(250, 195, 68, 1)),
                           borderRadius: BorderRadius.circular(10)),
                       child: Text(e['tip']),
                     ),
@@ -96,10 +95,18 @@ class SleepDietSuggestion extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 8),
                       child: Text(e['tip']),
                     ),
-                    IconButton(onPressed: ()async{
+                    IconButton(
+                      onPressed: () async {
                         await launchUrl(Uri.parse(e['link']));
-                    }, icon: Icon(Icons.insert_link_rounded,color: Colors.black,),),
-                    SizedBox(width: 2,)
+                      },
+                      icon: Icon(
+                        Icons.insert_link_rounded,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 2,
+                    )
                   ],
                 );
               }).toList(),
