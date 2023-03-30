@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_view_all.dart';
 import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
@@ -40,7 +41,9 @@ class _MusicSectionState extends State<MusicSection> {
       child: Column(
         children: [
           HomeScreenText(text: 'Music Therapy'),
-          HomeScreenViewAll(),
+          HomeScreenViewAll(onClick: () {
+            Navigator.of(context).pushNamed(MusicGalleryScreen.routeName);
+          },),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
