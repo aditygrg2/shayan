@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+
+class ListTileIconCreators extends StatelessWidget {
+  void Function()? onTap;
+  String? title;
+  IconData? icon;
+  ListTileIconCreators({this.onTap, this.title, this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Center(
+        child: Container(
+          margin: EdgeInsets.all(15),
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          decoration: BoxDecoration(
+            color: Theme.of(context).accentColor,
+            border: Border.all(
+              color: Colors.black,
+              width: 1
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(10),),
+          ),
+          child: ListTile(
+            title: Text(
+              title!,
+            ),
+            leading: Icon(
+              icon!,
+              color: Colors.black,
+              size: 30,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -24,10 +24,10 @@ class StepOne extends StatelessWidget {
           HomeScreenText(
             text: 'Worry List',
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          if (data.length == 0)
+          if (data.isEmpty)
             const Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(
@@ -39,9 +39,12 @@ class StepOne extends StatelessWidget {
             ),
           if (data.length > 0)
             ...data.map((worry) {
-              return Worrycard(
-                worry: worry['worry'],
-                situation: worry['situation'],
+              return Container(
+                padding: const EdgeInsets.all(10),
+                child: Worrycard(
+                  worry: worry['worry'],
+                  situation: worry['situation'],
+                ),
               );
             }),
           Center(
@@ -64,18 +67,18 @@ class StepOne extends StatelessWidget {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
+                            const Text(
                               'Write down your worry here..',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
                             TextField(
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 20,
                               ),
                               maxLines: 3,
@@ -109,7 +112,7 @@ class StepOne extends StatelessWidget {
                                 situation = value;
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
                             Center(
@@ -124,13 +127,14 @@ class StepOne extends StatelessWidget {
                                       'situation': situation,
                                       'notes': [],
                                       'controller': TextEditingController(),
+                                      
                                     },
                                   );
                                   Navigator.of(context).pop();
                                 },
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 50,
                             ),
                           ],
@@ -142,7 +146,7 @@ class StepOne extends StatelessWidget {
               },
             ),
           ),
-          if (data.length > 0)
+          if (data.isNotEmpty)
           Center(
             child: ElevatedButtonWithoutIcon(
               text: 'Continue',

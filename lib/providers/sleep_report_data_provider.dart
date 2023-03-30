@@ -6,8 +6,8 @@ class SleepReportDataProvider extends ChangeNotifier{
   
   Future getDiseaseStats()async{
     return await FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc(getId()).get();
-
   }
+  
   String? getId() {
     return FirebaseAuth.instance.currentUser?.uid;
   }

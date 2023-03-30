@@ -63,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 150,
                   decoration: BoxDecoration(
-                      color: Color.fromRGBO(143, 227, 221, 1),
+                      color: Theme.of(context).canvasColor,
                       borderRadius: BorderRadius.only(
                          
                           bottomLeft: Radius.circular(800),

@@ -24,98 +24,89 @@ class _StepTwoState extends State<StepTwo> {
           back: true,
         ),
         Container(
-          margin: EdgeInsets.all(15),
-          padding: EdgeInsets.all(25),
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(25),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(20),
             ),
             color: Theme.of(context).canvasColor,
           ),
-          child: Column(children: [
-            Text(
-              'Managing Worry',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+          child: Column(
+            children: [
+              const Text(
+                'Managing Worry',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            MenuHeroImage(
-              image: 'assets/worry.gif',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Once you have kept a worry diary for a period of time and have got used to classifying your worries, the next step is to manage your worries. ',
-              style: TextStyle(
-                fontSize: 16,
+              MenuHeroImage(
+                image: 'assets/worry.gif',
               ),
-              textAlign: TextAlign.justify,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              'Can you do something to your worry right now?',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const ListTile(
-              leading: Icon(
-                Icons.check_box,
-                color: Colors.green,
-                size: 50,
+              const Text(
+                'Once you have kept a worry diary for a period of time and have got used to classifying your worries, the next step is to manage your worries. ',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+                textAlign: TextAlign.justify,
               ),
-              title: Text('Yes'),
-              subtitle: Text(
-                'Make an action plan to solve the worry.',
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.close,
-                color: Colors.red,
-                size: 50,
+              const Text(
+                'Can you do something to your worry right now?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                ),
               ),
-              title: Text('No'),
-              subtitle: Text('Use worry time to help let it go.'),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            if(!isWorryTime)
-            Center(
-              child: ElevatedButtonWithoutIcon(
-                text: 'What is worry time?',
-                onPressedButton: (){
-                  setState(() {
-                    isWorryTime = !isWorryTime;
-                  });
-                },
+              const SizedBox(
+                height: 20,
               ),
-            ),
-          ]),
+              const ListTile(
+                leading: Icon(
+                  Icons.check,
+                  color: Colors.green,
+                  size: 50,
+                ),
+                title: Text('Yes'),
+                subtitle: Text(
+                  'Make an action plan to solve the worry.',
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const ListTile(
+                leading: Icon(
+                  Icons.close,
+                  color: Colors.red,
+                  size: 50,
+                ),
+                title: Text('No'),
+                subtitle: Text('Use worry time to help let it go.'),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
         if (isWorryTime)
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(25),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(25),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
               color: Theme.of(context).canvasColor,
             ),
-            child: Column(children: [
+            child: Column(children: const [
               Text(
                 'What is worry time?',
                 style: TextStyle(
@@ -135,6 +126,17 @@ class _StepTwoState extends State<StepTwo> {
               ),
             ]),
           ),
+        if (!isWorryTime)
+          Center(
+            child: ElevatedButtonWithoutIcon(
+              text: 'What is worry time?',
+              onPressedButton: () {
+                setState(() {
+                  isWorryTime = !isWorryTime;
+                });
+              },
+            ),
+          ),
         Center(
           child: ElevatedButtonWithoutIcon(
             text: 'Proceed',
@@ -143,7 +145,7 @@ class _StepTwoState extends State<StepTwo> {
             },
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
       ],

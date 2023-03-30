@@ -4,6 +4,8 @@ import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
+import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -21,11 +23,7 @@ class MeditationTimer extends StatefulWidget {
       'title': 'Default',
       'music': 'assets/default.mp3'
     },
-    {
-      'icon': Icons.forest,
-      'title': 'Forest',
-      'music': 'assets/forest.mp3'
-    },
+    {'icon': Icons.forest, 'title': 'Forest', 'music': 'assets/forest.mp3'},
     {
       'icon': Icons.nightlight,
       'title': 'Summer Night',
@@ -124,7 +122,11 @@ class _MeditationTimerState extends State<MeditationTimer> {
                         decoration: widget.selectedIndex == index
                             ? BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: Colors.grey))
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 2,
+                                ),
+                              )
                             : null,
                         child: GestureDetector(
                           onTap: () {
@@ -154,7 +156,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                 if (!widget.isShowPicker)
                   CircleAvatar(
                     radius: 30,
-                    backgroundColor: Color.fromRGBO(143, 227, 221, 1),
+                    backgroundColor: Theme.of(context).canvasColor,
                     child: IconButton(
                       onPressed: () {
                         audio.stop();
@@ -170,7 +172,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   ),
                 CircleAvatar(
                   radius: 30,
-                  backgroundColor: Color.fromRGBO(143, 227, 221, 1),
+                  backgroundColor: Theme.of(context).canvasColor,
                   child: IconButton(
                       onPressed: () {
                         if (!widget.isShowPicker) {
@@ -199,17 +201,12 @@ class _MeditationTimerState extends State<MeditationTimer> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              'Consult our meditation tips for better results!',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ),
-          Center(
-            child: ElevatedButtonWithoutIcon(
-              text: "Explore",
-              onPressedButton: null,
+          ListTileIconCreators(
+            icon: Icons.shape_line_outlined,
+            title: 'Check out meditation exercises',
+            onTap: () => Navigator.of(context).pushNamed(
+              MentalExerciseSolution.routeName,
+              arguments: 'MEDITATION',
             ),
           ),
           SizedBox(
