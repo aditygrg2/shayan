@@ -181,6 +181,11 @@ flutter:
     - assets/pmr_2.mp3
     - assets/pmr.mp3
     - assets/visualization.mp3
+    - assets/mental_exercises_1.mp3
+    - assets/mental_exercises_2.mp3
+    - assets/mental_exercises_3.mp3
+    - assets/mental_exercises_4.mp3
+    - assets/mental_exercises_5.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
