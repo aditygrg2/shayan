@@ -170,8 +170,8 @@ flutter:
     - assets/watch.gif
     - assets/my_sleep_report.gif
     - assets/splash_screen.png
-    - assets/ellipse_splash_screen.png
-    - assets/ellipse_splash_screen_2.png
+    - assets/ellipse_splash_screen_left.png
+    - assets/ellipse_splash_screen_right.png
     - assets/secretkey.json
     - assets/deep_breathing.mp3
     - assets/deep-breathing.mp3
@@ -188,6 +188,10 @@ flutter:
     - assets/mental_exercises_4.png
     - assets/mental_exercises_5.png
     - assets/data.gif
+
+    - assets/good_night.gif
+    - assets/good_evening.gif
+
     - assets/slow_radio_podcast.jpg
     - assets/mantra_1.png
     - assets/mantra_2.png
@@ -197,6 +201,7 @@ flutter:
     - assets/article_3.jpg
     - assets/article_4.jpg
     - assets/article_5.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

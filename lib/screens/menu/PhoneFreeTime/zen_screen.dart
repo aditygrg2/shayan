@@ -87,6 +87,8 @@ class _ZenScreenState extends State<ZenScreen> {
             ),
             SizedBox(height: 20,),
             ElevatedButtonWithoutIcon(text: "Can't Sleep?",onPressedButton: (){
+              brightnessProvider.resetBrightness();
+              VolumeController().setVolume(100);
               Navigator.of(context).pushNamed(MentalExercise.routeName);
             },)
           ],

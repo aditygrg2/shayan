@@ -145,23 +145,23 @@ class _LoginScreenState extends State<LoginScreen> {
               }
             },
           ),
-          TextButton(
-            child: Text(
-              'Skip',
-              style: TextStyle(color: Colors.black),
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                HomeScreen.routeName,
-                (Route<dynamic> route) => false,
-              );
-            },
-            style: ButtonStyle(
-              textStyle: MaterialStateProperty.all<TextStyle>(
-                const TextStyle(fontSize: 20),
-              ),
-            ),
-          ),
+          // TextButton(
+          //   child: Text(
+          //     'Skip',
+          //     style: TextStyle(color: Colors.black),
+          //   ),
+          //   onPressed: () {
+          //     Navigator.of(context).pushNamedAndRemoveUntil(
+          //       HomeScreen.routeName,
+          //       (Route<dynamic> route) => false,
+          //     );
+          //   },
+          //   style: ButtonStyle(
+          //     textStyle: MaterialStateProperty.all<TextStyle>(
+          //       const TextStyle(fontSize: 20),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(
             height: 10,
           ),
