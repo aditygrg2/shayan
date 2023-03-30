@@ -112,6 +112,7 @@ class _MainFormState extends State<MainForm> {
   Widget build(BuildContext context) {
     if (once) getQuestion();
     var notificationBarHeight = MediaQuery.of(context).padding.top;
+
     final List<Widget> forms_details = [
       InputBox(
         key: Key('1'),
