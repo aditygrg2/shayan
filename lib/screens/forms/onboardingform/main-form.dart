@@ -74,8 +74,7 @@ class _MainFormState extends State<MainForm> {
           'questionNumber': index + 1,
         },
       );
-      print(index);
-      SleepDiseaseProvider().checkAndSave(index);
+      SleepDiseaseProvider().checkAndSave(index+1);
     } catch (err) {
       print(err.toString());
     }

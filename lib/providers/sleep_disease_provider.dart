@@ -87,17 +87,17 @@ class SleepDiseaseProvider extends ChangeNotifier{
     {
       "que":21  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["8","7","5"],
     },
     {
       "que":22  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["21","23","23"],
     },
     {
       "que":23  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["5","6","6"],
     },
     {
       "que":24  ,
@@ -127,17 +127,17 @@ class SleepDiseaseProvider extends ChangeNotifier{
     {
       "que":29  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["8","7","8"],
     },
     {
       "que":30  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["22","23","23"],
     },
     {
       "que":31  ,
       "type":"time",
-      "answers":["*","*","*"],
+      "answers":["7","8","8"],
     },
     {
       "que":32  ,
@@ -179,14 +179,16 @@ class SleepDiseaseProvider extends ChangeNotifier{
     Map<String,dynamic>map=_questions[index-5];
     if(map['type']=="MCQ" || map['type']=="value"){
       return map['answers'][disease]==answer;
-    }else{
-      return map['answers'][disease]==answer;
     }
+    var time=answer.split(":");
+    if(time[0]==map['answers'][disease]) return true;
+    return false;
+
 
   }
   void checkAndSave(int index)async{
 
-    
+    if(index<5) return;
     FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("question").doc(index.toString()).get().then(
       (DocumentSnapshot querySnapshot) {
         if(isDisease(querySnapshot.get("answer"), index, 0)){
@@ -198,13 +200,28 @@ class SleepDiseaseProvider extends ChangeNotifier{
         if(isDisease(querySnapshot.get("answer"), index, 2)){
           insomia++;
         }
+        var date=DateTime.now();
+        FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").get().then((DocumentSnapshot value){
+          if(value.exists){     
+            FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").update({
+              "apnea":apnea + value.get("apnea"),
+              "insomia":insomia+ value.get("insomia"),
+              "sleep_deprivation":sleep_deprivation+value.get("sleep_deprivation"),
+              "noOfQuestions":index,
+            }).then((value) {
+              
+            } );
+          }else{
 
-        FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc(DateTime.now().toString()).set({
-          "apnea":apnea,
-          "insomia":insomia,
-          "sleep_deprivation":sleep_deprivation
-        }).then((value) {
-          
+          FirebaseFirestore.instance.collection("planForm").doc(getId()).collection("stats").doc("${date.day}:${date.month}:${date.year}").set({
+            "apnea":apnea,
+            "insomia":insomia,
+            "sleep_deprivation":sleep_deprivation,
+            "noOfQuestions":index,
+          }).then((value) {
+            
+          } );
+          }
         } );
       },
       onError: (e) => print("Error completing: $e"),
