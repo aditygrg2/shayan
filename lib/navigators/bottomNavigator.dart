@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
-import 'package:night_gschallenge/screens/home/home_body.dart';
-import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
-import '../screens/home/home_screen.dart';
-import '../screens/mysleep/my_sleep_screen.dart';
-import '../screens/library/library_screen.dart';
-import '../screens/menu/menu_screen.dart';
 
 class BottomNavigator extends StatefulWidget {
   Function navigationHandler;
@@ -22,27 +15,22 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     {
       'icon': Icon(Icons.home, color: Colors.black),
       'label': 'Home',
-      'page': HomeBody(),
     },
     {
       'icon': Icon(Icons.bar_chart, color: Colors.black),
       'label': 'My Sleep',
-      'page': MySleepScreen(),
     },
     {
       'icon': Icon(Icons.library_add, color: Colors.black),
       'label': 'My Plan',
-      'page': PlanScreen(),
     },
     {
       'icon': Icon(Icons.library_add, color: Colors.black),
-      'label': 'Library',
-      'page': MainForm(),
+      'label': 'Community',
     },
     {
       'icon': Icon(Icons.menu, color: Colors.black),
-      'label': 'Menu',
-      'page': MenuScreen(),
+      'label': 'Tools',
     }
   ];
 
@@ -72,19 +60,5 @@ class _BottomNavigatorState extends State<BottomNavigator> {
             .toList(),
       ),
     );
-
-    // return BottomNavigationBar(
-    //     type: BottomNavigationBarType.fixed,
-    //     currentIndex: widget.selectedPageIndex,
-    //     items: _pages
-    //         .map((item) => BottomNavigationBarItem(
-    //               icon: item['icon'],
-    //               label: item['label'],
-    //             ))
-    //         .toList(),
-    //     onTap: (value) {
-    //       widget.navigationHandler(value);
-    //     },
-    // );
   }
 }

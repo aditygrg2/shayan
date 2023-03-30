@@ -28,7 +28,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
                   ))
               .toList(),
           isExpanded: true,
-          hint: Text('Select voice', overflow: TextOverflow.ellipsis),
+          hint: const Text('Select voice', overflow: TextOverflow.ellipsis),
           value: widget.dropDown,
           onChanged: (String? value) {
             setState(() {

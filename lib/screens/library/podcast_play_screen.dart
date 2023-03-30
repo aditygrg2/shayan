@@ -57,7 +57,7 @@ class PodcastScreenPlay extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Container(
                 padding:const EdgeInsets.all(10),
-                decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(color: Theme.of(context).buttonColor,borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     Expanded(

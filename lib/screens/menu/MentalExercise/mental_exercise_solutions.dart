@@ -25,7 +25,7 @@ class MentalExerciseSolution extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: Color.fromRGBO(143, 227, 221, 1),
+                        color: Theme.of(context).accentColor,
                         borderRadius: BorderRadius.circular(10)),
                     padding: EdgeInsets.all(20),
                     child: Column(

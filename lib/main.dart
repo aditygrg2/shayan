@@ -9,7 +9,6 @@ import 'package:night_gschallenge/providers/community_post.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
-import 'package:night_gschallenge/providers/form_provider.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
@@ -62,6 +61,7 @@ import 'package:provider/provider.dart';
 void main() => runApp(Main());
 
 class Main extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -156,11 +156,6 @@ class Main extends StatelessWidget {
             ),
             ChangeNotifierProvider(
               create: (context) {
-                return SleepFormProvider();
-              },
-            ),
-            ChangeNotifierProvider(
-              create: (context) {
                 return TimelineProvider();
               },
             ),
@@ -191,23 +186,23 @@ class Main extends StatelessWidget {
           child: MaterialApp(
             title: 'Night_GSChallenge',
             theme: ThemeData(
-              primaryColor: Color.fromRGBO(225, 236, 232, 1),
-              // 	E1ECE8
-              backgroundColor: Color.fromRGBO(225, 236, 232, 1),
-              scaffoldBackgroundColor: Color.fromRGBO(225, 236, 232, 1),
-              canvasColor: Color.fromRGBO(143, 227, 221, 1),
+              primaryColor: Colors.white,
+              scaffoldBackgroundColor: Colors.white,
+              canvasColor: Color.fromRGBO(251, 145, 92, 1),
+              accentColor: Color.fromRGBO(251, 145, 92, 0.85),
               fontFamily: 'JejuGothic',
+              buttonColor: Color.fromRGBO(247, 219, 198, 1),
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromRGBO(250, 195, 68, 1)),
+                      Color.fromRGBO(247, 219, 198, 1)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                 ),
               ),
               radioTheme: RadioThemeData(
                 fillColor: MaterialStateProperty.all<Color>(
-                    Color.fromRGBO(250, 195, 68, 1)),
+                    Color.fromRGBO(247, 219, 198, 1)),
                 visualDensity: VisualDensity.comfortable,
               ),
               timePickerTheme: TimePickerThemeData(

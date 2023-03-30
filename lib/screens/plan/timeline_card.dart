@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 
 class TimelineCard extends StatelessWidget {
   bool isActive;
@@ -8,15 +7,14 @@ class TimelineCard extends StatelessWidget {
   String task;
   String duration;
   int index;
-  Map<String,String>?suggestion;
-  TimelineCard({
-    required this.index,
-    this.isActive = false,
-    required this.task,
-    required this.time,
-    required this.duration,
-    this.suggestion
-  });
+  Map<String, String>? suggestion;
+  TimelineCard(
+      {required this.index,
+      this.isActive = false,
+      required this.task,
+      required this.time,
+      required this.duration,
+      this.suggestion});
 
   String processDuration(String str) {
     var arr = str.split(':');
@@ -33,9 +31,12 @@ class TimelineCard extends StatelessWidget {
       margin: EdgeInsets.all(10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(10),
-          color: isActive ? Color.fromRGBO(143, 227, 221, 1) : Colors.white),
+        border: Border.all(color: Colors.black),
+        borderRadius: BorderRadius.circular(10),
+        color: isActive
+            ? Theme.of(context).canvasColor
+            : Theme.of(context).buttonColor,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -52,13 +53,24 @@ class TimelineCard extends StatelessWidget {
                         color: Colors.black,
                       ),
               ),
-              SizedBox(width: 15,),
+              SizedBox(
+                width: 15,
+              ),
               Container(
                 child: Text(isActive ? "Now" : "Upcoming"),
               ),
-           if(suggestion!=null)   Expanded(child: Container(child: IconButton(icon:Icon(Icons.arrow_forward,color: Colors.black),onPressed:(){
-            Navigator.of(context).pushNamed(suggestion!['route'].toString());
-           } ,),alignment: Alignment.centerRight,))
+              if (suggestion != null)
+                Expanded(
+                    child: Container(
+                  child: IconButton(
+                    icon: Icon(Icons.arrow_forward, color: Colors.black),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(suggestion!['route'].toString());
+                    },
+                  ),
+                  alignment: Alignment.centerRight,
+                ))
             ],
           ),
           Container(
@@ -70,13 +82,19 @@ class TimelineCard extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(7),
-            child: Text(time,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            child: Text(
+              time,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                child: Text(task,style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),),
+                child: Text(
+                  task,
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                ),
               ),
               Container(
                 child: IconButton(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy_modal.dart';
+import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
@@ -122,7 +124,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Neutral',
-      'color': Color.fromRGBO(255, 255, 255, 1),
+      'color': Color.fromARGB(255, 217, 210, 210),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -220,7 +222,20 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 ),
               ],
             ),
-          )
+          ),
+          ListTileIconCreators(
+            title: 'Check out our music in library',
+            onTap: () => Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
+            icon: Icons.music_note_sharp,
+          ),
+          ListTileIconCreators(
+            title: 'Check out stories',
+            onTap: () => Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
+            icon: Icons.nightlife,
+          ),
+          SizedBox(
+            height: 50,
+          ),
         ],
       ),
     );

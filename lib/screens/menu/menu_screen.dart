@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/navigators/bottomNavigator.dart';
-import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
@@ -84,7 +81,7 @@ class MenuScreen extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width - 20,
           height: (MediaQuery.of(context).size.height / 8) * items.length,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -92,7 +89,7 @@ class MenuScreen extends StatelessWidget {
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               if (FirebaseAuth.instance.currentUser != null) {
                 if (items[index]['text'] != 'Login/Signup') {

@@ -245,8 +245,6 @@ class _SleepFormState extends State<SleepForm> {
       'SSCreated': true,
     });
 
-    Provider.of<SleepElements>(context, listen: false).updateCheck();
-
     Navigator.of(context).pop();
   }
 

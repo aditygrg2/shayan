@@ -18,7 +18,7 @@ class _TimePickerState extends State<TimePicker> {
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: BoxDecoration(
-            color: Color.fromRGBO(143, 227, 221, 1),
+            color: Theme.of(context).canvasColor,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: Color.fromRGBO(250, 195, 68, 1),

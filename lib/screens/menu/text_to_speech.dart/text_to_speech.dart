@@ -19,8 +19,12 @@ class TextToSpeechComponent extends StatefulWidget {
   double pitch;
   List<String> modals = ['Volume', 'Pitch', 'Rate'];
   List<String> options = ['Speak', 'Resume', 'Pause', 'Stop'];
-  TextToSpeechComponent(
-      {this.modalIndex = -1, this.volume = 0.5, this.rate = 1, this.pitch = 1});
+  TextToSpeechComponent({
+    this.modalIndex = -1,
+    this.volume = 0.5,
+    this.rate = 1,
+    this.pitch = 1,
+  });
 
   @override
   State<TextToSpeechComponent> createState() => _TextToSpeechComponentState();
@@ -67,20 +71,20 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                   padding: const EdgeInsets.all(12),
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             color: Color.fromRGBO(241, 243, 242, 1)),
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Column(
                           children: [
                             TextField(
                               minLines: 8,
                               maxLines: 15,
                               controller: widget.textController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                   hintText: 'Enter Text For Speech',
                                   border: InputBorder.none),
                             ),
@@ -95,7 +99,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                           widget.modalIndex = 0;
                                         });
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.volume_down,
                                       ),
                                     ),
@@ -105,7 +109,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                           widget.modalIndex = 1;
                                         });
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.volume_down,
                                       ),
                                     ),
@@ -115,7 +119,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                           widget.modalIndex = 2;
                                         });
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.volume_down,
                                       ),
                                     ),
@@ -125,7 +129,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                   child: Container(
                                     width: 200,
                                     height: 50,
-                                    child: new FutureBuilder(
+                                    child: FutureBuilder(
                                       builder: (context, snapshot) {
                                         widget.voicesMap = snapshot.data;
                                         widget.dropDown =
@@ -144,7 +148,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       if (widget.modalIndex != -1)
@@ -166,14 +170,14 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                 textSpeech.setPitch(value);
                               }
                             }),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
                         height: 400,
                         child: GridView.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 10,
                                   childAspectRatio: 8 / 2,

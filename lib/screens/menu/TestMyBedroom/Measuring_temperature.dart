@@ -4,7 +4,7 @@ class MeasuringTemperature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       child: Column(
         children: [
           Center(

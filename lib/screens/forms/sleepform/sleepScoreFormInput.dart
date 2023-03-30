@@ -54,6 +54,12 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
     Future.delayed(Duration.zero, () async {
       _controller.text = something == -1 ? '' : valueSelected;
       _controller2.text = widget.initialText.toString() == '-1' ? '' : widget.initialText.toString();
+      if(widget.type == InputTypes.TimeInput){
+        widget.value!(_controller.text, widget.keya);
+      }
+      else{
+        widget.value!(_controller2.text, widget.keya);
+      }
     });
 
     TimeOfDay startDate = TimeOfDay.now();

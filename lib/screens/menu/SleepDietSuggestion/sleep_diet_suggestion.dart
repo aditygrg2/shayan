@@ -67,7 +67,7 @@ class SleepDietSuggestion extends StatelessWidget {
                       padding: EdgeInsets.all(13),
                       margin: EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
-                          color: Color.fromRGBO(143, 227, 221, 1),
+                          color: Theme.of(context).accentColor,
                           border: Border.all(
                               color: Color.fromRGBO(250, 195, 68, 1)),
                           borderRadius: BorderRadius.circular(10)),

@@ -29,7 +29,13 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
             ),
             Container(
               padding: EdgeInsets.all(10),
-              child: TextField(controller: timeController),
+              child: TextField(
+                controller: timeController,
+                key: ValueKey('1'),
+                onChanged: (value) {
+                  
+                },
+              ),
             ),
             Container(
               padding: EdgeInsets.all(10),
@@ -37,20 +43,33 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
             ),
             Container(
               padding: EdgeInsets.all(10),
-              child: TextField(controller: taskController),
+              child: TextField(
+                controller: taskController,
+                key: ValueKey('2'),
+                onChanged: (value) {
+                  
+                },
+              ),
             ),
             Center(
               child: ElevatedButtonWithoutIcon(
-                text: widget.index==-1?"Add": "Edit",
-                onPressedButton: (){
+                text: widget.index == -1 ? "Add" : "Edit",
+                onPressedButton: () {
                   print(timeController.text);
                   print(taskController.text);
-                  if(widget.index==-1){
-                    timelineProvider.addTimeline(timeController.text, taskController.text);
-                  Navigator.of(context).pop();
-                  }else{
-                    timelineProvider.editTimeline(widget.index, timeController.text, taskController.text);
-                  Navigator.of(context).pop();
+                  if (widget.index == -1) {
+                    timelineProvider.addTimeline(
+                      timeController.text,
+                      taskController.text,
+                    );
+                    Navigator.of(context).pop();
+                  } else {
+                    timelineProvider.editTimeline(
+                      widget.index,
+                      timeController.text,
+                      taskController.text,
+                    );
+                    Navigator.of(context).pop();
                   }
                 },
               ),

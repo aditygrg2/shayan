@@ -11,12 +11,12 @@ class Menu extends StatelessWidget {
       height: 300,
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        gradient: const RadialGradient(
+        gradient: SweepGradient(
           colors: [
-            Color.fromARGB(255, 255, 255, 255),
-            Color.fromARGB(255, 143, 227, 221),
+            Theme.of(context).buttonColor,
+            Theme.of(context).canvasColor,
           ],
-          radius: 1,
+                    
         ),
         border: Border.all(color: Colors.black),
         borderRadius: const BorderRadius.all(
