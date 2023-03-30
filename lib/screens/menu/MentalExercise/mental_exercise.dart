@@ -20,7 +20,6 @@ class MentalExercise extends StatelessWidget {
       'title': 'Progressive Muscle Relaxation',
       'subtitle':
           'used to controlstress and anxiety, relieveinsomnia, and reduce symptoms of certain types of chronic pain',
-      "image": 'relaxation.png',
       "route": MentalExerciseSolution.routeName,
       "image": 'assets/relaxation.png',
     },
@@ -66,12 +65,49 @@ class MentalExercise extends StatelessWidget {
               Container(
                 child: Column(children: [
                   ...options.map((card) {
-                    return TmbDescriptionCards(
-                      title: card['title'],
-                      subtitle: card['subtitle'],
-                      image: card['image'],
-                      route: card['route'],
-                    );
+                    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).pushNamed(card['route']);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).canvasColor,
+          borderRadius: BorderRadius.all(Radius.circular(30)),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          )
+        ),
+        width: double.infinity,
+        margin: EdgeInsets.all(15),
+        padding: EdgeInsets.all(15),
+        child: Row(
+          children: [
+            Container(
+              width: widthi * 0.5,
+              padding: EdgeInsets.only(left: 20, right: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title!,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    subtitle!,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  )
+                ],
+              ),
+            ),
+            Expanded(child: Image.asset(image!)),
+          ],
+        ),
+      ),
+    );
                   }).toList(),
                   SizedBox(
                     height: 50,
