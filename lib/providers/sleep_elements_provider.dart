@@ -21,14 +21,20 @@ class SleepElements extends ChangeNotifier {
     wakeUpTime = DateFormat.jm().parse(e!);
     RealWakeUpTime = DateFormat.jm().parse(f!);
     RealSleepingTime = DateFormat.jm().parse(a!).add(Duration(minutes: int.parse(b!)));
-    actualBedTime = DateFormat.jm().parse(f!).difference(RealWakeUpTime!).inMinutes;
-    tempSleep = RealSleepingTime?.difference(wakeUpTime!).inMinutes;
+    actualBedTime = RealWakeUpTime!.difference(RealSleepingTime!).inMinutes;
+    if(actualBedTime!<0){
+      actualBedTime = actualBedTime! + 24*60;
+    }
+    tempSleep = wakeUpTime?.difference(RealSleepingTime!).inMinutes;
+    if(tempSleep!<0){
+      tempSleep = tempSleep! + 24*60;
+    }
     TST = tempSleep! - int.parse(d!);
     WFN = int.parse(c!);
     SL = int.parse(b!);
-    WASO = (7 - TST!); // can be negative, more sleep than required. Do not deduct points.
+    WASO = (7*60 - TST!); // can be negative, more sleep than required. Do not deduct points.
     WASF = RealWakeUpTime?.difference(wakeUpTime!).inMinutes;
-    SE = TST! / actualBedTime!;
+    SE = (TST! / actualBedTime!)*100;
   }
   
 }

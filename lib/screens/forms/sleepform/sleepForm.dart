@@ -127,7 +127,7 @@ class _SleepFormState extends State<SleepForm> {
       sleepScore += (20-((increment as int)/20)).toInt();
     }
 
-    int sleepCycles = value['TST']/90;
+    int sleepCycles = ((value['TST'] as int)/90).toInt();
     if(sleepCycles >= 5){
       sleepScore += 20;
     }
