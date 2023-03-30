@@ -14,7 +14,6 @@ class BlockCards extends StatelessWidget {
         margin: const EdgeInsets.all(5.0),
         padding: padding,
         decoration: BoxDecoration(
-          /**Define final theme properties of all boxes here! */
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(

@@ -283,7 +283,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       },
                                       text: "I'm ready"),
                                 ),
-                                 SizedBox(
+                                SizedBox(
                                   height: 20,
                                 ),
                               ],
@@ -295,20 +295,21 @@ class _PlanScreenState extends State<PlanScreen> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     IconButton(
-                                        onPressed: () {
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (context) {
-                                                return SingleChildScrollView(
-                                                    child: AddEditTimeline(-1));
-                                              },
-                                              backgroundColor: Colors.white);
-                                        },
-                                        icon: Icon(
-                                          Icons.add,
-                                          color: Colors.black,
-                                          size: 34,
-                                        ))
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) {
+                                              return SingleChildScrollView(
+                                                  child: AddEditTimeline(-1));
+                                            },
+                                            backgroundColor: Colors.white);
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: 34,
+                                      ),
+                                    )
                                   ],
                                 ),
                                 ...(timeline
@@ -367,7 +368,71 @@ class _PlanScreenState extends State<PlanScreen> {
                     ],
                   ),
                 );
+              } else if (snapshot.data?.get('healthState') == 'false') {
+                return Container(
+                  margin: EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.black,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(20))
+                              ),
+                              child: Text(
+                                '${questionNumber} Questions left!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 30,
+                                ),
+                              ),
+                            ),
+                          ),
+                          
+                          Image.asset('assets/questionsleft.png'),
+                          
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Let\'s optimize your sleep experience',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Give us insights into your sleep, lifestyle and daily behaviors and we\'ll create a personalized plan that suits your needs.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButtonWithoutIcon(
+                        text: 'Complete Questionnaire',
+                        onPressedButton: () =>
+                            Navigator.of(context).pushNamed(MainForm.routeName),
+                      )
+                    ],
+                  ),
+                );
               }
+
+              print(snapshot.data?.get('healthState'));
               return const AlertDialog(
                 title: Text('An error occurred!'),
               );

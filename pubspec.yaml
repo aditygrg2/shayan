@@ -93,7 +93,6 @@ flutter:
     - assets/sleep_diet_suggestion.gif
     - assets/questionsleft.png
     - assets/checklist.png
-    - assets/secret_key.json
     - assets/kid.png
     - assets/form.gif
     - assets/meditation_timer.png
@@ -169,11 +168,11 @@ flutter:
     - assets/meditation_timer_person.gif
     - assets/library_music_categories_page.png
     - assets/watch.gif
-    - assets/secret_key.json
     - assets/my_sleep_report.gif
     - assets/splash_screen.png
     - assets/ellipse_splash_screen.png
     - assets/ellipse_splash_screen_2.png
+    - assets/secretkey.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

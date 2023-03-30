@@ -22,6 +22,7 @@ import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
@@ -276,6 +277,7 @@ class Main extends StatelessWidget {
               MusicGalleryScreen.routeName: (ctx) => MusicGalleryScreen(),
               MainForm.routeName: (ctx) => MainForm(),
               CommunityScreen.routeName: (ctx) => CommunityScreen(),
+              SleepForm.routeName: (ctx) => SleepForm()
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

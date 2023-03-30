@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-assets/secret_key.json
+assets/secretkey.json
 
 # IntelliJ related
 *.iml

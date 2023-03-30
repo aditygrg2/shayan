@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -18,9 +21,10 @@ class _SleepScoreState extends State<SleepScore> {
     var color = Theme.of(context).primaryColor;
     return BlockCards(
       padding: const EdgeInsets.symmetric(
-        horizontal: 20,
-        vertical: 30,
+        horizontal: 50,
+        vertical: 20,
       ),
+      backgroundColor: Theme.of(context).canvasColor,
       child: Column(
         children: [
           Text(
@@ -37,11 +41,16 @@ class _SleepScoreState extends State<SleepScore> {
                 widget.sleepscore!.round().toString(),
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
-              progressColor: Colors.green,
+              linearGradient: LinearGradient(
+                colors: [ Colors.amber, Colors.yellow],
+              ),
+              backgroundColor: Colors.white,
             ),
           ),
           ElevatedButton(
-            onPressed: null,
+            onPressed: (){
+              Navigator.of(context).pushNamed(SleepForm.routeName);
+            },
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
