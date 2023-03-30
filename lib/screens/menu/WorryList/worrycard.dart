@@ -21,23 +21,33 @@ class Worrycard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
+      padding: EdgeInsets.all(5),
+      decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
       child: ListTile(
-        leading: Icon(
-          getRandomIcon(),
-          color: Colors.blue,
-          size: 50,
+
+        leading: Container(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Icon(
+            Icons.list_alt_rounded,
+            color: Colors.blue,
+            size: 50,
+          ),
         ),
         horizontalTitleGap: 10,
-        tileColor: Colors.amber,
-        title: Text(
-          worry!,
-          style: TextStyle(
-            fontSize: 22,
+        tileColor: Colors.white,
+        // contentPadding: EdgeInsets.all(10),
+        title: Container(
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Text(
+            worry!,
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
         ),
         subtitle: Text(situation!,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
             )),
       ),
     );
