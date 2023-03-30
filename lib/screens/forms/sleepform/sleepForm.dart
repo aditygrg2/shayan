@@ -8,9 +8,7 @@ import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepScoreFormInput.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/watchstatus.dart';
-import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:provider/provider.dart';
 
 class SleepForm extends StatefulWidget {
@@ -30,6 +28,7 @@ class _SleepFormState extends State<SleepForm> {
   String? value6;
   bool loading = false;
   bool status = false;
+
   final List<Map<dynamic, dynamic>> _inputQuestions = [
     {
       'key': '1',
@@ -97,6 +96,7 @@ class _SleepFormState extends State<SleepForm> {
     var watchData = Provider.of<WatchDataProvider>(context, listen: false);
 
     if (watchData.sleptOn != null) {
+      
       setState(() {
         _inputQuestions[0]['initialValue'] = TimeOfDay.fromDateTime(
             DateFormat('yyyy-MM-dd HH:mm:ss.SSS')
@@ -110,15 +110,11 @@ class _SleepFormState extends State<SleepForm> {
         _inputQuestions[5]['initialValue'] = TimeOfDay.fromDateTime(
             DateFormat('yyyy-MM-dd HH:mm:ss.SSS')
                 .parse(watchData.sleptTill.toString()));
-
-
         status = true;
       });
 
       return true;
-    } 
-
-    else{
+    } else {
       return false;
     }
   }
@@ -135,12 +131,27 @@ class _SleepFormState extends State<SleepForm> {
         .doc(id)
         .collection('dates')
         .get();
+
     List<DocumentSnapshot> _myDocCount = dataForLength.docs;
     int length = _myDocCount.length;
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
+    print('values here');
+    print(value1);
+    print(value2);
+    print(value3);
+    print(value4);
+    print(value5);
+    print(value6);
     sleepElements.getData(
-        value1, value2, value3, value4, value5, value6, length);
+      value1,
+      value2,
+      value3,
+      value4,
+      value5,
+      value6,
+      length,
+    );
 
     await FirebaseFirestore.instance
         .collection('sleepData')
@@ -258,7 +269,7 @@ class _SleepFormState extends State<SleepForm> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: 10,
                     right: 10,
                     bottom: 10,
@@ -272,7 +283,7 @@ class _SleepFormState extends State<SleepForm> {
                           Navigator.of(context)
                               .popAndPushNamed(HomeScreen.routeName);
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back_rounded,
                           color: Colors.black,
                           size: 35,
@@ -286,14 +297,14 @@ class _SleepFormState extends State<SleepForm> {
                               DateTime.parse(valueSelected),
                             ),
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                             ),
                           ),
                         ),
                       ),
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.calendar_month,
                           color: Colors.blue,
                         ),
@@ -302,7 +313,7 @@ class _SleepFormState extends State<SleepForm> {
                             context: context,
                             initialDate: DateTime.now(),
                             firstDate: DateTime.now().subtract(
-                              Duration(days: 30),
+                              const Duration(days: 30),
                             ),
                             lastDate: DateTime.now(),
                           ).then(
@@ -322,38 +333,38 @@ class _SleepFormState extends State<SleepForm> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         today == true
                             ? 'Tell us about your last night sleep'
                             : 'Add your sleep data',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 26,
                         ),
                         textAlign: TextAlign.start,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Forgot to update other days? Tap on calendar icon at the top right of your screen and choose date for which you want to fill your sleep information for. It is crucial for us to help you sleep.',
                         style: TextStyle(
                           fontSize: 16,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       WatchStatus(
                         time: DateTime.parse(valueSelected),
                         valueSelector: valueSelectorForWatch,
-                        status: status
+                        status: status,
                       ),
                       Form(
                         key: _formKey,
@@ -381,11 +392,11 @@ class _SleepFormState extends State<SleepForm> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       loading
-                          ? Center(child: CircularProgressIndicator())
+                          ? const Center(child: CircularProgressIndicator())
                           : Center(
                               child: ElevatedButtonWithoutIcon(
                                 text: 'Submit',
@@ -394,7 +405,7 @@ class _SleepFormState extends State<SleepForm> {
                                 },
                               ),
                             ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                     ],

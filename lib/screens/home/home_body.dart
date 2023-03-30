@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
+import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_score.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
@@ -37,27 +39,25 @@ class _HomeBodyState extends State<HomeBody> {
   };
 
   Future data() async {
-    await Provider.of<SleepElements>(context, listen: false)
-        .getSleepElements();
+    await Provider.of<SleepElements>(context, listen: false).getSleepElements();
 
-      isSS = Provider.of<SleepElements>(context, listen: false)
-          .isSleepScorePresent;
+    isSS =
+        Provider.of<SleepElements>(context, listen: false).isSleepScorePresent;
 
-      if (isSS!) {
-        sleepScore =
-            Provider.of<SleepElements>(context, listen: false).sleepScore;
-      }
+    if (isSS!) {
+      sleepScore =
+          Provider.of<SleepElements>(context, listen: false).sleepScore;
+    }
 
-      print(isSS);
-
-      setState(() {
-        loading = false;
-      });
+    setState(() {
+      loading = false;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    if(once){
+    var id = FirebaseAuth.instance.currentUser?.uid;
+    if (once) {
       data();
       once = false;
     }
@@ -83,15 +83,27 @@ class _HomeBodyState extends State<HomeBody> {
                                 BorderRadius.all(Radius.circular(10))),
                         child: Row(
                           children: [
-                            const Text(
-                              'Generate your sleep score',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 18),
+                            Container(
+                              width: MediaQuery.of(context).size.width*0.7,
+                              child: Text(
+                                (id != null)
+                                    ? 'Generate your sleep score'
+                                    : 'Sleep better, create an account now!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 18),
+                              ),
                             ),
                             Expanded(
                               child: IconButton(
-                                onPressed: () => Navigator.of(context)
-                                    .pushNamed(SleepForm.routeName),
+                                onPressed: () {
+                                  if (id == null) {
+                                    Navigator.of(context).popAndPushNamed(
+                                        SignupScreen.routeName);
+                                  } else {
+                                    Navigator.of(context)
+                                        .pushNamed(SleepForm.routeName);
+                                  }
+                                },
                                 icon: const Icon(
                                   Icons.arrow_forward_rounded,
                                   color: Colors.black,

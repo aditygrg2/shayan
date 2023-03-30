@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
@@ -52,16 +51,14 @@ class WatchDataProvider extends ChangeNotifier {
     var permit = await Permission.activityRecognition.request();
 
     List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(
-      time.subtract(Duration(days: 1)),
+      time.subtract(const Duration(days: 1)),
       time,
       types,
     );
 
     List<dynamic> list = healthData.toList();
-
-    // print(list[0]);
-
-    list.forEach((element) { 
+    
+    list.forEach((element) {
       String value = element.toJson()['data_type'];
       if(value =='SLEEP_IN_BED'){
         sleptOn = DateTime.parse(element.toJson()['date_from']);
@@ -78,9 +75,9 @@ class WatchDataProvider extends ChangeNotifier {
       }
 
       else if(value == 'SLEEP_ASLEEP'){
-        
         sleep_asleep = double.parse(element.toJson()['value']['numericValue']).toInt();
       }
     });
+    
   }
 }

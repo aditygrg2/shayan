@@ -11,27 +11,27 @@ class ProfileInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Text(
             attribute,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
         ),
         Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Text(
             value,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
         Container(
-          child: Text(""),
+          child: const Text(""),
           height: 1,
           width: double.infinity,
-          decoration: BoxDecoration(color: Colors.black),
+          decoration: const BoxDecoration(color: Colors.black),
         )
       ]),
     );
@@ -40,9 +40,9 @@ class ProfileInfo extends StatelessWidget {
 
 class ProfileScreen extends StatelessWidget {
   static const routeName = '/profile';
-  Map<String, String> profile = {
-    "Name": "Roanldo",
-    "Email ID": "ronaldo@gmail.com",
+  Map<String, dynamic> profile = {
+    "Name": "Aditya",
+    "Email ID": FirebaseAuth.instance.currentUser?.email,
     "Age": "15 years",
     "Weight": "70 Kg",
     "Height": "190 cm",
@@ -60,18 +60,18 @@ class ProfileScreen extends StatelessWidget {
               ),
               Positioned(
                 child: Container(
-                  child: Text(""),
+                  child: const Text(""),
                   width: double.infinity,
                   height: 150,
                   decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                          
                           bottomLeft: Radius.circular(800),
                           bottomRight: Radius.circular(800))),
                 ),
               ),
-              Positioned(top: 10,left: MediaQuery.of(context).size.width/2-90,child: Container(child: Icon(Icons.person_outline_sharp,color: Colors.black,size: 170,),))
+              Positioned(top: 10,left: MediaQuery.of(context).size.width/2-90,child: Container(child: const Icon(Icons.person_outline_sharp,color: Colors.black,size: 170,),))
             ],
           ),
           if (FirebaseAuth.instance.currentUser == null)

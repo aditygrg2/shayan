@@ -167,6 +167,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
+                          style: TextStyle(color: Colors.black),
                           decoration:
                               const InputDecoration(labelText: 'Password'),
                           onSaved: (value) {
@@ -197,8 +200,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('re-password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
                           decoration: const InputDecoration(
-                              labelText: 'Confirm Password'),
+                            labelText: 'Confirm Password',
+                          ),
                           onSaved: (value) {
                             re_password = value!;
                           },
@@ -206,7 +212,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             if (value!.length < 8) {
                               return 'Please enter a long password';
                             }
-
                             return null;
                           },
                         ),
@@ -218,7 +223,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
           SplashButton(
-            text: loading ? 'Loading..' :'Signup',
+            text: loading ? 'Loading..' : 'Signup',
             onPressed: () async {
               trySubmit();
               if (string != '') {

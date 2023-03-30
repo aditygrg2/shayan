@@ -1,23 +1,18 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
-import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:night_gschallenge/widgets/form/mcq_widget.dart';
-import 'package:provider/provider.dart';
 
 class MainForm extends StatefulWidget {
   static const routeName = 'forms/main';
   _MainFormState createState() => _MainFormState();
 }
 
+// ignore: constant_identifier_names
 enum InputTypes { TimeInput, NumberInput, HourMinuteInput, DateInput }
 
 class _MainFormState extends State<MainForm> {

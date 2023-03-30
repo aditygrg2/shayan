@@ -106,8 +106,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('password'),
-                          decoration:
-                              const InputDecoration(labelText: 'Password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
+                          style: TextStyle(color: Colors.black),
+                          decoration: const InputDecoration(
+                              labelText: 'Password',
+                              suffixStyle: TextStyle(color: Colors.black)),
                           onSaved: (value) {
                             user_password = value!;
                           },

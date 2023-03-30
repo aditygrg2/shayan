@@ -59,7 +59,7 @@ class _PlanScreenState extends State<PlanScreen> {
     var timelineProvider = Provider.of<TimelineProvider>(context);
     var timeline = timelineProvider.getTimeline;
     return FirebaseAuth.instance.currentUser == null
-        ? Text(
+        ? const Text(
             'You must be signed in to access this page',
             textAlign: TextAlign.center,
           )
@@ -67,14 +67,14 @@ class _PlanScreenState extends State<PlanScreen> {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 if (once) getQuestion();
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
 
               if (snapshot.data?.get('healthState') == 'NA') {
                 return Container(
-                  margin: EdgeInsets.all(15),
+                  margin: const EdgeInsets.all(15),
                   child: Column(
                     children: [
                       const Text(
@@ -108,7 +108,7 @@ class _PlanScreenState extends State<PlanScreen> {
                 );
               } else if (snapshot.data?.get('healthState') == 'true') {
                 return Container(
-                  margin: EdgeInsets.symmetric(
+                  margin: const EdgeInsets.symmetric(
                     horizontal: 15,
                   ),
                   width: double.infinity,
@@ -117,7 +117,7 @@ class _PlanScreenState extends State<PlanScreen> {
                       HomeScreenText(
                         text: "My Plan",
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       !showPlan
@@ -132,7 +132,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
@@ -144,25 +144,25 @@ class _PlanScreenState extends State<PlanScreen> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
-                                  child: Text(
+                                  child: const Text(
                                     "Craft your perfect sleep with a personalized timeline.",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(fontSize: 12),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 18,
                                 ),
                                 Container(
-                                  padding: EdgeInsets.all(10),
+                                  padding: const EdgeInsets.all(10),
                                   child: GridView(
-                                    physics: NeverScrollableScrollPhysics(),
+                                    physics: const NeverScrollableScrollPhysics(),
                                     gridDelegate:
-                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
                                             childAspectRatio: 3 / 2,
                                             crossAxisSpacing: 10,
@@ -174,17 +174,17 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.timeline_rounded,
                                               color: Colors.black,
                                               size: 40,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Container(
-                                            child: Text(
+                                            child: const Text(
                                               "Personalized Dynamic Timeline",
                                               textAlign: TextAlign.center,
                                             ),
@@ -196,16 +196,16 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: Icon(
+                                            child: const Icon(
                                                 Icons.youtube_searched_for,
                                                 color: Colors.black,
                                                 size: 40),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Container(
-                                            child: Text(
+                                            child: const Text(
                                               "Enriching Sleep Education Content",
                                               textAlign: TextAlign.center,
                                             ),
@@ -217,14 +217,14 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: Icon(Icons.chat_rounded,
+                                            child: const Icon(Icons.chat_rounded,
                                                 color: Colors.black, size: 40),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Container(
-                                            child: Text(
+                                            child: const Text(
                                               "Chat with a Sleep Trainer",
                                               textAlign: TextAlign.center,
                                             ),
@@ -236,14 +236,14 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: Icon(Icons.timer_outlined,
+                                            child: const Icon(Icons.timer_outlined,
                                                 color: Colors.black, size: 40),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           Container(
-                                            child: Text(
+                                            child: const Text(
                                               "Rightly Timed Reminders",
                                               textAlign: TextAlign.center,
                                             ),
@@ -253,7 +253,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Center(
@@ -265,7 +265,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       },
                                       text: "I'm ready"),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                               ],
@@ -286,7 +286,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                             },
                                             backgroundColor: Colors.white);
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.add,
                                         color: Colors.black,
                                         size: 34,
@@ -299,7 +299,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       var difference = isActiveCheck(e['time']);
                                       int index = timeline.indexOf(e);
                                       if (difference.compareTo(Duration.zero) >=
-                                          0)
+                                          0) {
                                         return e['suggestion'] != null
                                             ? TimelineCard(
                                                 index: index,
@@ -320,7 +320,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                                 task: e['task'],
                                                 time: e['time'],
                                               );
-                                      else
+                                      } else
                                         return null;
                                     })
                                     .toList()
@@ -362,7 +362,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 50,
                                 )
                               ],
@@ -372,25 +372,25 @@ class _PlanScreenState extends State<PlanScreen> {
                 );
               } else if (snapshot.data?.get('healthState') == 'false') {
                 return Container(
-                  margin: EdgeInsets.all(20),
+                  margin: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Row(
                         children: [
                           Expanded(
                             child: Container(
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                   border: Border.all(
                                     color: Colors.black,
                                     width: 2,
                                   ),
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
+                                      const BorderRadius.all(Radius.circular(20))),
                               child: Text(
                                 '${questionNumber} Questions left!',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 30,
                                 ),
                               ),
@@ -399,27 +399,27 @@ class _PlanScreenState extends State<PlanScreen> {
                           Image.asset('assets/questionsleft.png'),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      const Text(
                         'Let\'s optimize your sleep experience',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         'Give us insights into your sleep, lifestyle and daily behaviors and we\'ll create a personalized plan that suits your needs.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 13,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       ElevatedButtonWithoutIcon(
