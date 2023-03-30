@@ -6,32 +6,37 @@ import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class ArticlesScreen extends StatelessWidget {
-  static String routeName='/articles';
-  List<Map<dynamic,dynamic>>articles=[
+  static String routeName = '/articles';
+  List<Map<dynamic, dynamic>> articles = [
     {
-      "title":"Sleep Issues",
-      "image":"assets/articles_sleep_issues.png",
-      "description":"Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... "
+      "title": "Sleep Deprivation",
+      "image": "assets/article_1.jpg",
+      "description":
+          "Many people do not get enough quality sleep, and this can affect their health, well-being, and ability to do everyday activities..."
     },
     {
-      "title":"Sleep Issues",
-      "image":"assets/articles_sleep_issues.png",
-      "description":"Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... "
+      "title": "Sleep Disorders And Problems",
+      "image": "assets/article_2.jpg",
+      "description":
+          "A sleep disorder is a condition that frequently impacts your ability to get enough quality sleep. Many of us occasionally experience difficulties sleeping..."
     },
     {
-      "title":"Sleep Issues",
-      "image":"assets/articles_sleep_issues.png",
-      "description":"Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... "
+      "title": "How to fix Sleep Problems",
+      "image": "assets/article_3.jpg",
+      "description":
+          "Each year, there are more than 40 million people in North America who suffer from sleeping disorders. An additional 20 million have occasional sleeping problems..."
     },
     {
-      "title":"Sleep Issues",
-      "image":"assets/articles_sleep_issues.png",
-      "description":"Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... "
+      "title": "Eating for Sleep: The Anti-Insomnia Diet",
+      "image": "assets/article_4.jpg",
+      "description":
+          "The food you eat does more than simply sustain you. The nutrients you consume play a vital role in the chemical reactions of each and every bodily function... "
     },
     {
-      "title":"Sleep Disorders",
-      "image":"assets/articles_sleep_disorder.png",
-      "description":"Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... "
+      "title": "The Best Exercises for Sleep",
+      "image": "assets/article_5.jpg",
+      "description":
+          "The link between regular exercise and sleep quality has been studied extensively. Current research strongly suggests exercise and sleep share a bidirectional relationship ... "
     },
   ];
   @override
@@ -39,10 +44,19 @@ class ArticlesScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          TopRow(back: true,),
-          HomeScreenText(text: "Articles",),
+          TopRow(
+            back: true,
+          ),
+          HomeScreenText(
+            text: "Articles",
+          ),
           ...articles.map((e) {
-            return Container(padding: EdgeInsets.all(10),child: Article(image: e['image'], name: e['title'], description: e['description']));
+            return Container(
+                padding: EdgeInsets.all(10),
+                child: Article(
+                    image: e['image'],
+                    name: e['title'],
+                    description: e['description']));
           }).toList()
         ],
       ),
