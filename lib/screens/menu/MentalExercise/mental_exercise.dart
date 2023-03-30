@@ -12,7 +12,7 @@ class MentalExercise extends StatelessWidget {
     {
       'title': 'Visualization',
       'subtitle':
-          'involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
+          'Involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
       "image": 'assets/visualization.png',
       "route": '',
     },
@@ -27,21 +27,21 @@ class MentalExercise extends StatelessWidget {
     {
       'title': 'Meditation',
       'subtitle':
-          'mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
+          'Mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
       "image": 'assets/meditation.png',
       "route": '',
     },
     {
       'title': 'Autogenic Relaxation',
       'subtitle':
-          'using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
+          'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
       "image": 'assets/autogenic_relaxation.png',
       "route": '',
     },
     {
       'title': 'Deep Breathing',
       'subtitle':
-          'relaxation technique that involves taking slow, deep breaths from the diaphragm to promote relaxation and reduce stress and anxiety.',
+          'Relaxation technique that involves taking slow, deep breaths from the diaphragm to promote relaxation and reduce stress and anxiety.',
       "image": 'assets/deep_breathing.png',
       "route": '',
     },
