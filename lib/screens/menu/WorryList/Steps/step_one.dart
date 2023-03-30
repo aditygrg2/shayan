@@ -39,9 +39,12 @@ class StepOne extends StatelessWidget {
             ),
           if (data.length > 0)
             ...data.map((worry) {
-              return Worrycard(
-                worry: worry['worry'],
-                situation: worry['situation'],
+              return Container(
+                padding: EdgeInsets.all(10),
+                child: Worrycard(
+                  worry: worry['worry'],
+                  situation: worry['situation'],
+                ),
               );
             }),
           Center(
@@ -124,6 +127,7 @@ class StepOne extends StatelessWidget {
                                       'situation': situation,
                                       'notes': [],
                                       'controller': TextEditingController(),
+                                      
                                     },
                                   );
                                   Navigator.of(context).pop();
