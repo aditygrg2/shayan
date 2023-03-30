@@ -7,31 +7,37 @@ class MusicCategory extends StatelessWidget {
   MusicCategory({required this.data, required this.title});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 100,
-      child: Column(
+    return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            child: Text(title),
+            padding:const EdgeInsets.all(10),
+            child: Text(title,style: Theme.of(context).textTheme.headlineMedium,),
           ),
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                ...data.map((e) {
-                  return LibraryCard(
-                    heading: "sd",
-                    subHeading: "sfds",
-                    src: "acf",
-                  );
-                }).toList(),
-              ],
-            ),
-          ),
+           Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width-20,
+             child: ListView(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                children: [
+                  ...data.map((e) {
+                    return Container(
+                      width: 180,
+                      height: 200,
+                      margin: EdgeInsets.all(10),
+                      child: LibraryCard(
+                        heading: data[0]['title'],
+                        subHeading: data[0]['description'],
+                        src: data[0]['image'],
+                      ),
+                    );
+                  }).toList(),
+                ],
+              ),
+           ),
         ],
-      ),
+      
     );
   }
 }
