@@ -74,7 +74,7 @@ class _InputBoxState extends State<InputBox> {
                     itemHeight: 80,
                     isForce2Digits: true,
                     onTimeChange: (value) {
-                      valueSelected = value.toString();
+                      valueSelected = "${value.hour}:${value.minute}";
                     },
                   ),
                 if (widget.inputType == InputTypes.TimeInput)
@@ -89,7 +89,7 @@ class _InputBoxState extends State<InputBox> {
                         context: context,
                         initialTime: startDate,
                       ).then((pickedDate) {
-                        valueSelected = pickedDate.toString();
+                        valueSelected = "${pickedDate?.hour}:${pickedDate?.minute}";
                         setState(() {
                           startDate = pickedDate!;
                         });
@@ -104,6 +104,7 @@ class _InputBoxState extends State<InputBox> {
                           decoration: InputDecoration(labelText: widget.labels),
                           controller: _controller,
                           onChanged: (value) {
+                            print(value);
                             valueSelected = value;
                           },
                         ),
