@@ -3,21 +3,26 @@ import 'package:flutter/material.dart';
 class PropertyCard extends StatelessWidget {
   String title;
   String description, score;
+  Color color;
   PropertyCard({
     this.description = "",
     this.score = '96%',
     this.title = "Efficiency",
+    this.color = Colors.white,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Color.fromRGBO(250, 195, 68, 1), width: 0.9),
+        color: color,
+        border: Border.all(
+          color: Color.fromRGBO(250, 195, 68, 1),
+          width: 0.9,
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -28,14 +33,14 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 6,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

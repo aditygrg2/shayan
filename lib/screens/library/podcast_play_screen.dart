@@ -7,38 +7,38 @@ import 'package:night_gschallenge/widgets/UI/top_row.dart';
 class PodcastScreenPlay extends StatelessWidget {
   List<Map<dynamic, dynamic>> episodes = [
     {
-      "number":"1",
-      "title": "Small Talk",
+      "number": "1",
+      "title": "Sounds of the Earth - Brazilian Rainforest and Banjo Frogs",
       "description":
-          "In this episode, or young poet dreams about going back to a time when it was easier to love, laugh and have deep conversations. back when...",
+          "Relax with a calming mix of music and natural sounds, from the Atlantic rainforests of Brazil to Eastern Banjo Frogs in Adelaide, Australia...",
       "time": "8 min"
     },
     {
-      "number":"2",
-      "title": "Small Talk",
+      "number": "2",
+      "title": "Inside The Temple",
       "description":
-          "In this episode, or young poet dreams about going back to a time when it was easier to love, laugh and have deep conversations. back when...",
+          "There's a gentle rhythm to everyday life in a Hindu temple, that follows carefully choreographed rituals linked to the care of the deities...",
       "time": "8 min"
     },
     {
-      "number":"3",
-      "title": "Small Talk",
+      "number": "3",
+      "title": "Sounds of the Earth - Seychelles and Barbados",
       "description":
-          "In this episode, or young poet dreams about going back to a time when it was easier to love, laugh and have deep conversations. back when...",
+          "Relax with a calming mix of music and natural sounds, from birdsong and tortoises in the Seychelles to waves and whistling frogs in Barbados, via a bubbling brook in Northumberland and a murmuration...",
       "time": "8 min"
     },
     {
-      "number":"4",
-      "title": "Small Talk",
+      "number": "4",
+      "title": "The Glacier in Retreat",
       "description":
-          "In this episode, or young poet dreams about going back to a time when it was easier to love, laugh and have deep conversations. back when...",
+          "High in the mountains snow falls. As it comes to rest on the frozen slopes it become part of an ancient glacier. Over the course of 100 years the glacier will flow down the valley, changing the landscape around it...",
       "time": "8 min"
     },
     {
-      "number":"5",
-      "title": "Small Talk",
+      "number": "5",
+      "title": "A Sunday walk through Harlem",
       "description":
-          "In this episode, or young poet dreams about going back to a time when it was easier to love, laugh and have deep conversations. back when...",
+          "In the Upper Manhattan neighbourhood of Harlem all is quiet as people stay at home, preferring not to venture out into the minus-13-degree snow and ice that has blanketed the city...",
       "time": "8 min"
     },
   ];
@@ -56,20 +56,24 @@ class PodcastScreenPlay extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
-                padding:const EdgeInsets.all(10),
-                decoration: BoxDecoration(color: Theme.of(context).buttonColor,borderRadius: BorderRadius.circular(10)),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).buttonColor,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
                     Expanded(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
+                        child: Image.asset(
+                          "assets/slow_radio_podcast.jpg",
                           fit: BoxFit.contain,
                         ),
                       ),
                     ),
-                    SizedBox(width: 8,),
+                    SizedBox(
+                      width: 8,
+                    ),
                     Expanded(
                       // width: MediaQuery.of(context).size.width-170,
                       // padding: EdgeInsets.all(10),
@@ -77,24 +81,22 @@ class PodcastScreenPlay extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            
-                              padding:const EdgeInsets.all(3),
+                              padding: const EdgeInsets.all(3),
                               child: Expanded(
                                 child: Text(
                                   "Calm Yourself Down",
-                                  style: Theme.of(context).textTheme.headlineSmall,
+                                  style:
+                                      Theme.of(context).textTheme.headlineSmall,
                                 ),
                               )),
                           Container(
-                             
-                              padding:const EdgeInsets.all(3),
-                              child: Expanded(
-                                child: Text(
-                                  "Calm yourself down is a podcast for those who are seeking peace and eslf-compassion",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
+                            padding: const EdgeInsets.all(3),
+                            child: Expanded(
+                              child: Text(
+                                "Calm yourself down is a podcast for those who are seeking peace and eslf-compassion",
+                                style: Theme.of(context).textTheme.bodySmall,
                               ),
-                           
+                            ),
                           ),
                         ],
                       ),
@@ -112,7 +114,7 @@ class PodcastScreenPlay extends StatelessWidget {
             ),
             ...episodes.map((e) {
               return Container(
-                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 child: PlayEpisode(
                   time: e['time'],
                   description: e['description'],

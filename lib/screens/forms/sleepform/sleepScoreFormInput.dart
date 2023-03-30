@@ -11,7 +11,8 @@ class SleepScoreFormInput extends StatefulWidget {
   int? initialText;
 
   SleepScoreFormInput(
-      {this.keya = '2',
+      {
+      this.keya = '2',
       this.question,
       this.type,
       this.onSubmit,
