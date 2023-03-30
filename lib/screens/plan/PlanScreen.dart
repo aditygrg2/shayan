@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +10,7 @@ import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/sleep_screen/sleep_repot_analysis.dart';
 import '../../widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/UI/home_screen_heading.dart';
@@ -24,6 +26,7 @@ class _PlanScreenState extends State<PlanScreen> {
   bool showPlan = false;
 
   Duration isActiveCheck(String str) {
+    print(str);
     var format = DateFormat("HH:mm");
     var first = format.parse(str);
     var now = DateTime.now();
@@ -35,16 +38,6 @@ class _PlanScreenState extends State<PlanScreen> {
   bool loading = false;
   int questionNumber = 32;
   var id = FirebaseAuth.instance.currentUser?.uid;
-  List<Map<dynamic, dynamic>> timeline = [
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-    {"time": "08:00 am", "description": "I will wake up at 8 am"},
-  ];
 
   void getQuestion() async {
     once = false;
@@ -318,15 +311,26 @@ class _PlanScreenState extends State<PlanScreen> {
                                       int index = timeline.indexOf(e);
                                       if (difference.compareTo(Duration.zero) >=
                                           0)
-                                        return TimelineCard(
-                                          index: index,
-                                          duration: difference.toString(),
-                                          isActive: difference
-                                                  .compareTo(Duration.zero) ==
-                                              0,
-                                          task: e['task'],
-                                          time: e['time'],
-                                        );
+                                        return e['suggestion'] != null
+                                            ? TimelineCard(
+                                                index: index,
+                                                duration: difference.toString(),
+                                                isActive: difference.compareTo(
+                                                        Duration.zero) ==
+                                                    0,
+                                                task: e['task'],
+                                                time: e['time'],
+                                                suggestion: e['suggestion'],
+                                              )
+                                            : TimelineCard(
+                                                index: index,
+                                                duration: difference.toString(),
+                                                isActive: difference.compareTo(
+                                                        Duration.zero) ==
+                                                    0,
+                                                task: e['task'],
+                                                time: e['time'],
+                                              );
                                       else
                                         return null;
                                     })
@@ -354,13 +358,15 @@ class _PlanScreenState extends State<PlanScreen> {
                                 Center(
                                   child: ElevatedButtonWithoutIcon(
                                     onPressedButton: () {
-                                      setState(
-                                        () {
-                                          showPlan = !showPlan;
+                                      showModalBottomSheet(
+                                        context: context,
+                                        backgroundColor: Colors.transparent,
+                                        builder: (context) {
+                                          return SleepReportAnalysis();
                                         },
                                       );
                                     },
-                                    text: "get your Plan",
+                                    text: "get your Sleep Report",
                                   ),
                                 )
                               ],
@@ -379,12 +385,12 @@ class _PlanScreenState extends State<PlanScreen> {
                             child: Container(
                               padding: EdgeInsets.all(8),
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.all(Radius.circular(20))
-                              ),
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2,
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
                               child: Text(
                                 '${questionNumber} Questions left!',
                                 textAlign: TextAlign.center,
@@ -394,9 +400,7 @@ class _PlanScreenState extends State<PlanScreen> {
                               ),
                             ),
                           ),
-                          
                           Image.asset('assets/questionsleft.png'),
-                          
                         ],
                       ),
                       SizedBox(

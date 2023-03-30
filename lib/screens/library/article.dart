@@ -11,14 +11,14 @@ class Article extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          Expanded(
-            child: Container(
+          Container(
+              width: 110,
               child: Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
-          ),
+          
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

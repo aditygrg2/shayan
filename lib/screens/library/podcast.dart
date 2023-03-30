@@ -60,11 +60,13 @@ class Podcast extends StatelessWidget {
             child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
                     childAspectRatio: 2 / 2,
                   ),
                   shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.all(10),
                   itemBuilder: (context, index) {
                     return GestureDetector(onTap: (){
                       Navigator.of(context).pushNamed(PodcastScreenPlay.routeName);

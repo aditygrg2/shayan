@@ -103,21 +103,17 @@ class MusicGalleryScreen extends StatelessWidget {
             text: "Music",
           ),
           Container(
+            width: 200,
             padding: EdgeInsets.all(10),
             child: Image.asset("assets/library_music_categories_page.png",
-                fit: BoxFit.cover),
+                fit: BoxFit.contain),
           ),
-          Container(
-            // height: 250,
-            child: Column(children: [
-              ...categories.map((e) {
-                return MusicCategory(
-                  data: e['data'],
-                  title: e['title'],
-                );
-              }).toList()
-            ]),
-          ),
+          ...categories.map((e) {
+            return MusicCategory(
+              data: e['data'],
+              title: e['title'],
+            );
+          }).toList()
         ],
       ),
     );

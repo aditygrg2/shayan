@@ -176,24 +176,17 @@ flutter:
     - assets/deep_breathing.mp3
     - assets/deep-breathing.mp3
     - assets/autogenic_relaxation.mp3
-    - assets/meditataion.mp3
+    - assets/meditation.mp3
     - assets/meditation_2.mp3
     - assets/pmr_2.mp3
     - assets/pmr.mp3
     - assets/visualization.mp3
-    - assets/mental_exercises_1.mp3
-    - assets/mental_exercises_2.mp3
-    - assets/mental_exercises_3.mp3
-    - assets/mental_exercises_4.mp3
-    - assets/mental_exercises_5.mp3
-    - assets/white.mp3
-    - assets/grey.mp3
-    - assets/violet.mp3
-    - assets/red.mp3
-    - assets/pink.mp3
-    - assets/green.mp3
-    - assets/blue.mp3
-    - assets/brown.mp3
+    - assets/mental_exercises_1.png
+    - assets/mental_exercises_2.png
+    - assets/mental_exercises_3.png
+    - assets/mental_exercises_4.png
+    - assets/mental_exercises_5.png
+    - assets/data.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
