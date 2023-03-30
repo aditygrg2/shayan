@@ -13,7 +13,7 @@ class SleepElements extends ChangeNotifier {
   int? SL;
   int? WASO; // can be negative, more sleep than required. Do not deduct points.
   int? WASF;
-  double? SE;
+  int? SE;
   int? tempSleep;
   int? ST;
   dynamic? data;
@@ -23,10 +23,6 @@ class SleepElements extends ChangeNotifier {
   bool shouldCheck = false;
 
   // AST - Average Sleep Time
-
-  void updateCheck() {
-    shouldCheck = true;
-  }
 
   void getData(a, b, c, d, e, f, length) async {
     wakeUpTime = DateFormat.jm().parse(e!);
@@ -47,7 +43,7 @@ class SleepElements extends ChangeNotifier {
     WASO = (7 * 60 -
         TST!); // can be negative, more sleep than required. Do not deduct points.
     WASF = RealWakeUpTime?.difference(wakeUpTime!).inMinutes;
-    SE = (TST! / actualBedTime!) * 100;
+    SE = ((TST! / actualBedTime!) * 100) as int;
     TIB = RealWakeUpTime!.difference(DateFormat.jm().parse(a!)).inMinutes;
     if (TIB! < 0) {
       TIB = TIB! + 24 * 60;
@@ -58,7 +54,7 @@ class SleepElements extends ChangeNotifier {
     return data['SS'];
   }
 
-  int get SleepEfficiency {
+  int get sleepEfficiency {
     return data['SE'];
   }
 
@@ -79,7 +75,7 @@ class SleepElements extends ChangeNotifier {
   }
 
   Future getSleepElements() async {
-    if (id != null && shouldCheck) {
+    if (id != null) {
       final value = await FirebaseFirestore.instance.collection('users').doc(id).get();
 
       if (value['SSCreated'] == true) {

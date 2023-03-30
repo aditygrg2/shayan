@@ -41,7 +41,7 @@ class PropertyCard extends StatelessWidget {
                 Container(
                   child: Text(
                     score,
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 25,),
                   ),
                 )
               ],

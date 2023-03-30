@@ -25,24 +25,61 @@ class _MySleepScreenState extends State<MySleepScreen> {
   int? sleepscore;
   bool loading = true;
   bool isSS = false;
+  bool once = true;
+  String? totalSleepTime;
+  String? SleepEfficiency;
+  String? timeInBed;
+  String? awakenings;
+
   void checkData() {
     isSS = Provider.of<SleepElements>(context).isSleepScorePresent;
     if (isSS) {
-      sleepscore = Provider.of<SleepElements>(context).sleepScore;
+      sleepscore =
+          Provider.of<SleepElements>(context, listen: false).sleepScore;
     }
+
+    var data = Provider.of<SleepElements>(context, listen: false);
+
+    totalSleepTime = '${data.TST}';
+    SleepEfficiency = '${data.sleepEfficiency}%';
+    timeInBed = '${data.TIB}';
+    awakenings = '${data.awakenings}';
+
+    print(isSS);
 
     setState(() {
       loading = false;
     });
   }
 
+  String informativeText(int sleepscore) {
+    if (sleepscore > 85) {
+      return 'You are doing good. Keep it up!';
+    } else if (sleepscore > 50) {
+      return 'To maintain optimal performance, you may require more rest';
+    }
+
+    return 'We will help you get up to the mark!';
+  }
+
   @override
   Widget build(BuildContext context) {
-    checkData();
+    if (once) {
+      checkData();
+      once = false;
+    }
+    ;
+    String text = '';
+
     return Column(
       children: [
         HomeScreenText(text: 'Sleep Score'),
         if (loading) CircularProgressIndicator(),
+        if (!loading)
+          SleepScoreCard(
+            text: informativeText(sleepscore!),
+            sleepscore: sleepscore,
+          ),
 
         if (!loading && isSS)
           Container(
@@ -50,10 +87,26 @@ class _MySleepScreenState extends State<MySleepScreen> {
               spacing: 20,
               runSpacing: 12,
               children: [
-                PropertyCard(),
-                PropertyCard(),
-                PropertyCard(),
-                PropertyCard(),
+                PropertyCard(
+                  description: 'Total Sleep Time',
+                  score: totalSleepTime!,
+                  title: 'Total Sleep Time',
+                ),
+                PropertyCard(
+                  description: 'Sleep Efficiency',
+                  score: SleepEfficiency!,
+                  title: 'Sleep Efficiency',
+                ),
+                PropertyCard(
+                  description: 'Wakefulness',
+                  score: awakenings!,
+                  title: 'Wakefulness',
+                ),
+                PropertyCard(
+                  description: 'Time in Bed',
+                  score: timeInBed!,
+                  title: 'Time in Bed',
+                ),
               ],
             ),
           ),

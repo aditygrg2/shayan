@@ -22,6 +22,7 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   bool loading = true;
+  bool once = true;
   bool? isSS;
   int sleepScore = 1;
   final calmData = {'title': 'Calm Tunes', 'tunes': [], 'buttonLink': '/Home'};
@@ -38,26 +39,31 @@ class _HomeBodyState extends State<HomeBody> {
     'buttonLink': '/Home'
   };
 
-  void checkData() async {
+  Future data() async {
     await Provider.of<SleepElements>(context, listen: false)
-        .getSleepElements()
-        .then((value) {
+        .getSleepElements();
+
       isSS = Provider.of<SleepElements>(context, listen: false)
           .isSleepScorePresent;
-    });
 
-    if (isSS!) {
-      sleepScore =
-          Provider.of<SleepElements>(context, listen: false).sleepScore;
-    }
-    setState(() {
-      loading = false;
-    });
+      if (isSS!) {
+        sleepScore =
+            Provider.of<SleepElements>(context, listen: false).sleepScore;
+      }
+
+      print(isSS);
+
+      setState(() {
+        loading = false;
+      });
   }
 
   @override
   Widget build(BuildContext context) {
-    checkData();
+    if(once){
+      data();
+      once = false;
+    }
     return loading
         ? Center(
             child: CircularProgressIndicator(),
