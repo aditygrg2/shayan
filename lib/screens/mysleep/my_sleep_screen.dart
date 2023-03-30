@@ -40,9 +40,9 @@ class _MySleepScreenState extends State<MySleepScreen> {
 
     var data = Provider.of<SleepElements>(context, listen: false);
 
-    totalSleepTime = '${data.TST}';
+    totalSleepTime = '${data.totalSleepTime}';
     SleepEfficiency = '${data.sleepEfficiency}%';
-    timeInBed = '${data.TIB}';
+    timeInBed = '${data.timeInBed}';
     awakenings = '${data.awakenings}';
 
     print(isSS);
@@ -82,94 +82,104 @@ class _MySleepScreenState extends State<MySleepScreen> {
           ),
 
         if (!loading && isSS)
-          Container(
-            child: Wrap(
-              spacing: 20,
-              runSpacing: 12,
-              children: [
-                PropertyCard(
-                  description: 'Total Sleep Time',
-                  score: totalSleepTime!,
-                  title: 'Total Sleep Time',
-                ),
-                PropertyCard(
-                  description: 'Sleep Efficiency',
-                  score: SleepEfficiency!,
-                  title: 'Sleep Efficiency',
-                ),
-                PropertyCard(
-                  description: 'Wakefulness',
-                  score: awakenings!,
-                  title: 'Wakefulness',
-                ),
-                PropertyCard(
-                  description: 'Time in Bed',
-                  score: timeInBed!,
-                  title: 'Time in Bed',
-                ),
-              ],
+          GridView(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.all(20),
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
             ),
+            children: <Widget>[
+              PropertyCard(
+                score:
+                    '${((int.parse(totalSleepTime!)) / 60).round()} hr ${(int.parse(totalSleepTime!)) % 60} min',
+                title: 'Total Sleep Time',
+              ),
+              PropertyCard(
+                score: SleepEfficiency!,
+                title: 'Sleep Efficiency',
+              ),
+              PropertyCard(
+                score: awakenings!,
+                title: 'Wakefulness',
+              ),
+              PropertyCard(
+                score: timeInBed!,
+                title: 'Time in Bed',
+              ),
+            ],
           ),
         if (!loading && isSS) WeeklySleepAnalysis(),
 
         if (!loading && !isSS)
-          Column(
-            children: [
-              Container(
-                margin: EdgeInsets.all(15),
-                padding: EdgeInsets.all(25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+          Container(
+              margin: EdgeInsets.all(15),
+              padding: EdgeInsets.all(25),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                color: Theme.of(context).canvasColor,
+              ),
+              child: Column(children: [
+                MenuHeroImage(
+                  image: 'assets/data.gif',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Share your sleep experince, daily haits and overall lifestyle patterns and manage your sleep',
+                  style: TextStyle(
+                    fontSize: 18,
                   ),
-                  color: Theme.of(context).canvasColor,
+                  textAlign: TextAlign.center,
                 ),
-                child: Column(
-                  children: [
-                    MenuHeroImage(
-                      image: 'assets/data.gif',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Share your sleep experince, daily haits and overall lifestyle patterns and manage your sleep',
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
+                SizedBox(
+                  height: 20,
                 ),
-              ),
-              Center(
-                child: ElevatedButtonWithoutIcon(
-                  text: 'Get your sleep data',
-                  onPressedButton: () {
-                    Navigator.of(context).pushNamed(SleepForm.routeName);
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              )
-            ],
-          ),
-        ElevatedButtonWithoutIcon(
-          text: "get Your Sleep Report",
-          onPressedButton: () {
-            showModalBottomSheet(
-              context: context,
-              backgroundColor: Colors.transparent,
-              builder: (context) {
-                return SleepReportAnalysis();
+              ])),
+        if (!loading && isSS)
+          Center(
+            child: ElevatedButtonWithoutIcon(
+              text: 'Get your sleep data',
+              onPressedButton: () {
+                Navigator.of(context).pushNamed(SleepForm.routeName);
               },
-            );
-          },
+            ),
+          ),
+        SizedBox(
+          height: 50,
+        ),
+        if (!loading && isSS)
+          ElevatedButtonWithoutIcon(
+            text: "get Your Sleep Report",
+            onPressedButton: () {
+              showModalBottomSheet(
+                context: context,
+                backgroundColor: Colors.transparent,
+                builder: (context) {
+                  return SleepReportAnalysis();
+                },
+              );
+            },
+          ),
+        if (!loading && isSS)
+          Center(
+            child: ElevatedButtonWithoutIcon(
+              text: 'Get your sleep data',
+              onPressedButton: () {
+                Navigator.of(context).pushNamed(SleepForm.routeName);
+              },
+            ),
+          ),
+        SizedBox(
+          height: 50,
         )
+
         // MySleepReport()
       ],
     );

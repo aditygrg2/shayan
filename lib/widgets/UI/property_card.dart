@@ -12,69 +12,47 @@ class PropertyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: 15,
-        horizontal: 20,
-      ),
-      width: 150,
-      height: 100,
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Color.fromRGBO(250, 195, 68, 1), width: 0.9),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: description.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  child: Flexible(
-                    child: Text(
-                      title,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20
                   ),
+                  textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  child: Text(
-                    score,
-                    style: TextStyle(fontSize: 25,),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Text(
+                  score,
+                  style: TextStyle(
+                    fontSize: 25,
                   ),
-                )
-              ],
-            )
-          : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Flexible(
-                      child: Text(
-                    title,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  )),
+                  textAlign: TextAlign.center,
                 ),
-                Container(
-                  child: Text(
-                    score,
-                    style: TextStyle(fontSize: 15),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  child: Flexible(
-                    child: Text(
-                      description,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
-                )
-              ],
-            ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
