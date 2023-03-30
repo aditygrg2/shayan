@@ -91,8 +91,8 @@ class SplashScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              headerHeight: 28,
-              drawerHeight: 150)
+              headerHeight: 32,
+              drawerHeight: 150,boxShadow: [BoxShadow(color: Colors.grey)],)
         ],
       ),
     );

@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
-import 'package:night_gschallenge/screens/startup/splash_screen.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
 
