@@ -16,7 +16,6 @@ class Menu extends StatelessWidget {
             Theme.of(context).buttonColor,
             Theme.of(context).canvasColor,
           ],
-                    
         ),
         border: Border.all(color: Colors.black),
         borderRadius: const BorderRadius.all(
@@ -35,9 +34,12 @@ class Menu extends StatelessWidget {
               ),
             ),
           ),
-          FittedBox(
-            child: Image.asset(imagePath),
-          )
+          ConstrainedBox(
+            constraints: BoxConstraints(minWidth: 1, minHeight: 1), // here
+            child: Image.asset(
+              imagePath,
+            ),
+          ),
         ],
       ),
     );

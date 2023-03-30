@@ -192,6 +192,7 @@ class Main extends StatelessWidget {
               accentColor: Color.fromRGBO(251, 145, 92, 0.85),
               fontFamily: 'JejuGothic',
               buttonColor: Color.fromRGBO(247, 219, 198, 1),
+              splashColor: Color.fromRGBO(251, 167, 14, 0.5),
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
