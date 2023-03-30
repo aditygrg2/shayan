@@ -19,12 +19,8 @@ class MentalExercise extends StatelessWidget {
     {
       'title': 'Progressive Muscle Relaxation',
       'subtitle':
-<<<<<<< HEAD
-          'used to controlstress and anxiety, relieveinsomnia, and reduce symptoms of certain types of chronic pain',
-=======
           'By systematically tensing and relaxing different muscle groups, it makes user more aware of areas of tension in their body and learn to release that tension through intentional relaxation techniques',
       "image": 'relaxation.png',
->>>>>>> 05fec1483238b09e1e277458d786cd5928906fd6
       "route": MentalExerciseSolution.routeName,
       "image": 'assets/relaxation.png',
     },
