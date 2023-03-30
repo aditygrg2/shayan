@@ -23,7 +23,7 @@ class MentalSolutionProvider extends ChangeNotifier {
     {
       'title': 'VISUALIZATION',
       'subtitle':
-          'involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
+          'Involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
       'image': '',
       'description':
           ' By incorporating this technique into a regular bedtime routine, one can create a peaceful and calming environment that promotes restful sleep.',
@@ -56,7 +56,7 @@ class MentalSolutionProvider extends ChangeNotifier {
     {
       'title': 'AUTOGENIC RELAXATION',
       'subtitle':
-          'using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
+          'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
       'image': '',
       'description':
           'It involves a series of self-induced sensations of warmth, heaviness, and relaxation in different parts of the body, which can promote a deep state of relaxation and reduce stress and anxiety.It is a non-invasive and self-directed technique that can be practiced almost anywhere, making it a popular choice for anyone looking to manage stress and promote relaxation in their daily life.',
