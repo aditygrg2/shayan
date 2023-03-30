@@ -173,6 +173,14 @@ flutter:
     - assets/ellipse_splash_screen.png
     - assets/ellipse_splash_screen_2.png
     - assets/secretkey.json
+    - assets/deep_breathing.mp3
+    - assets/deep-breathing.mp3
+    - assets/autogenic_relaxation.mp3
+    - assets/meditataion.mp3
+    - assets/meditation_2.mp3
+    - assets/pmr_2.mp3
+    - assets/pmr.mp3
+    - assets/visualization.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
