@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/time_duration_picker.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
@@ -15,9 +14,10 @@ class PhoneFreeTime extends StatelessWidget {
     "All apps will be temporarily locked except the camera",
   ];
   int duration = 0;
-  void callbackSetDuration(String time){
+  void callbackSetDuration(String time) {
     this.duration = int.parse(time);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +33,10 @@ class PhoneFreeTime extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             child: Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color.fromRGBO(143, 227, 221, 1)),
-              padding: EdgeInsets.all(15),
+                borderRadius: BorderRadius.circular(10),
+                color: Theme.of(context).accentColor,
+              ),
+              padding: EdgeInsets.all(30),
               child: Column(children: [
                 Text(
                   'Before You Start',
@@ -70,7 +71,9 @@ class PhoneFreeTime extends StatelessWidget {
               ]),
             ),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               Container(
@@ -89,11 +92,14 @@ class PhoneFreeTime extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Center(
             child: ElevatedButtonWithoutIcon(
-              onPressedButton: (){
-                Navigator.of(context).pushNamed(ZenScreen.routeName,arguments: duration);
+              onPressedButton: () {
+                Navigator.of(context)
+                    .pushNamed(ZenScreen.routeName, arguments: duration);
               },
               text: 'Start',
             ),

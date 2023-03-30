@@ -12,7 +12,6 @@ class _ResolutionCardsState extends State<ResolutionCards> {
   @override
   Widget build(BuildContext context) {
     var data = Provider.of<WorryListProvider>(context).worryData;
-    print(data);
     return Container(
       child: Column(
         children: [
@@ -21,7 +20,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(icon: Icon(Icons.add,color: Colors.black,size: 40,),onPressed: (){
+                IconButton(icon: const Icon(Icons.add,color: Colors.black,size: 40,),onPressed: (){
                   setState(() {
                     widget.isWriting=!widget.isWriting;
                   });
@@ -33,14 +32,14 @@ class _ResolutionCardsState extends State<ResolutionCards> {
           ...data.map(
             (e) {
               return Container(
-                padding: EdgeInsets.symmetric(vertical: 15,horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 10),
                 decoration: BoxDecoration(
                   color: Theme.of(context).canvasColor,
                   borderRadius: const BorderRadius.all(
                     Radius.circular(30),
                   ),
                 ),
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -50,12 +49,12 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                       '${e['worry']}',
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Container(
                       alignment: Alignment.topLeft,
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
                         '${e['situation']}',
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -63,10 +62,10 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Notes',
                             textAlign: TextAlign.start,
@@ -84,7 +83,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                           child: Container(
                             decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
-                              leading: Icon(
+                              leading: const Icon(
                                 Icons.sticky_note_2_outlined,
                                 color: Colors.amber,
                                 size: 40,
@@ -94,7 +93,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                           ),
                         );
                       }),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                    widget.isWriting? Padding(
@@ -103,7 +102,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                         autocorrect: true,
                         enableSuggestions: true,
                         controller: e['controller'],
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 20,
                         ),
                         cursorHeight: 20,
@@ -134,7 +133,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
               );
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
         ],

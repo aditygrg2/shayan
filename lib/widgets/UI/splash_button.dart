@@ -21,7 +21,7 @@ class SplashButton extends StatelessWidget {
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
               ),
-              color: Color.fromRGBO(0, 223, 192, 1),
+              color: Theme.of(context).buttonColor,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 64),

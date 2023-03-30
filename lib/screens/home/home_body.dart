@@ -1,10 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
-import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_score.dart';
@@ -65,7 +62,7 @@ class _HomeBodyState extends State<HomeBody> {
       once = false;
     }
     return loading
-        ? Center(
+        ? const Center(
             child: CircularProgressIndicator(),
           )
         : Container(
@@ -86,7 +83,7 @@ class _HomeBodyState extends State<HomeBody> {
                                 BorderRadius.all(Radius.circular(10))),
                         child: Row(
                           children: [
-                            Text(
+                            const Text(
                               'Generate your sleep score',
                               textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 18),
@@ -95,7 +92,7 @@ class _HomeBodyState extends State<HomeBody> {
                               child: IconButton(
                                 onPressed: () => Navigator.of(context)
                                     .pushNamed(SleepForm.routeName),
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_forward_rounded,
                                   color: Colors.black,
                                   size: 30,

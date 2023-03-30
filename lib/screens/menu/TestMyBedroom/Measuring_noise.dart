@@ -1,10 +1,6 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:light/light.dart';
-import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:collection/collection.dart';
 
 class MeasuringNoise extends StatefulWidget {
 
@@ -17,7 +13,7 @@ class _MeasuringNoiseState extends State<MeasuringNoise> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       child: Column(
         children: [
           Center(

@@ -37,7 +37,7 @@ class _TemperatureState extends State<Temperature> {
           HomeScreenText(text: 'Temperature'),
 
           Container(
-            margin: EdgeInsets.all(40),
+            margin: const EdgeInsets.all(40),
             height: 200,
             child: Image.asset(
               'assets/temperatures.gif',
@@ -47,12 +47,12 @@ class _TemperatureState extends State<Temperature> {
 
           // Informative Text
           Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.lightbulb_circle_rounded, size: 30),
-                SizedBox(
+                const Icon(Icons.lightbulb_circle_rounded, size: 30),
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -69,19 +69,19 @@ class _TemperatureState extends State<Temperature> {
           // Last Checked Text
           Container(
             padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(
                 Radius.circular(20),
               ),
             ),
             margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
-            child: Center(
+            child: const Center(
               child: Text('Last Checked: x minutes ago'),
             ),
           ),
 
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
 
@@ -148,7 +148,7 @@ class _TemperatureState extends State<Temperature> {
                   ),
                 );
               } else {
-                return Card();
+                return const Card();
               }
             },
           )

@@ -34,14 +34,15 @@ class _LoginScreenState extends State<LoginScreen> {
       _formKey.currentState!.save();
 
       await Provider.of<AuthenticationProvider>(context, listen: false)
-        .submitAuthForm(user_email.trim(), user_password.trim(), true);
+          .submitAuthForm(user_email.trim(), user_password.trim(), true);
     }
 
     if (FirebaseAuth.instance.currentUser != null) {
       setState(() {
         loading = false;
       });
-      Navigator.of(context).pushNamedAndRemoveUntil(HomeScreen.routeName, (Route<dynamic> route) => false);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+          HomeScreen.routeName, (Route<dynamic> route) => false);
     }
   }
 
@@ -92,8 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
                   child: Row(
                     children: [
                       Icon(Icons.key),
@@ -123,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           SplashButton(
-            text: loading ? 'Please wait' : 'Login' ,
+            text: loading ? 'Please wait' : 'Login',
             onPressed: () {
               trySubmit();
               if (string != '') {
@@ -145,7 +148,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil(
-                  HomeScreen.routeName, (Route<dynamic> route) => false);
+                HomeScreen.routeName,
+                (Route<dynamic> route) => false,
+              );
             },
             style: ButtonStyle(
               textStyle: MaterialStateProperty.all<TextStyle>(

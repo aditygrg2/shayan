@@ -5,7 +5,6 @@ import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/time_boxes.dart';
-import 'package:night_gschallenge/widgets/UI/time_little_box.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class SleepCycleCalculator extends StatefulWidget {
@@ -92,9 +91,9 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 2),
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             height: MediaQuery.of(context).size.height * 0.4,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -127,7 +126,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       text: 'Submit',
                       onPressedButton: calculateResults,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     ElevatedButtonWithoutIcon(
@@ -143,7 +142,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           if (settingsOn)
@@ -152,13 +151,13 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                 HomeScreenText(
                   text: 'Settings',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   'Average sleep cycle length is 90 minutes'
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Padding(
@@ -185,7 +184,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
@@ -194,7 +193,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
@@ -221,7 +220,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
@@ -230,7 +229,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ElevatedButtonWithoutIcon(
@@ -244,7 +243,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                 )
               ],
             ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           if (data && !settingsOn)
@@ -253,7 +252,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
               style: Theme.of(context).textTheme.labelLarge,
               textAlign: TextAlign.center,
             ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           if (data && !settingsOn) TimeContainer(_data, onTapClear),

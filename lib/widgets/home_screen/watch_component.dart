@@ -30,7 +30,7 @@ class _WatchComponentState extends State<WatchComponent> {
               vertical: 15,
             ),
             decoration: BoxDecoration(
-              color: Color.fromRGBO(143, 227, 221, 1),
+              color: Theme.of(context).accentColor,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(color: Colors.black),
             ),
