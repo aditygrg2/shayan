@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/form_provider.dart';
+import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
@@ -76,6 +77,8 @@ class _MainFormState extends State<MainForm> {
           'questionNumber': index + 1,
         },
       );
+      print(index);
+      SleepDiseaseProvider().checkAndSave(index);
     } catch (err) {
       print(err.toString());
     }
