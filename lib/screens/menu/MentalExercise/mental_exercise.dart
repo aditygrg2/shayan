@@ -12,35 +12,40 @@ class MentalExercise extends StatelessWidget {
     {
       'title': 'Visualization',
       'subtitle':
-          'Instead of focusing on your anxious, fearful images, visualization expands your ability to focus on calming and restful images',
+          'Involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
       "image": 'assets/visualization.png',
       "route": '',
     },
     {
       'title': 'Progressive Muscle Relaxation',
       'subtitle':
+<<<<<<< HEAD
           'used to controlstress and anxiety, relieveinsomnia, and reduce symptoms of certain types of chronic pain',
+=======
+          'By systematically tensing and relaxing different muscle groups, it makes user more aware of areas of tension in their body and learn to release that tension through intentional relaxation techniques',
+      "image": 'relaxation.png',
+>>>>>>> 05fec1483238b09e1e277458d786cd5928906fd6
       "route": MentalExerciseSolution.routeName,
       "image": 'assets/relaxation.png',
     },
     {
       'title': 'Meditation',
       'subtitle':
-          'meditation practices enhance melatonin levels and hence quality of sleep',
+          'Mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
       "image": 'assets/meditation.png',
       "route": '',
     },
     {
       'title': 'Autogenic Relaxation',
       'subtitle':
-          'adds in self-statements about heaviness and warmth in each part of the body',
+          'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
       "image": 'assets/autogenic_relaxation.png',
       "route": '',
     },
     {
       'title': 'Deep Breathing',
       'subtitle':
-          'Instead of focusing on your anxious, fearful images, visualization expands your ability to focus on calming and restful images.',
+          'Relaxation technique that involves taking slow, deep breaths from the diaphragm to promote relaxation and reduce stress and anxiety.',
       "image": 'assets/deep_breathing.png',
       "route": '',
     },

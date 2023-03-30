@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:health/health.dart';
@@ -6,6 +7,13 @@ import 'package:permission_handler/permission_handler.dart';
 
 class WatchDataProvider extends ChangeNotifier {
   HealthFactory health = HealthFactory();
+  
+  int sleep_in_bed = 0;
+  int sleep_awake = 0;
+  int sleep_asleep = 0;
+  int height = 0;
+  DateTime? sleptOn;
+  DateTime? sleptTill;
 
   var types = [
     HealthDataType.STEPS,
@@ -20,26 +28,59 @@ class WatchDataProvider extends ChangeNotifier {
     return await health.requestAuthorization(types);
   }
 
-  Future getData() async {
+  int get SIB{
+    return sleep_in_bed;
+  }
+
+  int get asleep{
+    return sleep_asleep;
+  }
+
+  int get user_height{
+    return height;
+  }
+
+  int get SA{
+    return sleep_awake;
+  }
+
+  Future getData(time) async {
     var permissions = [
       HealthDataAccess.READ,
     ];
 
     var permit = await Permission.activityRecognition.request();
 
-    var now = DateTime.now();
-    print(permit);
-
     List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(
-      now.subtract(Duration(days: 100)),
-      now,
+      time.subtract(Duration(days: 1)),
+      time,
       types,
     );
-    
-    var midnight = DateTime(now.year, now.month, now.day);
-    int? steps = await health.getTotalStepsInInterval(midnight.subtract(Duration(days: 2)), now);
 
-    print(healthData);
+    List<dynamic> list = healthData.toList();
 
+    // print(list[0]);
+
+    list.forEach((element) { 
+      String value = element.toJson()['data_type'];
+      if(value =='SLEEP_IN_BED'){
+        sleptOn = DateTime.parse(element.toJson()['date_from']);
+        sleptTill = DateTime.parse(element.toJson()['date_to']);
+        sleep_in_bed = double.parse(element.toJson()['value']['numericValue']).toInt();
+      }
+
+      else if(value == 'HEIGHT'){
+        height = double.parse(element.toJson()['value']['numericValue']).toInt();
+      }
+
+      else if(value == 'SLEEP_AWAKE'){
+        sleep_awake = double.parse(element.toJson()['value']['numericValue']).toInt();
+      }
+
+      else if(value == 'SLEEP_ASLEEP'){
+        
+        sleep_asleep = double.parse(element.toJson()['value']['numericValue']).toInt();
+      }
+    });
   }
 }

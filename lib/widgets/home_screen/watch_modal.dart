@@ -120,7 +120,7 @@ class _WatchModalState extends State<WatchModal> {
         ),
         ElevatedButtonWithoutIcon(
           text: 'Close',
-          onPressedButton: () => Navigator.of(context).pop,
+          onPressedButton: () => Navigator.of(context).pop(),
         )
       ],
     );

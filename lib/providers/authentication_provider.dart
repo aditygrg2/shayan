@@ -43,7 +43,7 @@ class AuthenticationProvider extends ChangeNotifier {
             'email': email,
             'healthState': 'NA',
             'questionNumber':-1,
-            'formStarted': false
+            'SSCreated': false
           },
         );
       }
