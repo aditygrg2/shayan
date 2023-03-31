@@ -8,11 +8,39 @@ class MusicGalleryScreen extends StatelessWidget {
 
   List<Map<dynamic, dynamic>> categories = [
     {
+      'title': "Ambient Sounds",
+      "data": [
+        {
+          "image": "assets/red.jpg",
+          "title": "Red Noise",
+          "description": " "
+        },
+        {
+          "image": "assets/pink.jpg",
+          "title": "Pink Noise",
+          "description":
+              " "
+        },
+        {
+          "image": "assets/white.jpg",
+          "title": "White Noise",
+          "description":
+              " "
+        },
+        {
+          "image": "assets/grey.jpg",
+          "title": "Grey Noise",
+          "description":
+              " "
+        },
+      ]
+    },
+    {
       'title': "Meditative Mantras",
       "data": [
         {
           "image": "assets/mantra_1.png",
-          "title": "Om Shanti, Shanti, Shanti",
+          "title": "Om Shanti",
           "description": "Peace of mind, body, and speech."
         },
         {

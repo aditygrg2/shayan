@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +22,7 @@ class _SleepScoreState extends State<SleepScore> {
         horizontal: 50,
         vertical: 20,
       ),
-      backgroundColor: Theme.of(context).canvasColor,
+      backgroundColor: Theme.of(context).cardColor,
       child: Column(
         children: [
           Text(
@@ -43,8 +41,8 @@ class _SleepScoreState extends State<SleepScore> {
               ),
               linearGradient: LinearGradient(
                 colors: [
-                  Theme.of(context).buttonColor,
-                  Color.fromRGBO(247, 219, 198, 2)
+                  Theme.of(context).canvasColor,
+                  Theme.of(context).primaryColor,
                 ],
               ),
               backgroundColor: Colors.white,

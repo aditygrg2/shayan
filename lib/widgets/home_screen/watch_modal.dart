@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:health/health.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
@@ -20,29 +19,30 @@ class _WatchModalState extends State<WatchModal> {
             .getPermission();
 
     if (permission) {
+      // ignore: use_build_context_synchronously
       showModalBottomSheet(
         backgroundColor: Theme.of(context).primaryColor,
         context: context,
         builder: (context) {
           return Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                Text(
+                const Text(
                   'Device successfully connected!',
                   style: TextStyle(
                     fontSize: 32,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Image.asset('assets/watch.png'),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Text(
+                const Text(
                   'Now you will get your sleep details updated automatically. Enjoy sleeping!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -94,8 +94,8 @@ class _WatchModalState extends State<WatchModal> {
     ];
     return ListView(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
+        const Padding(
+          padding: EdgeInsets.only(
             top: 20,
           ),
           child: Text(
@@ -104,7 +104,7 @@ class _WatchModalState extends State<WatchModal> {
             style: TextStyle(fontSize: 25),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         ...watch_list.map((e) {
@@ -115,7 +115,7 @@ class _WatchModalState extends State<WatchModal> {
             onPressed: e['onPressed'],
           );
         }).toList(),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         ElevatedButtonWithoutIcon(

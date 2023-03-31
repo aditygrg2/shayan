@@ -8,36 +8,38 @@ class MusicCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding:const EdgeInsets.all(10),
-            child: Text(title,style: Theme.of(context).textTheme.headlineMedium,),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(10),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-           Container(
-            height: 340,
-            width: MediaQuery.of(context).size.width-20,
-             child: ListView(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                children: [
-                  ...data.map((e) {
-                    return Container(
-                      width: 200,
-                      height: 340,
-                      margin: EdgeInsets.all(10),
-                      child: SlidingCardRounded(
-                        heading: e['title'],
-                        subHeading:e['description'] ,
-                        src: e['image'],
-                      ),
-                    );
-                  }).toList(),
-                ],
-              ),
-           ),
-        ],
-      
+        ),
+        Container(
+          height: 340,
+          width: MediaQuery.of(context).size.width - 20,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            children: [
+              ...data.map((e) {
+                return Container(
+                  width: 200,
+                  height: 340,
+                  margin: EdgeInsets.all(10),
+                  child: SlidingCardRounded(
+                    heading: e['title'],
+                    subHeading: e['description'],
+                    src: e['image'],
+                  ),
+                );
+              }).toList(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

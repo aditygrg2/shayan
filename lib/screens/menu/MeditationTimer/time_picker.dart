@@ -16,19 +16,19 @@ class _TimePickerState extends State<TimePicker> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration: BoxDecoration(
             color: Theme.of(context).canvasColor,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Color.fromRGBO(250, 195, 68, 1),
+              color: const Color.fromRGBO(250, 195, 68, 1),
             ),
           ),
           child: TimePickerSpinner(
             is24HourMode: true,
             isShowSeconds: true,
-            normalTextStyle: TextStyle(fontSize: 24, color: Colors.black54),
-            highlightedTextStyle: TextStyle(fontSize: 28, color: Colors.black87),
+            normalTextStyle: const TextStyle(fontSize: 24, color: Colors.black54),
+            highlightedTextStyle: const TextStyle(fontSize: 28, color: Colors.black87),
             spacing: 45,
             itemHeight: 80,
             isForce2Digits: true,

@@ -74,7 +74,7 @@ class Main extends StatelessWidget {
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -194,22 +194,23 @@ class Main extends StatelessWidget {
             theme: ThemeData(
               primaryColor: Colors.white,
               scaffoldBackgroundColor: Colors.white,
-              canvasColor: Color.fromRGBO(251, 145, 92, 1),
-              accentColor: Color.fromRGBO(251, 145, 92, 0.85),
-              fontFamily: 'JejuGothic',
-              buttonColor: Color.fromRGBO(247, 219, 198, 1),
-              splashColor: Color.fromRGBO(251, 167, 14, 0.5),
+              canvasColor: const Color.fromRGBO(251, 145, 92, 1),
+              accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
+              cardColor: const Color.fromARGB(153, 248, 222, 55),
+              fontFamily: 'OpenSans',
+              buttonColor: const Color.fromRGBO(247, 219, 198, 1),
+              splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
               elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all<Color>(
-                      Color.fromRGBO(247, 219, 198, 1)),
+                      const Color.fromRGBO(247, 219, 198, 1)),
                   foregroundColor:
                       MaterialStateProperty.all<Color>(Colors.black),
                 ),
               ),
               radioTheme: RadioThemeData(
                 fillColor: MaterialStateProperty.all<Color>(
-                    Color.fromRGBO(247, 219, 198, 1)),
+                    const Color.fromRGBO(247, 219, 198, 1)),
                 visualDensity: VisualDensity.comfortable,
               ),
               timePickerTheme: TimePickerThemeData(
@@ -220,28 +221,35 @@ class Main extends StatelessWidget {
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
+                  fontFamily: 'OpenSans'
                 ),
                 headlineSmall: TextStyle(
                   fontSize: 15,
+                  fontFamily: 'OpenSans'
                 ),
                 headlineMedium: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
+                  fontFamily: 'OpenSans'
                 ),
                 titleLarge: TextStyle(
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'OpenSans'
                 ),
                 bodyLarge: TextStyle(
                   fontSize: 40,
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
+                  fontFamily: 'OpenSans'
                 ),
                 labelLarge: TextStyle(
                   fontSize: 25,
+                  fontFamily: 'Roboto'
                 ),
                 labelMedium: TextStyle(
                   fontSize: 15,
+                  fontFamily: 'Roboto'
                 ),
               ),
             ),

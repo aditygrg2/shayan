@@ -18,20 +18,20 @@ class TmbDescriptionCards extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).canvasColor,
-          borderRadius: BorderRadius.all(Radius.circular(30)),
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
           border: Border.all(
             color: Colors.black,
             width: 2,
           )
         ),
         width: double.infinity,
-        margin: EdgeInsets.all(15),
-        padding: EdgeInsets.all(15),
+        margin: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Row(
           children: [
             Container(
               width: widthi * 0.5,
-              padding: EdgeInsets.only(left: 20, right: 5),
+              padding: const EdgeInsets.only(left: 20, right: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,7 +39,7 @@ class TmbDescriptionCards extends StatelessWidget {
                     title!,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(

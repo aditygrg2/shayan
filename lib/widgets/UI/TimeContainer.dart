@@ -12,20 +12,20 @@ class TimeContainer extends StatelessWidget {
     return Column(children: [
       ..._data.map((box) {
         return Container(
-          margin: EdgeInsets.all(15),
-          padding: EdgeInsets.all(15),
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: Theme.of(context).canvasColor,
-              borderRadius: BorderRadius.all(Radius.circular(19)),
+              borderRadius: const BorderRadius.all(Radius.circular(19)),
               border: Border.all(color: Colors.amber, width: 1)),
           child: Column(
             children: [
               if (box['recommended'])
-                Text(
+                const Text(
                   'Suggested',
                 ),
               if (box['recommended'])
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
               Row(
@@ -34,13 +34,13 @@ class TimeContainer extends StatelessWidget {
                 children: [
                   Text(
                     box['wakeup'],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 23,
                     ),
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -49,14 +49,14 @@ class TimeContainer extends StatelessWidget {
           ),
         );
       }).toList(),
-      SizedBox(
+      const SizedBox(
         height: 30,
       ),
       ElevatedButtonWithoutIcon(
         text: 'Clear',
         onPressedButton: onTapClear,
       ),
-      SizedBox(
+      const SizedBox(
         height: 30,
       ),
     ]);

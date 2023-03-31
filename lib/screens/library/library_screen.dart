@@ -15,47 +15,51 @@ class LibraryScreen extends StatefulWidget {
 }
 
 class _LibraryScreenState extends State<LibraryScreen> {
-  List<Map<dynamic,dynamic>>libraryCards=[
+  List<Map<dynamic, dynamic>> libraryCards = [
     {
-      "title":"Podcasts",
-      "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
-      "image":"assets/library_podcast.png",
-      "route":Podcast.routeName,
+      "title": "Podcasts",
+      "subtitle":
+          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+      "image": "assets/library_podcast.png",
+      "route": Podcast.routeName,
     },
     {
-      "title":"Articles",
-      "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
-      "image":"assets/library_articles.png",
-      "route":ArticlesScreen.routeName,
+      "title": "Articles",
+      "subtitle":
+          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+      "image": "assets/library_articles.png",
+      "route": ArticlesScreen.routeName,
     },
     {
-      "title":"Stories",
-      "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
-      "image":"assets/library_stories.png",
-      "route":StoryScreen.routeName,
+      "title": "Stories",
+      "subtitle":
+          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+      "image": "assets/library_stories.png",
+      "route": StoryScreen.routeName,
     },
     {
-      "title":"Music",
-      "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
-      "image":"assets/library_music.png",
-      "route":MusicGalleryScreen.routeName,
-    },
-    {
-      "title":"Community",
-      "subtitle":"focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
-      "image":"assets/library_community.png",
-      "route":CommunityScreen.routeName,
-    },
+      "title": "Music",
+      "subtitle":
+          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+      "image": "assets/library_music.png",
+      "route": MusicGalleryScreen.routeName,
+    }
   ];
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Column(
       children: [
-          HomeScreenText(text: "Library",),
-          ...libraryCards.map((ele){
-            return TmbDescriptionCards(title: ele['title'],subtitle: ele['subtitle'],image: ele['image'],route: ele['route']);
-          }).toList(),
-        ],
+        HomeScreenText(
+          text: "Library",
+        ),
+        ...libraryCards.map((ele) {
+          return TmbDescriptionCards(
+              title: ele['title'],
+              subtitle: ele['subtitle'],
+              image: ele['image'],
+              route: ele['route']);
+        }).toList(),
+      ],
     );
   }
 }

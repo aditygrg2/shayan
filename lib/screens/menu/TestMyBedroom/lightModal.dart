@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
 
 class LightModal extends StatelessWidget {

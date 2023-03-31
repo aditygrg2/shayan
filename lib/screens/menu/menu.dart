@@ -9,7 +9,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         gradient: SweepGradient(
           colors: [
@@ -35,7 +35,10 @@ class Menu extends StatelessWidget {
             ),
           ),
           ConstrainedBox(
-            constraints: BoxConstraints(minWidth: 1, minHeight: 1), // here
+            constraints: const BoxConstraints(
+              minWidth: 1,
+              minHeight: 1,
+            ), // here
             child: Image.asset(
               imagePath,
             ),

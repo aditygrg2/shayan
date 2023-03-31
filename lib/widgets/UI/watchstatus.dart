@@ -19,6 +19,7 @@ class _WatchStatusState extends State<WatchStatus> {
       onTap: () async {
         await Provider.of<WatchDataProvider>(context, listen: false)
             .getPermission();
+        // ignore: use_build_context_synchronously
         await Provider.of<WatchDataProvider>(context, listen: false)
             .getData(widget.time);
 
@@ -45,10 +46,10 @@ class _WatchStatusState extends State<WatchStatus> {
         }
       },
       child: Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
             border: Border.all(
               width: 2,
               color: Colors.black,
@@ -62,7 +63,7 @@ class _WatchStatusState extends State<WatchStatus> {
               'assets/gfit.png',
               fit: BoxFit.cover,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Expanded(
@@ -70,7 +71,7 @@ class _WatchStatusState extends State<WatchStatus> {
                 widget.status!
                     ? 'Connected to Google Fit'
                     : 'Connect to Google Fit',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           ],

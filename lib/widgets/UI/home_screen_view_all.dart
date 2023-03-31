@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/main.dart';
 
 class HomeScreenViewAll extends StatelessWidget {
   void Function()? onClick;
@@ -16,7 +15,7 @@ class HomeScreenViewAll extends StatelessWidget {
         children: [
           TextButton(
             onPressed: onClick,
-            child: Text(
+            child: const Text(
               'View All',
               style: TextStyle(fontSize: 15),
             ),

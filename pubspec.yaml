@@ -210,7 +210,6 @@ flutter:
     - assets/music_data_3.jpg
     - assets/music_data_4.jpg
     - assets/music_sounds.jpg
-
     - assets/music_sounds.jpg
     - assets/beach_sounds.jpg
     - assets/calming_tone1.jpg
@@ -232,6 +231,10 @@ flutter:
     - assets/home_image_2.jpg
     - assets/home_image_3.jpg
     - assets/home_image_4.jpg
+    - assets/red.jpg
+    - assets/white.jpg
+    - assets/grey.jpg
+    - assets/pink.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
@@ -247,6 +250,18 @@ flutter:
     - family: JejuGothic
       fonts:
         - asset: assets/JejuGothic-Regular.ttf
+          weight: 300
+    - family: Roboto
+      fonts:
+        - asset: assets/Roboto-Regular.ttf
+          weight: 300
+    - family: OpenSans
+      fonts:
+        - asset: assets/OpenSans-Regular.ttf
+          weight: 300
+    - family: JejuGothic
+      fonts:
+        - asset: assets/Montserrat-Regular.ttf
           weight: 300
   #   - family: Trajan Pro
   #     fonts:

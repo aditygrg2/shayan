@@ -3,7 +3,6 @@ import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 
 class SplashScreen extends StatelessWidget {
   static const routeName = '/splash';
@@ -28,7 +27,7 @@ class SplashScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text(
+                    child: const Text(
                       "App Name",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -36,8 +35,8 @@ class SplashScreen extends StatelessWidget {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width - 20,
-                    padding: EdgeInsets.all(10),
-                    child: Text(
+                    padding: const EdgeInsets.all(10),
+                    child: const Text(
                       "Sleep related app tagline will be placed here only",
                       textAlign: TextAlign.center,
                     ),
@@ -68,26 +67,26 @@ class SplashScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(HomeScreen.routeName);
               },
               child: Container(
-                child: Text("Skip",style: TextStyle(fontSize: 20),),
+                child: const Text("Skip",style: TextStyle(fontSize: 20),),
               ),
             ),
           ),
           BottomDrawer(
-            color: Color.fromARGB(255, 234, 229, 229),
+            color: const Color.fromARGB(255, 234, 229, 229),
             header: Container(
-              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
               width: double.infinity,
               child: Center(
                   child: Container(
                 width: double.infinity,
                 alignment: Alignment.center,
                 height: 2,
-                child: Text(""),
-                decoration: BoxDecoration(color: Colors.black),
+                child: const Text(""),
+                decoration: const BoxDecoration(color: Colors.black),
               )),
             ),
             body: Container(
-              padding: EdgeInsets.symmetric(horizontal: 80, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -114,7 +113,7 @@ class SplashScreen extends StatelessWidget {
             ),
             headerHeight: 29,
             drawerHeight: 150,
-            boxShadow: [BoxShadow(color: Colors.grey)],
+            boxShadow: const [BoxShadow(color: Colors.grey)],
           )
         ],
       ),

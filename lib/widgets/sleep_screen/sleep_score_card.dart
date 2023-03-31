@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 
 class SleepScoreCard extends StatelessWidget {
   final String? text;
@@ -14,12 +13,12 @@ class SleepScoreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Row(
         children: [
           Container(
             width: (width - 20) * 0.70,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 5,
             ),
             decoration: BoxDecoration(
@@ -27,7 +26,7 @@ class SleepScoreCard extends StatelessWidget {
                 color: Colors.black,
                 width: 2,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Theme.of(context).canvasColor,
             ),
             child: Row(
@@ -35,7 +34,7 @@ class SleepScoreCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(300)),
                       color: Colors.white,
                     ),

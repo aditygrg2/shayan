@@ -23,28 +23,28 @@ class _TestMyBedroomState extends State<TestMyBedroom> {
         children: [
           TopRow(back: true),
           HomeScreenText(text: 'Test My Bedroom'),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'We all need the perfect environment for sleep, light, noise and temperature are key elements in making your bedroom a relaxed and peaceful zone, perfectly suited for sleep',
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             width: double.infinity,
-            margin: EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
               'Create your ideal sleep environment',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           TmbDescriptionCards(

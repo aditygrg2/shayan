@@ -12,15 +12,15 @@ class ListTileIconCreators extends StatelessWidget {
       onTap: onTap,
       child: Center(
         child: Container(
-          margin: EdgeInsets.all(15),
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          margin: const EdgeInsets.all(15),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
             border: Border.all(
               color: Colors.black,
               width: 1
             ),
-            borderRadius: BorderRadius.all(Radius.circular(10),),
+            borderRadius: const BorderRadius.all(Radius.circular(10),),
           ),
           child: ListTile(
             title: Text(

@@ -10,7 +10,7 @@ class SplashButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
           onPressed!();
@@ -18,7 +18,7 @@ class SplashButton extends StatelessWidget {
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
               color: Theme.of(context).buttonColor,
@@ -27,7 +27,7 @@ class SplashButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 64),
               child: Text(
                 text!,
-                style: TextStyle(fontSize: 25),
+                style: const TextStyle(fontSize: 25),
               ),
             ),
           ),

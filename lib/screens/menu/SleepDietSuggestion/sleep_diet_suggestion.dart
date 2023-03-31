@@ -54,7 +54,7 @@ class SleepDietSuggestion extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               child: Column(
                   children: suggestions.map((e) {
                 return Row(
@@ -64,12 +64,12 @@ class SleepDietSuggestion extends StatelessWidget {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * 0.7,
-                      padding: EdgeInsets.all(13),
-                      margin: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.all(13),
+                      margin: const EdgeInsets.symmetric(vertical: 8),
                       decoration: BoxDecoration(
                           color: Theme.of(context).accentColor,
                           border: Border.all(
-                              color: Color.fromRGBO(250, 195, 68, 1)),
+                              color: const Color.fromRGBO(250, 195, 68, 1)),
                           borderRadius: BorderRadius.circular(10)),
                       child: Text(e['tip']),
                     ),
@@ -78,7 +78,7 @@ class SleepDietSuggestion extends StatelessWidget {
               }).toList()),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Text(
                 'Related Articles',
                 style: Theme.of(context).textTheme.headlineMedium,
@@ -91,20 +91,20 @@ class SleepDietSuggestion extends StatelessWidget {
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width * 0.7,
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.symmetric(vertical: 8),
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(e['tip']),
                     ),
                     IconButton(
                       onPressed: () async {
                         await launchUrl(Uri.parse(e['link']));
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.insert_link_rounded,
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 2,
                     )
                   ],

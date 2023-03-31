@@ -14,8 +14,15 @@ class SlidingCardRounded extends StatelessWidget {
       child: Container(
         width: 180,
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
         margin: EdgeInsets.all(10),
         child: Column(
           children: [
@@ -32,25 +39,35 @@ class SlidingCardRounded extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8,horizontal: 6),
-              decoration: BoxDecoration(color: Theme.of(context).accentColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    heading,
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    subHeading,
-                    style: Theme.of(context).textTheme.labelMedium,
-                    textAlign: TextAlign.start,
-                  ),
-                ],
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      heading,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      child: Text(
+                        subHeading,
+                        style: Theme.of(context).textTheme.labelMedium,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             )
           ],

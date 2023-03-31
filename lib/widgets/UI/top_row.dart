@@ -31,7 +31,7 @@ class TopRow extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_back_rounded,
                     color: Colors.black,
                     size: 35,
@@ -47,7 +47,7 @@ class TopRow extends StatelessWidget {
                   onPressed: (){
                     Navigator.of(context).pushNamed(ProfileScreen.routeName);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.person,
                     color: Colors.black,
                   ),
@@ -56,7 +56,7 @@ class TopRow extends StatelessWidget {
                   onPressed: (){
                     Navigator.of(context).pushNamed(ChatScreen.routeName);
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.message_rounded,
                     color: Colors.black,
                   ),
@@ -68,7 +68,7 @@ class TopRow extends StatelessWidget {
               onPressed: (){
                 Navigator.of(context).pushNamed(ProfileScreen.routeName);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.person,
                 color: Colors.black,
               ),
@@ -78,7 +78,7 @@ class TopRow extends StatelessWidget {
               onPressed: (){
                 Navigator.of(context).pushNamed(ChatScreen.routeName);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.message_rounded,
                 color: Colors.black,
               ),

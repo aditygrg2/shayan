@@ -12,7 +12,7 @@ class ElevatedButtonsWithIcon extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       child: Container(
-        margin: EdgeInsets.all(8),
+        margin: const EdgeInsets.all(8),
         child: Row(
           children: [Icon(icon), Text(title!)],
         ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_one.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_three.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';

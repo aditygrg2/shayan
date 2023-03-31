@@ -17,12 +17,12 @@ class PropertyCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         border: Border.all(
-          color: Color.fromRGBO(250, 195, 68, 1),
+          color: const Color.fromRGBO(250, 195, 68, 1),
           width: 0.9,
         ),
         borderRadius: BorderRadius.circular(12),
       ),
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -33,13 +33,16 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 6,
           ),
           Row(
@@ -48,7 +51,7 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   score,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 25,
                   ),
                   textAlign: TextAlign.center,

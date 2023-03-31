@@ -40,7 +40,7 @@ class _MusicSectionState extends State<MusicSection> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 30),
+      margin: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
           HomeScreenText(text: 'Music Therapy'),
@@ -50,7 +50,7 @@ class _MusicSectionState extends State<MusicSection> {
             },
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
             height: 300,

@@ -9,36 +9,36 @@ class Podcast extends StatelessWidget {
   final _musicData = [
     {
       'heading': 'Get Sleepy',
-      'subHeading': 'Want to hear a story to get Sleepy?Use GetSleepy.',
-      'src': 'https://getsleepy.simplecast.com/',
+      'subHeading': 'Want to hear a story to get Sleepy? Watch this podcast and see the results.',
+      'src': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5mWPkiC91XiT777za6METGVKiBW0Ci08-ag&usqp=CAU',
     },
     {
       'heading': 'Sleep With Me',
       'subHeading':
-          'Insomnia? Can\'t fall asleep? Mind racing at night? Worries keeping you awake? Watch this podcast and see the results.',
-      'src': 'https://soundcloud.com/sleepwithmepodcast',
+          'Insomnia? Can\'t fall asleep? Mind racing at night? Worries keeping you awake? ',
+      'src': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1NUzRM89XZbR_mJEgkUEVkQKBq6-9np3EYw&usqp=CAU',
     },
     {
       'heading': 'Sleep Meditation Podcast',
       'subHeading': 'Hear Relaxing Sleep Sounds To improve your sleep.',
-      'src': 'https://open.spotify.com/show/0OqwG23cqvPundxNPArv5Z',
+      'src': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyiBx3o_Y1vkc892MO5dKD1GEgX1NthnhdDcMyXo-5lrLKvjBllzivBTVBQ9EqWCNfiHM&usqp=CAU',
     },
     {
       'heading': 'The Infinite Monkey Cage',
       'subHeading': 'Get a deep knowledge about insomnia and sleep sciene.',
-      'src': 'https://www.bbc.co.uk/programmes/b07knqxy',
+      'src': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7Q3cGPYXZZKe0KaEOxqj3wZDQ8tsMg63QflqXESeh6ImG5MOjvzVT1Dcz0FpMcoPnvFI&usqp=CAU',
     },
     {
       'heading': 'Slow Radio',
       'subHeading':
           'Want to fall in love with nature along with improved sleep quality? Slow Radio is best for you.',
-      'src': 'https://www.bbc.co.uk/programmes/p05k5bq0/episodes/downloads',
+      'src': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaVl0xBmLN9BSQR4St9iTZBQEqQE7BqZCefg&usqp=CAU',
     },
     {
       'heading': 'Tracks to Relax',
-      'subHeading': 'Watch weekly Guided Meditations for napping and sleeping.',
+      'subHeading': 'Watch weekly Guided Meditations for napping and sleeping. This will help you get on track',
       'src':
-          'https://open.spotify.com/show/75BvaaxemjYBSLP03xpm3m?si=8fpsmnAYRQyEjRtO68Z5mA&nd=1',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTbB-ivIDiWieDbs_xCAEm6eXGinvuy6DaWw&usqp=CAU',
     },
   ];
   @override
@@ -52,35 +52,33 @@ class Podcast extends StatelessWidget {
           HomeScreenText(
             text: "Podcasts",
           ),
-          Container(
-            // padding: EdgeInsets.symmetric(horizontal: 10),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 2 / 2,
-              ),
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.all(10),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .pushNamed(PodcastScreenPlay.routeName);
-                    },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      child: LibraryCard(
-                          heading: _musicData[index]['heading'],
-                          src: _musicData[index]['src'],
-                          subHeading: _musicData[index]['subHeading']),
-                    ));
-              },
-              itemCount: _musicData.length,
+          GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              childAspectRatio: 1.7 / 3,
             ),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.all(10),
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(
+                    PodcastScreenPlay.routeName,
+                  );
+                },
+                child: Container(
+                  child: LibraryCard(
+                    heading: _musicData[index]['heading'],
+                    src: _musicData[index]['src'],
+                    subHeading: _musicData[index]['subHeading'],
+                  ),
+                ),
+              );
+            },
+            itemCount: _musicData.length,
           ),
         ],
       ),

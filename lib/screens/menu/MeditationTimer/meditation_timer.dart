@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
@@ -77,7 +75,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
             text: 'Meditation Timer',
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Container(
@@ -99,8 +97,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
             height: 100,
             child: !widget.isShowPicker
                 ? Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
+                    margin: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey)),
@@ -117,8 +115,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.all(10),
-                        padding: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: widget.selectedIndex == index
                             ? BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
@@ -149,7 +147,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
           Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
-            padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 30),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -164,7 +162,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           widget.isShowPicker = !widget.isShowPicker;
                         });
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.stop_rounded,
                         color: Colors.black,
                       ),
@@ -209,7 +207,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
               arguments: 'MEDITATION',
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           )
         ],

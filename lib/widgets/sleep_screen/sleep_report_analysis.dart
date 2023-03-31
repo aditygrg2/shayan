@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_card.dart';
 import 'package:provider/provider.dart';
@@ -10,25 +11,25 @@ import 'package:provider/provider.dart';
 class SleepReportAnalysis extends StatelessWidget {
   List<Map<String, dynamic>> reports = [
     {
-      'title': 'Efficiency',
-      'score': '97%',
+      'title': 'Mindfulness',
+      'score': ' ',
       'description':
-          'Your sleep efficiency is the ratio of actual sleeping time to total time in bed. You want it to be above 85% to be healthy',
-      'icon': Icons.heart_broken
+          'Perform practical techniques to cultivate mindfulness and reduce stress.',
+      'icon': Icons.health_and_safety
     },
     {
-      'title': 'Efficiency',
-      'score': '97%',
+      'title': 'Productivity',
+      'score': ' ',
       'description':
-          'Your sleep efficiency is the ratio of actual sleeping time to total time in bed. You want it to be above 85% to be healthy',
-      'icon': Icons.heart_broken
+          'Maximizing your time and energy to achieve more and reach your goals.',
+      'icon': Icons.grid_view_rounded
     },
     {
-      'title': 'Efficiency',
-      'score': '97%',
+      'title': 'Sleep',
+      'score': ' ',
       'description':
-          'Your sleep efficiency is the ratio of actual sleeping time to total time in bed. You want it to be above 85% to be healthy',
-      'icon': Icons.heart_broken
+          'Chat with a sleep expert and discover tips and techniques for getting a better night\'s rest.',
+      'icon': Icons.bed
     },
   ];
   @override
@@ -38,7 +39,7 @@ class SleepReportAnalysis extends StatelessWidget {
     return FutureBuilder(
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
@@ -46,12 +47,12 @@ class SleepReportAnalysis extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.only(
-                topLeft: const Radius.circular(25.0),
-                topRight: const Radius.circular(25.0),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(25.0),
+                topRight: Radius.circular(25.0),
               ),
             ),
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: Column(
               children: [
                 Container(
@@ -59,14 +60,14 @@ class SleepReportAnalysis extends StatelessWidget {
                   child: Image.asset("assets/music_therapy_joyful.png"),
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Text(
                     "Sleep Report",
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Text(
@@ -74,7 +75,7 @@ class SleepReportAnalysis extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelMedium,
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 ElevatedButtonWithoutIcon(
@@ -104,14 +105,15 @@ class SleepReportAnalysis extends StatelessWidget {
                   text = "Sleep Deprivation";
                   isHealty = false;
                 }
+                text = 'Healthy';
               } else if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
               return Scaffold(
                 body: Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     children: [
                       Row(
@@ -120,24 +122,25 @@ class SleepReportAnalysis extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
+                                padding: const EdgeInsets.all(8),
                                 child: Text(
                                   'Sleep Status',
                                   style:
                                       Theme.of(context).textTheme.headlineLarge,
                                 ),
-                                padding: EdgeInsets.all(8),
                               ),
                               Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.50 -
-                                          40,
-                                  padding: EdgeInsets.all(8),
-                                  child: Text(
-                                    text!,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                    ),
-                                  )),
+                                width:
+                                    MediaQuery.of(context).size.width * 0.50 -
+                                        40,
+                                padding: const EdgeInsets.all(8),
+                                child: Text(
+                                  text!,
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           Expanded(
@@ -154,34 +157,43 @@ class SleepReportAnalysis extends StatelessWidget {
                         height: MediaQuery.of(context).size.height * 0.3,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
-                          children: reports.map((element) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.black,
+                          children: reports.map(
+                            (element) {
+                              return Container(
+                                margin: const EdgeInsets.only(
+                                  right: 15,
                                 ),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.black,
+                                  ),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
                                 ),
-                              ),
-                              height: MediaQuery.of(context).size.height * 0.25,
-                              width: MediaQuery.of(context).size.width - 80,
-                              padding: EdgeInsets.all(10),
-                              child: SleepReportCard(
-                                heading: element['title'],
-                                value: element['score'],
-                                information: element['description'],
-                                icon: element['icon'],
-                              ),
-                            );
-                          }).toList(),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.25,
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                padding: const EdgeInsets.all(10),
+                                child: SleepReportCard(
+                                  heading: element['title'],
+                                  value: element['score'],
+                                  information: element['description'],
+                                  icon: element['icon'],
+                                ),
+                              );
+                            },
+                          ).toList(),
                         ),
                       ),
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.black,
-                          size: 40,
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).pop(),
+                          child: const Icon(
+                            Icons.arrow_forward,
+                            color: Colors.black,
+                            size: 40,
+                          ),
                         ),
                       ])
                     ],

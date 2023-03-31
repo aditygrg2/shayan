@@ -10,6 +10,7 @@ class SleepReportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.7,
       child: Column(
         children: [
           Container(
@@ -23,7 +24,11 @@ class SleepReportCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    
+                    Icon(
+                      icon,
+                      color: Theme.of(context).canvasColor,
+                      size: 50,
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -43,11 +48,6 @@ class SleepReportCard extends StatelessWidget {
                     SizedBox(
                       width: 20,
                     ),
-                    Icon(
-                      icon,
-                      color: Theme.of(context).canvasColor,
-                      size: 50,
-                    ),
                   ],
                 ),
                 SizedBox(
@@ -56,11 +56,14 @@ class SleepReportCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      value!,
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 20,
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      child: Text(
+                        value!,
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
                       ),
                     ),
                   ],
@@ -72,7 +75,7 @@ class SleepReportCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width - 55,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       child: Text(
                         information!,
                         textAlign: TextAlign.start,

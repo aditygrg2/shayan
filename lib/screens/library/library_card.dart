@@ -12,23 +12,68 @@ class LibraryCard extends StatefulWidget {
 class _LibraryCardState extends State<LibraryCard> {
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        child: Expanded(child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),child: Image.network(widget.src,fit: BoxFit.cover,))),
-        footer: GridTileBar(
-            backgroundColor: Colors.white,
-            leading: Expanded(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
+            bottomRight: Radius.circular(15)),
+        border: Border.all(
+          color: Colors.black,
+        ),
+      ),
+      child: Column(
+        children: [
+          Expanded(
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+                
+              ),
               child: Container(
-                // width: MediaQuery.of(context).size.width - 253.5,
-                padding: EdgeInsets.all(9),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(widget.heading), Text(widget.subHeading,style: TextStyle(fontSize: 8),)],
+                height: 200,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.network(
+                  widget.src,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-            trailing: Expanded(child: Icon(Icons.favorite,color: Colors.black,))),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).buttonColor,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15),
+              ),
+            ),
+            padding: EdgeInsets.all(9),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.heading,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  widget.subHeading,
+                  style: TextStyle(
+                    fontSize: 12,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

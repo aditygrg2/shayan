@@ -1,7 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:night_gschallenge/providers/chart_provider.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
@@ -36,16 +34,16 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
         HomeScreenText(
           text: "Weekly Sleep Analysis",
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         loading
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)),
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 width: MediaQuery.of(context).size.width - 20,
                 height: 300,
                 child: BarChart(
@@ -87,7 +85,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                           getTooltipItem: (group, groupIndex, rod, rodIndex) {
                             var y = chartProvider.getChartData[groupIndex].y;
                             return BarTooltipItem(
-                                y.toString(), TextStyle(color: Colors.white));
+                                y.toString(), const TextStyle(color: Colors.white));
                           },
                         )),
                     barGroups: chartProvider.getChartData.map(
@@ -98,7 +96,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                             fromY: 0,
                             color: e.color,
                             width: 30,
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(2),
                               topRight: Radius.circular(2),
                             ),

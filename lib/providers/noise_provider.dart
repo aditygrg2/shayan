@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:noise_meter/noise_meter.dart';
 import 'package:collection/collection.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class NoiseProvider with ChangeNotifier {
   late StreamSubscription<NoiseReading> _noiseSubscription;

@@ -8,7 +8,7 @@ class SleepDiseaseProvider extends ChangeNotifier{
   int apnea=0;
   int sleep_deprivation=0;
   int insomia=0;
-  List<Map<String,dynamic>>_questions=[
+  final List<Map<String,dynamic>>_questions=[
     {
       "que":6,
       "type":"MCQ",

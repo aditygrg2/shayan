@@ -21,7 +21,7 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
           Container(
             alignment: Alignment.topRight,
             child: IconButton(
-              icon: Icon(Icons.close),
+              icon: const Icon(Icons.close),
               onPressed: () {
                 if (widget.isPlaying) {
                   audioPlayer.stop();
@@ -38,17 +38,17 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Text(
               widget.therapy['mood'],
               style: Theme.of(context).textTheme.headlineLarge,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
@@ -56,8 +56,8 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
             child: Container(
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.all(5),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(10),
               child: ListTile(
                 title: Text(
                   widget.therapy['tunes'][0]['title'],

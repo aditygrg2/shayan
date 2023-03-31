@@ -66,11 +66,11 @@ class _SignupScreenState extends State<SignupScreen> {
           Image.asset(
             'assets/signup.gif',
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
+          const Padding(
+            padding: EdgeInsets.symmetric(
               horizontal: 15,
             ),
             child: Text(
@@ -80,11 +80,11 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
+          const Padding(
+            padding: EdgeInsets.symmetric(
               horizontal: 15.0,
             ),
             child: Text(
@@ -103,8 +103,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(Icons.person),
-                      SizedBox(
+                      const Icon(Icons.person),
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -131,8 +131,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(Icons.person),
-                      SizedBox(
+                      const Icon(Icons.person),
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -160,8 +160,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(Icons.key),
-                      SizedBox(
+                      const Icon(Icons.key),
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -169,7 +169,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           key: const ValueKey('password'),
                           obscureText: true,
                           obscuringCharacter: '●',
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration:
                               const InputDecoration(labelText: 'Password'),
                           onSaved: (value) {
@@ -191,10 +191,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.key,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -241,7 +241,7 @@ class _SignupScreenState extends State<SignupScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Already have an account?',
                 style: TextStyle(shadows: [
                   Shadow(
@@ -255,7 +255,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 onPressed: () {
                   Navigator.of(context).popAndPushNamed(LoginScreen.routeName);
                 },
-                child: Text(
+                child: const Text(
                   'Login',
                   style: TextStyle(
                       fontSize: 15,

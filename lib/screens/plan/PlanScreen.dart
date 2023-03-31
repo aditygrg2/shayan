@@ -5,9 +5,11 @@ import 'package:intl/intl.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/screens/plan/addEdit_timeline.dart';
 import 'package:night_gschallenge/screens/plan/timeline_card.dart';
+import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_analysis.dart';
 import '../../widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
@@ -59,9 +61,55 @@ class _PlanScreenState extends State<PlanScreen> {
     var timelineProvider = Provider.of<TimelineProvider>(context);
     var timeline = timelineProvider.getTimeline;
     return FirebaseAuth.instance.currentUser == null
-        ? const Text(
-            'You must be signed in to access this page',
-            textAlign: TextAlign.center,
+        ? ListView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+            children: [
+              HomeScreenText(
+                text: 'Plan Screen',
+              ),
+              Container(
+                margin: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(25),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  color: Theme.of(context).canvasColor,
+                ),
+                child: Column(
+                  children: [
+                    MenuHeroImage(
+                      image: 'assets/mantra_2.png',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      'Create your own personalised plan for managing your sleep',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: ElevatedButtonWithoutIcon(
+                        text: id != null ? 'Create a plan' : 'Login to proceed',
+                        onPressedButton: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            SplashScreen.routeName,
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
           )
         : FutureBuilder(
             builder: (context, snapshot) {
@@ -160,7 +208,8 @@ class _PlanScreenState extends State<PlanScreen> {
                                 Container(
                                   padding: const EdgeInsets.all(10),
                                   child: GridView(
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     gridDelegate:
                                         const SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 2,
@@ -217,8 +266,10 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: const Icon(Icons.chat_rounded,
-                                                color: Colors.black, size: 40),
+                                            child: const Icon(
+                                                Icons.chat_rounded,
+                                                color: Colors.black,
+                                                size: 40),
                                           ),
                                           const SizedBox(
                                             height: 10,
@@ -236,8 +287,10 @@ class _PlanScreenState extends State<PlanScreen> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            child: const Icon(Icons.timer_outlined,
-                                                color: Colors.black, size: 40),
+                                            child: const Icon(
+                                                Icons.timer_outlined,
+                                                color: Colors.black,
+                                                size: 40),
                                           ),
                                           const SizedBox(
                                             height: 10,
@@ -385,8 +438,8 @@ class _PlanScreenState extends State<PlanScreen> {
                                     color: Colors.black,
                                     width: 2,
                                   ),
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(20))),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20))),
                               child: Text(
                                 '${questionNumber} Questions left!',
                                 textAlign: TextAlign.center,
@@ -431,8 +484,6 @@ class _PlanScreenState extends State<PlanScreen> {
                   ),
                 );
               }
-
-              print(snapshot.data?.get('healthState'));
               return const AlertDialog(
                 title: Text('An error occurred!'),
               );
