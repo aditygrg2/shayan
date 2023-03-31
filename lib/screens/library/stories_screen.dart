@@ -42,12 +42,14 @@ class StoryScreen extends StatelessWidget {
         {
           "image": "assets/sleep_story_5.jpg",
           "title": "The Gift of the Magi",
-          "description": "calm, soothing music"
+          "description":
+              "The magi brought valuable gifts, but that was not among them. My meaning will be explained soon. From inside the coat..."
         },
         {
           "image": "assets/sleep_story_6.jpg",
           "title": "The Cabin in the Woods",
-          "description": ""
+          "description":
+              "'The Cabin in the Woods' Beomes a Horror Movie About Horror Movies ... As chaos ensues and various workers are ironically dispatched by the ..."
         }
       ]
     },

@@ -24,7 +24,7 @@ class CommunityPostPRovider extends ChangeNotifier {
       "description":
           "Restless legs syndrome (RLS) is a persistent need to move your legs due to cramping or unpleasant tingling, burning, or creeping sensations which can often be relieved by moving around or getting out of bed. Doctors don't know what causes RLS, but they suspect it may be hereditary..",
       "user": "James",
-      "type": "artcle"
+      "type": "article"
     },
   ];
 
