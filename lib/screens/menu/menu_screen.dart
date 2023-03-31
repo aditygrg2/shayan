@@ -72,7 +72,7 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HomeScreenText(text: 'Sleep Tools'),
+        HomeScreenText(text: 'More'),
         TmbDescriptionCards(
           title: "Community",
           subtitle:

@@ -16,7 +16,7 @@ class WatchCompanyProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30),
+      padding: const EdgeInsets.only(top: 30),
       child: GestureDetector(
         onTap: onPressed,
         child: ListTile(

@@ -20,23 +20,23 @@ class _McqWidgetState extends State<McqWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
         color: Theme.of(context).canvasColor,
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               widget.question!,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Column(
@@ -55,7 +55,7 @@ class _McqWidgetState extends State<McqWidget> {
                     title: Text(e),
                   );
                 }).toList(),
-                SizedBox(
+                const SizedBox(
             height: 15,
           ),
           Row(
@@ -75,7 +75,7 @@ class _McqWidgetState extends State<McqWidget> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 35,
           ),
               ],

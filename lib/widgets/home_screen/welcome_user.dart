@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -61,7 +60,7 @@ class _WelcomeUserState extends State<WelcomeUser>
                 );
               },
             ),
-          Container(
+          SizedBox(
             height: 150,
             width: double.infinity,
             child: Image.asset( hours<20?(hours<15?"assets/sun.gif":"assets/good_evening.gif"):"assets/good_night.gif",

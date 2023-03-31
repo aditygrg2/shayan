@@ -11,7 +11,7 @@ class ChatInput extends StatefulWidget {
 }
 
 class _ChatInputState extends State<ChatInput> {
-  final _controller = new TextEditingController();
+  final _controller = TextEditingController();
   String _enteredMessage = '';
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _ChatInputState extends State<ChatInput> {
       children: <Widget>[
         Expanded(
           child: Container(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: TextField(
               controller: _controller,
               textCapitalization: TextCapitalization.sentences,
@@ -49,13 +49,13 @@ class _ChatInputState extends State<ChatInput> {
         ),
         IconButton(
           color: Colors.black,
-          icon: Icon(
+          icon: const Icon(
             Icons.send,
           ),
           onPressed: _enteredMessage.trim().isEmpty
               ? null
               : () {
-                  widget.controller!.animateTo(widget.controller!.position.maxScrollExtent + 30, duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+                  widget.controller!.animateTo(widget.controller!.position.maxScrollExtent + 30, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
                   widget.getMessage!(_enteredMessage);
                 },
         )

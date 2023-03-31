@@ -32,7 +32,7 @@ class _ZenScreenState extends State<ZenScreen> {
             content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('You are in Zen Mode Wait for '),
+            const Text('You are in Zen Mode Wait for '),
             Expanded(
                 child: ElevatedButton(
               onPressed: () {
@@ -44,7 +44,7 @@ class _ZenScreenState extends State<ZenScreen> {
                       .popUntil(ModalRoute.withName(PhoneFreeTime.routeName));
                 });
               },
-              child: Text(
+              child: const Text(
                 'Exit Mode',
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
               ),
@@ -65,7 +65,7 @@ class _ZenScreenState extends State<ZenScreen> {
                 Navigator.of(context).pop();
               },
               controller: controller,
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 37,
                   color: Colors.white),
@@ -73,19 +73,19 @@ class _ZenScreenState extends State<ZenScreen> {
               neumorphicEffect: true,
               duration: (args as int) * 60,
               innerFillGradient: LinearGradient(colors: [
-                Color.fromRGBO(255, 255, 255, 1),
+                const Color.fromRGBO(255, 255, 255, 1),
                 Theme.of(context).canvasColor
               ]),
               backgroudColor: Colors.black,
               neonGradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(255, 255, 255, 1),
+                  const Color.fromRGBO(255, 255, 255, 1),
                   Theme.of(context).canvasColor
                 ],
               ),
               width: 250,
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             ElevatedButtonWithoutIcon(text: "Can't Sleep?",onPressedButton: (){
               brightnessProvider.resetBrightness();
               VolumeController().setVolume(100);

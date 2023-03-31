@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
-import 'package:provider/provider.dart';
 
 class WeatherProvider extends ChangeNotifier {
   bool success = false;

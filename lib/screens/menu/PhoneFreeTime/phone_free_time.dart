@@ -36,19 +36,19 @@ class PhoneFreeTime extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: Theme.of(context).accentColor,
               ),
-              padding: EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               child: Column(children: [
-                Text(
+                const Text(
                   'Before You Start',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ...info.map((element) {
                   return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 10),
-                    margin: EdgeInsets.symmetric(vertical: 6),
+                    margin: const EdgeInsets.symmetric(vertical: 6),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -71,7 +71,7 @@ class PhoneFreeTime extends StatelessWidget {
               ]),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -92,7 +92,7 @@ class PhoneFreeTime extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Center(

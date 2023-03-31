@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
-import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
@@ -66,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: Row(
                     children: [
-                      Icon(Icons.person),
-                      SizedBox(
+                      const Icon(Icons.person),
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -89,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -99,8 +98,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.key),
-                      SizedBox(
+                      const Icon(Icons.key),
+                      const SizedBox(
                         width: 20,
                       ),
                       Expanded(
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           key: const ValueKey('password'),
                           obscureText: true,
                           obscuringCharacter: '●',
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           decoration: const InputDecoration(
                               labelText: 'Password',
                               suffixStyle: TextStyle(color: Colors.black)),
@@ -168,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'New User?',
                 style: TextStyle(shadows: [
                   Shadow(
@@ -182,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.of(context).popAndPushNamed(SignupScreen.routeName);
                 },
-                child: Text(
+                child: const Text(
                   'Create your account',
                   style: TextStyle(
                       fontSize: 15,

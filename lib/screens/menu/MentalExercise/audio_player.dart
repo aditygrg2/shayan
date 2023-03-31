@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:provider/provider.dart';
 
 class AudioPlayerWithSlider extends StatefulWidget {
   bool isPlaying = false;
   String audio;
-  Duration progress = Duration();
+  Duration progress = const Duration();
   AudioPlayerWithSlider(this.audio);
   @override
   State<AudioPlayerWithSlider> createState() => _AudioPlayerWithSliderState();
@@ -37,7 +36,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
 
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Container(
@@ -49,7 +48,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                       : getTime(audioProvider.duration)),
               minHeight: 5,
             )),
-        SizedBox(height: 10,),
+        const SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -61,7 +60,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         CircleAvatar(

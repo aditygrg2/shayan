@@ -16,7 +16,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
   List<Map<dynamic, dynamic>> therapies = [
     {
       'mood': 'Tense',
-      'color': Color.fromRGBO(219, 74, 72, 1),
+      'color': const Color.fromRGBO(219, 74, 72, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -28,7 +28,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Excited',
-      'color': Color.fromRGBO(234, 162, 71, 1),
+      'color': const Color.fromRGBO(234, 162, 71, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -40,7 +40,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Relaxed',
-      'color': Color.fromRGBO(108, 187, 226, 1),
+      'color': const Color.fromRGBO(108, 187, 226, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -52,7 +52,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Sad',
-      'color': Color.fromRGBO(160, 161, 163, 1),
+      'color': const Color.fromRGBO(160, 161, 163, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -64,7 +64,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Bored',
-      'color': Color.fromRGBO(252, 244, 122, 1),
+      'color': const Color.fromRGBO(252, 244, 122, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -76,7 +76,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Joyful',
-      'color': Color.fromRGBO(233, 167, 157, 1),
+      'color': const Color.fromRGBO(233, 167, 157, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -89,7 +89,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Attentive',
       'image': 'assets/music_therapy_joyful.png',
-      'color': Color.fromRGBO(129, 193, 108, 1),
+      'color': const Color.fromRGBO(129, 193, 108, 1),
       'tunes': [
         {
           'tune': 'assets/music_therapy_joyful_tune.mp3',
@@ -100,7 +100,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Worried',
-      'color': Color.fromRGBO(187, 137, 196, 1),
+      'color': const Color.fromRGBO(187, 137, 196, 1),
       'image': 'assets/music_therapy_worried.png',
       'tunes': [
         {
@@ -112,7 +112,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Sleepy',
-      'color': Color.fromRGBO(77, 78, 159, 1),
+      'color': const Color.fromRGBO(77, 78, 159, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -124,7 +124,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Neutral',
-      'color': Color.fromARGB(255, 217, 210, 210),
+      'color': const Color.fromARGB(255, 217, 210, 210),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
@@ -148,7 +148,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
             text: "Music Therapy",
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -160,30 +160,30 @@ class _MusicTherapyState extends State<MusicTherapy> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Text(
                     "What's your Mood?",
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 500,
                   child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 10,
                         childAspectRatio: 4 / 2,
                         crossAxisSpacing: 10),
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -204,7 +204,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
                             gradient: RadialGradient(
                               radius: 0.8,
                               colors: [
-                                Color.fromRGBO(255, 255, 255, 1),
+                                const Color.fromRGBO(255, 255, 255, 1),
                                 therapies[index]['color']
                               ],
                               tileMode: TileMode.clamp,
@@ -233,7 +233,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
             onTap: () => Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
             icon: Icons.nightlife,
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
         ],

@@ -34,23 +34,23 @@ class _InputBoxState extends State<InputBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       decoration: BoxDecoration(
         color: Theme.of(context).canvasColor,
-        borderRadius: BorderRadius.all(Radius.circular(30)),
+        borderRadius: const BorderRadius.all(Radius.circular(30)),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               widget.question!,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Column(
@@ -67,9 +67,9 @@ class _InputBoxState extends State<InputBox> {
                     is24HourMode: false,
                     isShowSeconds: false,
                     normalTextStyle:
-                        TextStyle(fontSize: 24, color: Colors.black54),
+                        const TextStyle(fontSize: 24, color: Colors.black54),
                     highlightedTextStyle:
-                        TextStyle(fontSize: 28, color: Colors.black87),
+                        const TextStyle(fontSize: 28, color: Colors.black87),
                     spacing: 45,
                     itemHeight: 80,
                     isForce2Digits: true,
@@ -110,7 +110,7 @@ class _InputBoxState extends State<InputBox> {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.calendar_month,
                           color: Colors.blue,
                         ),
@@ -120,7 +120,7 @@ class _InputBoxState extends State<InputBox> {
                             initialDate: DateTime(2000, 1, 1),
                             firstDate: DateTime(1900, 1, 1),
                             lastDate: DateTime.now().subtract(
-                              Duration(days: 18 * 365),
+                              const Duration(days: 18 * 365),
                             ),
                           ).then((value) {
                             valueSelected = value.toString();
@@ -132,7 +132,7 @@ class _InputBoxState extends State<InputBox> {
                       )
                     ],
                   ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
@@ -155,7 +155,7 @@ class _InputBoxState extends State<InputBox> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 35,
                 ),
               ],

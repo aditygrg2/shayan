@@ -7,7 +7,7 @@ class MenuHeroImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(40),
+      margin: const EdgeInsets.all(40),
       height: 200,
       child: Image.asset(
         image!,

@@ -2,58 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
+import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_view_all.dart';
 import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:provider/provider.dart';
 
 class WhatsNew extends StatefulWidget {
-  int cardLimit = 3;
-  List<Map<String, String>> items = [
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-    {
-      'title': 'Amazing food',
-      'description': 'Eat food that helps you get good and nourishing sleep',
-      'imageURL':
-          'https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg'
-    },
-  ];
-
-  List<Map<String, String>> get itemsList {
-    if (cardLimit == 3) {
-      return items.getRange(0, 3).toList();
-    }
-    return items.toList();
-  }
 
   @override
   State<WhatsNew> createState() => _WhatsNewState();
@@ -62,8 +17,15 @@ class WhatsNew extends StatefulWidget {
 class _WhatsNewState extends State<WhatsNew> {
   @override
   Widget build(BuildContext context) {
-    int? tst = Provider.of<SleepElements>(context, listen: false).totalSleepTime;
-    int? SE = Provider.of<SleepElements>(context, listen: false).sleepEfficiency;
+    bool ss =
+        Provider.of<SleepElements>(context, listen: false).isSleepScorePresent;
+    print(ss);
+    int? tst;
+    int? SE;
+    if (ss) {
+      tst = Provider.of<SleepElements>(context, listen: false).totalSleepTime;
+      SE = Provider.of<SleepElements>(context, listen: false).sleepEfficiency;
+    }
     return Container(
       margin: EdgeInsets.only(
         top: 30,
@@ -75,28 +37,48 @@ class _WhatsNewState extends State<WhatsNew> {
           Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
+                margin:
+                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
                 child: PropertyCard(
                   color: Theme.of(context).splashColor,
-                  score: tst == null ? 'Data not available' : '${((int.parse(tst.toString())) / 60).round()} hr ${(int.parse(tst.toString())) % 60} min',
+                  score: ss == false
+                      ? 'Data not available'
+                      : '${((int.parse(tst.toString())) / 60).round()} hr ${(int.parse(tst.toString())) % 60} min',
                   title: 'Total Sleep Time',
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
+                margin:
+                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
                 child: PropertyCard(
                   color: Theme.of(context).splashColor,
-                  score: SE == null ? 'Data not available' : '${SE.toString()}%',
+                  score:
+                      ss == false ? 'Data not available' : '${SE.toString()}%',
                   title: 'Sleep Efficiency',
                 ),
               ),
               SizedBox(
                 height: 10,
               ),
+              if(ss==true)
               Text(
                 'Check out more details on My Sleep Page',
                 style: TextStyle(
                   fontSize: 16,
+                ),
+              ),
+              if(ss==false)
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed(SleepForm.routeName);
+                },
+                child: Text(
+                  'Fill out the form for fetching data',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                    fontSize: 16,
+                  ),
                 ),
               )
             ],

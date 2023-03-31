@@ -13,24 +13,24 @@ class BottomNavigator extends StatefulWidget {
 class _BottomNavigatorState extends State<BottomNavigator> {
   final List<Map<String, dynamic>> _pages = [
     {
-      'icon': Icon(Icons.home, color: Colors.black),
+      'icon': const Icon(Icons.home, color: Colors.black),
       'label': 'Home',
     },
     {
-      'icon': Icon(Icons.bar_chart, color: Colors.black),
+      'icon': const Icon(Icons.bar_chart, color: Colors.black),
       'label': 'My Sleep',
     },
     {
-      'icon': Icon(Icons.library_add, color: Colors.black),
+      'icon': const Icon(Icons.library_add, color: Colors.black),
       'label': 'My Plan',
     },
     {
-      'icon': Icon(Icons.library_add, color: Colors.black),
-      'label': 'Community',
+      'icon': const Icon(Icons.library_add, color: Colors.black),
+      'label': 'Library',
     },
     {
-      'icon': Icon(Icons.menu, color: Colors.black),
-      'label': 'Tools',
+      'icon': const Icon(Icons.menu, color: Colors.black),
+      'label': 'More',
     }
   ];
 
@@ -41,7 +41,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         height: 100,
         indicatorColor: Theme.of(context).canvasColor,
         labelTextStyle: MaterialStateProperty.all(
-          TextStyle(
+          const TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w400,
           ),

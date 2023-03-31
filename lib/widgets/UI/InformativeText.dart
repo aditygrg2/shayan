@@ -8,12 +8,12 @@ class InformativeText extends StatelessWidget {
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     return Container(
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon, size: 30),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Container(

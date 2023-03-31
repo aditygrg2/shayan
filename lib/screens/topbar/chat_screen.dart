@@ -14,7 +14,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   void getMessage(String text) async {
     var id = await FirebaseAuth.instance.currentUser?.uid;
     var user =
@@ -71,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back_rounded,
                     size: 35,
                   ),
@@ -89,10 +89,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   .orderBy('timestamps')
                   .snapshots(),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return Text("No data");
+                if (!snapshot.hasData) return const Text("No data");
 
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text('Please wait..');
+                  return const Text('Please wait..');
                 }
                 return ListView(
                   controller: _scrollController,
@@ -123,23 +123,23 @@ class _ChatScreenState extends State<ChatScreen> {
                                         ? Colors.amber
                                         : Theme.of(context).canvasColor,
                                     borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(12),
-                                      topRight: Radius.circular(12),
+                                      topLeft: const Radius.circular(12),
+                                      topRight: const Radius.circular(12),
                                       bottomLeft: !condition
-                                          ? Radius.circular(0)
-                                          : Radius.circular(12),
+                                          ? const Radius.circular(0)
+                                          : const Radius.circular(12),
                                       bottomRight: condition
-                                          ? Radius.circular(0)
-                                          : Radius.circular(12),
+                                          ? const Radius.circular(0)
+                                          : const Radius.circular(12),
                                     ),
                                   ),
                                   width:
                                       MediaQuery.of(context).size.width * 0.6,
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     vertical: 10,
                                     horizontal: 16,
                                   ),
-                                  margin: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.symmetric(
                                     vertical: 16,
                                     horizontal: 8,
                                   ),
@@ -150,14 +150,14 @@ class _ChatScreenState extends State<ChatScreen> {
                                     children: <Widget>[
                                       Text(
                                         chat['username'] ?? '',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black,
                                         ),
                                       ),
                                       Text(
                                         chat['value'],
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                         ),
                                         textAlign: condition

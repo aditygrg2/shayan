@@ -18,34 +18,34 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
     var taskController = TextEditingController();
     return Center(
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 600,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: EdgeInsets.all(10),
-              child: Text("Enter Time in (24 Hour format)"),
+              padding: const EdgeInsets.all(10),
+              child: const Text("Enter Time in (24 Hour format)"),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: timeController,
-                key: ValueKey('1'),
+                key: const ValueKey('1'),
                 onChanged: (value) {
                   
                 },
               ),
             ),
             Container(
-              padding: EdgeInsets.all(10),
-              child: Text("Enter Task"),
+              padding: const EdgeInsets.all(10),
+              child: const Text("Enter Task"),
             ),
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: TextField(
                 controller: taskController,
-                key: ValueKey('2'),
+                key: const ValueKey('2'),
                 onChanged: (value) {
                   
                 },

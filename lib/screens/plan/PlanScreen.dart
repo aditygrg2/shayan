@@ -484,8 +484,6 @@ class _PlanScreenState extends State<PlanScreen> {
                   ),
                 );
               }
-
-              print(snapshot.data?.get('healthState'));
               return const AlertDialog(
                 title: Text('An error occurred!'),
               );

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class TimeDurationPicker extends StatefulWidget {
   String? time;
@@ -26,7 +24,7 @@ class _TimeDurationPickerState extends State<TimeDurationPicker> {
       items: optionList.map<DropdownMenuItem<String>>((duration) {
         return DropdownMenuItem(
           value: duration,
-          child: Container(padding: EdgeInsets.all(10), child: Text(duration)),
+          child: Container(padding: const EdgeInsets.all(10), child: Text(duration)),
         );
       }).toList(),
       onChanged: (String? value) {
@@ -36,7 +34,7 @@ class _TimeDurationPickerState extends State<TimeDurationPicker> {
         });
       },
       value: widget.time,
-      hint: Text('Select Duration'),
+      hint: const Text('Select Duration'),
       dropdownColor: Colors.white,
       focusColor: Theme.of(context).canvasColor,
     );

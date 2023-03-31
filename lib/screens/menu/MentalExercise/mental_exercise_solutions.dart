@@ -20,14 +20,14 @@ class MentalExerciseSolution extends StatelessWidget {
             back: true,
           ),
           Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
                   Container(
                     decoration: BoxDecoration(
                         color: Theme.of(context).accentColor,
                         borderRadius: BorderRadius.circular(10)),
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,16 +37,16 @@ class MentalExerciseSolution extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Text(
                             args.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+                          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                           alignment: Alignment.center,
                           child: Text(
                             solution['subtitle'],
@@ -63,13 +63,13 @@ class MentalExerciseSolution extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(vertical: 10,horizontal: 8),
+                          padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 8),
                           child: Text(
                             solution['description'],
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         ...(solution['tips'] as List).map((element) {

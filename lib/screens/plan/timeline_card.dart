@@ -19,7 +19,7 @@ class TimelineCard extends StatelessWidget {
   String processDuration(String str) {
     var arr = str.split(':');
     String ans = "";
-    ans += arr[0] + " : ";
+    ans += "${arr[0]} : ";
     ans += arr[1];
     return ans;
   }
@@ -77,8 +77,8 @@ class TimelineCard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 5),
             width: double.infinity,
             height: 1,
-            child: const Text(""),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            child: const Text(""),
           ),
           Container(
             padding: const EdgeInsets.all(7),
@@ -96,22 +96,20 @@ class TimelineCard extends StatelessWidget {
                   style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ),
-              Container(
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return SingleChildScrollView(
-                              child: AddEditTimeline(index));
-                        },
-                        backgroundColor: Colors.white);
-                  },
+              IconButton(
+                icon: const Icon(
+                  Icons.edit,
+                  color: Colors.black,
                 ),
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return SingleChildScrollView(
+                            child: AddEditTimeline(index));
+                      },
+                      backgroundColor: Colors.white);
+                },
               )
             ],
           )
