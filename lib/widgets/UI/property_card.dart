@@ -33,7 +33,10 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),

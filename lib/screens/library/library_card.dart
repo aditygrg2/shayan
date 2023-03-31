@@ -14,21 +14,54 @@ class _LibraryCardState extends State<LibraryCard> {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        child: Expanded(child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),child: Image.network(widget.src,fit: BoxFit.cover,))),
-        footer: GridTileBar(
-            backgroundColor: Colors.white,
-            leading: Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
               child: Container(
-                // width: MediaQuery.of(context).size.width - 253.5,
-                padding: EdgeInsets.all(9),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text(widget.heading), Text(widget.subHeading,style: TextStyle(fontSize: 8),)],
+                height: 200,
+                width: 200,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Image.network(
+                  widget.src,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-            trailing: Expanded(child: Icon(Icons.favorite,color: Colors.black,))),
+            Container(
+              padding: EdgeInsets.all(9),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.heading,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    widget.subHeading,
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

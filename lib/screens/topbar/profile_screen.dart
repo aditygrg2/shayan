@@ -46,7 +46,7 @@ class ProfileScreen extends StatelessWidget {
     "Email ID": FirebaseAuth.instance.currentUser?.email,
     "Age": "15 years",
     "Weight": "70 Kg",
-    "Height": "190 cm",
+    "Height": "170 cm",
   };
   @override
   Widget build(BuildContext context) {

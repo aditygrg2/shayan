@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
@@ -8,6 +9,7 @@ import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_su
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
 import './menu.dart';
 import './text_to_speech.dart/text_to_speech.dart';
 
@@ -71,6 +73,13 @@ class MenuScreen extends StatelessWidget {
     return Column(
       children: [
         HomeScreenText(text: 'Sleep Tools'),
+        TmbDescriptionCards(
+          title: "Community",
+          subtitle:
+              "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+          image: "assets/library_community.png",
+          route: CommunityScreen.routeName,
+        ),
         Container(
           width: MediaQuery.of(context).size.width - 20,
           height: (MediaQuery.of(context).size.height / 8) * items.length,
