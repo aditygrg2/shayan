@@ -30,7 +30,9 @@ class ProfileInfo extends StatelessWidget {
           child: const Text(""),
           height: 1,
           width: double.infinity,
-          decoration: const BoxDecoration(color: Colors.black),
+          decoration: const BoxDecoration(
+            color: Colors.black,
+          ),
         )
       ]),
     );
