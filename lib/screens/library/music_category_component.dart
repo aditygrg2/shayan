@@ -18,7 +18,7 @@ class MusicCategory extends StatelessWidget {
           ),
         ),
         Container(
-          height: 340,
+          height: 380,
           width: MediaQuery.of(context).size.width - 20,
           child: ListView(
             scrollDirection: Axis.horizontal,
@@ -27,7 +27,7 @@ class MusicCategory extends StatelessWidget {
               ...data.map((e) {
                 return Container(
                   width: 200,
-                  height: 340,
+                  height: 380,
                   margin: EdgeInsets.all(10),
                   child: SlidingCardRounded(
                     heading: e['title'],

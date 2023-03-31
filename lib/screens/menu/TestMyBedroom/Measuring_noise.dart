@@ -23,7 +23,7 @@ class _MeasuringNoiseState extends State<MeasuringNoise> {
             ),
           ),
           Image.asset(
-            'assets/scanload.gif',
+            'assets/scanning.gif',
             fit: BoxFit.cover,
           ),
           Center(

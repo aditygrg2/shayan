@@ -14,19 +14,19 @@ class StoryScreen extends StatelessWidget {
           "image": "assets/sleep_story_1.jpg",
           "title": "Bedtime Stories",
           "description":
-              "Healing Rays of the Sun come to the earth giving a life to the nature and a source of hope..."
-        },
-        {
-          "image": "assets/sleep_story_2.jpg",
-          "title": "Magic Unicorn",
-          "description":
-              "Child clinicians point out the cognitive benefits for youths who are raised with bedtime stories."
+              "Healing Rays of the Sun..."
         },
         {
           "image": "assets/sleep_story_3.jpg",
           "title": "Castle on the ocean",
           "description":
-              "An enchanting sleep meditation for kids to relax and love falling asleep at the magic castle each new bedtime"
+              "An enchanting sleep meditation..."
+        },
+        {
+          "image": "assets/sleep_story_2.jpg",
+          "title": "Magic Unicorn",
+          "description":
+              "Child clinicians point out the cognitive benefits..."
         },
       ]
     },
@@ -34,23 +34,23 @@ class StoryScreen extends StatelessWidget {
       'title': "Adults",
       "data": [
         {
-          "image": "assets/sleep_story_4.jpg",
-          "title": "The Adventures of SherLock Holmes",
+          "image": "assets/sleep_story_6.jpg",
+          "title": "The Cabin in the Woods",
           "description":
-              "Shelock Holmes, possibly one of the world's most well known detectives, has been absorbed by almost every time of media platform..."
+              "A Horror Movie About Horror Movies..."
         },
         {
           "image": "assets/sleep_story_5.jpg",
           "title": "The Gift of the Magi",
           "description":
-              "The magi brought valuable gifts, but that was not among them. My meaning will be explained soon. From inside the coat..."
+              "The magi brought valuable gifts..."
         },
         {
-          "image": "assets/sleep_story_6.jpg",
-          "title": "The Cabin in the Woods",
+          "image": "assets/sleep_story_4.jpg",
+          "title": "The Adventures of SherLock Holmes",
           "description":
-              "'The Cabin in the Woods' Beomes a Horror Movie About Horror Movies ... As chaos ensues and various workers are ironically dispatched by the ..."
-        }
+              "World's most well known detectives..."
+        },
       ]
     },
   ];
