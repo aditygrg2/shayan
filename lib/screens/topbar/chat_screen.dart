@@ -23,7 +23,7 @@ class _ChatScreenState extends State<ChatScreen> {
     // User message to firebase
     await FirebaseFirestore.instance
         .collection('chats')
-        .doc(id!)
+        .doc(id)
         .collection('messages')
         .doc()
         .set(
@@ -80,7 +80,9 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           ),
-          Expanded(
+          id==null ? Container(
+            child: Text('Sign in to access this page!'),
+          ) : Expanded(
             child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection('chats')
@@ -178,6 +180,7 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             ),
           ),
+          if(id!=null)
           ChatInput(
             getMessage: getMessage,
             controller: _scrollController,

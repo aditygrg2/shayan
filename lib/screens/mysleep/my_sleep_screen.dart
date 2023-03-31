@@ -144,7 +144,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
             ),
           ),
         if (!loading && isSS) WeeklySleepAnalysis(),
-        if (!loading && !isSS || id==null)
+        if (!loading && !isSS && id!=null || id==null)
           Container(
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(25),
