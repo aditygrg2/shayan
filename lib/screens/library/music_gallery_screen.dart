@@ -11,21 +11,21 @@ class MusicGalleryScreen extends StatelessWidget {
       'title': "Meditative Mantras",
       "data": [
         {
-          "image": "assets/mantra_1.jpg",
+          "image": "assets/mantra_1.png",
           "title": "Om Shanti, Shanti, Shanti",
           "description": "Peace of mind, body, and speech."
         },
         {
-          "image": "assets/mantra_2.jpg",
+          "image": "assets/mantra_2.png",
           "title": "I am That I Am",
           "description":
-              "This is one of the Hebrew Torah's most famous lines, and it was God's answer to Moses when Moses asked for his name."
+              "This is one of the Hebrew Torah's most famous lines"
         },
         {
-          "image": "assets/mantra_3.jpg",
-          "title": "I Love You; I'm Sorry; Please Forgive Me; Thank You",
+          "image": "assets/mantra_3.png",
+          "title": "I Love You",
           "description":
-              "Forgiveness and reconciliation practice, cleansing of 'errors of thought'-the origin of problems and sickness in the physical world"
+              "Forgiveness and reconciliation practice"
         },
       ]
     },
