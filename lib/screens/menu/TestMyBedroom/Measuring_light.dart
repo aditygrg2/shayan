@@ -23,7 +23,7 @@ class _MeasuringLightState extends State<MeasuringLight> {
             ),
           ),
           Image.asset(
-            'assets/scanload.gif',
+            'assets/scanning.gif',
             fit: BoxFit.cover,
           ),
           Center(

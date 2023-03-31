@@ -14,25 +14,25 @@ class _MusicSectionState extends State<MusicSection> {
     {
       'heading': 'Foods Improving Insomnia',
       'subHeading':
-          'Warm milk is a common home remedy for sleeplessness. Milk contains four sleep-promoting compounds: tryptophan, calcium, vitamin D, and melatonin ...',
+          'Warm milk is a common remedy...',
       'src': 'assets/home_image_1.jpg',
     },
     {
       'heading': 'Sleep Hyigene',
       'subHeading':
-          'Make sure your bedroom is quiet, dark, relaxing, and at a comfortable temperature. Remove electronic devices, such as TVs, computers, and smart phones...',
+          'Make sure your bedroom is quiet, dark, relaxing, and at a comfortable temperature...',
       'src': 'assets/home_image_2.jpg',
     },
     {
       'heading': 'Nature Scenes',
       'subHeading':
-          'Nature is the best medicine of any illness especially when it comes to anxiety, sleep deprivation, mental issues...',
+          'Nature is the best medicine of any illness especially when it comes to sleep deprivation...',
       'src': 'assets/home_image_3.jpg',
     },
     {
       'heading': 'Getting Better Sleep',
       'subHeading':
-          'Do you wake up feeling exhausted even though you went to bed at a decent time and tried to get enough sleep?..',
+          'Do you wake up feeling exhausted even though you ...',
       'src': 'assets/home_image_4.jpg',
     },
   ];
@@ -53,7 +53,7 @@ class _MusicSectionState extends State<MusicSection> {
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
-            height: 300,
+            height: 370,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
