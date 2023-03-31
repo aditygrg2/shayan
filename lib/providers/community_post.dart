@@ -1,36 +1,34 @@
-
-
 import 'package:flutter/material.dart';
 
-class CommunityPostPRovider extends ChangeNotifier{
+class CommunityPostPRovider extends ChangeNotifier {
   List<Map<dynamic, dynamic>> posts = [
     {
-      "title": "Sleep Issues",
-      "image": "assets/articles_sleep_issues.png",
+      "title": "The art of Living India",
+      "image": "assets/community_image_1.jpg",
       "description":
-          "Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... ",
-      "user":"Ronaldo",
-      "type":"artcle"
+          "6 new and easy ways to calm the mind.We can learn to calm our minds to be happy with ourselves and friendly with others. This will wean you from the complex turns and twists of your mind...",
+      "user": "Ronaldo",
+      "type": "artcle"
     },
     {
-      "title": "Sleep Issues",
-      "image": "assets/articles_sleep_issues.png",
+      "title": "Sleep Difficulties ",
+      "image": "assets/community_image_2.jpg",
       "description":
-          "Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... ",
-           "user":"Ronaldo",
-      "type":"Podcast"
+          "Numerous factors can contribute to sleeping difficulty. A person's lifestyle, sleeping habits, and health status may all play a role...",
+      "user": "Laria",
+      "type": "article"
     },
     {
-      "title": "Sleep Issues",
-      "image": "assets/articles_sleep_issues.png",
+      "title": "Top Causes of Nighttime Restlessness",
+      "image": "assets/community_image_3.jpg",
       "description":
-          "Common sleep disorders like insomnia, restless legs syndrome, narcolepsy and sleep apnea can affect every aspect of your life including your safety, relationships, school and work performance... ",
-           "user":"Ronaldo",
-      "type":"artcle"
+          "Restless legs syndrome (RLS) is a persistent need to move your legs due to cramping or unpleasant tingling, burning, or creeping sensations which can often be relieved by moving around or getting out of bed. Doctors don't know what causes RLS, but they suspect it may be hereditary..",
+      "user": "James",
+      "type": "artcle"
     },
   ];
 
-  List<dynamic> get getPosts{
+  List<dynamic> get getPosts {
     return [...posts];
   }
 }
