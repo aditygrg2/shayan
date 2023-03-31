@@ -8,60 +8,49 @@ class StoryScreen extends StatelessWidget {
 
   List<Map<dynamic, dynamic>> categories = [
     {
-      'title': "Meditative Mantras",
+      'title': "Kids",
       "data": [
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
+          "image": "assets/sleep_story_1.jpg",
+          "title": "Bedtime Stories",
+          "description":
+              "Healing Rays of the Sun come to the earth giving a life to the nature and a source of hope..."
         },
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
+          "image": "assets/sleep_story_2.jpg",
+          "title": "Magic Unicorn",
+          "description":
+              "Child clinicians point out the cognitive benefits for youths who are raised with bedtime stories."
         },
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
+          "image": "assets/sleep_story_3.jpg",
+          "title": "Castle on the ocean",
+          "description":
+              "An enchanting sleep meditation for kids to relax and love falling asleep at the magic castle each new bedtime"
         },
       ]
     },
     {
-      'title': "Sounds",
+      'title': "Adults",
       "data": [
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
+          "image": "assets/sleep_story_4.jpg",
+          "title": "The Adventures of SherLock Holmes",
+          "description":
+              "Shelock Holmes, possibly one of the world's most well known detectives, has been absorbed by almost every time of media platform..."
         },
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
-        },
-      ]
-    },
-    {
-      'title': "Calming Tunes",
-      "data": [
-        {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
+          "image": "assets/sleep_story_5.jpg",
+          "title": "The Gift of the Magi",
+          "description":
+              "The magi brought valuable gifts, but that was not among them. My meaning will be explained soon. From inside the coat..."
         },
         {
-          "image":
-              "https://thumbs.dreamstime.com/b/beautiful-view-lake-surrounded-trees-reflected-water-seen-forest-wonderful-sunny-summer-day-157187747.jpg",
-          "title": "Forest",
-          "description": "calm, soothing music"
-        },
+          "image": "assets/sleep_story_6.jpg",
+          "title": "The Cabin in the Woods",
+          "description":
+              "'The Cabin in the Woods' Beomes a Horror Movie About Horror Movies ... As chaos ensues and various workers are ironically dispatched by the ..."
+        }
       ]
     },
   ];
@@ -105,8 +94,7 @@ class StoryScreen extends StatelessWidget {
           Container(
             width: 200,
             padding: EdgeInsets.all(10),
-            child: Image.asset("assets/story_library.jpg",
-                fit: BoxFit.contain),
+            child: Image.asset("assets/story_library.jpg", fit: BoxFit.contain),
           ),
           ...categories.map((e) {
             return MusicCategory(
