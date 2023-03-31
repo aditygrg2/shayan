@@ -18,7 +18,7 @@ class SleepElements extends ChangeNotifier {
   int? ST;
   dynamic? data;
   int? TIB;
-  String id = FirebaseAuth.instance.currentUser!.uid;
+  
   bool? ssCreated = false;
   bool shouldCheck = false;
 
@@ -30,7 +30,6 @@ class SleepElements extends ChangeNotifier {
     RealSleepingTime =
         DateFormat.jm().parse(a!).add(Duration(minutes: int.parse(b!)));
     actualBedTime = RealWakeUpTime!.difference(RealSleepingTime!).inMinutes;
-    print(actualBedTime);
     if (actualBedTime! < 0) {
       actualBedTime = actualBedTime! + 24 * 60;
     }
@@ -44,7 +43,7 @@ class SleepElements extends ChangeNotifier {
     WASO = (7 * 60 -
         TST!); // can be negative, more sleep than required. Do not deduct points.
     WASF = RealWakeUpTime?.difference(wakeUpTime!).inMinutes;
-    SE = ((TST! / actualBedTime!) * 100) as int;
+    SE = ((TST! / actualBedTime!) * 100).round();
     TIB = RealWakeUpTime!.difference(DateFormat.jm().parse(a!)).inMinutes;
     if (TIB! < 0) {
       TIB = TIB! + 24 * 60;
@@ -76,6 +75,7 @@ class SleepElements extends ChangeNotifier {
   }
 
   Future getSleepElements() async {
+    String? id = FirebaseAuth.instance.currentUser?.uid;
     if (id != null) {
       final value = await FirebaseFirestore.instance.collection('users').doc(id).get();
 

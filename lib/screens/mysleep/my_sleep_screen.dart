@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/navigators/bottomNavigator.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
@@ -5,7 +6,9 @@ import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/mysleep/weeky_sleep_analysis.dart';
+import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/property_card.dart';
@@ -35,16 +38,14 @@ class _MySleepScreenState extends State<MySleepScreen> {
     if (isSS) {
       sleepscore =
           Provider.of<SleepElements>(context, listen: false).sleepScore;
+
+      var data = Provider.of<SleepElements>(context, listen: false);
+
+      totalSleepTime = '${data.totalSleepTime}';
+      SleepEfficiency = '${data.sleepEfficiency}%';
+      timeInBed = '${data.timeInBed}';
+      awakenings = '${data.awakenings}';
     }
-
-    var data = Provider.of<SleepElements>(context, listen: false);
-
-    totalSleepTime = '${data.totalSleepTime}';
-    SleepEfficiency = '${data.sleepEfficiency}%';
-    timeInBed = '${data.timeInBed}';
-    awakenings = '${data.awakenings}';
-
-    print(isSS);
 
     setState(() {
       loading = false;
@@ -63,18 +64,19 @@ class _MySleepScreenState extends State<MySleepScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String? id = FirebaseAuth.instance.currentUser?.uid;
     if (once) {
-      checkData();
       once = false;
+      checkData();
     }
-    ;
+
     String text = '';
 
     return Column(
       children: [
         HomeScreenText(text: 'Sleep Score'),
-        if (loading) CircularProgressIndicator(),
-        if (!loading)
+        if (loading) const CircularProgressIndicator(),
+        if (!loading && isSS)
           SleepScoreCard(
             text: informativeText(sleepscore!),
             sleepscore: sleepscore,
@@ -82,8 +84,8 @@ class _MySleepScreenState extends State<MySleepScreen> {
         if (!loading && isSS)
           GridView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(20),
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(20),
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 200,
               childAspectRatio: 3 / 2,
@@ -112,18 +114,18 @@ class _MySleepScreenState extends State<MySleepScreen> {
           ),
         if (!loading && isSS)
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 2),
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
               color: Theme.of(context).canvasColor,
             ),
             child: Row(
               children: [
-                Text(
+                const Text(
                   'Add sleep data to the tracker',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18),
@@ -132,7 +134,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
                   child: IconButton(
                     onPressed: () =>
                         Navigator.of(context).pushNamed(SleepForm.routeName),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_forward_rounded,
                       color: Colors.black,
                       size: 30,
@@ -145,34 +147,51 @@ class _MySleepScreenState extends State<MySleepScreen> {
         if (!loading && isSS) WeeklySleepAnalysis(),
         if (!loading && !isSS)
           Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.all(25),
+            margin: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(25),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
               color: Theme.of(context).canvasColor,
             ),
-            child: Column(children: [
-              MenuHeroImage(
-                image: 'assets/data.gif',
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                'Share your sleep experince, daily haits and overall lifestyle patterns and manage your sleep',
-                style: TextStyle(
-                  fontSize: 18,
+            child: Column(
+              children: [
+                MenuHeroImage(
+                  image: 'assets/data.gif',
                 ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ]),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  'Share your sleep experince, daily haits and overall lifestyle patterns and manage your sleep',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Center(
+                  child: ElevatedButtonWithoutIcon(
+                    text:
+                        id != null ? 'Get your sleep data' : 'Login to proceed',
+                    onPressedButton: () {
+                      if (id != null)
+                        Navigator.of(context).pushNamed(SleepForm.routeName);
+                      else
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          SplashScreen.routeName,
+                          (Route<dynamic> route) => false,
+                        );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         if (!loading && isSS)
@@ -205,7 +224,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
             },
             icon: Icons.music_note,
           ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         )
       ],

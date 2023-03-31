@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_view_all.dart';
+import 'package:night_gschallenge/widgets/UI/property_card.dart';
+import 'package:provider/provider.dart';
 
 class WhatsNew extends StatefulWidget {
   int cardLimit = 3;
@@ -59,44 +62,44 @@ class WhatsNew extends StatefulWidget {
 class _WhatsNewState extends State<WhatsNew> {
   @override
   Widget build(BuildContext context) {
+    int? tst = Provider.of<SleepElements>(context, listen: false).TST;
+    int? SE = Provider.of<SleepElements>(context, listen: false).SE;
     return Container(
-      margin: EdgeInsets.only(top: 30, bottom: 15),
+      margin: EdgeInsets.only(
+        top: 30,
+        bottom: 15,
+      ),
       child: Column(
         children: [
-          HomeScreenText(text: 'Your Sleep Stats'),
-          HomeScreenViewAll(),
+          HomeScreenText(text: 'Sleep Elements'),
           Column(
-            children: widget.itemsList.map((item) {
-              return Container(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: Color.fromRGBO(250, 195, 68, 1),
-                  ),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+            children: [
+              Container(
+                margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
+                child: PropertyCard(
+                  color: Theme.of(context).splashColor,
+                  score: tst == null ? 'Data not available' : tst.toString(),
+                  title: 'Total Sleep Time',
                 ),
-                child: ListTile(
-                  // mouseCursor: MouseCursor.defer,
-                  title: Container(
-                      padding: EdgeInsets.symmetric(vertical: 5),
-                      child: Text(item['title'].toString())),
-                  subtitle: Container(
-                      padding: EdgeInsets.symmetric(vertical: 10),
-                      child: Text(item['description'].toString())),
-                  trailing: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(19),
-                    ),
-                    child: Image.network(
-                      "https://i.ibb.co/XpHKstd/Whats-App-Image-2023-03-15-at-22-35-12.jpg",
-                    ),
-                  ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top:20, left: 20, right: 20, bottom: 10),
+                child: PropertyCard(
+                  color: Theme.of(context).splashColor,
+                  score: SE == null ? 'Data not available' : SE.toString(),
+                  title: 'Sleep Efficiency',
                 ),
-              );
-            }).toList(),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Check out more details on My Sleep Page',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              )
+            ],
           )
         ],
       ),

@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
-import 'package:night_gschallenge/screens/startup/splash_screen.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
 
@@ -170,6 +167,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
+                          style: TextStyle(color: Colors.black),
                           decoration:
                               const InputDecoration(labelText: 'Password'),
                           onSaved: (value) {
@@ -200,8 +200,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('re-password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
                           decoration: const InputDecoration(
-                              labelText: 'Confirm Password'),
+                            labelText: 'Confirm Password',
+                          ),
                           onSaved: (value) {
                             re_password = value!;
                           },
@@ -209,7 +212,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             if (value!.length < 8) {
                               return 'Please enter a long password';
                             }
-
                             return null;
                           },
                         ),
@@ -221,7 +223,7 @@ class _SignupScreenState extends State<SignupScreen> {
             ),
           ),
           SplashButton(
-            text: loading ? 'Loading..' :'Signup',
+            text: loading ? 'Loading..' : 'Signup',
             onPressed: () async {
               trySubmit();
               if (string != '') {

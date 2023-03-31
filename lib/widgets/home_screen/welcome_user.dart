@@ -12,7 +12,7 @@ class WelcomeUser extends StatefulWidget {
 
 class _WelcomeUserState extends State<WelcomeUser>
     with TickerProviderStateMixin {
-  String greeting = 'Good Morning,';
+  String greeting = 'Good ';
 
   String quote = "Hope you had a restful night's sleep!";
 
@@ -24,6 +24,7 @@ class _WelcomeUserState extends State<WelcomeUser>
   // one Animation according to day night
   @override
   Widget build(BuildContext context) {
+    var hours= DateTime.now().hour;
     if(isLogin){
       userId = Provider.of<AuthenticationProvider>(context).getId();
     }
@@ -34,7 +35,7 @@ class _WelcomeUserState extends State<WelcomeUser>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            greeting,
+            greeting+"${hours<20?(hours<15?"Morning":"Evening"):"Night"},",
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(
@@ -63,9 +64,8 @@ class _WelcomeUserState extends State<WelcomeUser>
           Container(
             height: 150,
             width: double.infinity,
-            child: Image.asset(
-              'assets/sun.gif',
-              fit: BoxFit.cover,
+            child: Image.asset( hours<20?(hours<15?"assets/sun.gif":"assets/good_evening.gif"):"assets/good_night.gif",
+              fit:hours>=20?BoxFit.contain: BoxFit.cover,
             ),
           )
         ],

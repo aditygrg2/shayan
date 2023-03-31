@@ -106,8 +106,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Expanded(
                         child: TextFormField(
                           key: const ValueKey('password'),
-                          decoration:
-                              const InputDecoration(labelText: 'Password'),
+                          obscureText: true,
+                          obscuringCharacter: '●',
+                          style: TextStyle(color: Colors.black),
+                          decoration: const InputDecoration(
+                              labelText: 'Password',
+                              suffixStyle: TextStyle(color: Colors.black)),
                           onSaved: (value) {
                             user_password = value!;
                           },
@@ -141,23 +145,23 @@ class _LoginScreenState extends State<LoginScreen> {
               }
             },
           ),
-          TextButton(
-            child: Text(
-              'Skip',
-              style: TextStyle(color: Colors.black),
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                HomeScreen.routeName,
-                (Route<dynamic> route) => false,
-              );
-            },
-            style: ButtonStyle(
-              textStyle: MaterialStateProperty.all<TextStyle>(
-                const TextStyle(fontSize: 20),
-              ),
-            ),
-          ),
+          // TextButton(
+          //   child: Text(
+          //     'Skip',
+          //     style: TextStyle(color: Colors.black),
+          //   ),
+          //   onPressed: () {
+          //     Navigator.of(context).pushNamedAndRemoveUntil(
+          //       HomeScreen.routeName,
+          //       (Route<dynamic> route) => false,
+          //     );
+          //   },
+          //   style: ButtonStyle(
+          //     textStyle: MaterialStateProperty.all<TextStyle>(
+          //       const TextStyle(fontSize: 20),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(
             height: 10,
           ),

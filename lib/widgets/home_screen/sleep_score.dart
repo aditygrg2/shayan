@@ -42,13 +42,16 @@ class _SleepScoreState extends State<SleepScore> {
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               linearGradient: LinearGradient(
-                colors: [ Colors.amber, Colors.yellow],
+                colors: [
+                  Theme.of(context).buttonColor,
+                  Color.fromRGBO(247, 219, 198, 2)
+                ],
               ),
               backgroundColor: Colors.white,
             ),
           ),
           ElevatedButton(
-            onPressed: (){
+            onPressed: () {
               Navigator.of(context).pushNamed(SleepForm.routeName);
             },
             child: Padding(

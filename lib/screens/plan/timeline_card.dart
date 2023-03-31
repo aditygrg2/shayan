@@ -28,8 +28,8 @@ class TimelineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     duration = processDuration(duration);
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
@@ -48,12 +48,12 @@ class TimelineCard extends StatelessWidget {
                         Icons.star,
                         color: Colors.yellow[400],
                       )
-                    : Icon(
+                    : const Icon(
                         Icons.timer_outlined,
                         color: Colors.black,
                       ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Container(
@@ -62,29 +62,29 @@ class TimelineCard extends StatelessWidget {
               if (suggestion != null)
                 Expanded(
                     child: Container(
+                  alignment: Alignment.centerRight,
                   child: IconButton(
-                    icon: Icon(Icons.arrow_forward, color: Colors.black),
+                    icon: const Icon(Icons.arrow_forward, color: Colors.black),
                     onPressed: () {
                       Navigator.of(context)
                           .pushNamed(suggestion!['route'].toString());
                     },
                   ),
-                  alignment: Alignment.centerRight,
                 ))
             ],
           ),
           Container(
-            margin: EdgeInsets.symmetric(vertical: 5),
+            margin: const EdgeInsets.symmetric(vertical: 5),
             width: double.infinity,
             height: 1,
-            child: Text(""),
+            child: const Text(""),
             decoration: BoxDecoration(border: Border.all(color: Colors.black)),
           ),
           Container(
-            padding: EdgeInsets.all(7),
+            padding: const EdgeInsets.all(7),
             child: Text(
               time,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           Row(
@@ -93,12 +93,12 @@ class TimelineCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   task,
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                  style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ),
               Container(
                 child: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.edit,
                     color: Colors.black,
                   ),

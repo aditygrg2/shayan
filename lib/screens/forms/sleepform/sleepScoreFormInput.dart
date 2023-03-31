@@ -1,11 +1,5 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
-import 'package:night_gschallenge/widgets/UI/time_boxes.dart';
-import 'package:provider/provider.dart';
 
 class SleepScoreFormInput extends StatefulWidget {
   String keya;
@@ -17,7 +11,8 @@ class SleepScoreFormInput extends StatefulWidget {
   int? initialText;
 
   SleepScoreFormInput(
-      {this.keya = '2',
+      {
+      this.keya = '2',
       this.question,
       this.type,
       this.onSubmit,
@@ -66,12 +61,12 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Text(
           widget.question!,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
           ),
         ),

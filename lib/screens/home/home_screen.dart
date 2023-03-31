@@ -26,6 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedPageIndex = 0;
   bool loading = true;
 
+  void switchPageHandler(int selectedIndex){
+    setState(() {
+      selectedPageIndex = selectedIndex;
+    });
+  }
+
   void _bottomTabHandler(int selectedIndex) {
     if (selectedPageIndex == selectedIndex) {
       return;

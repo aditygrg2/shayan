@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/main.dart';
 
 class HomeScreenViewAll extends StatelessWidget {
+  void Function()? onClick;
+
+  HomeScreenViewAll({this.onClick});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +15,7 @@ class HomeScreenViewAll extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
-            onPressed: null,
+            onPressed: onClick,
             child: Text(
               'View All',
               style: TextStyle(fontSize: 15),

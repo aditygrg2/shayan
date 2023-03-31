@@ -110,7 +110,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                         });
                                       },
                                       icon: const Icon(
-                                        Icons.volume_down,
+                                        Icons.keyboard_voice_sharp,
                                       ),
                                     ),
                                     IconButton(
@@ -120,7 +120,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                         });
                                       },
                                       icon: const Icon(
-                                        Icons.volume_down,
+                                        Icons.fast_forward,
                                       ),
                                     ),
                                   ],
@@ -174,35 +174,44 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                         height: 10,
                       ),
                       Container(
-                        height: 400,
-                        child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 10,
-                                  childAspectRatio: 8 / 2,
-                                  mainAxisSpacing: 10),
-                          itemBuilder: (context, index) {
-                            return ElevatedButtonWithoutIcon(
-                              text: widget.options[index],
-                              onPressedButton: () {
-                                if (widget.options[index] == 'Speak') {
-                                  textSpeech
-                                      .setText(widget.textController.text);
-                                  textSpeech.speak();
-                                } else if (widget.options[index] == 'Resume') {
-                                  textSpeech.speak();
-                                } else if (widget.options[index] == 'Stop') {
-                                  textSpeech.stop();
-                                } else {
-                                  textSpeech.pause();
-                                }
-                              },
-                            );
-                          },
-                          itemCount: 4,
-                        ),
-                      )
+                          height: 400,
+                          child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 10,
+                                    childAspectRatio: 8 / 2,
+                                    mainAxisSpacing: 10),
+                            itemBuilder: (context, index) {
+                              return ElevatedButton(
+                                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                                onPressed: () {
+                                  if (widget.options[index] == 'Speak') {
+                                    textSpeech
+                                        .setText(widget.textController.text);
+                                    textSpeech.speak();
+                                  } else if (widget.options[index] ==
+                                      'Resume') {
+                                    textSpeech.speak();
+                                  } else if (widget.options[index] == 'Stop') {
+                                    textSpeech.stop();
+                                  } else {
+                                    textSpeech.pause();
+                                  }
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    widget.options[index],
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall,
+                                  ),
+                                ),
+                              );
+                            },
+                            itemCount: 4,
+                          )),
                     ],
                   ),
                 ),
