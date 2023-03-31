@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class LibraryCard extends StatefulWidget {
   final heading;
@@ -17,7 +15,7 @@ class _LibraryCardState extends State<LibraryCard> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),child: Image.network(widget.src,fit: BoxFit.cover,)),
+        child: Expanded(child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),child: Image.network(widget.src,fit: BoxFit.cover,))),
         footer: GridTileBar(
             backgroundColor: Colors.white,
             leading: Expanded(

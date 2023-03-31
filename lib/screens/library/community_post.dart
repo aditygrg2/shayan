@@ -51,15 +51,45 @@ class _CommunityPostState extends State<CommunityPost> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
+            // padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
                 color: Theme.of(context).buttonColor,
                 borderRadius: BorderRadius.circular(12)),
-            child: Article(
-              name: widget.title,
-              description: widget.description,
-              image: widget.image,
+            child: Container(
+      padding: EdgeInsets.symmetric(vertical: 7,horizontal: 10),
+      decoration: BoxDecoration(color: Theme.of(context).buttonColor,borderRadius: BorderRadius.circular(16)),
+      child: Row(
+        children: [
+          Container(
+              width: 115,
+              height: 120,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  widget.image,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
+          
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(widget.title,style: Theme.of(context).textTheme.headlineMedium,),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(widget.description,style: Theme.of(context).textTheme.bodySmall,),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
           ),
           SizedBox(
             height: 10,

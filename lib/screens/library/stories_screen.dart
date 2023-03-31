@@ -4,7 +4,7 @@ import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class StoryScreen extends StatelessWidget {
-  static String routeName = '/stories-screen';
+  static String routeName = '/story-screen';
 
   List<Map<dynamic, dynamic>> categories = [
     {
@@ -100,12 +100,12 @@ class StoryScreen extends StatelessWidget {
             back: true,
           ),
           HomeScreenText(
-            text: "Music",
+            text: "Story",
           ),
           Container(
             width: 200,
             padding: EdgeInsets.all(10),
-            child: Image.asset("assets/library_music_categories_page.png",
+            child: Image.asset("assets/story_library.jpg",
                 fit: BoxFit.contain),
           ),
           ...categories.map((e) {

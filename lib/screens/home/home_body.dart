@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
-import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
@@ -61,7 +60,6 @@ class _HomeBodyState extends State<HomeBody> {
   @override
   Widget build(BuildContext context) {
     var id = FirebaseAuth.instance.currentUser?.uid;
-    print(id);
     if (once) {
       data();
       once = false;
@@ -125,7 +123,7 @@ class _HomeBodyState extends State<HomeBody> {
                         child: Column(
                           children: [
                             HomeScreenText(
-                              text: 'Start Your Journey',
+                              text: 'Start your journey',
                             ),
                             SizedBox(
                               height: 20,
@@ -193,7 +191,7 @@ class _HomeBodyState extends State<HomeBody> {
                           ],
                         ),
                       )
-                    : isSS! ? WhatsNew() : Container(),
+                    : WhatsNew(),
                 WatchComponent(),
                 MusicSection(),
               ],

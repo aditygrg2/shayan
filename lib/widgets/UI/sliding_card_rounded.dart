@@ -26,31 +26,32 @@ class SlidingCardRounded extends StatelessWidget {
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
-                child: Image.network(
+                child: Image.asset(
                   src,
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  heading,
-                  style: Theme.of(context).textTheme.labelLarge,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  subHeading,
-                  style: Theme.of(context).textTheme.labelMedium,
-                  textAlign: TextAlign.start,
-                ),
-              ],
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 8,horizontal: 6),
+              decoration: BoxDecoration(color: Theme.of(context).accentColor,borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    heading,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    subHeading,
+                    style: Theme.of(context).textTheme.labelMedium,
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
             )
           ],
         ),
