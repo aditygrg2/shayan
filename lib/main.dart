@@ -31,6 +31,7 @@ import 'package:night_gschallenge/screens/library/library_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
+import 'package:night_gschallenge/screens/library/stories_screen.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
@@ -288,7 +289,8 @@ class Main extends StatelessWidget {
               MusicGalleryScreen.routeName: (ctx) => MusicGalleryScreen(),
               MainForm.routeName: (ctx) => MainForm(),
               CommunityScreen.routeName: (ctx) => CommunityScreen(),
-              SleepForm.routeName: (ctx) => SleepForm()
+              SleepForm.routeName: (ctx) => SleepForm(),
+              StoryScreen.routeName: (ctx)=> StoryScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

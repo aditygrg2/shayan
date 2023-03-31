@@ -201,6 +201,7 @@ flutter:
     - assets/article_3.jpg
     - assets/article_4.jpg
     - assets/article_5.jpg
+    - assets/story_library.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

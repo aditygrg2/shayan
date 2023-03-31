@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/screens/library/library_card.dart';
+import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
 
 class MusicCategory extends StatelessWidget {
   List<Map<dynamic, dynamic>> data;
@@ -15,7 +15,7 @@ class MusicCategory extends StatelessWidget {
             child: Text(title,style: Theme.of(context).textTheme.headlineMedium,),
           ),
            Container(
-            height: 200,
+            height: 300,
             width: MediaQuery.of(context).size.width-20,
              child: ListView(
                 scrollDirection: Axis.horizontal,
@@ -23,12 +23,12 @@ class MusicCategory extends StatelessWidget {
                 children: [
                   ...data.map((e) {
                     return Container(
-                      width: 180,
-                      height: 200,
+                      width: 200,
+                      height: 300,
                       margin: EdgeInsets.all(10),
-                      child: LibraryCard(
+                      child: SlidingCardRounded(
                         heading: data[0]['title'],
-                        subHeading: data[0]['description'],
+                        subHeading:data[0]['description'] ,
                         src: data[0]['image'],
                       ),
                     );
@@ -43,3 +43,9 @@ class MusicCategory extends StatelessWidget {
 }
 
 // 
+
+// LibraryCard(
+//                         heading: data[0]['title'],
+//                         subHeading: data[0]['description'],
+//                         src: data[0]['image'],
+//                       )

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/library_card.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class Podcast extends StatelessWidget {
@@ -71,10 +70,14 @@ class Podcast extends StatelessWidget {
                       Navigator.of(context)
                           .pushNamed(PodcastScreenPlay.routeName);
                     },
-                    child: LibraryCard(
-                        heading: _musicData[index]['heading'],
-                        src: _musicData[index]['src'],
-                        subHeading: _musicData[index]['subHeading']));
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      child: LibraryCard(
+                          heading: _musicData[index]['heading'],
+                          src: _musicData[index]['src'],
+                          subHeading: _musicData[index]['subHeading']),
+                    ));
               },
               itemCount: _musicData.length,
             ),
