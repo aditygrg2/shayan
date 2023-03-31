@@ -201,6 +201,15 @@ flutter:
     - assets/article_3.jpg
     - assets/article_4.jpg
     - assets/article_5.jpg
+    - assets/story_library.jpg
+    - assets/beach_sounds.jpg
+    - assets/calming_tone1.jpg
+    - assets/calming_tone2.jpg
+    - assets/music_data_1.jpeg
+    - assets/music_data_2.jpg
+    - assets/music_data_3.jpg
+    - assets/music_data_4.jpg
+    - assets/music_sounds.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

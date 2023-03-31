@@ -20,7 +20,7 @@ class _PlayEpisodeState extends State<PlayEpisode> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(padding: EdgeInsets.all(7),child: Text("Episode ${widget.index}. ${widget.episodeName}",style: Theme.of(context).textTheme.headlineMedium,)),
+            Expanded(child: Container(padding: EdgeInsets.all(7),child: Text("Episode ${widget.index}. ${widget.episodeName}",style: TextStyle(fontSize: 17,fontWeight: FontWeight.w600),))),
             Container(padding: EdgeInsets.all(7),child: IconButton(onPressed: null, icon: Icon(Icons.play_arrow_rounded,color: Colors.black,size: 32),)),
           ],
         ),
