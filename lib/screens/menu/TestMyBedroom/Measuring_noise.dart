@@ -23,14 +23,14 @@ class _MeasuringNoiseState extends State<MeasuringNoise> {
             ),
           ),
           Image.asset(
-            'assets/scanning.gif',
+            'assets/scanning_2.gif',
             fit: BoxFit.cover,
           ),
           Center(
             child: Consumer<NoiseProvider>(
               builder: (context, value, child) {
                 return Text(
-                  '${value.db} dB',
+                  '${value.db.round()} dB',
                   style: Theme.of(context).textTheme.headlineLarge,
                 );
               },

@@ -189,7 +189,9 @@ class Main extends StatelessWidget {
               return SleepElements();
             })
           ],
+          
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Night_GSChallenge',
             theme: ThemeData(
               primaryColor: Colors.white,
@@ -197,7 +199,7 @@ class Main extends StatelessWidget {
               canvasColor: const Color.fromRGBO(251, 145, 92, 1),
               accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
               cardColor: const Color.fromARGB(153, 248, 222, 55),
-              fontFamily: 'OpenSans',
+              fontFamily: 'Roboto',
               buttonColor: const Color.fromRGBO(247, 219, 198, 1),
               splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
               elevatedButtonTheme: ElevatedButtonThemeData(
@@ -235,7 +237,7 @@ class Main extends StatelessWidget {
                 ),
                 titleLarge: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'OpenSans'
+                  fontFamily: 'Montserrat'
                 ),
                 bodyLarge: TextStyle(
                   fontSize: 40,
@@ -245,11 +247,11 @@ class Main extends StatelessWidget {
                 ),
                 labelLarge: TextStyle(
                   fontSize: 25,
-                  fontFamily: 'Roboto'
+                  fontFamily: 'Montserrat'
                 ),
                 labelMedium: TextStyle(
                   fontSize: 15,
-                  fontFamily: 'Roboto'
+                  fontFamily: 'Montserrat'
                 ),
               ),
             ),

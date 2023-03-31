@@ -11,7 +11,7 @@ class Menu extends StatelessWidget {
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        gradient: SweepGradient(
+        gradient: RadialGradient(
           colors: [
             Theme.of(context).buttonColor,
             Theme.of(context).canvasColor,

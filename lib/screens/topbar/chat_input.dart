@@ -57,6 +57,7 @@ class _ChatInputState extends State<ChatInput> {
               : () {
                   widget.controller!.animateTo(widget.controller!.position.maxScrollExtent + 30, duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
                   widget.getMessage!(_enteredMessage);
+                  _controller.text = "";
                 },
         )
       ],

@@ -9,7 +9,6 @@ import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:provider/provider.dart';
 
 class WhatsNew extends StatefulWidget {
-
   @override
   State<WhatsNew> createState() => _WhatsNewState();
 }
@@ -48,8 +47,12 @@ class _WhatsNewState extends State<WhatsNew> {
                 ),
               ),
               Container(
-                margin:
-                    EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+                margin: EdgeInsets.only(
+                  top: 20,
+                  left: 20,
+                  right: 20,
+                  bottom: 10,
+                ),
                 child: PropertyCard(
                   color: Theme.of(context).splashColor,
                   score:
@@ -60,27 +63,27 @@ class _WhatsNewState extends State<WhatsNew> {
               SizedBox(
                 height: 10,
               ),
-              if(ss==true)
-              Text(
-                'Check out more details on My Sleep Page',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-              if(ss==false)
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(SleepForm.routeName);
-                },
-                child: Text(
-                  'Fill out the form for fetching data',
+              if (ss == true)
+                Text(
+                  'Check out more details on My Sleep Page',
                   style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
                     fontSize: 16,
                   ),
                 ),
-              )
+              if (ss == false)
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(SleepForm.routeName);
+                  },
+                  child: Text(
+                    'Fill out the form for fetching data',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      decoration: TextDecoration.underline,
+                      fontSize: 16,
+                    ),
+                  ),
+                )
             ],
           )
         ],

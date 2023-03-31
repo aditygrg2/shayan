@@ -95,6 +95,7 @@ class SleepReportAnalysis extends StatelessWidget {
               String? text;
               if (snapshot.connectionState == ConnectionState.done) {
                 bool isHealty = true;
+                text = 'Healthy';
                 if (snapshot.data?.get('apnea') >= (20)) {
                   text = "Apnea";
                   isHealty = false;
@@ -105,7 +106,6 @@ class SleepReportAnalysis extends StatelessWidget {
                   text = "Sleep Deprivation";
                   isHealty = false;
                 }
-                text = 'Healthy';
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
                   child: CircularProgressIndicator(),

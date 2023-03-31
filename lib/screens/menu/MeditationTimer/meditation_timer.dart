@@ -100,15 +100,20 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     margin: const EdgeInsets.all(10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.grey)),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.grey),
+                    ),
                     child: Column(children: [
                       Expanded(
-                          child: Icon(
-                              widget.options[widget.selectedIndex]['icon'])),
+                        child: Icon(
+                          widget.options[widget.selectedIndex]['icon'],
+                        ),
+                      ),
                       Expanded(
-                          child: Text(
-                              widget.options[widget.selectedIndex]['title']))
+                        child: Text(
+                          widget.options[widget.selectedIndex]['title'],
+                        ),
+                      )
                     ]),
                   )
                 : ListView.builder(

@@ -72,7 +72,7 @@ class _LightPollutionState extends State<LightPollution> {
             ),
             margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
             child: const Center(
-              child: Text('Last Checked: x minutes ago'),
+              child: Text('Last Checked: Not Checked'),
             ),
           ),
 

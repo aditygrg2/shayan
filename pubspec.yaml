@@ -120,8 +120,9 @@ flutter:
     - assets/scanload.gif
     - assets/goodlight.png
     - assets/badlight.png
+    - assets/
     - assets/averagelight.png
-    - assets/noisepollution.png
+    - assets/noisepollution.gif
     - assets/temperatures.gif
     - assets/lowtemperature.png
     - assets/hightemperature.png
@@ -264,6 +265,12 @@ flutter:
       fonts:
         - asset: assets/Montserrat-Regular.ttf
           weight: 300
+    - family: Alkatra
+      fonts:
+        - asset: assets/Alkatra-Bold.ttf
+          weight: 700 
+        - asset: assets/Alkatra-Regular.ttf
+          weight: 400
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

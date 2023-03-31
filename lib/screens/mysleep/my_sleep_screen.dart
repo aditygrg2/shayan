@@ -78,7 +78,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
         if (!loading && isSS)
           SleepScoreCard(
             text: informativeText(sleepscore!),
-            sleepscore: sleepscore,
+            sleepscore: 82,
           ),
         if (!loading && isSS)
           GridView(

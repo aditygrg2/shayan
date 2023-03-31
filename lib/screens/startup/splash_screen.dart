@@ -28,16 +28,24 @@ class SplashScreen extends StatelessWidget {
                   ),
                   Container(
                     child: const Text(
-                      "App Name",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      "Shayan",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Alkatra'
+                      ),
                     ),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width - 20,
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      "Sleep related app tagline will be placed here only",
+                      "Get the sleep you deserve with Shayan",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Alkatra'
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -60,21 +68,25 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).padding.top+5,
+            top: MediaQuery.of(context).padding.top + 5,
             right: 25,
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 Navigator.of(context).pushNamed(HomeScreen.routeName);
               },
               child: Container(
-                child: const Text("Skip",style: TextStyle(fontSize: 20),),
+                child: const Text(
+                  "Skip",
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
           ),
           BottomDrawer(
             color: const Color.fromARGB(255, 234, 229, 229),
             header: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
               width: double.infinity,
               child: Center(
                   child: Container(
@@ -91,19 +103,29 @@ class SplashScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).accentColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Text("Login",style: Theme.of(context).textTheme.headlineSmall,),
+                        child: Text(
+                          "Login",
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed(LoginScreen.routeName);
                       }),
                   ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).accentColor)),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
-                        child: Text("SignUp",style: Theme.of(context).textTheme.headlineSmall,),
+                        child: Text(
+                          "SignUp",
+                          style: Theme.of(context).textTheme.headlineSmall,
+                        ),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed(SignupScreen.routeName);

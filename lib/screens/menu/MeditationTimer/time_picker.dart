@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 
 class TimePicker extends StatefulWidget {
-  DateTime _dateTime = DateTime.now();
+  DateTime _dateTime = DateTime.parse('1900-12-24 00:00:00.000');
   Function callback;
   TimePicker(this.callback);
   @override

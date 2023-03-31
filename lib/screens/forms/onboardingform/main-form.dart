@@ -68,7 +68,7 @@ class _MainFormState extends State<MainForm> {
           'questionNumber': index + 1,
         },
       );
-      SleepDiseaseProvider().checkAndSave(index+1);
+      SleepDiseaseProvider().checkAndSave(index + 1);
     } catch (err) {
       print(err.toString());
     }
@@ -76,12 +76,12 @@ class _MainFormState extends State<MainForm> {
       loading = false;
     });
 
-    if (_currentQuestion < no_of_questions-1) {
+    if (_currentQuestion < no_of_questions - 1) {
       setState(() {
         _answers[index] = answer;
         _currentQuestion++;
       });
-    } else{
+    } else {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
@@ -92,7 +92,7 @@ class _MainFormState extends State<MainForm> {
         },
       );
 
-      Navigator.of(context).pushNamed(HomeScreen.routeName); 
+      Navigator.of(context).pushNamed(HomeScreen.routeName);
     }
   }
 
@@ -135,7 +135,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('4'),
         question: 'What\'s your gender?',
-        options: ['Male', 'Female', 'Do not prefer to say'],
+        options: const ['Male', 'Female', 'Do not prefer to say'],
         onPressedNext: _nextQuestion,
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
@@ -143,7 +143,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('5'),
         question: 'How often do you take sleeping aids?',
-        options: [
+        options: const [
           'Never',
           'Less than once a week',
           'Once or twice a week',
@@ -156,7 +156,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('6'),
         question: 'How many cigarettes do you smoke per day?',
-        options: ['0', '1-5', '6-10', '11-20', '21-40'],
+        options: const ['0', '1-5', '6-10', '11-20', '21-40'],
         onPressedNext: _nextQuestion,
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
@@ -174,7 +174,13 @@ class _MainFormState extends State<MainForm> {
         key: Key('8'),
         question:
             'In the past month, how often did you wake up earlier than you wanted and found it hard to fall back asleep?',
-        options: ['Never', 'Rarely', 'Occasionally', 'Often', 'Very often'],
+        options: const [
+          'Never',
+          'Rarely',
+          'Occasionally',
+          'Often',
+          'Very often'
+        ],
         onPressedNext: _nextQuestion,
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
@@ -183,7 +189,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('9'),
         question:
             'To the best of your knowledge, how often do you snore at night?',
-        options: [
+        options: const [
           'Never',
           'Rarely',
           'Occasionally',
@@ -198,7 +204,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('10'),
         question: 'Have you ever been told that you snore loudly at night?',
-        options: [
+        options: const [
           'Yes',
           'No',
         ],
@@ -210,7 +216,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('11'),
         question:
             'In general, how tired are you when you wake up in the morning?',
-        options: [
+        options: const [
           'Not at all tired',
           'Little bit',
           'Occasionally very high',
@@ -225,7 +231,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('12'),
         question:
             'How often do you have headaches when you wake up in the morning?',
-        options: [
+        options: const [
           'Never',
           'Rarely',
           'Occasionally',
@@ -240,7 +246,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('13'),
         question:
             'How often is your mouth dry when you wake up in the morning?',
-        options: [
+        options: const [
           'Never',
           'Rarely',
           'Occasionally',
@@ -255,7 +261,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('14'),
         question:
             'In general, how refreshed do you feel when you wake up in the morning?',
-        options: [
+        options: const [
           'Not at all refreshed',
           'Slightly',
           'Occasionally',
@@ -270,7 +276,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('15'),
         question:
             'How likely are you to fall asleep during the day when doing something active?',
-        options: [
+        options: const [
           'Very unlikely',
           'A few times',
           'Sometimes',
@@ -285,7 +291,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('16'),
         question:
             'How likely are you to fall asleep during the day when doing something passive, but not in a sleep position?',
-        options: [
+        options: const [
           'Very unlikely',
           'A few times',
           'Sometimes',
@@ -300,7 +306,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('17'),
         question:
             'How likely are you to fall asleep during the day when doing something passive, but in a sleep position?',
-        options: [
+        options: const [
           'Very unlikely',
           'A few times',
           'Sometimes',
@@ -341,7 +347,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('21'),
         question:
             'In general, how easy is it for you to wake up at your desired time on weekdays?',
-        options: [
+        options: const [
           'Very easy',
           'Easy',
           'Okayish',
@@ -373,7 +379,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('24'),
         question:
             'In the past month, how many times did you typically wake up each night?',
-        options: [
+        options: const [
           '0 times',
           '1-2 times',
           '3-5 times',
@@ -430,7 +436,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('30'),
         question:
             'In general, how easy is it for you to wake up at your desired time on weekends?',
-        options: [
+        options: const [
           'Very easy',
           'Easy',
           'Okayish',
@@ -445,7 +451,7 @@ class _MainFormState extends State<MainForm> {
         key: Key('31'),
         question:
             'What do you consider the best time of day for a complex task that requires attention and concentration?',
-        options: [
+        options: const [
           '5:00AM - 8:00AM',
           '8:00AM - 11:00AM',
           '11:00AM - 2:00PM',
@@ -461,7 +467,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('32'),
         question: 'What do you consider yourself?',
-        options: ['Morning Person', 'Night Person', 'Neither'],
+        options: const ['Morning Person', 'Night Person', 'Neither'],
         onPressedNext: _nextQuestion,
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
@@ -469,7 +475,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('33'),
         question: 'In general, how anxious have you felt in the past month?',
-        options: [
+        options: const [
           'Not at all anxious',
           'Little bit anxious',
           'Moderately anxious',
@@ -483,7 +489,7 @@ class _MainFormState extends State<MainForm> {
       McqWidget(
         key: Key('34'),
         question: 'In general, how depressed have you felt in the past month?',
-        options: [
+        options: const [
           'Not at all depressed',
           'Little bit depressed',
           'Moderately depressed',
@@ -534,7 +540,11 @@ class _MainFormState extends State<MainForm> {
                       HomeScreenText(
                         text: 'Plan Creation Form',
                       ),
-                      Image.asset('assets/form.gif'),
+                      Container(
+                        child: Image.asset('assets/form.gif'),
+                        height: 150,
+                        width: 150,
+                      ),
                       if (loading) CircularProgressIndicator(),
                       if (!loading)
                         Text(

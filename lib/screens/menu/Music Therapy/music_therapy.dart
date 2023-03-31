@@ -21,7 +21,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_tensed_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Tensed Music',
           'image': ''
         },
       ],
@@ -33,7 +33,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_excited_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Excited Tune',
           'image': ''
         },
       ],
@@ -45,7 +45,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_relaxed_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Relax',
           'image': ''
         },
       ],
@@ -57,7 +57,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_sad_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Sad Tune',
           'image': ''
         },
       ],
@@ -69,7 +69,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_bored_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Bored Tune',
           'image': ''
         },
       ],
@@ -81,7 +81,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_joyful_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Joyful Tune',
           'image': ''
         },
       ],
@@ -93,7 +93,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_joyful_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Attentive Tune',
           'image': ''
         },
       ],
@@ -105,7 +105,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_worried_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Worried Tune',
           'image': ''
         },
       ],
@@ -117,7 +117,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_sleepy_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Sleepy Tune',
           'image': ''
         },
       ],
@@ -129,7 +129,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'tunes': [
         {
           'tune': 'assets/music_therapy_neutral_tune.mp3',
-          'title': 'River Tune',
+          'title': 'Neutral',
           'image': ''
         },
       ],

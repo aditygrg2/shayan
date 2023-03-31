@@ -13,8 +13,7 @@ class _MusicSectionState extends State<MusicSection> {
   final _musicData = [
     {
       'heading': 'Foods Improving Insomnia',
-      'subHeading':
-          'Warm milk is a common home remedy for sleeplessness.',
+      'subHeading': 'Warm milk is a common home remedy for sleeplessness.',
       'src': 'assets/home_image_1.jpg',
     },
     {
@@ -43,7 +42,7 @@ class _MusicSectionState extends State<MusicSection> {
       margin: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
-          HomeScreenText(text: 'Music Therapy'),
+          HomeScreenText(text: 'Recommeneded'),
           HomeScreenViewAll(
             onClick: () {
               Navigator.of(context).pushNamed(MusicGalleryScreen.routeName);
@@ -58,11 +57,13 @@ class _MusicSectionState extends State<MusicSection> {
               scrollDirection: Axis.horizontal,
               children: [
                 ..._musicData
-                    .map((item) => 
-                    SlidingCardRounded(
+                    .map(
+                      (item) => SlidingCardRounded(
                         heading: item['heading'],
                         subHeading: item['subHeading'],
-                        src: item['src']))
+                        src: item['src'],
+                      ),
+                    )
                     .toList()
               ],
             ),

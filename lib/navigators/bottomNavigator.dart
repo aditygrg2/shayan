@@ -25,7 +25,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
       'label': 'My Plan',
     },
     {
-      'icon': const Icon(Icons.library_add, color: Colors.black),
+      'icon': const Icon(Icons.library_music_rounded, color: Colors.black),
       'label': 'Library',
     },
     {

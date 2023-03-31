@@ -77,7 +77,7 @@ class _TemperatureState extends State<Temperature> {
             ),
             margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
             child: const Center(
-              child: Text('Last Checked: x minutes ago'),
+              child: Text('Last Checked: Not Checked'),
             ),
           ),
 
@@ -97,6 +97,7 @@ class _TemperatureState extends State<Temperature> {
 
                     if (permit == PermissionStatus.permanentlyDenied ||
                         permit == PermissionStatus.denied) {
+                      // ignore: use_build_context_synchronously
                       showDialog(
                         context: context,
                         builder: (ctx) {

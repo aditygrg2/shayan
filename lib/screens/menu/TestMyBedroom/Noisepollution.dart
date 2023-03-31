@@ -39,7 +39,7 @@ class _NoisePollutionState extends State<NoisePollution> {
             margin: const EdgeInsets.all(40),
             height: 200,
             child: Image.asset(
-              'assets/noisepollution.png',
+              'assets/noisepollution.gif',
               fit: BoxFit.contain,
             ),
           ),
@@ -76,7 +76,7 @@ class _NoisePollutionState extends State<NoisePollution> {
             ),
             margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
             child: const Center(
-              child: Text('Last Checked: x minutes ago'),
+              child: Text('Last Checked: Not Checked'),
             ),
           ),
 

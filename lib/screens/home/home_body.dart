@@ -82,6 +82,7 @@ class _HomeBodyState extends State<HomeBody> {
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black, width: 2),
+                            color: Theme.of(context).canvasColor,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         child: Row(

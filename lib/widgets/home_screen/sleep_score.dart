@@ -22,7 +22,7 @@ class _SleepScoreState extends State<SleepScore> {
         horizontal: 50,
         vertical: 20,
       ),
-      backgroundColor: Theme.of(context).cardColor,
+      backgroundColor: Theme.of(context).canvasColor,
       child: Column(
         children: [
           Text(
@@ -34,15 +34,15 @@ class _SleepScoreState extends State<SleepScore> {
             child: CircularPercentIndicator(
               radius: 80.0,
               lineWidth: 10.0,
-              percent: (widget.sleepscore! / 100),
+              percent: (82 / 100),
               center: Text(
-                widget.sleepscore!.round().toString(),
+                "82",
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               linearGradient: LinearGradient(
                 colors: [
-                  Theme.of(context).canvasColor,
-                  Theme.of(context).primaryColor,
+                  Theme.of(context).buttonColor,
+                  Colors.white
                 ],
               ),
               backgroundColor: Colors.white,
