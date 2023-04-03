@@ -36,7 +36,7 @@ Features:
 
 - Library: Shayan also includes a library of resources, including podcasts 🎧, articles 📰,stories , and music 🎵, to help users learn more about sleep health and explore different strategies for improving their sleep.
 
-- Sleep Diet Suggestion: Shayan give suggestions for the diet of the user to improve the physical and mental health, as mental health is important for a calm mind.
+- Sleep Diet Suggestion: Shayan give suggestions for the diet of the user to improve the physical and mental health, as mental health is important for a calm mind. This is according to the sleep report generated
 
 - Meditation Timer: Set your meditation duration and focus on your practice with our guided meditation timer with calming background music.
 
