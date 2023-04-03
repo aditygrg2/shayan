@@ -8,7 +8,7 @@ Features:
 
 - Fetching sleep and health data by Watch: Users can fetch data using Google Fit and watches like Garmin, Samsung Health and Fitbit.
 
-- Sleep Reports: Shayan generates sleep reports based on the user sleep pattern. This also includes a sleep score generated using sleep elements like Sleep Efficiency, Sleep Time, and Wakefulness based on the research paper here [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4246141/) which helps to understand the sleep of the user
+- Sleep Reports: Shayan generates sleep reports based on the user sleep pattern. This also includes a sleep score generated using sleep elements like Sleep Efficiency, Sleep Time, and Wakefulness based on the research paper [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4246141/) which helps to understand the sleep of the user
 
 - My Plan page: A feature which creates a personalised plan according to the daily sleep data, showing report including the suggestions to be followed and the sleep disorder analyzed according to the unique set of questions. 
 
