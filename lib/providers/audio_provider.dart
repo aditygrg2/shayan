@@ -9,7 +9,6 @@ class AudioProvider extends ChangeNotifier {
   Duration progress = Duration();
 
   void load(String uri)async{
-    final audioSource = LockCachingAudioSource('https://foo.com/bar.mp3')
     player = new AudioPlayer();
     duration = Duration.zero;
     progress = Duration.zero;
