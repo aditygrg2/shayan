@@ -1,38 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:provider/provider.dart';
 
 class MentalExercise extends StatelessWidget {
   List<Map<String, String>> options = [
     {
-      'title': 'VISUALIZATION',
+      'title': 'Visualization',
       'subtitle':
           'Involves creating a mental image or scenario that is soothing, calming, and peaceful',
       "image": 'assets/visualization.png',
-      "route": '',
     },
     {
       'title': 'Progressive Muscle Relaxation',
-      'subtitle':
-          'It makes user more aware of areas of tension in their body',
+      'subtitle': 'It makes user more aware of areas of tension in their body',
       "image": 'assets/relaxation.png',
     },
     {
-      'title': 'MEDITATION',
+      'title': 'Meditation',
       'subtitle':
           'Mental practice that involves focusing the mind on a particular object',
       "image": 'assets/meditation.png',
     },
     {
-      'title': 'AUTOGENIC RELAXATION',
+      'title': 'Autogenic Relaxation',
       'subtitle':
           'Using self-suggestion to create a sense of relaxation and well-being in the body',
       "image": 'assets/autogenic_relaxation.png',
     },
     {
-      'title': 'DEEP BREATHING',
+      'title': 'Deep Breathing',
       'subtitle':
           'Relaxation technique that involves taking slow, deep breaths',
       "image": 'assets/deep_breathing.png',
@@ -62,13 +62,20 @@ class MentalExercise extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushNamed(
-                            MentalExerciseSolution.routeName,
-                            arguments: card['title']);
+                          MentalExerciseSolution.routeName,
+                          arguments: card['title'],
+                        ).then((value) {
+                          dynamic player = Provider.of<AudioProvider>(context,listen: false);
+                          if(player.duration.inMilliseconds > 0){
+                            player.release();
+                          }
+                        });
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             color: Theme.of(context).canvasColor,
-                            borderRadius: const BorderRadius.all(Radius.circular(30)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
                             border: Border.all(
                               color: Colors.black,
                               width: 2,
@@ -80,7 +87,8 @@ class MentalExercise extends StatelessWidget {
                           children: [
                             Container(
                               width: widthi * 0.5,
-                              padding: const EdgeInsets.only(left: 20, right: 5),
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 5),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

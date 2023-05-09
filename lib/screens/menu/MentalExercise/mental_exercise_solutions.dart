@@ -8,10 +8,10 @@ class MentalExerciseSolution extends StatelessWidget {
   static String routeName = '/mental-exercise-solution';
   @override
   Widget build(BuildContext context) {
-    final args=ModalRoute.of(context)?.settings.arguments;
+    final args = ModalRoute.of(context)?.settings.arguments;
 
-    final solution =
-        Provider.of<MentalSolutionProvider>(context).getSolution(args as String);
+    final solution = Provider.of<MentalSolutionProvider>(context)
+        .getSolution(args as String);
     // get title  from routes
     return Scaffold(
       body: ListView(
@@ -38,7 +38,9 @@ class MentalExerciseSolution extends StatelessWidget {
                           child: Text(
                             args.toString(),
                             style: const TextStyle(
-                                fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -46,7 +48,10 @@ class MentalExerciseSolution extends StatelessWidget {
                           height: 20,
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 10,
+                          ),
                           alignment: Alignment.center,
                           child: Text(
                             solution['subtitle'],
@@ -63,7 +68,8 @@ class MentalExerciseSolution extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 8),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 8),
                           child: Text(
                             solution['description'],
                             textAlign: TextAlign.center,

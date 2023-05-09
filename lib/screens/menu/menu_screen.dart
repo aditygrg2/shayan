@@ -87,7 +87,7 @@ class MenuScreen extends StatelessWidget {
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              childAspectRatio: 2 /2.25,
+              childAspectRatio: 2 / 2.25,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
             ),

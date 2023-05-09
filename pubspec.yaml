@@ -59,6 +59,7 @@ dependencies:
   dialog_flowtter: ^0.3.3
   fl_chart: ^0.61.0
   bottom_drawer: ^0.0.5
+  flutter_cache_manager: any
 
 dev_dependencies:
   flutter_test:
@@ -175,7 +176,6 @@ flutter:
     - assets/ellipse_splash_screen_right.png
     - assets/secretkey.json
     - assets/deep_breathing.mp3
-    - assets/deep-breathing.mp3
     - assets/autogenic_relaxation.mp3
     - assets/meditation.mp3
     - assets/meditation_2.mp3
