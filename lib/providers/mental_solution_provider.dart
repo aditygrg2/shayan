@@ -22,7 +22,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       ],
     },
     {
-      'title': 'VISUALIZATION',
+      'title': 'Visualization',
       'subtitle':
           'Involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
       'image': 'assets/visualization.png',
@@ -40,7 +40,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       ]
     },
     {
-      'title': 'MEDITATION',
+      'title': 'Meditation',
       'subtitle':
           'A mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
       'image': 'assets/mental_exercises_3.png',
@@ -57,7 +57,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       ]
     },
     {
-      'title': 'AUTOGENIC RELAXATION',
+      'title': 'Autogenic Relaxation',
       'subtitle':
           'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
       'image': 'assets/mental_exercises_2.png',
@@ -74,7 +74,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       ]
     },
     {
-      'title': 'DEEP BREATHING',
+      'title': 'Deep Breathing',
       'subtitle':
           'A mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
       'image': 'assets/mental_exercises_5.png',
