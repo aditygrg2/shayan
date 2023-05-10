@@ -42,7 +42,9 @@ class AuthenticationProvider extends ChangeNotifier {
             'email': email,
             'healthState': 'NA',
             'questionNumber':-1,
-            'SSCreated': false
+            'SSCreated': false,
+            'diseaseType':'NA',
+            'isReady':'NA'
           },
         );
       }
