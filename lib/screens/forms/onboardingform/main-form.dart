@@ -556,6 +556,9 @@ class _MainFormState extends State<MainForm> {
                       if (!loading)
                         Text(
                           'Question ${_currentQuestion + 1}',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
                         ),
                       if (!loading) forms_details[_currentQuestion],
                     ],

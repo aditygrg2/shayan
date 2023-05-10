@@ -55,6 +55,7 @@ dependencies:
   url_launcher: ^6.1.10
   cloud_firestore: ^4.4.5
   firebase_auth: ^4.2.2
+  day_night_time_picker: any
   firebase_core: ^2.8.0
   dialog_flowtter: ^0.3.3
   fl_chart: ^0.61.0

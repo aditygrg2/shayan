@@ -6,6 +6,7 @@ import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dar
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
+import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
@@ -62,6 +63,11 @@ class MenuScreen extends StatelessWidget {
       'text': 'Worry List',
       'imagePath': 'assets/worry_list.png',
       'routes': Worrylist.routeName
+    },
+    {
+      'text': 'Smart Alarm',
+      'imagePath': 'assets/worry_list.png',
+      'routes': SmartAlarm.routeName
     },
   ];
   @override

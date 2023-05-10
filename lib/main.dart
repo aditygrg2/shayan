@@ -17,6 +17,7 @@ import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
+import 'package:night_gschallenge/providers/smart_alarm_provider.dart';
 import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
@@ -40,6 +41,7 @@ import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dar
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
+import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperature.dart';
@@ -66,8 +68,8 @@ void main() {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(Main());
 }
+
 class Main extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -185,11 +187,17 @@ class Main extends StatelessWidget {
                 return SleepReportDataProvider();
               },
             ),
-            ChangeNotifierProvider(create: (context){
-              return SleepElements();
-            })
+            ChangeNotifierProvider(
+              create: (context) {
+                return SleepElements();
+              },
+            ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return SmartAlarmProvider();
+              },
+            )
           ],
-          
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Night_GSChallenge',
@@ -212,46 +220,49 @@ class Main extends StatelessWidget {
               ),
               radioTheme: RadioThemeData(
                 fillColor: MaterialStateProperty.all<Color>(
-                    const Color.fromRGBO(247, 219, 198, 1)),
+                  const Color.fromRGBO(247, 219, 198, 1),
+                ),
                 visualDensity: VisualDensity.comfortable,
               ),
               timePickerTheme: TimePickerThemeData(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              
+
               ),
               textTheme: const TextTheme(
                 headlineLarge: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
-                  fontFamily: 'OpenSans'
+                  fontFamily: 'OpenSans',
                 ),
                 headlineSmall: TextStyle(
                   fontSize: 15,
-                  fontFamily: 'OpenSans'
+                  fontFamily: 'OpenSans',
                 ),
                 headlineMedium: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'OpenSans'
+                  fontFamily: 'OpenSans',
                 ),
                 titleLarge: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat'
+                  fontFamily: 'Montserrat',
                 ),
                 bodyLarge: TextStyle(
                   fontSize: 40,
                   color: Colors.black,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'OpenSans'
+                  fontFamily: 'OpenSans',
                 ),
                 labelLarge: TextStyle(
                   fontSize: 25,
-                  fontFamily: 'Montserrat'
+                  fontFamily: 'Montserrat',
                 ),
                 labelMedium: TextStyle(
                   fontSize: 15,
-                  fontFamily: 'Montserrat'
+                  fontFamily: 'Montserrat',
                 ),
               ),
             ),
@@ -300,7 +311,8 @@ class Main extends StatelessWidget {
               MainForm.routeName: (ctx) => MainForm(),
               CommunityScreen.routeName: (ctx) => CommunityScreen(),
               SleepForm.routeName: (ctx) => SleepForm(),
-              StoryScreen.routeName: (ctx)=> StoryScreen(),
+              StoryScreen.routeName: (ctx) => StoryScreen(),
+              SmartAlarm.routeName: (ctx) => SmartAlarm(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/InformativeText.dart';
 import 'package:night_gschallenge/widgets/UI/TimeContainer.dart';
@@ -27,25 +28,23 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
     int sleepCycles = 6;
     int startDateMinutes = startDate.hour * 60 + startDate.minute;
 
-    int sleepTime = sleepCycles * averageSleepCycle;
-
     while (sleepCycles >= 3) {
-      var wakeup = ((startDateMinutes + timeTakenToFallAsleep + 
+      var wakeup = ((startDateMinutes +
+                  timeTakenToFallAsleep +
                   sleepCycles * averageSleepCycle) /
               60) %
           12;
-      var minutes = (startDateMinutes + timeTakenToFallAsleep +
+      var minutes = (startDateMinutes +
+              timeTakenToFallAsleep +
               sleepCycles * averageSleepCycle) %
           60;
-      var meridian = ((startDateMinutes +
-                      sleepCycles * averageSleepCycle) /
-                  60) >
-              12
-          ? 'PM'
-          : 'AM';
+      var meridian =
+          ((startDateMinutes + sleepCycles * averageSleepCycle) / 60) > 12
+              ? 'PM'
+              : 'AM';
       _data.add({
         'wakeup':
-            '${wakeup.floor()}:${minutes.toString().length < 2 ? '0' : ''}${minutes} $meridian',
+            '${wakeup.floor()}:${minutes.toString().length < 2 ? '0' : ''}$minutes $meridian',
         'hours': ((sleepCycles * averageSleepCycle) / 60).toStringAsFixed(1),
         'cycles': sleepCycles,
         'recommended': false,
@@ -109,14 +108,18 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                   minutes: startDate.minute.toString(),
                   meridian: startDate.hour > 12 ? 'PM' : 'AM',
                   onTap: () {
-                    showTimePicker(
+                    Navigator.of(context).push(showPicker(
                       context: context,
-                      initialTime: startDate,
-                    ).then((pickedDate) {
-                      setState(() {
-                        startDate = pickedDate!;
-                      });
-                    });
+                      value: Time(
+                        hour: startDate.hour,
+                        minute: startDate.minute,
+                      ),
+                      onChange: (pickedDate) {
+                        setState(() {
+                          startDate = pickedDate;
+                        });
+                      },
+                    ));
                   },
                 ),
                 Row(
@@ -154,9 +157,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                 const SizedBox(
                   height: 15,
                 ),
-                const Text(
-                  'Average sleep cycle length is 90 minutes'
-                ),
+                const Text('Average sleep cycle length is 90 minutes'),
                 const SizedBox(
                   height: 15,
                 ),

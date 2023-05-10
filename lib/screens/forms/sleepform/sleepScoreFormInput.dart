@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 class SleepScoreFormInput extends StatefulWidget {
   String keya;
@@ -11,15 +12,13 @@ class SleepScoreFormInput extends StatefulWidget {
   int? initialText;
 
   SleepScoreFormInput(
-      {
-      this.keya = '2',
+      {this.keya = '2',
       this.question,
       this.type,
       this.onSubmit,
       this.value,
       this.initialValue,
-      this.initialText
-      });
+      this.initialText});
 
   @override
   State<SleepScoreFormInput> createState() => _SleepScoreFormInputState();
@@ -33,7 +32,7 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
   Widget build(BuildContext context) {
     num? something = widget.initialValue?.hour ?? -1;
     String? hour = something != -1
-        ? something! > 12
+        ? something > 12
             ? (something - 12).toString()
             : widget.initialValue?.hour.toString()
         : '';
@@ -47,12 +46,14 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
     String? valueSelected = '$hour:$minutes $mode';
 
     Future.delayed(Duration.zero, () async {
+      print(something);
       _controller.text = something == -1 ? '' : valueSelected;
-      _controller2.text = widget.initialText.toString() == '-1' ? '' : widget.initialText.toString();
-      if(widget.type == InputTypes.TimeInput){
+      _controller2.text = widget.initialText.toString() == '-1'
+          ? ''
+          : widget.initialText.toString();
+      if (widget.type == InputTypes.TimeInput) {
         widget.value!(_controller.text, widget.keya);
-      }
-      else{
+      } else {
         widget.value!(_controller2.text, widget.keya);
       }
     });
@@ -73,22 +74,27 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
         if (widget.type == InputTypes.TimeInput)
           TextFormField(
             key: ValueKey(widget.keya),
-            onTap: () => showTimePicker(
-              context: context,
-              initialTime: TimeOfDay.now(),
-            ).then((pickedDate) {
-              num? something = pickedDate?.hour;
-              String? hour = something! > 12
-                  ? (something - 12).toString()
-                  : pickedDate?.hour.toString();
-              String? minutes = pickedDate?.minute.toString();
-              String? mode = something > 12 ? 'PM' : 'AM';
-              setState(() {
-                _controller.text = '$hour:$minutes $mode';
-              });
-
-              widget.value!('$hour:$minutes $mode', widget.keya);
-            }),
+            onTap: () {
+              Navigator.of(context).push(
+                showPicker(
+                  context: context,
+                  value: Time(
+                    hour: TimeOfDay.now().hour,
+                    minute: TimeOfDay.now().minute,
+                  ),
+                  onChange: (pickedDate) {
+                    num? something = pickedDate.hour;
+                    String? hour = something > 12
+                        ? (something - 12).toString()
+                        : pickedDate.hour.toString();
+                    String? minutes = pickedDate.minute.toString();
+                    String? mode = something > 12 ? 'PM' : 'AM';
+                    _controller.text = '$hour:$minutes $mode';
+                    widget.value!('$hour:$minutes $mode', widget.keya);
+                  },
+                ),
+              );
+            },
             controller: _controller,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
