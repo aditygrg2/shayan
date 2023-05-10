@@ -14,14 +14,10 @@ class SmartAlarmProvider extends ChangeNotifier {
   }
 
   void start() async {
-    _noiseMeter = NoiseMeter();
-    _noiseSubscription = _noiseMeter.noiseStream.listen(onData);
+    
   }
 
-  void onData(NoiseReading noiseReading) {
-    dbOnScreen = noiseReading.meanDecibel;
-    notifyListeners();
-  }
+  
 
   void stop() {
     // Close the streamer when alarm hits

@@ -46,7 +46,6 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
     String? valueSelected = '$hour:$minutes $mode';
 
     Future.delayed(Duration.zero, () async {
-      print(something);
       _controller.text = something == -1 ? '' : valueSelected;
       _controller2.text = widget.initialText.toString() == '-1'
           ? ''
