@@ -7,6 +7,7 @@ class AudioProvider extends ChangeNotifier {
   Duration duration = Duration();
   Duration progress = Duration();
   Duration buffered = Duration();
+  
   void load(String uri)async{
     duration = Duration.zero;
     progress = Duration.zero;

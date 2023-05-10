@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
@@ -85,15 +86,21 @@ class _InputBoxState extends State<InputBox> {
                     minutes: startDate.minute.toString(),
                     meridian: startDate.hour > 12 ? 'PM' : 'AM',
                     onTap: () {
-                      showTimePicker(
+                      Navigator.of(context).push(
+                      showPicker(
                         context: context,
-                        initialTime: startDate,
-                      ).then((pickedDate) {
-                        valueSelected = "${pickedDate?.hour}:${pickedDate?.minute}";
-                        setState(() {
-                          startDate = pickedDate!;
-                        });
-                      });
+                        value: Time(
+                          hour: startDate.hour,
+                          minute: startDate.minute,
+                        ),
+                        onChange: (pickedDate) {
+                          valueSelected =
+                              "${pickedDate.hour}:${pickedDate.minute}";
+                          setState(() {
+                            startDate = pickedDate;
+                          });
+                        },
+                      ));
                     },
                   ),
                 if (widget.inputType == InputTypes.DateInput)
@@ -104,7 +111,6 @@ class _InputBoxState extends State<InputBox> {
                           decoration: InputDecoration(labelText: widget.labels),
                           controller: _controller,
                           onChanged: (value) {
-                            print(value);
                             valueSelected = value;
                           },
                         ),
@@ -124,9 +130,9 @@ class _InputBoxState extends State<InputBox> {
                             ),
                           ).then((value) {
                             valueSelected = value.toString();
-                        setState(() {
-                          _controller.text = value.toString();
-                        });
+                            setState(() {
+                              _controller.text = value.toString();
+                            });
                           });
                         },
                       )
