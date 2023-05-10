@@ -25,7 +25,6 @@ class _PlanScreenState extends State<PlanScreen> {
   bool showPlan = false;
 
   Duration isActiveCheck(String str) {
-    print(str);
     var format = DateFormat("HH:mm");
     var first = format.parse(str);
     var now = DateTime.now();
@@ -44,9 +43,8 @@ class _PlanScreenState extends State<PlanScreen> {
 
     try {
       var data =
-          await FirebaseFirestore.instance.collection('users').doc(id).get();
+      await FirebaseFirestore.instance.collection('users').doc(id).get();
       questionNumber = 34 - data['questionNumber'] as int;
-      print(data['questionNumber']);
     } catch (err) {
       print(err.toString());
     }
@@ -154,7 +152,7 @@ class _PlanScreenState extends State<PlanScreen> {
                     ],
                   ),
                 );
-              } else if (snapshot.data?.get('healthState') == 'true') {
+              } else if (snapshot.data?.get('healthState') == 'true' && snapshot.data?.get('isReady') == 'true') {
                 return Container(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 15,
@@ -167,9 +165,108 @@ class _PlanScreenState extends State<PlanScreen> {
                       ),
                       const SizedBox(
                         height: 15,
-                      ),
-                      !showPlan
-                          ? Column(
+                      ),Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        showModalBottomSheet(
+                                            context: context,
+                                            builder: (context) {
+                                              return SingleChildScrollView(
+                                                  child: AddEditTimeline(-1));
+                                            },
+                                            backgroundColor: Colors.white);
+                                      },
+                                      icon: const Icon(
+                                        Icons.add,
+                                        color: Colors.black,
+                                        size: 34,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                ...(timeline
+                                    .map((e) {
+                                      var difference = isActiveCheck(e['time']);
+                                      int index = timeline.indexOf(e);
+                                      if (difference.compareTo(Duration.zero) >=
+                                          0) {
+                                        return e['suggestion'] != null
+                                            ? TimelineCard(
+                                                index: index,
+                                                duration: difference.toString(),
+                                                isActive: difference.compareTo(
+                                                        Duration.zero) ==
+                                                    0,
+                                                task: e['task'],
+                                                time: e['time'],
+                                                suggestion: e['suggestion'],
+                                              )
+                                            : TimelineCard(
+                                                index: index,
+                                                duration: difference.toString(),
+                                                isActive: difference.compareTo(
+                                                        Duration.zero) ==
+                                                    0,
+                                                task: e['task'],
+                                                time: e['time'],
+                                              );
+                                      } else
+                                        return null;
+                                    })
+                                    .toList()
+                                    .where((element) => element != null)
+                                    .toList() as List<Widget>),
+                                Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ListTileIconCreators(
+                                          title:
+                                              'Fetch your sleep report again',
+                                          icon: Icons.search,
+                                          onTap: () async {
+                                            await FirebaseFirestore.instance
+                                                .collection('users')
+                                                .doc(id)
+                                                .update({
+                                              'questionNumber': -1,
+                                            });
+                                            Navigator.of(context)
+                                                .pushNamed(MainForm.routeName);
+                                          }),
+                                      ListTileIconCreators(
+                                        title:
+                                            'Check out your latest sleep report',
+                                        onTap: () {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            backgroundColor: Colors.transparent,
+                                            builder: (context) {
+                                              return SleepReportAnalysis();
+                                            },
+                                          );
+                                        },
+                                        icon: Icons.change_circle,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 50,
+                                )
+                              ],
+                            ),
+                    ],
+                  ),
+                );
+              } else if(snapshot.data?.get('healthState') == 'true'){
+                return Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
@@ -311,7 +408,10 @@ class _PlanScreenState extends State<PlanScreen> {
                                 ),
                                 Center(
                                   child: ElevatedButtonWithoutIcon(
-                                      onPressedButton: () {
+                                      onPressedButton: () async{
+                                        await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser?.uid).update({
+                                          'isReady':'true'
+                                        });
                                         setState(() {
                                           showPlan = !showPlan;
                                         });
@@ -322,108 +422,9 @@ class _PlanScreenState extends State<PlanScreen> {
                                   height: 20,
                                 ),
                               ],
-                            )
-                          : Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        showModalBottomSheet(
-                                            context: context,
-                                            builder: (context) {
-                                              return SingleChildScrollView(
-                                                  child: AddEditTimeline(-1));
-                                            },
-                                            backgroundColor: Colors.white);
-                                      },
-                                      icon: const Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 34,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                ...(timeline
-                                    .map((e) {
-                                      var difference = isActiveCheck(e['time']);
-                                      int index = timeline.indexOf(e);
-                                      if (difference.compareTo(Duration.zero) >=
-                                          0) {
-                                        return e['suggestion'] != null
-                                            ? TimelineCard(
-                                                index: index,
-                                                duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
-                                                    0,
-                                                task: e['task'],
-                                                time: e['time'],
-                                                suggestion: e['suggestion'],
-                                              )
-                                            : TimelineCard(
-                                                index: index,
-                                                duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
-                                                    0,
-                                                task: e['task'],
-                                                time: e['time'],
-                                              );
-                                      } else
-                                        return null;
-                                    })
-                                    .toList()
-                                    .where((element) => element != null)
-                                    .toList() as List<Widget>),
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ListTileIconCreators(
-                                          title:
-                                              'Fetch your sleep report again',
-                                          icon: Icons.search,
-                                          onTap: () async {
-                                            await FirebaseFirestore.instance
-                                                .collection('users')
-                                                .doc(id)
-                                                .update({
-                                              'questionNumber': -1,
-                                            });
-                                            Navigator.of(context)
-                                                .pushNamed(MainForm.routeName);
-                                          }),
-                                      ListTileIconCreators(
-                                        title:
-                                            'Check out your latest sleep report',
-                                        onTap: () {
-                                          showModalBottomSheet(
-                                            context: context,
-                                            backgroundColor: Colors.transparent,
-                                            builder: (context) {
-                                              return SleepReportAnalysis();
-                                            },
-                                          );
-                                        },
-                                        icon: Icons.change_circle,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 50,
-                                )
-                              ],
-                            ),
-                    ],
-                  ),
-                );
-              } else if (snapshot.data?.get('healthState') == 'false') {
+                            );
+              }
+              else if (snapshot.data?.get('healthState') == 'false') {
                 return Container(
                   margin: const EdgeInsets.all(20),
                   child: Column(

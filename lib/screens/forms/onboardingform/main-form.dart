@@ -82,12 +82,19 @@ class _MainFormState extends State<MainForm> {
         _currentQuestion++;
       });
     } else {
+      var result = 'healthy';
+      var  disease = await FirebaseFirestore.instance.collection("planForm").doc(id).collection("stats").doc(id).get();
+      if(disease['apnea']>=20) result = 'apnea';
+      else if(disease['insomia']>=20) result = 'insomia';
+      else if(disease['sleep_deprivation']>=20) result = 'sleep deprivation';
       await FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .update(
         {
           'healthState': 'true',
+          'diseaseType':result,
+          'isReady':'false',
           'questionNumber': _currentQuestion + 1,
         },
       );
