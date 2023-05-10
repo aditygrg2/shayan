@@ -57,68 +57,75 @@ class MentalExercise extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                child: Column(children: [
-                  ...options.map((card) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(
-                          MentalExerciseSolution.routeName,
-                          arguments: card['title'],
-                        ).then((value) {
-                          dynamic player = Provider.of<AudioProvider>(context,listen: false);
-                          if(player.duration.inMilliseconds > 0){
-                            player.release();
-                          }
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).canvasColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 2,
-                            )),
-                        width: double.infinity,
-                        margin: const EdgeInsets.all(15),
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: widthi * 0.5,
-                              padding:
-                                  const EdgeInsets.only(left: 20, right: 5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    card['title'].toString(),
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text(
-                                    card['subtitle'].toString(),
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
-                                  )
-                                ],
+                child: Column(
+                  children: [
+                    ...options.map((card) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(
+                            MentalExerciseSolution.routeName,
+                            arguments: card['title'],
+                          )
+                              .then((value) {
+                            dynamic player = Provider.of<AudioProvider>(context,
+                                listen: false);
+                            if (player.duration.inMilliseconds > 0) {
+                              player.release();
+                            }
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).canvasColor,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(30)),
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 2,
+                              )),
+                          width: double.infinity,
+                          margin: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(15),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: widthi * 0.5,
+                                padding:
+                                    const EdgeInsets.only(left: 20, right: 5),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      card['title'].toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      card['subtitle'].toString(),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                            Expanded(
-                                child: Image.asset(card['image'].toString())),
-                          ],
+                              Expanded(
+                                  child: Image.asset(card['image'].toString())),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }).toList(),
-                  const SizedBox(
-                    height: 50,
-                  )
-                ]),
+                      );
+                    }).toList(),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+
 class AudioPlayerWithSlider extends StatefulWidget {
   bool isPlaying = false;
   String audio;
@@ -53,10 +54,10 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                   onSeek: (value) {
                     audioProvider.seek(value);
                   },
-                  timeLabelTextStyle: TextStyle(fontSize: 15,color: Colors.black),
+                  timeLabelTextStyle:
+                      TextStyle(fontSize: 15, color: Colors.black),
                   timeLabelPadding: 15,
                   timeLabelType: TimeLabelType.remainingTime,
-
                 ),
               ),
               const SizedBox(
@@ -78,11 +79,16 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
               ),
             ],
           )
-        : const Padding(
-          padding:  EdgeInsets.all(10.0),
-          child:  Center(
-              child:  CircularProgressIndicator(),
-            ),
-        );
+        : Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Text("Loading...", style: TextStyle(fontSize: 15),),
+                SizedBox(
+                  height: 10,
+                ),
+                CircularProgressIndicator(),
+              ],
+            ));
   }
 }

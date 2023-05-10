@@ -38,6 +38,10 @@ class AudioProvider extends ChangeNotifier {
      await player.play();
   }
 
+  void release() async {
+    await player.stop();
+  }
+
   void seek(seekTime) async {
     player.seek(seekTime);
     notifyListeners();
