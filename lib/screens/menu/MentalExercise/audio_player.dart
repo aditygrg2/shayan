@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:provider/provider.dart';
-
+import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 class AudioPlayerWithSlider extends StatefulWidget {
   bool isPlaying = false;
   String audio;
@@ -37,9 +37,6 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
       audioProvider.load(widget.audio);
       load = false;
     }
-
-    var diff = audioProvider.duration - audioProvider.progress;
-
     return audioProvider.duration.inMilliseconds > 0
         ? Column(
             children: [
@@ -47,40 +44,19 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                 height: 20,
               ),
               Container(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
                 width: MediaQuery.of(context).size.width - 15,
-                child: Slider(
-                  value: audioProvider.progress.inMilliseconds.toDouble(),
-                  onChanged: (value) {
-                    audioProvider.seek(Duration(milliseconds: value.toInt()));
+                child: ProgressBar(
+                  progress: audioProvider.progress,
+                  total: audioProvider.duration,
+                  buffered: audioProvider.buffered,
+                  onSeek: (value) {
+                    audioProvider.seek(value);
                   },
-                  max: audioProvider.duration.inMilliseconds.toDouble(),
-                  min: 0,
-                ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        "${(audioProvider.progress.inMinutes).ceil().toString().padLeft(2, "0")}:${(audioProvider.progress.inSeconds % 60).toString().padLeft(2, "0")}",
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Container(
-                      child: Text(
-                        "${(diff.inMinutes).ceil().toString().padLeft(2, "0")}:${(diff.inSeconds % 60).ceil().toString().padLeft(2, "0")}",
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                  ],
+                  timeLabelTextStyle: TextStyle(fontSize: 15,color: Colors.black),
+                  timeLabelPadding: 15,
+                  timeLabelType: TimeLabelType.remainingTime,
+
                 ),
               ),
               const SizedBox(
@@ -102,10 +78,11 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
               ),
             ],
           )
-        : const Center(
-            child: Text(
-              "Music is loading....",
+        : const Padding(
+          padding:  EdgeInsets.all(10.0),
+          child:  Center(
+              child:  CircularProgressIndicator(),
             ),
-          );
+        );
   }
 }
