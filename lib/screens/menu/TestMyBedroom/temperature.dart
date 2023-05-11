@@ -55,7 +55,7 @@ class _TemperatureState extends State<Temperature> {
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
+                Container( 
                   width: (width - 40) * 0.9,
                   child: Text(
                     'The ideal temperature for sleep is 18-22C. Make sure to adjust your AC accordingly,wear suitable pjamas and cover yourself with right blanket.',
