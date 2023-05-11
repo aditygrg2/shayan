@@ -33,7 +33,7 @@ class TimelineCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
-        color: isActive || index==0
+        color: isActive 
             ? Theme.of(context).canvasColor
             : Theme.of(context).buttonColor,
       ),
@@ -43,7 +43,7 @@ class TimelineCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                child: isActive || index==0
+                child: isActive
                     ? Icon(
                         Icons.star,
                         color: Colors.yellow[400],

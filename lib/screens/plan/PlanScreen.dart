@@ -208,8 +208,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                             ? TimelineCard(
                                                 index: index,
                                                 duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
+                                                isActive: index ==
                                                     0,
                                                 task: e['task'],
                                                 time: e['time'],
@@ -218,8 +217,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                             : TimelineCard(
                                                 index: index,
                                                 duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
+                                                isActive: index ==
                                                     0,
                                                 task: e['task'],
                                                 time: e['time'],

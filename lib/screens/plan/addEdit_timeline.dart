@@ -1,11 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:provider/provider.dart';
-
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 class AddEditTimeline extends StatefulWidget {
   int index;
 
@@ -41,13 +39,13 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
                 controller: timeController,
                 key: const ValueKey('1'),
                 onTap: () {
-                  showTimePicker(context: context, initialTime: TimeOfDay(hour: 0, minute: 0),).then((value) {
+                  Navigator.of(context).push(showPicker(context: context, value: Time(hour: 0, minute: 0),onChange: (value){
                     setState(() {
                       NumberFormat format = NumberFormat("00");
-                      timeController.text = "${format.format(value!.hour)}:${format.format(value.minute)}";
+                      timeController.text = "${format.format(value.hour)}:${format.format(value.minute)}";
                     });
-                  });
-                },
+                  }));
+                },  
               ),
             ),
             Container(
