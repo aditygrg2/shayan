@@ -44,6 +44,7 @@ class AuthenticationProvider extends ChangeNotifier {
             'questionNumber':-1,
             'SSCreated': false,
             'diseaseType':'NA',
+            'isCustomizedTimeline':'false',
             'isReady':'NA'
           },
         );

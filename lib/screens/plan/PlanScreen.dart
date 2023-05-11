@@ -57,7 +57,6 @@ class _PlanScreenState extends State<PlanScreen> {
   @override
   Widget build(BuildContext context) {
     var timelineProvider = Provider.of<TimelineProvider>(context);
-    var timeline = timelineProvider.getTimeline;
     return FirebaseAuth.instance.currentUser == null
         ? ListView(
           shrinkWrap: true,
@@ -175,6 +174,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                       onPressed: () {
                                         showModalBottomSheet(
                                             context: context,
+                                            enableDrag: true,
                                             builder: (context) {
                                               return SingleChildScrollView(
                                                   child: AddEditTimeline(-1));
@@ -189,8 +189,17 @@ class _PlanScreenState extends State<PlanScreen> {
                                     )
                                   ],
                                 ),
-                                ...(timeline
+                                FutureBuilder(future: timelineProvider.fetchTimeline(),
+                                builder: (context, snapshot) {
+                                  if(!snapshot.hasData){
+                                    return Center(child: Image.asset('assets/loading.gif'),);
+                                  }
+                                  var timeline = snapshot.data;
+                                  
+                                  return Column(
+                                    children: [...timeline
                                     .map((e) {
+                                      print(e);
                                       var difference = isActiveCheck(e['time']);
                                       int index = timeline.indexOf(e);
                                       if (difference.compareTo(Duration.zero) >=
@@ -199,8 +208,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                             ? TimelineCard(
                                                 index: index,
                                                 duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
+                                                isActive: index ==
                                                     0,
                                                 task: e['task'],
                                                 time: e['time'],
@@ -209,8 +217,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                             : TimelineCard(
                                                 index: index,
                                                 duration: difference.toString(),
-                                                isActive: difference.compareTo(
-                                                        Duration.zero) ==
+                                                isActive: index ==
                                                     0,
                                                 task: e['task'],
                                                 time: e['time'],
@@ -220,7 +227,9 @@ class _PlanScreenState extends State<PlanScreen> {
                                     })
                                     .toList()
                                     .where((element) => element != null)
-                                    .toList() as List<Widget>),
+                                    .toList()],
+                                  ) ;
+                                },),
                                 Container(
                                   child: Column(
                                     crossAxisAlignment:
@@ -247,6 +256,7 @@ class _PlanScreenState extends State<PlanScreen> {
                                           showModalBottomSheet(
                                             context: context,
                                             backgroundColor: Colors.transparent,
+                                            enableDrag: true,
                                             builder: (context) {
                                               return SleepReportAnalysis();
                                             },

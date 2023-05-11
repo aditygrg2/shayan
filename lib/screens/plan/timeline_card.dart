@@ -7,7 +7,7 @@ class TimelineCard extends StatelessWidget {
   String task;
   String duration;
   int index;
-  Map<String, String>? suggestion;
+  Map<String, dynamic>? suggestion;
   TimelineCard(
       {required this.index,
       this.isActive = false,
@@ -33,7 +33,7 @@ class TimelineCard extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
-        color: isActive
+        color: isActive 
             ? Theme.of(context).canvasColor
             : Theme.of(context).buttonColor,
       ),

@@ -1,47 +1,82 @@
+import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/screens/library/articles_screen.dart';
-import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
-import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
-import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
-import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 
-class TimelineProvider extends ChangeNotifier{
-  List<Map<dynamic, dynamic>> timeline = [
-    {"time": "06:30", "task": "Wake Up"},
-    {"time": "06:45", "task": "Meditation or Excerise","suggestion":{
-      "route":MeditationTimer.routeName,
-    }},
-    {"time": "14:00", "task": "Relax your Mood","suggestion":{
-      "route":MusicTherapy.routeName,
-    }},
-    {"time": "19:00", "task": "Eat Light Dinner","suggestion":{
-      "route":SleepDietSuggestion.routeName,
-    }},
-    {"time": "21:00", "task": "Test Your Environment","suggestion":{
-      "route":TestMyBedroom.routeName,
-    }},
-    {"time": "21:15", "task": "Listen Music or Reading Articles","suggestion":{
-      "route":ArticlesScreen.routeName,
-    }},
-    {"time": "21:45", "task": "Go to Sleep"},
-  ];
-
-  List<Map<dynamic,dynamic>> get getTimeline{
+class TimelineProvider extends ChangeNotifier {
+  List<dynamic> timeline = [];
+  TimelineProvider() {}
+  List<Map<dynamic, dynamic>> get getTimeline {
     return [...timeline];
   }
 
-  void editTimeline(int index,String time,String task){
-    timeline[index]={
-      "time":time,
-      "task":task
-    };
-    timeline.sort((a,b) => (a['time'] as String).compareTo(b['time']));
+  Future editTimeline(int index, String time, String task) async {
+    timeline[index] = {"time": time, "task": task};
+    timeline.sort((a, b) => (a['time'] as String).compareTo(b['time']));
+    try {
+      await FirebaseFirestore.instance
+          .collection("timeline")
+          .doc(getId())
+          .set({'time': jsonEncode(timeline)});
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(getId())
+          .update({'isCustomizedTimeline': 'true'});
+    } catch (e) {
+      return false;
+    }
     notifyListeners();
   }
 
-  void addTimeline(String time,String task){
-    timeline.add({"time":time,"task":task});
-    timeline.sort((a,b) => (a['time'] as String).compareTo(b['time']));
+  Future addTimeline(String time, String task) async {
+    timeline.add({"time": time, "task": task});
+    timeline.sort((a, b) => (a['time'] as String).compareTo(b['time']));
+    try {
+      await FirebaseFirestore.instance
+          .collection("timeline")
+          .doc(getId())
+          .set({'time': jsonEncode(timeline)});
+      await FirebaseFirestore.instance
+          .collection("users")
+          .doc(getId())
+          .update({'isCustomizedTimeline': 'true'});
+    } catch (e) {
+      return false;
+    }
     notifyListeners();
+    return true;
+  }
+
+  String? getId() {
+    return FirebaseAuth.instance.currentUser!.uid;
+  }
+
+  Future fetchTimeline() async {
+    final user =
+        await FirebaseFirestore.instance.collection("users").doc(getId()).get();
+    var result;
+    if (user['isCustomizedTimeline'] == 'false') {
+      final diseaseType =
+          user['diseaseType'] != 'NA' ? user['diseaseType'] : 'healthy';
+      result = await FirebaseFirestore.instance
+          .collection("timeline")
+          .doc(diseaseType)
+          .get();
+    }
+    if (user['isCustomizedTimeline'] == 'true') {
+      result = await FirebaseFirestore.instance
+          .collection("timeline")
+          .doc(getId())
+          .get();
+    }
+    timeline = jsonDecode(result['time']);
+    return [...timeline];
+  }
+
+  void setTimeline() async {
+    var result = await FirebaseFirestore.instance
+        .collection("timeline")
+        .doc("healthy")
+        .set({'time': jsonEncode(timeline)});
   }
 }
