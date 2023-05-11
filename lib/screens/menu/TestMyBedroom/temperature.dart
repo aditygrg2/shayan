@@ -66,21 +66,6 @@ class _TemperatureState extends State<Temperature> {
             ),
           ),
 
-          // Last Checked Text
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
-            child: const Center(
-              child: Text('Last Checked: Not Checked'),
-            ),
-          ),
-
           const SizedBox(
             height: 20,
           ),

@@ -82,61 +82,49 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
           ),
-          BottomDrawer(
-            color: const Color.fromARGB(255, 234, 229, 229),
-            header: Container(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-              width: double.infinity,
-              child: Center(
-                  child: Container(
-                width: double.infinity,
-                alignment: Alignment.center,
-                height: 2,
-                child: const Text(""),
-                decoration: const BoxDecoration(color: Colors.black),
-              )),
-            ),
-            body: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).accentColor)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "Login",
-                          style: Theme.of(context).textTheme.headlineSmall,
+           Positioned(
+            bottom: 10,
+            left: 5,
+            width: MediaQuery.of(context).size.width,
+            height: 120,
+             child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Theme.of(context).accentColor)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Login",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(LoginScreen.routeName);
-                      }),
-                  ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Theme.of(context).accentColor)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "SignUp",
-                          style: Theme.of(context).textTheme.headlineSmall,
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(LoginScreen.routeName);
+                        }),
+                    ElevatedButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Theme.of(context).accentColor)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            "Signup",
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(SignupScreen.routeName);
-                      }),
-                ],
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(SignupScreen.routeName);
+                        }),
+                  ],
+                ),
               ),
-            ),
-            headerHeight: 29,
-            drawerHeight: 150,
-            boxShadow: const [BoxShadow(color: Colors.grey)],
-          )
+           ),
+
         ],
       ),
     );
