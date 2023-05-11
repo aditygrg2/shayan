@@ -7,7 +7,9 @@ class AudioProvider extends ChangeNotifier {
   Duration duration = Duration();
   Duration progress = Duration();
   Duration buffered = Duration();
-  
+  bool alarmStarted = false;
+
+
   void load(String uri)async{
     duration = Duration.zero;
     progress = Duration.zero;
@@ -23,12 +25,21 @@ class AudioProvider extends ChangeNotifier {
     }) ;
   }
 
-  dynamic play(String uri) async {
+  void setAlarm(String url){
+    player.setAsset(url);
+    player.play();
+    alarmStarted = true;
+    notifyListeners();
+  }
+
+  dynamic play() async {
     await player.play();
   }
 
   dynamic stop() async {
+    alarmStarted = false;
     await player.stop();
+    notifyListeners();
   }
 
   dynamic pause() async {

@@ -21,7 +21,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
         audioProvider.pause();
         widget.isPlaying = !widget.isPlaying;
       } else {
-        audioProvider.play(widget.audio);
+        audioProvider.play();
         widget.isPlaying = !widget.isPlaying;
       }
     });

@@ -188,8 +188,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           }
                         } else {
                           handleClick();
-                          audio.play(
-                              widget.options[widget.selectedIndex]['music']);
+                          audio.play();
                         }
                       },
                       icon: Icon(

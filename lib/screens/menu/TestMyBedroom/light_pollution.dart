@@ -15,6 +15,7 @@ class LightPollution extends StatefulWidget {
 }
 
 class _LightPollutionState extends State<LightPollution> {
+  ScrollController _scrollController = ScrollController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool state = false;
 
@@ -25,6 +26,7 @@ class _LightPollutionState extends State<LightPollution> {
     return Scaffold(
       key: _scaffoldKey,
       body: ListView(
+        controller: _scrollController,
         children: [
           TopRow(
             back: true,
@@ -86,6 +88,7 @@ class _LightPollutionState extends State<LightPollution> {
           Consumer<LightProvider>(
             builder: (context, value, child) {
               if (value.state && !value.success) {
+                _scrollController.animateTo(height, duration: Duration(seconds: 1), curve: Curves.linear);
                 return MeasuringLight();
               } else if (value.success == true && value.state == false) {
                 return Center(

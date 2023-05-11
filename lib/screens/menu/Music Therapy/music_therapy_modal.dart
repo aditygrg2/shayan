@@ -70,7 +70,7 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
                         : Icons.play_arrow_rounded),
                     onPressed: ()  {
                        if (!widget.isPlaying) {
-                           audioPlayer.play(widget.therapy['tunes'][0]['tune']);
+                           audioPlayer.play();
                         } else {
                           audioPlayer.stop();
                         }

@@ -19,14 +19,17 @@ class NoisePollution extends StatefulWidget {
 class _NoisePollutionState extends State<NoisePollution> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool state = false;
+  ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
+    bool scrolled = false;
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
       key: _scaffoldKey,
       body: ListView(
+        controller: _scrollController,
         children: [
           TopRow(
             back: true,
@@ -104,6 +107,10 @@ class _NoisePollutionState extends State<NoisePollution> {
           Consumer<NoiseProvider>(
             builder: (context, value, child) {
               if (value.state && !value.success) {
+                if(!scrolled){
+                  _scrollController.animateTo(height, duration: Duration(seconds: 1), curve: Curves.linear);
+                  scrolled = true;
+                }
                 return MeasuringNoise();
               } else if (value.success == true && value.state == false) {
                 return Center(

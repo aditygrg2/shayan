@@ -1,31 +1,21 @@
-import 'dart:async';
-
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:noise_meter/noise_meter.dart';
+import 'package:path_provider/path_provider.dart' as syspaths;
 
 class SmartAlarmProvider extends ChangeNotifier {
-  late StreamSubscription<NoiseReading> _noiseSubscription;
-  late NoiseMeter _noiseMeter;
-
-  double dbOnScreen = 0;
-
-  double get db {
-    return dbOnScreen;
-  }
-
-  void start() async {
-    
-  }
-
+  List files = [];
   
+  Future getPaths() async {
+    Directory? appDir = await syspaths.getExternalStorageDirectory();
 
-  void stop() {
-    // Close the streamer when alarm hits
-    if (_noiseSubscription != null) {
-      _noiseSubscription.cancel();
-      notifyListeners();
-    }
+    if(appDir==null){
+      print("No path exists");
+    }    
+
+    String path = appDir!.path;
+
+    files = Directory("$path/").listSync();
+
+    notifyListeners();
   }
-
-  
 }

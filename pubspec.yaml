@@ -64,6 +64,9 @@ dependencies:
   just_audio: ^0.9.32
   record: any
   audio_video_progress_bar: ^0.9.0
+  path_provider: any
+  collection: any
+  alarm: ^1.0.5
 
 dev_dependencies:
   flutter_test:

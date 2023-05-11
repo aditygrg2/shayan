@@ -17,6 +17,8 @@ class SleepCycleCalculator extends StatefulWidget {
 
 class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
   List<Map<String, dynamic>> _data = [];
+  ScrollController _scrollController = ScrollController();
+  var height;
   int averageSleepCycle = 90;
   TimeOfDay startDate = TimeOfDay.now();
   bool data = false;
@@ -24,6 +26,11 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
   int timeTakenToFallAsleep = 15;
 
   void calculateResults() {
+    _scrollController.animateTo(
+      height,
+      duration: Duration(seconds: 1),
+      curve: Curves.linear,
+    );
     _data.clear();
     int sleepCycles = 6;
     int startDateMinutes = startDate.hour * 60 + startDate.minute;
@@ -70,8 +77,10 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
 
   @override
   Widget build(BuildContext context) {
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: ListView(
+        controller: _scrollController,
         children: [
           TopRow(
             back: true,
@@ -135,6 +144,11 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                     ElevatedButtonWithoutIcon(
                       text: 'Settings',
                       onPressedButton: () {
+                        _scrollController.animateTo(
+      height,
+      duration: Duration(seconds: 1),
+      curve: Curves.linear,
+    );
                         setState(() {
                           settingsOn = true;
                         });
