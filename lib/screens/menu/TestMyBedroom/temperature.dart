@@ -55,7 +55,7 @@ class _TemperatureState extends State<Temperature> {
                 const SizedBox(
                   width: 10,
                 ),
-                Container(
+                Container( 
                   width: (width - 40) * 0.9,
                   child: Text(
                     'The ideal temperature for sleep is 18-22C. Make sure to adjust your AC accordingly,wear suitable pjamas and cover yourself with right blanket.',
@@ -63,21 +63,6 @@ class _TemperatureState extends State<Temperature> {
                   ),
                 )
               ],
-            ),
-          ),
-
-          // Last Checked Text
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: width * 0.2, vertical: 10),
-            child: const Center(
-              child: Text('Last Checked: Not Checked'),
             ),
           ),
 
