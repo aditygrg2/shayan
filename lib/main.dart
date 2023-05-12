@@ -226,8 +226,6 @@ class Main extends StatelessWidget {
               ),
               timePickerTheme: TimePickerThemeData(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              
-
               ),
               textTheme: const TextTheme(
                 headlineLarge: TextStyle(
@@ -269,11 +267,18 @@ class Main extends StatelessWidget {
             home: StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return HomeScreen();
+                if (snapshot.connectionState == ConnectionState.active) {
+                  if (!snapshot.hasData) {
+                    return SplashScreen();
+                  }
+                  else{
+                    return HomeScreen();
+                  }
                 }
 
-                return SplashScreen();
+                return const Scaffold(
+                  body: CircularProgressIndicator(),
+                );
               },
             ),
             routes: {

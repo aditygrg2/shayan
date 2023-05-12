@@ -19,28 +19,28 @@ class _LibraryScreenState extends State<LibraryScreen> {
     {
       "title": "Podcasts",
       "subtitle":
-          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+          "Podcast subtitle TBA",
       "image": "assets/library_podcast.png",
       "route": Podcast.routeName,
     },
     {
       "title": "Articles",
       "subtitle":
-          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+          "Articles Subtitle TBA",
       "image": "assets/library_articles.png",
       "route": ArticlesScreen.routeName,
     },
     {
       "title": "Stories",
       "subtitle":
-          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+          "Stories Subtitle TBA",
       "image": "assets/library_stories.png",
       "route": StoryScreen.routeName,
     },
     {
       "title": "Music",
       "subtitle":
-          "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+          "Music Subtitle TBA",
       "image": "assets/library_music.png",
       "route": MusicGalleryScreen.routeName,
     }
