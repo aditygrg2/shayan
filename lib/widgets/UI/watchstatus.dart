@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,7 @@ class WatchStatus extends StatefulWidget {
 }
 
 class _WatchStatusState extends State<WatchStatus> {
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,6 +27,10 @@ class _WatchStatusState extends State<WatchStatus> {
             .getData(widget.time);
 
         bool status = await widget.valueSelector!();
+
+        await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).update({
+          'isWatchConnected': true,
+        });
 
         if (status) {
           ScaffoldMessenger.of(context).showSnackBar(

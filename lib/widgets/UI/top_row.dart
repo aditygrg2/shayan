@@ -29,7 +29,7 @@ class TopRow extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(context);
                   },
                   icon: const Icon(
                     Icons.arrow_back_rounded,

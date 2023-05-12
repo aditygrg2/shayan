@@ -66,7 +66,8 @@ class _SmartAlarmState extends State<SmartAlarm> {
       print("Recorded Average");
       print(recordedAverage);
 
-      if (average < (recordedAverage + modifier) && noiseReading.meanDecibel<recordedAverage) {
+      if (average < (recordedAverage + modifier) &&
+          noiseReading.meanDecibel < recordedAverage) {
         if (await recorder.isRecording()) {
           String? pathOfRecordedFile = await recorder.stop();
           _noiseSubscription2.cancel();
@@ -94,7 +95,8 @@ class _SmartAlarmState extends State<SmartAlarm> {
           }
           recorder.stop();
 
-          Provider.of<AudioProvider>(context, listen: false).setAlarm('assets/beach.mp3');
+          Provider.of<AudioProvider>(context, listen: false)
+              .setAlarm('assets/beach.mp3');
         }
 
         alarm_average_points.clear();
@@ -139,7 +141,7 @@ class _SmartAlarmState extends State<SmartAlarm> {
     return Scaffold(
       body: ListView(
         children: [
-          TopRow(),
+          TopRow(back: true,profile: true,),
           HomeScreenText(
             text: "Smart Alarm",
           ),
@@ -182,9 +184,10 @@ class _SmartAlarmState extends State<SmartAlarm> {
               } else if (value.success == true && value.state == false) {
                 recordedAverage = value.db;
                 return Center(
-                    child: Text(
-                  value.db.toString(),
-                ));
+                  child: Text(
+                    value.db.toString(),
+                  ),
+                );
               } else {
                 return const Card();
               }
@@ -211,6 +214,8 @@ class _SmartAlarmState extends State<SmartAlarm> {
                   Navigator.of(context).push(
                     showPicker(
                       context: context,
+                      okText: "Submit",
+                      blurredBackground: true,
                       value: Time(
                         hour: TimeOfDay.now().hour,
                         minute: TimeOfDay.now().minute,
@@ -256,6 +261,8 @@ class _SmartAlarmState extends State<SmartAlarm> {
                   Navigator.of(context).push(
                     showPicker(
                       context: context,
+                      okText: "Submit",
+                      blurredBackground: true,
                       value: Time(
                         hour: TimeOfDay.now().hour,
                         minute: TimeOfDay.now().minute,
@@ -290,10 +297,9 @@ class _SmartAlarmState extends State<SmartAlarm> {
                 child: ElevatedButtonWithoutIcon(
                   text: "Set Alarm",
                   onPressedButton: () async {
-                      _noiseMeter = NoiseMeter();
-                      _noiseSubscription =
-                          _noiseMeter.noiseStream.listen(onData);
-                      recorder = Record();
+                    _noiseMeter = NoiseMeter();
+                    _noiseSubscription = _noiseMeter.noiseStream.listen(onData);
+                    recorder = Record();
                   },
                 ),
               ),

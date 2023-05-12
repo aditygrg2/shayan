@@ -1,6 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
@@ -144,7 +146,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
             ),
           ),
         if (!loading && isSS) WeeklySleepAnalysis(),
-        if (!loading && !isSS && id!=null || id==null)
+        if (!loading && !isSS && id != null || id == null)
           Container(
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(25),
@@ -178,7 +180,11 @@ class _MySleepScreenState extends State<MySleepScreen> {
                         id != null ? 'Get your sleep data' : 'Login to proceed',
                     onPressedButton: () {
                       if (id != null)
-                        Navigator.of(context).pushNamed(SleepForm.routeName);
+                        Navigator.of(context).pushNamed(SleepForm.routeName).then((value) {
+                          setState(() {
+                            
+                          });
+                        });
                       else
                         Navigator.of(context).pushNamedAndRemoveUntil(
                           SplashScreen.routeName,

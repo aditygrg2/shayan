@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_modal.dart';
@@ -70,19 +75,54 @@ class _WatchComponentState extends State<WatchComponent> {
                 ),
                 ElevatedButtonWithoutIcon(
                   onPressedButton: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: MediaQuery.of(context).size.height,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor),
-                          child: Container(
+                    bool loginStatus =
+                        FirebaseAuth.instance.currentUser != null;
+
+                    if (loginStatus) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            height: MediaQuery.of(context).size.height,
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            child: Container(
                               margin: const EdgeInsets.all(15),
-                              child: Scaffold(body: WatchModal())),
-                        );
-                      },
-                    );
+                              child: Scaffold(body: WatchModal()),
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showMaterialBanner(
+                        MaterialBanner(
+                          content: const Text(
+                            "You need to be signed in to fetch data from your watch.",
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                ScaffoldMessenger.of(context)
+                                    .clearMaterialBanners();
+                              },
+                              child: Text(
+                                "Close",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                      Navigator.of(context).pushNamed(LoginScreen.routeName).then((value){
+                         ScaffoldMessenger.of(context).clearMaterialBanners();
+                      });
+                    }
                   },
                   text: 'Fetch data from your watch',
                 ),

@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
+import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:provider/provider.dart';
 
 class ProfileInfo extends StatelessWidget {
   String attribute, value;
@@ -40,6 +44,7 @@ class ProfileInfo extends StatelessWidget {
 }
 
 class ProfileScreen extends StatelessWidget {
+  var currentUser = FirebaseAuth.instance.currentUser;
   static const routeName = '/profile';
   Map<String, dynamic> profile = {
     "Name": "Aditya",
@@ -83,7 +88,7 @@ class ProfileScreen extends StatelessWidget {
                   ))
             ],
           ),
-          if (FirebaseAuth.instance.currentUser == null)
+          if (currentUser == null)
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -114,24 +119,45 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-          if (FirebaseAuth.instance.currentUser != null)
+          if (currentUser != null)
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...profile.entries.map((e) {
                   return ProfileInfo(e.key, e.value);
                 }).toList(),
-                Center(
-                  child: ElevatedButtonWithoutIcon(
-                    text: 'Logout',
-                    onPressedButton: () {
-                      FirebaseAuth.instance.signOut();
-                      Navigator.of(context).popUntil((route) => route == "");
-                      Navigator.of(context).pushNamed(SplashScreen.routeName);
-                    },
-                  ),
-                ),
+                ListTileIconCreators(
+                  title: 'Logout',
+                  icon: Icons.logout,
+                  onTap: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.of(context).popUntil((route) => route == "");
+                    Navigator.of(context).pushNamed(SplashScreen.routeName);
+                  },
+                )
               ],
+            ),
+          if (currentUser != null)
+            ListTileIconCreators(
+              title: 'Revoke Google Fit ID',
+              onTap: () async {
+                await Provider.of<WatchDataProvider>(context, listen: false)
+                    .revoke();
+
+                await FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(currentUser?.uid)
+                    .update({
+                  'isWatchConnected': false,
+                });
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text("Your account is successfully reset"),
+                  ),
+                );
+              },
+              icon: Icons.signal_cellular_no_sim_sharp,
             ),
         ],
       ),

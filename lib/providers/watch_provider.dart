@@ -5,6 +5,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 class WatchDataProvider extends ChangeNotifier {
   HealthFactory health = HealthFactory();
+
+  bool permissionEnabled = false;
   
   int sleep_in_bed = 0;
   int sleep_awake = 0;
@@ -23,7 +25,8 @@ class WatchDataProvider extends ChangeNotifier {
   ];
 
   Future<bool> getPermission()async{
-    return await health.requestAuthorization(types);
+    permissionEnabled = await health.requestAuthorization(types);
+    return permissionEnabled;
   }
 
   int get SIB{
@@ -42,12 +45,16 @@ class WatchDataProvider extends ChangeNotifier {
     return sleep_awake;
   }
 
+  Future revoke() async {
+    await health.revokePermissions();
+  }
+
   Future getData(time) async {
     var permissions = [
       HealthDataAccess.READ,
     ];
 
-    var permit = await Permission.activityRecognition.request();
+    await Permission.activityRecognition.request();
 
     List<HealthDataPoint> healthData = await health.getHealthDataFromTypes(
       time.subtract(const Duration(days: 1)),
@@ -56,6 +63,12 @@ class WatchDataProvider extends ChangeNotifier {
     );
 
     List<dynamic> list = healthData.toList();
+    
+    sleptOn = null;
+    sleptTill = null;
+    sleep_in_bed = 0;
+    sleep_awake = 0;
+    sleep_asleep = 0;  
     
     list.forEach((element) {
       String value = element.toJson()['data_type'];
@@ -78,5 +91,6 @@ class WatchDataProvider extends ChangeNotifier {
       }
     });
     
+    notifyListeners();
   }
 }

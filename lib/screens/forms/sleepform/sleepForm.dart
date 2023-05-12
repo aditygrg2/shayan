@@ -96,7 +96,6 @@ class _SleepFormState extends State<SleepForm> {
     var watchData = Provider.of<WatchDataProvider>(context, listen: false);
 
     if (watchData.sleptOn != null) {
-      
       setState(() {
         _inputQuestions[0]['initialValue'] = TimeOfDay.fromDateTime(
             DateFormat('yyyy-MM-dd HH:mm:ss.SSS')
@@ -136,13 +135,6 @@ class _SleepFormState extends State<SleepForm> {
     int length = _myDocCount.length;
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
-    print('values here');
-    print(value1);
-    print(value2);
-    print(value3);
-    print(value4);
-    print(value5);
-    print(value6);
     sleepElements.getData(
       value1,
       value2,
@@ -374,11 +366,12 @@ class _SleepFormState extends State<SleepForm> {
                               (e) {
                                 if (e['type'] == InputTypes.TimeInput) {
                                   return SleepScoreFormInput(
-                                      keya: e['key'],
-                                      question: e['question'],
-                                      type: e['type'],
-                                      value: _valueHandler,
-                                      initialValue: e['initialValue']);
+                                    keya: e['key'],
+                                    question: e['question'],
+                                    type: e['type'],
+                                    value: _valueHandler,
+                                    initialValue: e['initialValue'],
+                                  );
                                 }
                                 return SleepScoreFormInput(
                                   keya: e['key'],

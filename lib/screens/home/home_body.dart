@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
+import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
@@ -27,6 +29,7 @@ class _HomeBodyState extends State<HomeBody> {
   bool once = true;
   bool? isSS;
   int sleepScore = 1;
+  bool isWatchConnected = false;
   final calmData = {'title': 'Calm Tunes', 'tunes': [], 'buttonLink': '/Home'};
 
   final recents = {
@@ -51,7 +54,15 @@ class _HomeBodyState extends State<HomeBody> {
       sleepScore =
           Provider.of<SleepElements>(context, listen: false).sleepScore;
     }
-
+    var id = FirebaseAuth.instance.currentUser?.uid;
+    if(id != null){
+      await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).get().then((value) {
+        if (value.exists){
+          isWatchConnected = value['isWatchConnected'];
+        }
+      });
+    }
+    
     setState(() {
       loading = false;
     });
@@ -193,6 +204,8 @@ class _HomeBodyState extends State<HomeBody> {
                         ),
                       )
                     : WhatsNew(),
+
+                if(!isWatchConnected)
                 WatchComponent(),
                 MusicSection(),
               ],

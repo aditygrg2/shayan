@@ -42,6 +42,7 @@ class AuthenticationProvider extends ChangeNotifier {
             'email': email,
             'healthState': 'NA',
             'questionNumber':-1,
+            'isWatchConnected': false,
             'SSCreated': false,
             'diseaseType':'NA',
             'isCustomizedTimeline':'false',
