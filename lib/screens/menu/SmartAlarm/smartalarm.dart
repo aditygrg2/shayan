@@ -71,7 +71,15 @@ class _SmartAlarmState extends State<SmartAlarm> {
         if (await recorder.isRecording()) {
           String? pathOfRecordedFile = await recorder.stop();
           _noiseSubscription2.cancel();
+
+          // Recomputing averages after stopping because as time goes ahead.
+          Provider.of<NoiseProvider>(context, listen: false)
+                      .initPlatformState();
+
+          recordedAverage = Provider.of<NoiseProvider>(context, listen: false)
+                      .average_data_points;
         }
+        
         _noiseSubscription = _noiseMeter.noiseStream.listen(onData);
       }
 
@@ -136,7 +144,6 @@ class _SmartAlarmState extends State<SmartAlarm> {
 
   @override
   Widget build(BuildContext context) {
-    Alarm.init();
     Provider.of<SmartAlarmProvider>(context, listen: false).getPaths();
     return Scaffold(
       body: ListView(

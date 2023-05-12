@@ -36,7 +36,7 @@ class _SleepScoreState extends State<SleepScore> {
               lineWidth: 10.0,
               percent: (82 / 100),
               center: Text(
-                "82",
+                widget.sleepscore.toString(),
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               linearGradient: LinearGradient(

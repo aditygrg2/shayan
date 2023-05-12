@@ -112,9 +112,9 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                 ),
                 TimeBoxes(
                   hours: startDate.hour > 12
-                      ? (startDate.hour - 12).toString()
-                      : (startDate.hour).toString(),
-                  minutes: startDate.minute.toString(),
+                      ? (startDate.hour - 12).toString().padLeft(2, '0')
+                      : (startDate.hour).toString().padLeft(2, '0'),
+                  minutes: startDate.minute.toString().padLeft(2, '0'),
                   meridian: startDate.hour > 12 ? 'PM' : 'AM',
                   onTap: () {
                     Navigator.of(context).push(showPicker(
@@ -145,10 +145,10 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       text: 'Settings',
                       onPressedButton: () {
                         _scrollController.animateTo(
-      height,
-      duration: Duration(seconds: 1),
-      curve: Curves.linear,
-    );
+                          height,
+                          duration: Duration(seconds: 1),
+                          curve: Curves.linear,
+                        );
                         setState(() {
                           settingsOn = true;
                         });
@@ -263,7 +263,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
           ),
           if (data && !settingsOn)
             Text(
-              'If you go to bed at ${startDate.hour}:${startDate.minute} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
+              'If you go to bed at ${(startDate.hour % 12).toString().padLeft(2, '0')}:${startDate.minute.toString().padLeft(2, '0')} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
               style: Theme.of(context).textTheme.labelLarge,
               textAlign: TextAlign.center,
             ),

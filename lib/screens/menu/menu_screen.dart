@@ -82,7 +82,7 @@ class MenuScreen extends StatelessWidget {
         TmbDescriptionCards(
           title: "Community",
           subtitle:
-              "focus on distracting a racing mind, creating a better night time routine and masking external disturbances",
+              "Engage with other people",
           image: "assets/library_community.png",
           route: CommunityScreen.routeName,
         ),

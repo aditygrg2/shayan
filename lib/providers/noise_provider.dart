@@ -56,7 +56,7 @@ class NoiseProvider with ChangeNotifier {
     notifyListeners();
     data_points.add(dbOnScreen);
 
-    if (data_points.length >= 100) {
+    if (data_points.length >= 50) {
       final sum = data_points.sum;
       average_data_points = sum/data_points.length;
       stopRecorder();

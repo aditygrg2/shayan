@@ -46,6 +46,8 @@ class ProfileInfo extends StatelessWidget {
 class ProfileScreen extends StatelessWidget {
   var currentUser = FirebaseAuth.instance.currentUser;
   static const routeName = '/profile';
+  String version = "v1.0";
+
   Map<String, dynamic> profile = {
     "Name": "Aditya",
     "Email ID": FirebaseAuth.instance.currentUser?.email,
@@ -159,6 +161,13 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: Icons.signal_cellular_no_sim_sharp,
             ),
+
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Center(
+              child: Text('Shayan ' + version + ' • Google Solution Challenge 2023'),
+            ),
+          )
         ],
       ),
     );

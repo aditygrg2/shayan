@@ -13,7 +13,7 @@ class ListTileIconCreators extends StatelessWidget {
       child: Center(
         child: Container(
           margin: const EdgeInsets.all(15),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
             border: Border.all(
