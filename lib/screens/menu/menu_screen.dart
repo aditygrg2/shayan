@@ -110,6 +110,15 @@ class MenuScreen extends StatelessWidget {
             itemCount: items.length,
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Text(
+            "Shayan v1.0 • Google Solution Challenge 2023",
+            style: TextStyle(
+              color: Theme.of(context).secondaryHeaderColor
+            ),
+          ),
+        )
       ],
     );
   }

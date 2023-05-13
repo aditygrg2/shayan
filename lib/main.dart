@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -77,8 +76,8 @@ class Main extends StatelessWidget {
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
           );
         }
         return MultiProvider(
@@ -215,8 +214,8 @@ class Main extends StatelessWidget {
                     return HomeScreen();
                   }
                 }
-                return const Scaffold(
-                  body: CircularProgressIndicator(),
+                return Scaffold(
+                  body: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
                 );
               },
             ),

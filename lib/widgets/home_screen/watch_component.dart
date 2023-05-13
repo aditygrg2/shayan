@@ -53,22 +53,19 @@ class _WatchComponentState extends State<WatchComponent> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      child: Text(
-                        'Make Sleep Tracking Simple',
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
+                    Text(
+                      'Make Sleep Tracking Simple',
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
                   ],
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
-                  child: const Text(
-                    'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
-                    textAlign: TextAlign.center,
-                  ),
+                Text(
+                  'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'Roboto'),
                 ),
                 const SizedBox(
                   height: 10,
@@ -107,7 +104,7 @@ class _WatchComponentState extends State<WatchComponent> {
                                 ScaffoldMessenger.of(context)
                                     .clearMaterialBanners();
                               },
-                              child: Text(
+                              child: const Text(
                                 "Close",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,

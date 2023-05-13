@@ -81,6 +81,7 @@ class SleepReportCard extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 15,
+                          color: Theme.of(context).secondaryHeaderColor
                         ),
                       ),
                     ),

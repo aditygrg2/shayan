@@ -8,9 +8,11 @@ class ThemeClass {
     accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
     cardColor: const Color.fromARGB(153, 248, 222, 55),
     fontFamily: 'Roboto',
+    secondaryHeaderColor: Colors.black,
     iconTheme: IconThemeData(
       color: Colors.black
     ),
+    highlightColor: Colors.white,
     buttonColor: const Color.fromRGBO(247, 219, 198, 1),
     splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -81,9 +83,10 @@ class ThemeClass {
     iconTheme: IconThemeData(
       color: Colors.white
     ),
+    secondaryHeaderColor: Colors.white,
     canvasColor: const Color.fromRGBO(204, 97, 93, 1),
-    highlightColor: const Color.fromRGBO(204, 97, 93, 1),
-    accentColor: Color.fromARGB(255, 252, 93, 239),
+    highlightColor: Colors.amber,
+    accentColor: Color.fromRGBO(224, 221, 148, 1),
     cardColor: const Color.fromRGBO(71, 152, 146, 1),
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
@@ -118,7 +121,7 @@ class ThemeClass {
       ),
       headlineMedium: TextStyle(
         fontSize: 20,
-        color: Colors.white,
+        color: Colors.black,
         fontWeight: FontWeight.w400,
         fontFamily: 'OpenSans',
       ),

@@ -87,7 +87,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                 SizedBox(
                   height: 10,
                 ),
-                CircularProgressIndicator(),
+                CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
               ],
             ));
   }

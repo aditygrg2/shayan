@@ -37,7 +37,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
           height: 10,
         ),
         loading
-            ? const CircularProgressIndicator()
+            ? CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor)
             : Container(
                 decoration: BoxDecoration(
                     color: Colors.white,

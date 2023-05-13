@@ -33,9 +33,10 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
+                    color: Theme.of(context).secondaryHeaderColor,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -51,8 +52,9 @@ class PropertyCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   score,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 25,
+                    color: Theme.of(context).secondaryHeaderColor,
                   ),
                   textAlign: TextAlign.center,
                 ),

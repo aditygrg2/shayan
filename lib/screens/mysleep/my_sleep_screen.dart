@@ -76,7 +76,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
     return Column(
       children: [
         HomeScreenText(text: 'Sleep Score'),
-        if (loading) const CircularProgressIndicator(),
+        if (loading) CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
         if (!loading && isSS)
           SleepScoreCard(
             text: informativeText(sleepscore!),

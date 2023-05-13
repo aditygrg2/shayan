@@ -289,8 +289,9 @@ class _SleepFormState extends State<SleepForm> {
                               DateTime.parse(valueSelected),
                             ),
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 18,
+                              color: Theme.of(context).primaryColor
                             ),
                           ),
                         ),
@@ -389,7 +390,7 @@ class _SleepFormState extends State<SleepForm> {
                         height: 10,
                       ),
                       loading
-                          ? const Center(child: CircularProgressIndicator())
+                          ? Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor))
                           : Center(
                               child: ElevatedButtonWithoutIcon(
                                 text: 'Submit',

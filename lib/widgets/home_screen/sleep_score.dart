@@ -34,7 +34,7 @@ class _SleepScoreState extends State<SleepScore> {
             child: CircularPercentIndicator(
               radius: 80.0,
               lineWidth: 10.0,
-              percent: (82 / 100),
+              percent: (widget.sleepscore!.toDouble() / 100),
               center: Text(
                 widget.sleepscore.toString(),
                 style: Theme.of(context).textTheme.headlineLarge,
@@ -42,7 +42,7 @@ class _SleepScoreState extends State<SleepScore> {
               linearGradient: LinearGradient(
                 colors: [
                   Theme.of(context).buttonColor,
-                  Colors.white
+                  Colors.amber
                 ],
               ),
               backgroundColor: Colors.white,
