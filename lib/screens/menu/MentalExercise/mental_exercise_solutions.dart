@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
-import 'package:night_gschallenge/screens/menu/MentalExercise/audio_player.dart';
+import './audio_player.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 

@@ -13,26 +13,21 @@ class MusicGalleryScreen extends StatelessWidget {
         {
           "image": "assets/red.jpg",
           "title": "Red Noise",
-          "description": " "
+          "description": " ",
+          "audio": "https://dl.sndup.net/zksp/visualization.mp3"
         },
         {
           "image": "assets/pink.jpg",
           "title": "Pink Noise",
-          "description":
-              " "
+          "description": " ",
+          "audio": "https://dl.sndup.net/t2v3/pmr_2.mp3"
         },
         {
           "image": "assets/white.jpg",
           "title": "White Noise",
-          "description":
-              " "
+          "description": " "
         },
-        {
-          "image": "assets/grey.jpg",
-          "title": "Grey Noise",
-          "description":
-              " "
-        },
+        {"image": "assets/grey.jpg", "title": "Grey Noise", "description": " "},
       ]
     },
     {
@@ -46,14 +41,12 @@ class MusicGalleryScreen extends StatelessWidget {
         {
           "image": "assets/mantra_2.png",
           "title": "I am That I Am",
-          "description":
-              "This is one of the Hebrew Torah's most famous lines"
+          "description": "This is one of the Hebrew Torah's most famous lines"
         },
         {
           "image": "assets/mantra_3.png",
           "title": "I Love You",
-          "description":
-              "Forgiveness and reconciliation practice"
+          "description": "Forgiveness and reconciliation practice"
         },
       ]
     },

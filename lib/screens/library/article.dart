@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:night_gschallenge/screens/library/article_viewer.dart';
 
 class Article extends StatelessWidget {
   String image;
@@ -8,12 +8,22 @@ class Article extends StatelessWidget {
   Article({required this.image, required this.name, required this.description});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 7,horizontal: 10),
-      decoration: BoxDecoration(color: Theme.of(context).buttonColor,borderRadius: BorderRadius.circular(16)),
-      child: Row(
-        children: [
-          Container(
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(ArticleViewer.routeName, arguments: {
+          'image': image,
+          'name': name,
+          'description': description
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+        decoration: BoxDecoration(
+            color: Theme.of(context).buttonColor,
+            borderRadius: BorderRadius.circular(16)),
+        child: Row(
+          children: [
+            Container(
               width: 140,
               height: 120,
               child: ClipRRect(
@@ -24,23 +34,30 @@ class Article extends StatelessWidget {
                 ),
               ),
             ),
-          
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(name,style: Theme.of(context).textTheme.headlineMedium,),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Text(description,style: Theme.of(context).textTheme.bodySmall,),
-                ),
-              ],
-            ),
-          )
-        ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      name,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      description,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
