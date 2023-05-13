@@ -552,7 +552,7 @@ class _MainFormState extends State<MainForm> {
                         height: 150,
                         width: 150,
                       ),
-                      if (loading) CircularProgressIndicator(),
+                      if (loading) CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
                       if (!loading)
                         Text(
                           'Question ${_currentQuestion + 1}',

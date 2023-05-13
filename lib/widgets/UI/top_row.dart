@@ -31,9 +31,9 @@ class TopRow extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop(context);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_rounded,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                     size: 35,
                   ),
                 ),
@@ -47,18 +47,18 @@ class TopRow extends StatelessWidget {
                   onPressed: (){
                     Navigator.of(context).pushNamed(ProfileScreen.routeName);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.person,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
                 IconButton(
                   onPressed: (){
                     Navigator.of(context).pushNamed(ChatScreen.routeName);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.message_rounded,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                   ),
                 ),
               ],
@@ -68,9 +68,9 @@ class TopRow extends StatelessWidget {
               onPressed: (){
                 Navigator.of(context).pushNamed(ProfileScreen.routeName);
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.person,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
           if (!back!)
@@ -78,9 +78,9 @@ class TopRow extends StatelessWidget {
               onPressed: (){
                 Navigator.of(context).pushNamed(ChatScreen.routeName);
               },
-              icon: const Icon(
+              icon: Icon(
                 Icons.message_rounded,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
               ),
             ),
         ],

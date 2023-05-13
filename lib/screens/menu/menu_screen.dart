@@ -88,7 +88,7 @@ class MenuScreen extends StatelessWidget {
         ),
         Container(
           width: MediaQuery.of(context).size.width - 20,
-          height: (MediaQuery.of(context).size.height / 8) * items.length,
+          height: (MediaQuery.of(context).size.height / 7) * items.length,
           padding: const EdgeInsets.all(10),
           child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -110,6 +110,15 @@ class MenuScreen extends StatelessWidget {
             itemCount: items.length,
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Text(
+            "Shayan v1.0 • Google Solution Challenge 2023",
+            style: TextStyle(
+              color: Theme.of(context).secondaryHeaderColor
+            ),
+          ),
+        )
       ],
     );
   }

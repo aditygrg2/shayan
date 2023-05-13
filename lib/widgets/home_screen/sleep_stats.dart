@@ -18,7 +18,6 @@ class _WhatsNewState extends State<WhatsNew> {
   Widget build(BuildContext context) {
     bool ss =
         Provider.of<SleepElements>(context, listen: false).isSleepScorePresent;
-    print(ss);
     int? tst;
     int? SE;
     if (ss) {

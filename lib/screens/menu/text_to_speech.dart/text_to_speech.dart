@@ -130,9 +130,11 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                     height: 50,
                                     child: FutureBuilder(
                                       builder: (context, snapshot) {
-                                        widget.voicesMap = snapshot.data;
-                                        widget.dropDown =
-                                            snapshot.data[0]['name'];
+                                        if(snapshot.hasData){
+                                          widget.voicesMap = snapshot.data;
+                                          widget.dropDown =
+                                                snapshot.data[0]['name'];
+                                        }
                                         return DropDownMenu(widget.voicesMap);
                                       },
                                       initialData: [1],
@@ -152,23 +154,23 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                       ),
                       if (widget.modalIndex != -1)
                         SliderInput(
-                            value: getValue(),
-                            title: widget.modals[widget.modalIndex],
-                            callback: (double value) {
-                              if (widget.modals[widget.modalIndex] ==
-                                  'Volume') {
-                                widget.volume = value;
-                                VolumeController().setVolume(value);
-                                textSpeech.setVolume(value);
-                              } else if (widget.modals[widget.modalIndex] ==
-                                  'Rate') {
-                                widget.rate = value;
-                                textSpeech.setRate(value);
-                              } else {
-                                widget.pitch = value;
-                                textSpeech.setPitch(value);
-                              }
-                            }),
+                          value: getValue(),
+                          title: widget.modals[widget.modalIndex],
+                          callback: (double value) {
+                            if (widget.modals[widget.modalIndex] == 'Volume') {
+                              widget.volume = value;
+                              VolumeController().setVolume(value);
+                              textSpeech.setVolume(value);
+                            } else if (widget.modals[widget.modalIndex] ==
+                                'Rate') {
+                              widget.rate = value;
+                              textSpeech.setRate(value);
+                            } else {
+                              widget.pitch = value;
+                              textSpeech.setPitch(value);
+                            }
+                          },
+                        ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -183,7 +185,9 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                     mainAxisSpacing: 10),
                             itemBuilder: (context, index) {
                               return ElevatedButton(
-                                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Theme.of(context).accentColor)),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Theme.of(context).accentColor)),
                                 onPressed: () {
                                   if (widget.options[index] == 'Speak') {
                                     textSpeech

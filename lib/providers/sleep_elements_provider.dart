@@ -103,7 +103,6 @@ class SleepElements extends ChangeNotifier {
           data = value;
         });
 
-        print(sleepScore);
         ssCreated = true;
         shouldCheck = false;
       } else {

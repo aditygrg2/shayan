@@ -38,8 +38,8 @@ class SleepReportAnalysis extends StatelessWidget {
     return FutureBuilder(
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
           );
         }
         if (snapshot.data?.get('healthState') == 'NA') {
@@ -71,7 +71,7 @@ class SleepReportAnalysis extends StatelessWidget {
                 ),
                 Text(
                   "Please fill out the assessment to let us understand your sleep for your report.",
-                  style: Theme.of(context).textTheme.labelMedium,
+                  style: Theme.of(context).textTheme.headlineMedium,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
@@ -106,8 +106,8 @@ class SleepReportAnalysis extends StatelessWidget {
                   isHealty = false;
                 }
               } else if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
                 );
               }
               return Scaffold(
@@ -188,9 +188,9 @@ class SleepReportAnalysis extends StatelessWidget {
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                         GestureDetector(
                           onTap: () => Navigator.of(context).pop(),
-                          child: const Icon(
+                          child: Icon(
                             Icons.arrow_forward,
-                            color: Colors.black,
+                            color: Theme.of(context).iconTheme.color,
                             size: 40,
                           ),
                         ),

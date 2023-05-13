@@ -42,7 +42,7 @@ class _MusicSectionState extends State<MusicSection> {
       margin: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
-          HomeScreenText(text: 'Recommeneded'),
+          HomeScreenText(text: 'Recommended'),
           HomeScreenViewAll(
             onClick: () {
               Navigator.of(context).pushNamed(MusicGalleryScreen.routeName);

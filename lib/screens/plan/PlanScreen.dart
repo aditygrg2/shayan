@@ -43,7 +43,7 @@ class _PlanScreenState extends State<PlanScreen> {
 
     try {
       var data =
-      await FirebaseFirestore.instance.collection('users').doc(id).get();
+          await FirebaseFirestore.instance.collection('users').doc(id).get();
       questionNumber = 34 - data['questionNumber'] as int;
     } catch (err) {
       print(err.toString());
@@ -59,8 +59,8 @@ class _PlanScreenState extends State<PlanScreen> {
     var timelineProvider = Provider.of<TimelineProvider>(context);
     return FirebaseAuth.instance.currentUser == null
         ? ListView(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
             children: [
               HomeScreenText(
                 text: 'Plan Screen',
@@ -112,8 +112,8 @@ class _PlanScreenState extends State<PlanScreen> {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 if (once) getQuestion();
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
                 );
               }
 
@@ -151,7 +151,8 @@ class _PlanScreenState extends State<PlanScreen> {
                     ],
                   ),
                 );
-              } else if (snapshot.data?.get('healthState') == 'true' && snapshot.data?.get('isReady') == 'true') {
+              } else if (snapshot.data?.get('healthState') == 'true' &&
+                  snapshot.data?.get('isReady') == 'true') {
                 return Container(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 15,
@@ -164,281 +165,286 @@ class _PlanScreenState extends State<PlanScreen> {
                       ),
                       const SizedBox(
                         height: 15,
-                      ),Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {
-                                        showModalBottomSheet(
-                                            context: context,
-                                            enableDrag: true,
-                                            builder: (context) {
-                                              return SingleChildScrollView(
-                                                  child: AddEditTimeline(-1));
-                                            },
-                                            backgroundColor: Colors.white);
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      enableDrag: true,
+                                      builder: (context) {
+                                        return SingleChildScrollView(
+                                            child: AddEditTimeline(-1));
                                       },
-                                      icon: const Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 34,
-                                      ),
-                                    )
-                                  ],
+                                      backgroundColor:
+                                          Theme.of(context).primaryColor);
+                                },
+                                icon: Icon(
+                                  Icons.add,
+                                  color: Theme.of(context).iconTheme.color,
+                                  size: 34,
                                 ),
-                                FutureBuilder(future: timelineProvider.fetchTimeline(),
-                                builder: (context, snapshot) {
-                                  if(!snapshot.hasData){
-                                    return Center(child: Image.asset('assets/loading.gif'),);
-                                  }
-                                  var timeline = snapshot.data;
-                                  
-                                  return Column(
-                                    children: [...timeline
-                                    .map((e) {
-                                      print(e);
-                                      var difference = isActiveCheck(e['time']);
-                                      int index = timeline.indexOf(e);
-                                      if (difference.compareTo(Duration.zero) >=
-                                          0) {
-                                        return e['suggestion'] != null
-                                            ? TimelineCard(
-                                                index: index,
-                                                duration: difference.toString(),
-                                                isActive: index ==
-                                                    0,
-                                                task: e['task'],
-                                                time: e['time'],
-                                                suggestion: e['suggestion'],
-                                              )
-                                            : TimelineCard(
-                                                index: index,
-                                                duration: difference.toString(),
-                                                isActive: index ==
-                                                    0,
-                                                task: e['task'],
-                                                time: e['time'],
-                                              );
-                                      } else
-                                        return null;
-                                    })
-                                    .toList()
-                                    .where((element) => element != null)
-                                    .toList()],
-                                  ) ;
-                                },),
-                                Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ListTileIconCreators(
-                                          title:
-                                              'Fetch your sleep report again',
-                                          icon: Icons.search,
-                                          onTap: () async {
-                                            await FirebaseFirestore.instance
-                                                .collection('users')
-                                                .doc(id)
-                                                .update({
-                                              'questionNumber': -1,
-                                            });
-                                            Navigator.of(context)
-                                                .pushNamed(MainForm.routeName);
-                                          }),
-                                      ListTileIconCreators(
-                                        title:
-                                            'Check out your latest sleep report',
-                                        onTap: () {
-                                          showModalBottomSheet(
-                                            context: context,
-                                            backgroundColor: Colors.transparent,
-                                            enableDrag: true,
-                                            builder: (context) {
-                                              return SleepReportAnalysis();
-                                            },
-                                          );
-                                        },
-                                        icon: Icons.change_circle,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 50,
+                              )
+                            ],
+                          ),
+                          FutureBuilder(
+                            future: timelineProvider.fetchTimeline(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: Image.asset('assets/loading.gif'),
+                                );
+                              }
+                              var timeline = snapshot.data;
+
+                              return Column(
+                                children: [
+                                  ...timeline
+                                      .map((e) {
+                                        var difference =
+                                            isActiveCheck(e['time']);
+                                        int index = timeline.indexOf(e);
+                                        if (difference
+                                                .compareTo(Duration.zero) >=
+                                            0) {
+                                          return e['suggestion'] != null
+                                              ? TimelineCard(
+                                                  index: index,
+                                                  duration:
+                                                      difference.toString(),
+                                                  isActive: index == 0,
+                                                  task: e['task'],
+                                                  time: e['time'],
+                                                  suggestion: e['suggestion'],
+                                                )
+                                              : TimelineCard(
+                                                  index: index,
+                                                  duration:
+                                                      difference.toString(),
+                                                  isActive: index == 0,
+                                                  task: e['task'],
+                                                  time: e['time'],
+                                                );
+                                        } else
+                                          return null;
+                                      })
+                                      .toList()
+                                      .where((element) => element != null)
+                                      .toList()
+                                ],
+                              );
+                            },
+                          ),
+                          Container(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTileIconCreators(
+                                    title: 'Fetch your sleep report again',
+                                    icon: Icons.search,
+                                    onTap: () async {
+                                      await FirebaseFirestore.instance
+                                          .collection('users')
+                                          .doc(id)
+                                          .update({
+                                        'questionNumber': -1,
+                                      });
+                                      Navigator.of(context)
+                                          .pushNamed(MainForm.routeName);
+                                    }),
+                                ListTileIconCreators(
+                                  title: 'Check out your latest sleep report',
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      backgroundColor: Colors.transparent,
+                                      enableDrag: true,
+                                      builder: (context) {
+                                        return SleepReportAnalysis();
+                                      },
+                                    );
+                                  },
+                                  icon: Icons.change_circle,
                                 )
                               ],
                             ),
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 );
-              } else if(snapshot.data?.get('healthState') == 'true'){
+              } else if (snapshot.data?.get('healthState') == 'true') {
                 return Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 180,
-                                  height: 180,
-                                  child: Image.asset(
-                                    "assets/my_plan.png",
-                                    fit: BoxFit.cover,
-                                  ),
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HomeScreenText(
+                      text: "My Plan",
+                    ),
+                    Container(
+                      width: 180,
+                      height: 180,
+                      child: Image.asset(
+                        "assets/my_plan.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: Text(
+                        'Let\'s make your dream weaver plan',
+                        style: Theme.of(context).textTheme.headlineLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: const Text(
+                        "Craft your perfect sleep with a personalized timeline.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 18,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: GridView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: 3 / 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10),
+                        shrinkWrap: true,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Icon(
+                                  Icons.timeline_rounded,
+                                  color: Theme.of(context).iconTheme.color,
+                                  size: 40,
                                 ),
-                                const SizedBox(
-                                  height: 10,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                child: const Text(
+                                  "Personalized Dynamic Timeline",
+                                  textAlign: TextAlign.center,
                                 ),
-                                Container(
-                                  child: Text(
-                                    'Let\'s make your dream weaver plan',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineLarge,
-                                    textAlign: TextAlign.center,
-                                  ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Icon(Icons.youtube_searched_for,
+                                    color: Theme.of(context).iconTheme.color,
+                                    size: 40),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                child: const Text(
+                                  "Enriching Sleep Education Content",
+                                  textAlign: TextAlign.center,
                                 ),
-                                const SizedBox(
-                                  height: 10,
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Icon(Icons.chat_rounded,
+                                    color: Theme.of(context).iconTheme.color,
+                                    size: 40),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                child: const Text(
+                                  "Chat with a Sleep Trainer",
+                                  textAlign: TextAlign.center,
                                 ),
-                                Container(
-                                  child: const Text(
-                                    "Craft your perfect sleep with a personalized timeline.",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(fontSize: 12),
-                                  ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Icon(Icons.timer_outlined,
+                                    color: Theme.of(context).iconTheme.color,
+                                    size: 40),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                child: const Text(
+                                  "Rightly Timed Reminders",
+                                  textAlign: TextAlign.center,
                                 ),
-                                const SizedBox(
-                                  height: 18,
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: GridView(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 2,
-                                            childAspectRatio: 3 / 2,
-                                            crossAxisSpacing: 10,
-                                            mainAxisSpacing: 10),
-                                    shrinkWrap: true,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            child: const Icon(
-                                              Icons.timeline_rounded,
-                                              color: Colors.black,
-                                              size: 40,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                            child: const Text(
-                                              "Personalized Dynamic Timeline",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            child: const Icon(
-                                                Icons.youtube_searched_for,
-                                                color: Colors.black,
-                                                size: 40),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                            child: const Text(
-                                              "Enriching Sleep Education Content",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            child: const Icon(
-                                                Icons.chat_rounded,
-                                                color: Colors.black,
-                                                size: 40),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                            child: const Text(
-                                              "Chat with a Sleep Trainer",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            child: const Icon(
-                                                Icons.timer_outlined,
-                                                color: Colors.black,
-                                                size: 40),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          Container(
-                                            child: const Text(
-                                              "Rightly Timed Reminders",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Center(
-                                  child: ElevatedButtonWithoutIcon(
-                                      onPressedButton: () async{
-                                        await FirebaseFirestore.instance.collection("users").doc(FirebaseAuth.instance.currentUser?.uid).update({
-                                          'isReady':'true'
-                                        });
-                                        setState(() {
-                                          showPlan = !showPlan;
-                                        });
-                                      },
-                                      text: "I'm ready"),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            );
-              }
-              else if (snapshot.data?.get('healthState') == 'false') {
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: ElevatedButtonWithoutIcon(
+                          onPressedButton: () async {
+                            await FirebaseFirestore.instance
+                                .collection("users")
+                                .doc(FirebaseAuth.instance.currentUser?.uid)
+                                .update({'isReady': 'true'});
+                            setState(() {
+                              showPlan = !showPlan;
+                            });
+                          },
+                          text: "I'm ready"),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                );
+              } else if (snapshot.data?.get('healthState') == 'false') {
                 return Container(
                   margin: const EdgeInsets.all(20),
                   child: Column(
                     children: [
+                      HomeScreenText(
+                        text: "My Plan",
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Row(
                         children: [
                           Expanded(
@@ -446,7 +452,8 @@ class _PlanScreenState extends State<PlanScreen> {
                               padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.black,
+                                    color:
+                                        Theme.of(context).secondaryHeaderColor,
                                     width: 2,
                                   ),
                                   borderRadius: const BorderRadius.all(
@@ -454,9 +461,11 @@ class _PlanScreenState extends State<PlanScreen> {
                               child: Text(
                                 '${questionNumber} Questions left!',
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                ),
+                                style: TextStyle(
+                                    fontSize: 30,
+                                    color:
+                                        Theme.of(context).secondaryHeaderColor,
+                                    fontFamily: 'Roboto'),
                               ),
                             ),
                           ),
@@ -466,22 +475,24 @@ class _PlanScreenState extends State<PlanScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Text(
+                      Text(
                         'Let\'s optimize your sleep experience',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 20,
-                        ),
+                            fontSize: 20,
+                            color: Theme.of(context).secondaryHeaderColor,
+                            fontFamily: 'Roboto'),
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      const Text(
+                      Text(
                         'Give us insights into your sleep, lifestyle and daily behaviors and we\'ll create a personalized plan that suits your needs.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 13,
-                        ),
+                            fontSize: 13,
+                            color: Theme.of(context).secondaryHeaderColor,
+                            fontFamily: 'Roboto'),
                       ),
                       const SizedBox(
                         height: 20,
