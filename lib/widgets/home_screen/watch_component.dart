@@ -62,10 +62,14 @@ class _WatchComponentState extends State<WatchComponent> {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: 'Roboto'),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Roboto',
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -116,8 +120,10 @@ class _WatchComponentState extends State<WatchComponent> {
                           ],
                         ),
                       );
-                      Navigator.of(context).pushNamed(LoginScreen.routeName).then((value){
-                         ScaffoldMessenger.of(context).clearMaterialBanners();
+                      Navigator.of(context)
+                          .pushNamed(LoginScreen.routeName)
+                          .then((value) {
+                        ScaffoldMessenger.of(context).clearMaterialBanners();
                       });
                     }
                   },
