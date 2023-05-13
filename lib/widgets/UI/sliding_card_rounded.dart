@@ -12,13 +12,13 @@ class SlidingCardRounded extends StatelessWidget {
     return InkWell(
       splashColor: Theme.of(context).primaryColor,
       child: Container(
-        width: 200,
+        width: 250,
         decoration: BoxDecoration(
           border: Border.all(
             color: Colors.black,
             width: 2,
           ),
-          color: Colors.white,
+          color: Colors.grey,
           borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),
@@ -27,6 +27,8 @@ class SlidingCardRounded extends StatelessWidget {
         child: Column(
           children: [
             Container(
+              height: 220,
+              width: double.infinity,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -63,6 +65,7 @@ class SlidingCardRounded extends StatelessWidget {
                         subHeading,
                         style: Theme.of(context).textTheme.labelMedium,
                         textAlign: TextAlign.start,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
