@@ -12,8 +12,10 @@ class Menu extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
         gradient: RadialGradient(
+          radius: 0.3,
+          focalRadius: 0.3,
           colors: [
-            Theme.of(context).buttonColor,
+            Colors.white,
             Theme.of(context).canvasColor,
           ],
         ),
@@ -38,7 +40,7 @@ class Menu extends StatelessWidget {
             constraints: const BoxConstraints(
               minWidth: 1,
               minHeight: 1,
-            ), // here
+            ),
             child: Image.asset(
               imagePath,
             ),

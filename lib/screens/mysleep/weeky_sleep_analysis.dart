@@ -23,7 +23,6 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
 
   @override
   Widget build(BuildContext context) {
-    print(once);
     if (once) {
       once = false;
       getData();

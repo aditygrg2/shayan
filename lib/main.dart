@@ -61,6 +61,7 @@ import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'ThemeClass.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -201,81 +202,19 @@ class Main extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Night_GSChallenge',
-            theme: ThemeData(
-              primaryColor: Colors.white,
-              scaffoldBackgroundColor: Colors.white,
-              canvasColor: const Color.fromRGBO(251, 145, 92, 1),
-              accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
-              cardColor: const Color.fromARGB(153, 248, 222, 55),
-              fontFamily: 'Roboto',
-              buttonColor: const Color.fromRGBO(247, 219, 198, 1),
-              splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
-              elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color.fromRGBO(247, 219, 198, 1)),
-                  foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.black),
-                ),
-              ),
-              radioTheme: RadioThemeData(
-                fillColor: MaterialStateProperty.all<Color>(
-                  const Color.fromRGBO(247, 219, 198, 1),
-                ),
-                visualDensity: VisualDensity.comfortable,
-              ),
-              timePickerTheme: TimePickerThemeData(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              ),
-              textTheme: const TextTheme(
-                headlineLarge: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                  fontFamily: 'OpenSans',
-                ),
-                headlineSmall: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'OpenSans',
-                ),
-                headlineMedium: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: 'OpenSans',
-                ),
-                titleLarge: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat',
-                ),
-                bodyLarge: TextStyle(
-                  fontSize: 40,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'OpenSans',
-                ),
-                labelLarge: TextStyle(
-                  fontSize: 25,
-                  fontFamily: 'Montserrat',
-                ),
-                labelMedium: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Montserrat',
-                ),
-              ),
-            ),
+            themeMode:ThemeMode.system,
+            theme: ThemeClass.lightTheme,
+            darkTheme: ThemeClass.darkTheme,
             home: StreamBuilder(
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
                   if (!snapshot.hasData) {
                     return SplashScreen();
-                  }
-                  else{
+                  } else {
                     return HomeScreen();
                   }
                 }
-
                 return const Scaffold(
                   body: CircularProgressIndicator(),
                 );

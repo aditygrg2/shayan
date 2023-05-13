@@ -162,12 +162,7 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.signal_cellular_no_sim_sharp,
             ),
 
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: Center(
-              child: Text('Shayan ' + version + ' • Google Solution Challenge 2023'),
-            ),
-          )
+          
         ],
       ),
     );

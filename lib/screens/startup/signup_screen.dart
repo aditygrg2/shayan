@@ -144,7 +144,6 @@ class _SignupScreenState extends State<SignupScreen> {
                             user_email = value!;
                           },
                           validator: (value) {
-                            print(value);
                             if (value!.isEmpty || !value.contains('@')) {
                               return 'Please enter correct email format';
                             }
