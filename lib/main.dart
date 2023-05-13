@@ -25,6 +25,7 @@ import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
+import 'package:night_gschallenge/screens/library/article_viewer.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/library_screen.dart';
@@ -58,6 +59,7 @@ import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
+import 'package:night_gschallenge/widgets/UI/music_player.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'ThemeClass.dart';
@@ -256,6 +258,8 @@ class Main extends StatelessWidget {
               SleepForm.routeName: (ctx) => SleepForm(),
               StoryScreen.routeName: (ctx) => StoryScreen(),
               SmartAlarm.routeName: (ctx) => SmartAlarm(),
+              MusicPlayer.routeName: (ctx) => MusicPlayer(),
+              ArticleViewer.routeName: (ctx) => ArticleViewer(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

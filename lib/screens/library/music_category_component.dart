@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/music_player.dart';
 import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
 
 class MusicCategory extends StatelessWidget {
@@ -25,14 +26,20 @@ class MusicCategory extends StatelessWidget {
             shrinkWrap: true,
             children: [
               ...data.map((e) {
-                return Container(
-                  width: 200,
-                  height: 380,
-                  margin: EdgeInsets.all(10),
-                  child: SlidingCardRounded(
-                    heading: e['title'],
-                    subHeading: e['description'],
-                    src: e['image'],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(MusicPlayer.routeName, arguments: data);
+                  },
+                  child: Container(
+                    width: 200,
+                    height: 380,
+                    margin: const EdgeInsets.all(10),
+                    child: SlidingCardRounded(
+                      heading: e['title'],
+                      subHeading: e['description'],
+                      src: e['image'],
+                    ),
                   ),
                 );
               }).toList(),

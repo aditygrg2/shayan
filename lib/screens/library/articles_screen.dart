@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:night_gschallenge/screens/library/article.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -12,7 +10,7 @@ class ArticlesScreen extends StatelessWidget {
       "title": "Sleep Deprivation",
       "image": "assets/article_1.jpg",
       "description":
-          "Many people do not get enough quality sleep, and this can affect their health, well-being, and ability to do everyday activities..."
+          "Many people do not get enough quality sleep, and this can affect their health, well-being, and ability to do everyday activities.Many people do not get enough quality sleep, and this can affect their health, well-being, and ability to do everyday activities"
     },
     {
       "title": "Sleep Disorders And Problems",
