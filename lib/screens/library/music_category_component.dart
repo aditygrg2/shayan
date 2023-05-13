@@ -32,7 +32,7 @@ class MusicCategory extends StatelessWidget {
                         .pushNamed(MusicPlayer.routeName, arguments: data);
                   },
                   child: Container(
-                    width: 200,
+                    width: 250,
                     height: 380,
                     margin: const EdgeInsets.all(10),
                     child: SlidingCardRounded(
