@@ -23,7 +23,7 @@ class ChartProvider extends ChangeNotifier {
         .get();
         
         if(doc.exists)
-          data[date.weekday-1] =(doc.data() as Map).containsKey("TST")? double.parse( doc.get("TST"))/100 :0 ;
+          data[date.weekday-1] =(doc.data() as Map).containsKey("SS")? double.parse( doc.get("SS")) :0 ;
         else data[date.weekday-1] = 0;
 
       }
