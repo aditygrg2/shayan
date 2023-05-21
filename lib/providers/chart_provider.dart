@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/bar_data.dart';
 
@@ -8,31 +9,25 @@ class ChartProvider extends ChangeNotifier {
 
   List<double> data = [6, 8, 8, 4, 9, 11, 9];
 
-  void getData() async {
-    // final datasetValues = await FirebaseFirestore.instance
-    //     .collection('sleepData')
-    //     .doc(id)
-    //     .collection('dates')
-    //     .doc()
-    //     .get();
+  Future getData() async {
 
-    // DateTime now = DateTime.now();
-    // try {
-    //   // for (int i = 0; i < 7; i++) {
-    //   //   var date = now.subtract(Duration(days: i));
-    //   //   await FirebaseFirestore.instance
-    //   //   .collection('sleepData')
-    //   //   .doc(id)
-    //   //   .collection('dates')
-    //   //   .doc(date.toString().split(" ")[0])
-    //   //   .set({});
-    //   //   // ['TST']
-    //   //   data[date.weekday] = datasetValues[date.toString().split(" ")[0]]['TST'];
-    //   // }
-    // } catch (err) {
-    //   print(err);
-    // }
-    List<BarData> barData = [
+    try {
+    DateTime now = DateTime.now();
+      for (int i = 0; i < 7; i++) {
+        var date = now.subtract(Duration(days: i));
+        final doc = await FirebaseFirestore.instance
+        .collection('sleepData')
+        .doc(id)
+        .collection('dates')
+        .doc(date.toString().split(" ")[0])
+        .get();
+        
+        if(doc.exists)
+          data[date.weekday-1] =(doc.data() as Map).containsKey("TST")? double.parse( doc.get("TST"))/100 :0 ;
+        else data[date.weekday-1] = 0;
+
+      }
+      List<BarData> barData = [
       BarData(
           color: Color.fromRGBO(69, 197, 197, 1),
           id: 0,
@@ -70,8 +65,12 @@ class ChartProvider extends ChangeNotifier {
           name: "Sun",
           y: data[6]),
     ];
-
     showData = barData;
+    notifyListeners();
+    } catch (err) {
+      print(err);
+    }
+    
   }
 
   List<BarData> get getChartData {

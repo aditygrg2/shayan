@@ -13,21 +13,23 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   bool once = true;
   bool loading = true;
 
-  void getData() {
-    Provider.of<ChartProvider>(context, listen: false).getData();
-
+  void getData(ChartProvider c) {
+    c.getData().then((value) {
+    
     setState(() {
       loading = false;
+    });
+
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final chartProvider = Provider.of<ChartProvider>(context);
     if (once) {
       once = false;
-      getData();
+      getData(chartProvider);
     }
-    final chartProvider = Provider.of<ChartProvider>(context, listen: false);
     return Column(
       children: [
         HomeScreenText(
