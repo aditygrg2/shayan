@@ -8,6 +8,7 @@ class MusicPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     final playlist =
         ModalRoute.of(context)?.settings.arguments as List<Map<String, String>>;
+        print(playlist);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -21,7 +22,11 @@ class MusicPlayer extends StatelessWidget {
           ],
         )),
         child: Column(
-          children: [FavouriteBar(), PlayListPlayer(playlist)],
+          children: [
+            FavouriteBar(), 
+            PlayListPlayer(playlist),
+           
+          ],
         ),
       ),
     );
