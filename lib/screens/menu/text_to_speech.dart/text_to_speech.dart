@@ -130,14 +130,11 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                     height: 50,
                                     child: FutureBuilder(
                                       builder: (context, snapshot) {
-                                        if(snapshot.hasData){
-                                          widget.voicesMap = snapshot.data;
-                                          widget.dropDown =
-                                                snapshot.data[0]['name'];
-                                        }
+                                        if (!snapshot.hasData) {
+                                          widget.voicesMap = [{'name':'Select Language'}];
+                                        }else widget.voicesMap = snapshot.data;
                                         return DropDownMenu(widget.voicesMap);
                                       },
-                                      initialData: [1],
                                       future: Provider.of<FlutterTextSpeech>(
                                               context)
                                           .getVoices(),
