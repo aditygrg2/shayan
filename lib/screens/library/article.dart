@@ -17,7 +17,7 @@ class Article extends StatelessWidget {
         });
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
             color: Theme.of(context).buttonColor,
             borderRadius: BorderRadius.circular(16)),
