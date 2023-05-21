@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/community_screen.dart';
+import 'package:night_gschallenge/screens/menu/Maps/google_map.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
@@ -68,6 +69,11 @@ class MenuScreen extends StatelessWidget {
       'text': 'Smart Alarm',
       'imagePath': 'assets/worry_list.png',
       'routes': SmartAlarm.routeName
+    },
+    {
+      'text': 'Maps',
+      'imagePath': 'assets/worry_list.png',
+      'routes': MapScreen.routeName
     },
   ];
   @override
