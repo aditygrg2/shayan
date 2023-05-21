@@ -33,6 +33,7 @@ import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/screens/library/stories_screen.dart';
+import 'package:night_gschallenge/screens/menu/Maps/google_map.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
@@ -260,6 +261,7 @@ class Main extends StatelessWidget {
               SmartAlarm.routeName: (ctx) => SmartAlarm(),
               MusicPlayer.routeName: (ctx) => MusicPlayer(),
               ArticleViewer.routeName: (ctx) => ArticleViewer(),
+              MapScreen.routeName: (ctx) => MapScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(
