@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,7 @@ class ResolutionCards extends StatefulWidget {
 class _ResolutionCardsState extends State<ResolutionCards> {
   @override
   Widget build(BuildContext context) {
-    var data = Provider.of<WorryListProvider>(context).worryData;
+    var worryProvider = Provider.of<WorryListProvider>(context);
     return Container(
       child: Column(
         children: [
@@ -29,9 +30,16 @@ class _ResolutionCardsState extends State<ResolutionCards> {
             ),
           )
           ,
-          ...data.map(
-            (e) {
-              return Container(
+          FutureBuilder(builder: (context, snapshot) {
+            if(!snapshot.hasData){
+              return Center(child: CircularProgressIndicator(),);
+            }
+            final doc = snapshot.data as QuerySnapshot;
+            return Column(
+              children: [
+                ...doc.docs.map((e) {
+                  var controller = TextEditingController();
+                   return Container(
                 padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 10),
                 decoration: BoxDecoration(
                   color: Theme.of(context).canvasColor,
@@ -101,7 +109,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                       child: TextField(
                         autocorrect: true,
                         enableSuggestions: true,
-                        controller: e['controller'],
+                        controller:controller,
                         style: const TextStyle(
                           fontSize: 20,
                         ),
@@ -120,10 +128,13 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                           ),
                         ),
                         onSubmitted: (value) {
-                          e['notes'].add(value);
-                          (e['controller'] as TextEditingController).clear();
-                          setState(() {
-                            widget.isWriting=false;
+                          var list = e['notes'] as List;
+                          list.add(value);
+                          worryProvider.updateWorryList(e.id,list).then((value) {
+                            controller.clear();
+                            setState(() {
+                              widget.isWriting=false;
+                            });
                           });
                         },
                       ),
@@ -131,8 +142,11 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                   ],
                 ),
               );
-            },
-          ),
+                })
+              ],
+            );
+            
+          },future: worryProvider.getWorry(),),
           const SizedBox(
             height: 30,
           ),
