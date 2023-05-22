@@ -41,6 +41,7 @@ import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dar
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
+import 'package:night_gschallenge/screens/menu/SleepinessCalculator/Sleepiness.dart';
 import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Noisepollution.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
@@ -290,6 +291,7 @@ class _MainState extends State<Main> {
               MusicPlayer.routeName: (ctx) => MusicPlayer(),
               ArticleViewer.routeName: (ctx) => ArticleViewer(),
               MapScreen.routeName: (ctx) => MapScreen(),
+              Sleepiness.routeName: (ctx) => Sleepiness()
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(
