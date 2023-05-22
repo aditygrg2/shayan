@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_two.dart';
@@ -12,7 +13,7 @@ class StepOne extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var data = Provider.of<WorryListProvider>(context).worryData;
+    var worryProvider = Provider.of<WorryListProvider>(context);
     var situation = '';
     var worry = '';
     return Scaffold(
@@ -27,134 +28,253 @@ class StepOne extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          if (data.isEmpty)
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Text(
-                'No worries added. Want to list down your worries. Just tap on the button below and we will crush them together',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          if (data.length > 0)
-            ...data.map((worry) {
-              return Container(
-                padding: const EdgeInsets.all(10),
-                child: Worrycard(
-                  worry: worry['worry'],
-                  situation: worry['situation'],
-                ),
-              );
-            }),
-          Center(
-            child: ElevatedButtonWithoutIcon(
-              text: 'Add worry',
-              onPressedButton: () {
-                showModalBottomSheet(
-                  backgroundColor: Colors.white,
-                  context: context,
-                  isScrollControlled: true,
-                  builder: (context) {
-                    return Container(
-                      padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom,
-                        top: 20,
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text(
-                              'Write down your worry here..',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            TextField(
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                              maxLines: 3,
-                              cursorHeight: 20,
-                              textAlign: TextAlign.left,
-                              decoration: const InputDecoration(
-                                labelText: 'List your worry here!',
-                                fillColor: Colors.white,
-                                filled: true,
-                              ),
-                              onChanged: (value) {
-                                worry = value;
-                              },
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            TextField(
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                              maxLines: 3,
-                              cursorHeight: 20,
-                              textAlign: TextAlign.left,
-                              decoration: const InputDecoration(
-                                labelText: 'List your situation here!',
-                                fillColor: Colors.white,
-                                filled: true,
-                              ),
-                              onChanged: (value) {
-                                situation = value;
-                              },
-                            ),
-                            const SizedBox(
-                              height: 25,
-                            ),
-                            Center(
-                              child: ElevatedButtonWithoutIcon(
-                                text: 'Submit',
-                                onPressedButton: () {
-                                  Provider.of<WorryListProvider>(context,
-                                          listen: false)
-                                      .updateWorriesList(
-                                    {
-                                      'worry': worry,
-                                      'situation': situation,
-                                      'notes': [],
-                                      'controller': TextEditingController(),
-                                      
-                                    },
-                                  );
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                          ],
+          FutureBuilder(
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              final docs = snapshot.data as QuerySnapshot;
+              if (docs.docs.length == 0) {
+                return Column(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text(
+                        'No worries added. Want to list down your worries. Just tap on the button below and we will crush them together',
+                        style: TextStyle(
+                          fontSize: 20,
                         ),
                       ),
-                    );
-                  },
+                    ),
+                    Center(
+                    child: ElevatedButtonWithoutIcon(
+                      text: 'Add worry',
+                      onPressedButton: () {
+                        showModalBottomSheet(
+                          backgroundColor: Colors.white,
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (context) {
+                            return Container(
+                              padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom,
+                                top: 20,
+                                left: 20,
+                                right: 20,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Text(
+                                      'Write down your worry here..',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    TextField(
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                      maxLines: 3,
+                                      cursorHeight: 20,
+                                      textAlign: TextAlign.left,
+                                      decoration: const InputDecoration(
+                                        labelText: 'List your worry here!',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                      onChanged: (value) {
+                                        worry = value;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    TextField(
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                      maxLines: 3,
+                                      cursorHeight: 20,
+                                      textAlign: TextAlign.left,
+                                      decoration: const InputDecoration(
+                                        labelText: 'List your situation here!',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                      onChanged: (value) {
+                                        situation = value;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Center(
+                                      child: ElevatedButtonWithoutIcon(
+                                        text: 'Submit',
+                                        onPressedButton: () {
+                                          Provider.of<WorryListProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .addWorry(
+                                            {
+                                              'worry': worry,
+                                              'situation': situation,
+                                              'notes': []
+                                            },
+                                          );
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 50,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                    
+                  ],
                 );
-              },
-            ),
+              }
+              return Column(
+                children: [
+                  ...docs.docs.map((worry) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Worrycard(
+                        worry: worry['worry'],
+                        situation: worry['situation'],
+                        id: worry.id,
+                      ),
+                    );
+                  }),
+                  Center(
+                    child: ElevatedButtonWithoutIcon(
+                      text: 'Add worry',
+                      onPressedButton: () {
+                        showModalBottomSheet(
+                          backgroundColor: Colors.white,
+                          context: context,
+                          isScrollControlled: true,
+                          builder: (context) {
+                            return Container(
+                              padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom,
+                                top: 20,
+                                left: 20,
+                                right: 20,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Text(
+                                      'Write down your worry here..',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    TextField(
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                      maxLines: 3,
+                                      cursorHeight: 20,
+                                      textAlign: TextAlign.left,
+                                      decoration: const InputDecoration(
+                                        labelText: 'List your worry here!',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                      onChanged: (value) {
+                                        worry = value;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    TextField(
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ),
+                                      maxLines: 3,
+                                      cursorHeight: 20,
+                                      textAlign: TextAlign.left,
+                                      decoration: const InputDecoration(
+                                        labelText: 'List your situation here!',
+                                        fillColor: Colors.white,
+                                        filled: true,
+                                      ),
+                                      onChanged: (value) {
+                                        situation = value;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Center(
+                                      child: ElevatedButtonWithoutIcon(
+                                        text: 'Submit',
+                                        onPressedButton: () {
+                                          Provider.of<WorryListProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .addWorry(
+                                            {
+                                              'worry': worry,
+                                              'situation': situation,
+                                              'notes': []
+                                            },
+                                          );
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 50,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                  Center(
+                    child: ElevatedButtonWithoutIcon(
+                      text: 'Continue',
+                      onPressedButton: () {
+                        Navigator.of(context).pushNamed(StepTwo.routeName);
+                      },
+                    ),
+                  )
+                ],
+              );
+            },
+            future: worryProvider.getWorry(),
           ),
-          if (data.isNotEmpty)
-          Center(
-            child: ElevatedButtonWithoutIcon(
-              text: 'Continue',
-              onPressedButton: (){
-                Navigator.of(context).pushNamed(StepTwo.routeName);
-              },
-            ),
-          )
         ],
       ),
     );
