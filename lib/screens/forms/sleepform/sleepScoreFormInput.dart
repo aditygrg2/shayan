@@ -89,7 +89,7 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
                     String? minutes = pickedDate.minute.toString();
                     String? mode = something > 12 ? 'PM' : 'AM';
                     _controller.text = '$hour:$minutes $mode';
-                    widget.value!('$hour:$minutes $mode', widget.keya);
+                    widget.value!('${double.parse(hour.toString().padLeft(2, '0'))}:$minutes $mode', widget.keya);
                   },
                 ),
               );
