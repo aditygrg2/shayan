@@ -76,6 +76,10 @@ class ChartProvider extends ChangeNotifier {
     
   }
 
+  bool data_NA_checker(){
+    return data.length == 0;
+  }
+
   List<BarData> get getChartData {
     return [...showData!];
   }

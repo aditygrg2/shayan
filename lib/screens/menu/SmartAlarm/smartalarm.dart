@@ -209,97 +209,96 @@ class _SmartAlarmState extends State<SmartAlarm> {
               const SizedBox(
                 height: 20,
               ),
-              Text(
-                "Enter you start time",
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              TextFormField(
-                key: ValueKey("Start Value"),
-                onTap: () {
-                  Navigator.of(context).push(
-                    showPicker(
-                      context: context,
-                      okText: "Submit",
-                      blurredBackground: true,
-                      value: Time(
-                        hour: TimeOfDay.now().hour,
-                        minute: TimeOfDay.now().minute,
-                      ),
-                      onChange: (pickedDate) {
-                        num? something = pickedDate.hour;
-                        String? hour = something > 12
-                            ? (something - 12).toString()
-                            : pickedDate.hour.toString();
-                        String? minutes = pickedDate.minute.toString();
-                        String? mode = something > 12 ? 'PM' : 'AM';
-                        _startTimeController.text = '$hour:$minutes $mode';
-                        setState(() {
-                          startTime = pickedDate.toTimeOfDay();
-                        });
-                      },
-                    ),
-                  );
-                },
-                controller: _startTimeController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Theme.of(context).canvasColor,
-                      width: 2,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Enter you end time",
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              TextFormField(
-                key: ValueKey("End Value"),
-                onTap: () {
-                  Navigator.of(context).push(
-                    showPicker(
-                      context: context,
-                      okText: "Submit",
-                      blurredBackground: true,
-                      value: Time(
-                        hour: TimeOfDay.now().hour,
-                        minute: TimeOfDay.now().minute,
-                      ),
-                      onChange: (pickedDate) {
-                        num? something = pickedDate.hour;
-                        String? hour = something > 12
-                            ? (something - 12).toString()
-                            : pickedDate.hour.toString();
-                        String? minutes = pickedDate.minute.toString();
-                        String? mode = something > 12 ? 'PM' : 'AM';
-                        setState(() {
-                          endTime = pickedDate.toTimeOfDay();
-                        });
-                        _endTimeController.text = '$hour:$minutes $mode';
-                      },
-                    ),
-                  );
-                },
-                controller: _endTimeController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Theme.of(context).canvasColor,
-                      width: 2,
-                    ),
-                  ),
-                ),
-              ),
+              // Text(
+              //   "Enter you start time",
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //   ),
+              // ),
+              // TextFormField(
+              //   key: ValueKey("Start Value"),
+              //   onTap: () {
+              //     Navigator.of(context).push(
+              //       showPicker(
+              //         context: context,
+              //         okText: "Submit",
+              //         blurredBackground: true,
+              //         value: Time(
+              //           hour: TimeOfDay.now().hour,
+              //           minute: TimeOfDay.now().minute,
+              //         ),
+              //         onChange: (pickedDate) {
+              //           num? something = pickedDate.hour;
+              //           String? hour = something > 12
+              //               ? (something - 12).toString()
+              //               : pickedDate.hour.toString();
+              //           String? minutes = pickedDate.minute.toString();
+              //           String? mode = something > 12 ? 'PM' : 'AM';
+              //           _startTimeController.text = '$hour:$minutes $mode';
+              //           setState(() {
+              //             startTime = pickedDate.toTimeOfDay();
+              //           });
+              //         },
+              //       ),
+              //     );
+              //   },
+              //   controller: _startTimeController,
+              //   keyboardType: TextInputType.emailAddress,
+              //   decoration: InputDecoration(
+              //     enabledBorder: UnderlineInputBorder(
+              //       borderSide: BorderSide(
+              //         color: Theme.of(context).canvasColor,
+              //         width: 2,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // Text(
+              //   "Enter you end time",
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //   ),
+              // ),
+              // TextFormField(
+              //   key: ValueKey("End Value"),
+              //   onTap: () {
+              //     Navigator.of(context).push(
+                //     showPicker(
+                //       context: context,
+                //       okText: "Submit",
+                //       blurredBackground: true,
+                //       value: Time(
+                //         hour: TimeOfDay.now().hour,
+                //         minute: TimeOfDay.now().minute,
+                //       ),
+                //       onChange: (pickedDate) {
+                //         num? something = pickedDate.hour;
+                //         String? hour = something > 12
+                //             ? (something - 12).toString()
+                //             : pickedDate.hour.toString();
+                //         String? minutes = pickedDate.minute.toString();
+                //         String? mode = something > 12 ? 'PM' : 'AM';
+                //         setState(() {
+                //           endTime = pickedDate.toTimeOfDay();
+                //         });
+                //         _endTimeController.text = '$hour:$minutes $mode';
+                //       },
+                //     ),
+                //   );
+                // },
+                // controller: _endTimeController,
+                // keyboardType: TextInputType.emailAddress,
+                // decoration: InputDecoration(
+                //   enabledBorder: UnderlineInputBorder(
+                //     borderSide: BorderSide(
+                //       color: Theme.of(context).canvasColor,
+                //       width: 2,
+                //     ),
+                  // ),
+                // ),
               Center(
                 child: ElevatedButtonWithoutIcon(
                   text: "Set Alarm",

@@ -9,6 +9,7 @@ class ThemeClass {
     cardColor: const Color.fromARGB(153, 248, 222, 55),
     fontFamily: 'Roboto',
     secondaryHeaderColor: Colors.black,
+    brightness: Brightness.light,
     iconTheme: IconThemeData(
       color: Colors.black
     ),
@@ -32,6 +33,7 @@ class ThemeClass {
     timePickerTheme: TimePickerThemeData(
       backgroundColor: Colors.white,
     ),
+    
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 25,
@@ -84,6 +86,7 @@ class ThemeClass {
       color: Colors.white
     ),
     secondaryHeaderColor: Colors.white,
+    brightness: Brightness.dark,
     canvasColor: const Color.fromRGBO(204, 97, 93, 1),
     highlightColor: Colors.amber,
     accentColor: Color.fromRGBO(224, 221, 148, 1),

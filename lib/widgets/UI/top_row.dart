@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/main.dart';
 import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
 import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
 
-class TopRow extends StatelessWidget {
+class TopRow extends StatefulWidget {
   final bool? back;
   final bool? profile;
 
   TopRow({this.back = false, this.profile = true});
+  
 
   @override
+  State<TopRow> createState() => _TopRowState();
+}
+
+class _TopRowState extends State<TopRow> {
+  @override
   Widget build(BuildContext context) {
+    final brightness = Main.of(context).getTheme();
     var notificationBarHeight = MediaQuery.of(context).padding.top;
 
     return Container(
@@ -20,11 +28,11 @@ class TopRow extends StatelessWidget {
         bottom: 10,
       ),
       child: Row(
-        mainAxisAlignment: back == true
+        mainAxisAlignment: widget.back == true
             ? MainAxisAlignment.spaceBetween
             : MainAxisAlignment.end,
         children: [
-          if (back!)
+          if (widget.back!)
             Row(
               children: [
                 IconButton(
@@ -39,21 +47,21 @@ class TopRow extends StatelessWidget {
                 ),
               ],
             ),
-          if (back!)
+          if (widget.back!)
             Row(
               children: [
-                if(profile!)
-                IconButton(
-                  onPressed: (){
-                    Navigator.of(context).pushNamed(ProfileScreen.routeName);
-                  },
-                  icon: Icon(
-                    Icons.person,
-                    color: Theme.of(context).iconTheme.color,
+                if (widget.profile!)
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(ProfileScreen.routeName);
+                    },
+                    icon: Icon(
+                      Icons.person,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                   ),
-                ),
                 IconButton(
-                  onPressed: (){
+                  onPressed: () {
                     Navigator.of(context).pushNamed(ChatScreen.routeName);
                   },
                   icon: Icon(
@@ -63,19 +71,19 @@ class TopRow extends StatelessWidget {
                 ),
               ],
             ),
-          if (!back! && profile!)
-            IconButton(
-              onPressed: (){
-                Navigator.of(context).pushNamed(ProfileScreen.routeName);
-              },
-              icon: Icon(
-                Icons.person,
-                color: Theme.of(context).iconTheme.color,
-              ),
+          if (!widget.back! && widget.profile!)
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(ProfileScreen.routeName);
+            },
+            icon: Icon(
+              Icons.person,
+              color: Theme.of(context).iconTheme.color,
             ),
-          if (!back!)
+          ),
+          if (!widget.back!)
             IconButton(
-              onPressed: (){
+              onPressed: () {
                 Navigator.of(context).pushNamed(ChatScreen.routeName);
               },
               icon: Icon(
@@ -83,6 +91,17 @@ class TopRow extends StatelessWidget {
                 color: Theme.of(context).iconTheme.color,
               ),
             ),
+          if(!widget.back!)
+          IconButton(onPressed: () {
+            setState(() {
+              if(brightness == ThemeMode.dark){
+                Main.of(context).changeTheme(ThemeMode.light);
+              }
+              else{
+                Main.of(context).changeTheme(ThemeMode.dark);
+              } 
+            });
+          }, icon: brightness == ThemeMode.dark ? Icon(Icons.light_mode) : Icon(Icons.dark_mode)),
         ],
       ),
     );

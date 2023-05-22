@@ -72,7 +72,27 @@ void main() {
   runApp(Main());
 }
 
-class Main extends StatelessWidget {
+class Main extends StatefulWidget {
+  @override
+  State<Main> createState() => _MainState();
+
+  static _MainState of(BuildContext context) => 
+      context.findAncestorStateOfType<_MainState>()!;
+}
+
+class _MainState extends State<Main> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void changeTheme(ThemeMode themeMode) {
+    setState(() {
+      _themeMode = themeMode;
+    });
+  }
+
+  ThemeMode getTheme(){
+    return _themeMode;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -204,7 +224,7 @@ class Main extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Night_GSChallenge',
-            themeMode:ThemeMode.system,
+            themeMode: _themeMode,
             theme: ThemeClass.lightTheme,
             darkTheme: ThemeClass.darkTheme,
             home: StreamBuilder(
