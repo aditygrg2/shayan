@@ -8,7 +8,6 @@ class TopRow extends StatefulWidget {
   final bool? profile;
 
   TopRow({this.back = false, this.profile = true});
-  
 
   @override
   State<TopRow> createState() => _TopRowState();
