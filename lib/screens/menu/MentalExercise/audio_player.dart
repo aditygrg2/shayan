@@ -6,8 +6,9 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 class AudioPlayerWithSlider extends StatefulWidget {
   bool isPlaying = false;
   String audio;
+  bool isButtonNeeded = false;
   Duration progress = const Duration();
-  AudioPlayerWithSlider(this.audio);
+  AudioPlayerWithSlider(this.audio,this.isButtonNeeded);
   @override
   State<AudioPlayerWithSlider> createState() => _AudioPlayerWithSliderState();
 }
@@ -68,7 +69,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                 const SizedBox(
                   height: 10,
                 ),
-                CircleAvatar(
+              if (widget.isButtonNeeded)CircleAvatar(
                   radius: 20,
                   backgroundColor: Theme.of(context).canvasColor,
                   child: IconButton(

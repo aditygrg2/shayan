@@ -87,7 +87,7 @@ class MentalExerciseSolution extends StatelessWidget {
                       ],
                     ),
                   ),
-                  AudioPlayerWithSlider(solution['audio']),
+                  AudioPlayerWithSlider(solution['audio'],true),
                 ],
               )),
         ],

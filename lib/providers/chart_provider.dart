@@ -21,11 +21,14 @@ class ChartProvider extends ChangeNotifier {
         .collection('dates')
         .doc(date.toString().split(" ")[0])
         .get();
-        
-        if(doc.exists)
-          data[date.weekday-1] =(doc.data() as Map).containsKey("SS")? double.parse( doc.get("SS")) :0 ;
-        else data[date.weekday-1] = 0;
-
+        if(doc.exists && (doc.data() as Map).containsKey("TST") && doc.data()!['TST']!=null){
+          double a = double.parse(doc.data()!['TST']);
+          while(a>8) a=a/8;
+          data[date.weekday-1] = a;
+        }
+        else {
+          data[date.weekday-1] = 0;
+        }
       }
       List<BarData> barData = [
       BarData(
