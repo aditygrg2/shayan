@@ -83,6 +83,8 @@ class _TopRowState extends State<TopRow> {
               ),
             ),
           if (!widget.back!)
+            IconButton(onPressed: () {}, icon: Icon(Icons.shop)),
+          if (!widget.back!)
             IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(ChatScreen.routeName);

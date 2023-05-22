@@ -98,6 +98,13 @@ class MenuScreen extends StatelessWidget {
           image: "assets/library_community.png",
           route: CommunityScreen.routeName,
         ),
+        TmbDescriptionCards(
+          title: "Store",
+          subtitle:
+              "Buy",
+          image: "assets/library_community.png",
+          route: CommunityScreen.routeName,
+        ),
         Container(
           width: MediaQuery.of(context).size.width - 20,
           height: (MediaQuery.of(context).size.height / 7) * items.length,
