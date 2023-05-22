@@ -38,57 +38,63 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
       audioProvider.load(widget.audio);
       load = false;
     }
-    return audioProvider.duration.inMilliseconds > 0
-        ? Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                width: MediaQuery.of(context).size.width - 15,
-                child: ProgressBar(
-                  progress: audioProvider.progress,
-                  total: audioProvider.duration,
-                  buffered: audioProvider.buffered,
-                  onSeek: (value) {
-                    audioProvider.seek(value);
-                  },
-                  timeLabelTextStyle:
-                      TextStyle(fontSize: 15, color: Colors.black),
-                  timeLabelPadding: 15,
-                  timeLabelType: TimeLabelType.remainingTime,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Theme.of(context).canvasColor,
-                child: IconButton(
-                  icon: Icon(
-                    widget.isPlaying ? Icons.pause : Icons.play_arrow_rounded,
-                    color: Colors.black,
-                  ),
-                  onPressed: () => handlePlay(audioProvider),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          )
-        : Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
+    return WillPopScope(
+      onWillPop: () {
+        if(widget.isPlaying) audioProvider.stop();
+        return Future(() => true);
+      },
+      child: audioProvider.duration.inMilliseconds > 0
+          ? Column(
               children: [
-                Text("Loading...", style: TextStyle(fontSize: 15),),
-                SizedBox(
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  width: MediaQuery.of(context).size.width - 15,
+                  child: ProgressBar(
+                    progress: audioProvider.progress,
+                    total: audioProvider.duration,
+                    buffered: audioProvider.buffered,
+                    onSeek: (value) {
+                      audioProvider.seek(value);
+                    },
+                    timeLabelTextStyle:
+                        TextStyle(fontSize: 15, color: Colors.black),
+                    timeLabelPadding: 15,
+                    timeLabelType: TimeLabelType.remainingTime,
+                  ),
+                ),
+                const SizedBox(
                   height: 10,
                 ),
-                CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Theme.of(context).canvasColor,
+                  child: IconButton(
+                    icon: Icon(
+                      widget.isPlaying ? Icons.pause : Icons.play_arrow_rounded,
+                      color: Colors.black,
+                    ),
+                    onPressed: () => handlePlay(audioProvider),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
               ],
-            ));
+            )
+          : Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Text("Loading...", style: TextStyle(fontSize: 15),),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                ],
+              )),
+    );
   }
 }

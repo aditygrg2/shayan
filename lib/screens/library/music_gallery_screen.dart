@@ -13,7 +13,7 @@ class MusicGalleryScreen extends StatelessWidget {
         {
           "image": "assets/red.jpg",
           "title": "Red Noise",
-          "description": " ",
+          "description": "This is a great music that will relac your mind ",
           "audio": "https://dl.sndup.net/zksp/visualization.mp3"
         },
         {

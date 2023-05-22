@@ -142,6 +142,14 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
               const SizedBox(
                 height: 10,
               ),
+              if (widget.playlist[widget.index].containsKey("description") &&
+                  widget.playlist[widget.index] != "")
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 11),
+                  child: Text(
+                      widget.playlist[widget.index]['description'].toString()),
+                  decoration: BoxDecoration(color: Colors.grey.shade700,borderRadius: BorderRadius.circular(15)),
+                ),
             ],
           )
         : Padding(

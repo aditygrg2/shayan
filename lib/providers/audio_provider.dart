@@ -13,6 +13,7 @@ class AudioProvider extends ChangeNotifier {
   void load(String uri)async{
     duration = Duration.zero;
     progress = Duration.zero;
+    await player.setLoopMode(LoopMode.all);
     await player.setUrl(uri);
     duration = player.duration!;
     player.positionStream.listen((element) {
