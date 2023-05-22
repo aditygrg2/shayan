@@ -113,7 +113,8 @@ class _PlanScreenState extends State<PlanScreen> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 if (once) getQuestion();
                 return Center(
-                  child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                  child: CircularProgressIndicator(
+                      color: Theme.of(context).secondaryHeaderColor),
                 );
               }
 

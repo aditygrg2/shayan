@@ -17,7 +17,6 @@ import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/providers/smart_alarm_provider.dart';
-import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/providers/timeline_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
@@ -152,11 +151,6 @@ class _MainState extends State<Main> {
             ChangeNotifierProvider(
               create: (context) {
                 return AudioProvider();
-              },
-            ),
-            ChangeNotifierProvider(
-              create: (context) {
-                return SpeechToText();
               },
             ),
             ChangeNotifierProvider(
