@@ -82,6 +82,7 @@ class Main extends StatefulWidget {
 
 class _MainState extends State<Main> {
   ThemeMode _themeMode = ThemeMode.system;
+  bool once = true;
 
   void changeTheme(ThemeMode themeMode) {
     setState(() {
@@ -90,6 +91,14 @@ class _MainState extends State<Main> {
   }
 
   ThemeMode getTheme(){
+    if(_themeMode == ThemeMode.system){
+      if(Theme.of(context).brightness == Brightness.light){
+        _themeMode = ThemeMode.light;
+      }
+      else if(Theme.of(context).brightness == Brightness.dark){
+        _themeMode = ThemeMode.dark;
+      }
+    }
     return _themeMode;
   }
 
@@ -223,7 +232,7 @@ class _MainState extends State<Main> {
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Night_GSChallenge',
+            title: 'Shayan',
             themeMode: _themeMode,
             theme: ThemeClass.lightTheme,
             darkTheme: ThemeClass.darkTheme,
@@ -232,7 +241,12 @@ class _MainState extends State<Main> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
                   if (!snapshot.hasData) {
-                    return SplashScreen();
+                    if(once){
+                      once = false;
+                      return SplashScreen();
+                    }
+                    else
+                    return HomeScreen();
                   } else {
                     return HomeScreen();
                   }

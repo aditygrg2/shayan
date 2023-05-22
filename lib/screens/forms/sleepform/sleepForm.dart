@@ -291,7 +291,7 @@ class _SleepFormState extends State<SleepForm> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,
-                              color: Theme.of(context).primaryColor
+                              color: Theme.of(context).secondaryHeaderColor
                             ),
                           ),
                         ),

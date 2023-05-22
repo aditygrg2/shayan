@@ -17,7 +17,7 @@
 
     
    <application
-        android:label="night_gschallenge"
+        android:label="Shayan"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

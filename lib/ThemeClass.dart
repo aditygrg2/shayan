@@ -33,7 +33,6 @@ class ThemeClass {
     timePickerTheme: TimePickerThemeData(
       backgroundColor: Colors.white,
     ),
-    
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 25,
