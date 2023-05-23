@@ -77,19 +77,21 @@ class _SleepFormState extends State<SleepForm> {
   late String valueSelected = timeValue;
 
   void _valueHandler(value, key) {
-    if (key == "1") {
-      value1 = value;
-    } else if (key == '2') {
-      value2 = value;
-    } else if (key == '3') {
-      value3 = value;
-    } else if (key == '4') {
-      value4 = value;
-    } else if (key == '5') {
-      value5 = value;
-    } else if (key == '6') {
-      value6 = value;
-    }
+      if (key == "1") {
+        value1 = value;
+      } else if (key == '2') {
+        value2 = value;
+      } else if (key == '3') {
+        value3 = value;
+      } else if (key == '4') {
+        value4 = value;
+      } else if (key == '5') {
+        value5 = value;
+      } else if (key == '6') {
+        value6 = value;
+      }
+
+      
   }
 
   bool valueSelectorForWatch() {
@@ -118,7 +120,7 @@ class _SleepFormState extends State<SleepForm> {
     }
   }
 
-  void _submitHandler() async {
+  void _submitHandler(value1, value2, value3, value4, value5, value6) async {
     String? id = FirebaseAuth.instance.currentUser?.uid;
 
     setState(() {
@@ -135,7 +137,15 @@ class _SleepFormState extends State<SleepForm> {
     int length = _myDocCount.length;
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
-    sleepElements.getData(
+    
+    print(value1);
+    print(value2);
+    print(value3);
+    print(value4);
+    print(value5);
+    print(value6);
+
+    await sleepElements.getData(
       value1,
       value2,
       value3,
@@ -395,7 +405,7 @@ class _SleepFormState extends State<SleepForm> {
                               child: ElevatedButtonWithoutIcon(
                                 text: 'Submit',
                                 onPressedButton: () async {
-                                  _submitHandler();
+                                  _submitHandler(value1, value2, value3,value4,value5,value6);
                                 },
                               ),
                             ),

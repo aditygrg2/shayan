@@ -7,6 +7,7 @@ import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dar
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
 import 'package:night_gschallenge/screens/menu/SleepDietSuggestion/sleep_diet_suggestion.dart';
+import 'package:night_gschallenge/screens/menu/SleepinessCalculator/Sleepiness.dart';
 import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
@@ -75,6 +76,11 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/worry_list.png',
       'routes': MapScreen.routeName
     },
+    {
+      'text':'Daytime Sleepiness Calculator',
+      'imagePath': 'assets/worry_list.png',
+      'routes': Sleepiness.routeName
+    }
   ];
   @override
   void navigate(BuildContext context, int index) {
@@ -89,6 +95,13 @@ class MenuScreen extends StatelessWidget {
           title: "Community",
           subtitle:
               "Engage with other people",
+          image: "assets/library_community.png",
+          route: CommunityScreen.routeName,
+        ),
+        TmbDescriptionCards(
+          title: "Store",
+          subtitle:
+              "Buy",
           image: "assets/library_community.png",
           route: CommunityScreen.routeName,
         ),

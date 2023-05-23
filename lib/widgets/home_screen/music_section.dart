@@ -10,31 +10,31 @@ class MusicSection extends StatefulWidget {
 }
 
 class _MusicSectionState extends State<MusicSection> {
-  final _musicData = [
-    {
-      'heading': 'Foods Improving Insomnia',
-      'subHeading': 'Warm milk is a common home remedy for sleeplessness.',
-      'src': 'assets/home_image_1.jpg',
-    },
-    {
-      'heading': 'Sleep Hyigene',
-      'subHeading':
-          'Make sure your bedroom is quiet, dark, relaxing, and at a comfortable temperature.',
-      'src': 'assets/home_image_2.jpg',
-    },
-    {
-      'heading': 'Nature Scenes',
-      'subHeading':
-          'Nature is the best medicine of any illness especially when it comes to anxiety',
-      'src': 'assets/home_image_3.jpg',
-    },
-    {
-      'heading': 'Better Sleep',
-      'subHeading':
-          'Do you wake up feeling exhausted even though you went to bed at a decent time.',
-      'src': 'assets/home_image_4.jpg',
-    },
-  ];
+  // final _musicData = [
+  //   {
+  //     'heading': 'Foods Improving Insomnia',
+  //     'subHeading': 'Warm milk is a common home remedy for sleeplessness.',
+  //     'src': 'assets/home_image_1.jpg',
+  //   },
+  //   {
+  //     'heading': 'Sleep Hyigene',
+  //     'subHeading':
+  //         'Make sure your bedroom is quiet, dark, relaxing, and at a comfortable temperature.',
+  //     'src': 'assets/home_image_2.jpg',
+  //   },
+  //   {
+  //     'heading': 'Nature Scenes',
+  //     'subHeading':
+  //         'Nature is the best medicine of any illness especially when it comes to anxiety',
+  //     'src': 'assets/home_image_3.jpg',
+  //   },
+  //   {
+  //     'heading': 'Better Sleep',
+  //     'subHeading':
+  //         'Do you wake up feeling exhausted even though you went to bed at a decent time.',
+  //     'src': 'assets/home_image_4.jpg',
+  //   },
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _MusicSectionState extends State<MusicSection> {
       margin: const EdgeInsets.symmetric(vertical: 30),
       child: Column(
         children: [
-          HomeScreenText(text: 'Recommended'),
+          HomeScreenText(text: 'Recommended Store Items'),
           HomeScreenViewAll(
             onClick: () {
               Navigator.of(context).pushNamed(MusicGalleryScreen.routeName);
@@ -56,15 +56,15 @@ class _MusicSectionState extends State<MusicSection> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                ..._musicData
-                    .map(
-                      (item) => SlidingCardRounded(
-                        heading: item['heading'],
-                        subHeading: item['subHeading'],
-                        src: item['src'],
-                      ),
-                    )
-                    .toList()
+                // ..._musicData
+                //     .map(
+                //       (item) => SlidingCardRounded(
+                //         heading: item['heading'],
+                //         subHeading: item['subHeading'],
+                //         src: item['src'],
+                //       ),
+                //     )
+                //     .toList()
               ],
             ),
           )

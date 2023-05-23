@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/main.dart';
+import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
 import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
 import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
+import 'package:provider/provider.dart';
 
 class TopRow extends StatefulWidget {
   final bool? back;
   final bool? profile;
 
   TopRow({this.back = false, this.profile = true});
-  
 
   @override
   State<TopRow> createState() => _TopRowState();
@@ -72,15 +73,17 @@ class _TopRowState extends State<TopRow> {
               ],
             ),
           if (!widget.back! && widget.profile!)
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(ProfileScreen.routeName);
-            },
-            icon: Icon(
-              Icons.person,
-              color: Theme.of(context).iconTheme.color,
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(ProfileScreen.routeName);
+              },
+              icon: Icon(
+                Icons.person,
+                color: Theme.of(context).iconTheme.color,
+              ),
             ),
-          ),
+          if (!widget.back!)
+            IconButton(onPressed: () {}, icon: Icon(Icons.shop)),
           if (!widget.back!)
             IconButton(
               onPressed: () {
@@ -91,17 +94,21 @@ class _TopRowState extends State<TopRow> {
                 color: Theme.of(context).iconTheme.color,
               ),
             ),
-          if(!widget.back!)
-          IconButton(onPressed: () {
-            setState(() {
-              if(brightness == ThemeMode.dark){
-                Main.of(context).changeTheme(ThemeMode.light);
-              }
-              else{
-                Main.of(context).changeTheme(ThemeMode.dark);
-              } 
-            });
-          }, icon: brightness == ThemeMode.dark ? Icon(Icons.light_mode) : Icon(Icons.dark_mode)),
+          if (!widget.back!)
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  if (brightness == ThemeMode.dark) {
+                    Main.of(context).changeTheme(ThemeMode.light);
+                  } else {
+                    Main.of(context).changeTheme(ThemeMode.dark);
+                  }
+                });
+              },
+              icon: brightness == ThemeMode.dark
+                  ? Icon(Icons.light_mode)
+                  : Icon(Icons.dark_mode),
+            ),
         ],
       ),
     );

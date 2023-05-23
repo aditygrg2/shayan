@@ -24,7 +24,7 @@ class SleepElements extends ChangeNotifier {
 
   // AST - Average Sleep Time
 
-  void getData(a, b, c, d, e, f, length) async {
+  Future getData(a, b, c, d, e, f, length) async {
     wakeUpTime = DateFormat.jm().parse(e!);
     RealWakeUpTime = DateFormat.jm().parse(f!);
     RealSleepingTime =

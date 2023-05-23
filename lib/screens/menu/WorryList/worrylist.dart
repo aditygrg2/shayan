@@ -40,6 +40,10 @@ class _WorrylistState extends State<Worrylist> {
 
       if (isWorryListOpened) {
         Navigator.of(context).popAndPushNamed(StepOne.routeName);
+      } else {
+        setState(() {
+          validator = 1;
+        });
       }
     } else {
       setState(() {
@@ -58,7 +62,9 @@ class _WorrylistState extends State<Worrylist> {
   Widget build(BuildContext context) {
     if (validator == 0) {
       return Scaffold(
-        body: Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor)),
+        body: Center(
+            child: CircularProgressIndicator(
+                color: Theme.of(context).secondaryHeaderColor)),
       );
     } else if (validator == 1) {
       return Scaffold(
@@ -139,6 +145,7 @@ class _WorrylistState extends State<Worrylist> {
       ));
     }
 
-    return CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor);
+    return CircularProgressIndicator(
+        color: Theme.of(context).secondaryHeaderColor);
   }
 }

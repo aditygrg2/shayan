@@ -46,7 +46,8 @@ class AuthenticationProvider extends ChangeNotifier {
             'SSCreated': false,
             'diseaseType':'NA',
             'isCustomizedTimeline':'false',
-            'isReady':'NA'
+            'isReady':'NA',
+            'isWorryListOpened': false
           },
         );
       }
