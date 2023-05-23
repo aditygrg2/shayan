@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/main.dart';
-import 'package:night_gschallenge/providers/speech_to_text_provider.dart';
+import 'package:night_gschallenge/screens/store/store_screen.dart';
 import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
 import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
-import 'package:provider/provider.dart';
+
 
 class TopRow extends StatefulWidget {
   final bool? back;
@@ -83,7 +83,9 @@ class _TopRowState extends State<TopRow> {
               ),
             ),
           if (!widget.back!)
-            IconButton(onPressed: () {}, icon: Icon(Icons.shop)),
+            IconButton(onPressed: () {
+              Navigator.of(context).pushNamed(StoreScreen.routeName);
+            }, icon: Icon(Icons.shop)),
           if (!widget.back!)
             IconButton(
               onPressed: () {
