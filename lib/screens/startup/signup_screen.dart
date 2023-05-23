@@ -36,6 +36,7 @@ class _SignupScreenState extends State<SignupScreen> {
         setState(() {
           loading = true;
         });
+        print(name);
         // ignore: avoid_single_cascade_in_expression_statements
         await Provider.of<AuthenticationProvider>(context, listen: false)
             .submitAuthForm(

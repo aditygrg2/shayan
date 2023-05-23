@@ -49,11 +49,8 @@ class ProfileScreen extends StatelessWidget {
   String version = "v1.0";
 
   Map<String, dynamic> profile = {
-    "Name": "Aditya",
+    "Name": FirebaseAuth.instance.currentUser?.displayName,
     "Email ID": FirebaseAuth.instance.currentUser?.email,
-    "Age": "15 years",
-    "Weight": "70 Kg",
-    "Height": "170 cm",
   };
   @override
   Widget build(BuildContext context) {
@@ -62,10 +59,6 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Stack(
             children: [
-              TopRow(
-                back: true,
-                profile: false,
-              ),
               Positioned(
                 child: Container(
                   child: const Text(""),
@@ -78,16 +71,21 @@ class ProfileScreen extends StatelessWidget {
                           bottomRight: Radius.circular(800))),
                 ),
               ),
+              TopRow(
+                back: true,
+                profile: false,
+              ),
               Positioned(
-                  top: 10,
-                  left: MediaQuery.of(context).size.width / 2 - 90,
-                  child: Container(
-                    child: const Icon(
-                      Icons.person_outline_sharp,
-                      color: Colors.black,
-                      size: 170,
-                    ),
-                  ))
+                top: 10,
+                left: MediaQuery.of(context).size.width / 2 - 90,
+                child: Container(
+                  child: const Icon(
+                    Icons.person_outline_sharp,
+                    color: Colors.black,
+                    size: 170,
+                  ),
+                ),
+              )
             ],
           ),
           if (currentUser == null)
@@ -161,8 +159,6 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: Icons.signal_cellular_no_sim_sharp,
             ),
-
-          
         ],
       ),
     );

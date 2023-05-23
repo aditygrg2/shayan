@@ -10,7 +10,7 @@ class ThemeClass {
     fontFamily: 'Roboto',
     secondaryHeaderColor: Colors.black,
     brightness: Brightness.light,
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.black
     ),
     highlightColor: Colors.white,
@@ -76,19 +76,19 @@ class ThemeClass {
   );
 
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.black,
-    primaryColor: Colors.black,
+    scaffoldBackgroundColor: Color.fromRGBO(36, 37, 64, 1),
+    primaryColor: Color.fromRGBO(36, 37, 64, 1),
     appBarTheme:const AppBarTheme(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromRGBO(36, 37, 64, 1),
     ),
     iconTheme:const IconThemeData(
       color: Colors.white
     ),
     secondaryHeaderColor: Colors.white,
     brightness: Brightness.dark,
-    canvasColor: const Color.fromRGBO(204, 97, 93, 1),
+    canvasColor: const Color.fromRGBO(36, 37, 64, 1),
     highlightColor: Colors.amber,
-    accentColor: Color.fromRGBO(224, 221, 148, 1),
+    accentColor: Color.fromRGBO(36, 37, 64, 1),
     cardColor: const Color.fromRGBO(71, 152, 146, 1),
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
@@ -107,7 +107,7 @@ class ThemeClass {
       ),
       visualDensity: VisualDensity.comfortable,
     ),
-    timePickerTheme: TimePickerThemeData(
+    timePickerTheme: const TimePickerThemeData(
       backgroundColor: Colors.white,
     ),
     textTheme: const TextTheme(
