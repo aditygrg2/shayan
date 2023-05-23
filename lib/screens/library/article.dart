@@ -12,7 +12,7 @@ class Article extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(ArticleViewer.routeName, arguments: {
           'image': image,
-          'name': name,
+          'title': name,
           'description': description
         });
       },

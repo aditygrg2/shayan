@@ -10,7 +10,7 @@ class ArticleViewer extends StatelessWidget {
   Widget build(BuildContext context) {
     final article =
         ModalRoute.of(context)?.settings.arguments as Map<String, String>;
-    print('object');
+
 
     return Scaffold(
       body: ListView(
@@ -21,7 +21,7 @@ class ArticleViewer extends StatelessWidget {
           HomeScreenText(
             text: 'Article ',
           ),
-          Container(child: Text(article['name'] as String,style: TextStyle(fontSize: 25),),padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),),
+          Container(child: Text(article['title'] as String,style: TextStyle(fontSize: 25),),padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: ClipRRect(

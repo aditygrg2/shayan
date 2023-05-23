@@ -43,7 +43,7 @@ class PodcastScreenPlay extends StatelessWidget {
   static String routeName = '/podcast-play';
   @override
   Widget build(BuildContext context) {
-    final podcast = (ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>)['podcast'];
+    final podcast = ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>;
     return Scaffold(
       body: Container(
         // padding: EdgeInsets.all(10),
