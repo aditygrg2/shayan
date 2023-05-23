@@ -27,6 +27,7 @@ class _TimePickerState extends State<TimePicker> {
           child: TimePickerSpinner(
             is24HourMode: true,
             isShowSeconds: true,
+            time: widget._dateTime,
             normalTextStyle: const TextStyle(fontSize: 24, color: Colors.black54),
             highlightedTextStyle: const TextStyle(fontSize: 28, color: Colors.black87),
             spacing: 45,

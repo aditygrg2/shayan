@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:neon_circular_timer/neon_circular_timer.dart';
 
 class CountDownTimerComponent extends StatefulWidget {
   DateTime datetime;
-  CountDownTimerComponent(this.datetime);
+  AudioProvider audio;
+  CountDownTimerComponent(this.datetime,this.audio);
   @override
   State<CountDownTimerComponent> createState() =>
       _CountDownTimerComponentState();
@@ -24,7 +26,10 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
     return Center(
       child: NeonCircularTimer(
         onComplete: () {
-          Navigator.of(context).pop();
+          widget.audio.stop().then((value) {
+
+           Navigator.of(context).pop();
+          });
         },
         textFormat: TextFormat.HH_MM_SS,
         width: 250,

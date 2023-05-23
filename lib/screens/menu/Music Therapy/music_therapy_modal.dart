@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:provider/provider.dart';
+
 
 class MusicTherapyModal extends StatefulWidget {
   Map<dynamic, dynamic> therapy = {};
   bool isPlaying = false;
-  MusicTherapyModal(this.therapy);
+  AudioProvider audioProvider;
+  MusicTherapyModal(this.therapy,this.audioProvider);
 
   @override
   State<MusicTherapyModal> createState() => _MusicTherapyModalState();
@@ -14,7 +15,6 @@ class MusicTherapyModal extends StatefulWidget {
 class _MusicTherapyModalState extends State<MusicTherapyModal> {
   @override
   Widget build(BuildContext context) {
-    var audioPlayer = Provider.of<AudioProvider>(context, listen: false);
     return Center(
       child: Column(
         children: [
@@ -24,7 +24,7 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               icon: const Icon(Icons.close),
               onPressed: () {
                 if (widget.isPlaying) {
-                  audioPlayer.stop();
+                  widget.audioProvider.stop();
                 }
                 Navigator.of(context).pop();
               },
@@ -70,9 +70,9 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
                         : Icons.play_arrow_rounded),
                     onPressed: ()  {
                        if (!widget.isPlaying) {
-                           audioPlayer.play();
+                           widget.audioProvider.play();
                         } else {
-                          audioPlayer.stop();
+                          widget.audioProvider.stop();
                         }
                       setState(() {
                         widget.isPlaying = !widget.isPlaying;

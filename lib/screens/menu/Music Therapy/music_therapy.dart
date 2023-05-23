@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy_modal.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:provider/provider.dart';
 
 class MusicTherapy extends StatefulWidget {
   static String routeName = '/music-therapy';
@@ -106,6 +108,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
 
   @override
   Widget build(BuildContext context) {
+    final audioProvider =  Provider.of<AudioProvider>(context);
     return Scaffold(
       body: ListView(
         children: [
@@ -156,14 +159,33 @@ class _MusicTherapyState extends State<MusicTherapy> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          setState(() {
+                            showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) {
+                              return Container(
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                )),
+                              );
+                            },
+                          );
+                          audioProvider.load(therapies[index]['tunes'][0]['tune']).then((value) {
+
+                          
+                            Navigator.of(context).pop();
+                         
                             showModalBottomSheet(
                               context: context,
                               builder: (context) {
-                                return MusicTherapyModal(therapies[index]);
+                                return MusicTherapyModal(therapies[index],audioProvider);
                               },
                               backgroundColor: therapies[index]['color'],
                             );
+                          
                           });
                         },
                         child: Container(

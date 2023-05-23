@@ -78,10 +78,10 @@ class ThemeClass {
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black,
     primaryColor: Colors.black,
-    appBarTheme: AppBarTheme(
+    appBarTheme:const AppBarTheme(
       backgroundColor: Colors.black,
     ),
-    iconTheme: IconThemeData(
+    iconTheme:const IconThemeData(
       color: Colors.white
     ),
     secondaryHeaderColor: Colors.white,
