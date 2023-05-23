@@ -32,8 +32,8 @@ class Worrycard extends StatelessWidget {
             color: Colors.blue,
             size: 50,),onPressed: (){
               showBottomSheet(context: context, builder: (context) {
-                return Center(child: CircularProgressIndicator(backgroundColor: Colors.white,color: Theme.of(context).secondaryHeaderColor,),);
-              },);
+                return Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor,),);
+              },backgroundColor: Colors.transparent);
               worryProvider.deleteWorry(id!).then((value) {
                 Navigator.of(context).pop();
               });
