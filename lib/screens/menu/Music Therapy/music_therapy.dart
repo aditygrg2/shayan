@@ -19,11 +19,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(219, 74, 72, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_tensed_tune.mp3',
-          'title': 'Tensed Music',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/ptzd/music_therapy_tensed_tune.mp3', 'title': 'Tensed Music', 'image': ''},
       ],
     },
     {
@@ -31,11 +27,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(234, 162, 71, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_excited_tune.mp3',
-          'title': 'Excited Tune',
-          'image': ''
-        },
+        {'tune': 'http://dl.sndup.net/q4b2/music_therapy_excited_tune.mp3', 'title': 'Excited Tune', 'image': ''},
       ],
     },
     {
@@ -44,7 +36,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
         {
-          'tune': 'assets/music_therapy_relaxed_tune.mp3',
+          'tune': 'https://dl.sndup.net/qrd5/music-therapy-relaxed-tune_HBIAEvGg.mp3',
           'title': 'Relax',
           'image': ''
         },
@@ -55,11 +47,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(160, 161, 163, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_sad_tune.mp3',
-          'title': 'Sad Tune',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/wbrt/music_therapy_sad_tune.mp3', 'title': 'Sad Tune', 'image': ''},
       ],
     },
     {
@@ -67,11 +55,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(252, 244, 122, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_bored_tune.mp3',
-          'title': 'Bored Tune',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/ww73/music_therapy_bored_tune.mp3', 'title': 'Bored Tune', 'image': ''},
       ],
     },
     {
@@ -79,11 +63,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(233, 167, 157, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_joyful_tune.mp3',
-          'title': 'Joyful Tune',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/bz7n/music_therapy_joyful_tune.mp3', 'title': 'Joyful Tune', 'image': ''},
       ],
     },
     {
@@ -92,7 +72,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(129, 193, 108, 1),
       'tunes': [
         {
-          'tune': 'assets/music_therapy_joyful_tune.mp3',
+          'tune': 'https://dl.sndup.net/chqt/music_therapy_attentive_tune.mp3',
           'title': 'Attentive Tune',
           'image': ''
         },
@@ -103,11 +83,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(187, 137, 196, 1),
       'image': 'assets/music_therapy_worried.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_worried_tune.mp3',
-          'title': 'Worried Tune',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/qvhr/music_therapy_worried_tune.mp3', 'title': 'Worried Tune', 'image': ''},
       ],
     },
     {
@@ -115,11 +91,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromRGBO(77, 78, 159, 1),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_sleepy_tune.mp3',
-          'title': 'Sleepy Tune',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/rm7b/music-therapy-sleepy-tune_KJi0UE4K.mp3', 'title': 'Sleepy Tune', 'image': ''},
       ],
     },
     {
@@ -127,11 +99,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
       'color': const Color.fromARGB(255, 217, 210, 210),
       'image': 'assets/music_therapy_joyful.png',
       'tunes': [
-        {
-          'tune': 'assets/music_therapy_neutral_tune.mp3',
-          'title': 'Neutral',
-          'image': ''
-        },
+        {'tune': 'https://dl.sndup.net/vbk3/music_therapy_neutral_tune.mp3', 'title': 'Neutral', 'image': ''},
       ],
     },
   ];
@@ -178,11 +146,12 @@ class _MusicTherapyState extends State<MusicTherapy> {
                   width: MediaQuery.of(context).size.width - 20,
                   height: 500,
                   child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 4 / 2,
-                        crossAxisSpacing: 10),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            childAspectRatio: 4 / 2,
+                            crossAxisSpacing: 10),
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return GestureDetector(
@@ -225,12 +194,14 @@ class _MusicTherapyState extends State<MusicTherapy> {
           ),
           ListTileIconCreators(
             title: 'Check out our music in library',
-            onTap: () => Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
+            onTap: () =>
+                Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
             icon: Icons.music_note_sharp,
           ),
           ListTileIconCreators(
             title: 'Check out stories',
-            onTap: () => Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
+            onTap: () =>
+                Navigator.of(context).pushNamed(MusicGalleryScreen.routeName),
             icon: Icons.nightlife,
           ),
           const SizedBox(

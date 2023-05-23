@@ -14,20 +14,26 @@ class MusicGalleryScreen extends StatelessWidget {
           "image": "assets/red.jpg",
           "title": "Red Noise",
           "description": "This is a great music that will relac your mind ",
-          "audio": "https://dl.sndup.net/zksp/visualization.mp3"
+          "audio": "https://dl.sndup.net/xtwm/red.mp3"
         },
         {
           "image": "assets/pink.jpg",
           "title": "Pink Noise",
           "description": " ",
-          "audio": "https://dl.sndup.net/t2v3/pmr_2.mp3"
+          "audio": "https://dl.sndup.net/tttm/pink.mp3"
         },
         {
           "image": "assets/white.jpg",
           "title": "White Noise",
-          "description": " "
+          "description": " ",
+          "audio": "https://dl.sndup.net/y3gp/white.mp3"
         },
-        {"image": "assets/grey.jpg", "title": "Grey Noise", "description": " "},
+        {
+          "image": "assets/grey.jpg",
+          "title": "Grey Noise",
+          "description": " ",
+          "audio": "https://dl.sndup.net/gqqj/grey.mp3"
+        },
       ]
     },
     {

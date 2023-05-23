@@ -19,28 +19,28 @@ class MeditationTimer extends StatefulWidget {
     {
       'icon': Icons.notifications,
       'title': 'Default',
-      'music': 'assets/default.mp3'
+      'music': 'https://dl.sndup.net/bwnj/default.mp3'
     },
     {'icon': Icons.forest, 'title': 'Forest', 'music': 'assets/forest.mp3'},
     {
       'icon': Icons.nightlight,
       'title': 'Summer Night',
-      'music': 'assets/summer_night.mp3'
+      'music': 'https://dl.sndup.net/wgf4/summer_night.mp3'
     },
     {
       'icon': Icons.beach_access_rounded,
       'title': 'Beach',
-      'music': 'assets/beach.mp3'
+      'music': 'https://dl.sndup.net/s5vk/beach.mp3'
     },
     {
       'icon': Icons.nightlife,
       'title': 'Summer Rain',
-      'music': 'assets/summer_rain.mp3'
+      'music': 'https://dl.sndup.net/snt9/summer_rain.mp3'
     },
     {
       'icon': Icons.fireplace,
       'title': 'Stove Fire',
-      'music': 'assets/stove_fire.mp3'
+      'music': 'https://dl.sndup.net/q9rv/stove_fire.mp3'
     },
   ];
 
