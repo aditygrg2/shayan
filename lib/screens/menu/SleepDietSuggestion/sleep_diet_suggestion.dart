@@ -76,7 +76,7 @@ class SleepDietSuggestion extends StatelessWidget {
                         color: Theme.of(context).secondaryHeaderColor),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'sleep deprivation') {
+                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'sleep deprivation') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -102,7 +102,7 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'apnea') {
+                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'apnea') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -129,7 +129,7 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'isnsomia') {
+                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'isnsomia') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
