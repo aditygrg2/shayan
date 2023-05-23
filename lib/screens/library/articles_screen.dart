@@ -174,7 +174,7 @@ class ArticlesScreen extends StatelessWidget {
                   );
                 },
                 future: FirebaseFirestore.instance
-                    .collection('diet_suggestion')
+                    .collection('article')
                     .doc("healthy")
                     .get(),
               );

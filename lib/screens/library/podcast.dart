@@ -73,7 +73,7 @@ class Podcast extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pushNamed(
                     PodcastScreenPlay.routeName,
-                    arguments: doc
+                    arguments: doc['podcast']
                   );
                 },
                 child: Container(
