@@ -93,9 +93,9 @@ class CommunityScreen extends StatelessWidget {
                                       decoration: const InputDecoration(
                                           labelText: 'Image'),
                                       validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Please enter URL of the Image';
-                                        }
+                                        // if (value!.isEmpty) {
+                                        //   return 'Please enter URL of the Image';
+                                        // }
                                         return null;
                                       },
                                       onSaved: (value) {
@@ -136,14 +136,21 @@ class CommunityScreen extends StatelessWidget {
                                                 );
                                               },
                                             );
+                                            
                                             FirebaseFirestore.instance
                                                 .collection("community")
-                                                .add({
+                                                .add(image!=""?{
                                               'user': user,
                                               'type': 'article',
                                               'title': title,
                                               'description': description,
                                               'image': image,
+                                              'createdAt': Timestamp.now()
+                                            }:{
+                                              'user': user,
+                                              'type': 'article',
+                                              'title': title,
+                                              'description': description,
                                               'createdAt': Timestamp.now()
                                             }).then((value) {
                                               ScaffoldMessenger.of(context)
@@ -204,8 +211,9 @@ class CommunityScreen extends StatelessWidget {
                 children: [
                   ...docs.map((ele) {
                     return CommunityPost(
+                      docId: ele.id,
                       description: ele['description'],
-                      image: ele['image'],
+                      image:ele.data().containsKey("image")? ele['image']:null,
                       title: ele['title'],
                       name: ele['user'],
                       type: ele['type'],
