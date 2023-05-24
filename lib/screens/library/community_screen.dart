@@ -172,7 +172,7 @@ class CommunityScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.add,
                     color: Theme.of(context).iconTheme.color,
                     size: 32,

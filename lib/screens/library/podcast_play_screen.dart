@@ -109,7 +109,7 @@ class PodcastScreenPlay extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: Text("All Episodes"),
+              child: const Text("All Episodes"),
             ),
             ...(podcast['episodes']as List).map((e) {
               int index = (podcast['episodes']as List).indexWhere((element) => element.toString()==e.toString());
@@ -118,8 +118,8 @@ class PodcastScreenPlay extends StatelessWidget {
                 child: PlayEpisode(
                   description: e['description'],
                   episodeName: e['title'],
-                  index: (index+1).toString(),
-                  episode: e['episode'],
+                  index: index,
+                  episodes: podcast['episodes'],
                 ),
               );
             }).toList(),

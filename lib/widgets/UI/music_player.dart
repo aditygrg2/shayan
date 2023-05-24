@@ -6,9 +6,11 @@ class MusicPlayer extends StatelessWidget {
   static String routeName = '/music-player';
   @override
   Widget build(BuildContext context) {
-    final playlist =
-        ModalRoute.of(context)?.settings.arguments as List<Map<String, String>>;
-        print(playlist);
+
+    print(ModalRoute.of(context)?.settings.arguments);
+    final arguments =
+        ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>;
+    final playlist = arguments['playlist']  as List<dynamic>;
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
@@ -16,7 +18,7 @@ class MusicPlayer extends StatelessWidget {
         child: Column(
           children: [
             FavouriteBar(),
-            PlayListPlayer(playlist),
+            PlayListPlayer(playlist: playlist,index: arguments['index'],),
           ],
         ),
       ),
