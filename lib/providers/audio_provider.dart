@@ -13,7 +13,10 @@ class AudioProvider extends ChangeNotifier {
     player.setLoopMode(LoopMode.all).then((value) {});
   }
 
-  Future load(String uri)async{
+  Future load(String? uri)async{
+    if(uri==null){
+      return Future(() => false);
+    }
     try{
     duration = Duration.zero;
     progress = Duration.zero;

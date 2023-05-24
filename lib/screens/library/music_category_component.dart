@@ -26,10 +26,11 @@ class MusicCategory extends StatelessWidget {
             shrinkWrap: true,
             children: [
               ...data.map((e) {
+                int index = data.indexOf(e);
                 return GestureDetector(
                   onTap: () {
                     Navigator.of(context)
-                        .pushNamed(MusicPlayer.routeName, arguments: data);
+                        .pushNamed(MusicPlayer.routeName, arguments: {'playlist':data,'index':index});
                   },
                   child: Container(
                     width: 250,

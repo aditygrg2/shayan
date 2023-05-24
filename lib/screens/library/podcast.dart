@@ -58,15 +58,15 @@ class Podcast extends StatelessWidget {
               return Center(child: CircularProgressIndicator(),);
             }
             return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               childAspectRatio: 1.7 / 3,
             ),
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(10),
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(10),
             itemBuilder: (context, index) {
               Map<String,dynamic>? doc =  snapshot.data?.docs[index].data();
               return GestureDetector(

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/screens/library/library_screen.dart';
+import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
 class PlayListPlayer extends StatefulWidget {
   bool isPlaying = false;
-  List<Map<String, String>> playlist;
+  List<dynamic> playlist;
   Duration progress = const Duration();
-  PlayListPlayer(this.playlist);
   int index = 0;
+  PlayListPlayer({required this.playlist,this.index=0});
   @override
   State<PlayListPlayer> createState() => _PlayListPlayerState();
 }
@@ -37,9 +38,28 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
   Widget build(BuildContext context) {
     var audioProvider = Provider.of<AudioProvider>(context);
     if (load) {
-      audioProvider.load(widget.playlist[widget.index]['audio'] as String);
-      if (widget.isPlaying) audioProvider.play();
-      load = false;
+      audioProvider.load(widget.playlist[widget.index]['audio']).then((value) {
+        if(value==false){
+          showModalBottomSheet(context: context, isScrollControlled: true,builder: (context) {
+            return Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(color: Colors.white),
+              padding: const EdgeInsets.all(10),
+              child: Center(
+                child: ElevatedButtonWithoutIcon(onPressedButton: (){
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },text: "Something wrong happened, Go Back!!",),
+              ),
+            );
+          },);
+          return;
+        }
+        if (widget.isPlaying) audioProvider.play();
+        load = false;
+      });
     }
     return audioProvider.duration.inMilliseconds > 0
         ? WillPopScope(
@@ -60,7 +80,7 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                   // it will be changed to network image later when images are uploaded
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
+                    child: Image.network(
                       widget.playlist[widget.index]['image'] as String,
                       fit: BoxFit.cover,
                     ),
@@ -109,8 +129,8 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all(CircleBorder()),
-                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        shape: MaterialStateProperty.all(const CircleBorder()),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
@@ -132,8 +152,8 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all(CircleBorder()),
-                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        shape: MaterialStateProperty.all(const CircleBorder()),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
@@ -149,8 +169,8 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.all(CircleBorder()),
-                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        shape: MaterialStateProperty.all(const CircleBorder()),
+                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
@@ -184,7 +204,7 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
               children: [
                 Text(
                   "Loading...",
-                  style: TextStyle(fontSize: 15),
+                  style:const  TextStyle(fontSize: 15),
                 ),
                 SizedBox(
                   height: 10,
