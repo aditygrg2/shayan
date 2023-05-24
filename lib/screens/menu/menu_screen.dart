@@ -56,7 +56,6 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/mental_exercises.png',
       'routes': MentalExercise.routeName
     },
-    {'text': 'Sleep Achievement', 'imagePath': 'assets/sleep_achievement.png'},
     {
       'text': 'Music Therapy',
       'imagePath': 'assets/podcasts_stories.png',

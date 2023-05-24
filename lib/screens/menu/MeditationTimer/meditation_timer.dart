@@ -91,7 +91,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   ),
                 ),
                 !widget.isShowPicker
-                    ? CountDownTimerComponent(widget.datetime,audio)
+                    ? CountDownTimerComponent(DateTime(0), audio)
                     : TimePicker(callBackDateTime),
               ],
             ),
@@ -143,9 +143,15 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           },
                           child: Column(children: [
                             Expanded(
-                                child: Icon(widget.options[index]['icon'])),
+                              child: Icon(
+                                widget.options[index]['icon'],
+                              ),
+                            ),
                             Expanded(
-                                child: Text(widget.options[index]['title']))
+                              child: Text(
+                                widget.options[index]['title'],
+                              ),
+                            )
                           ]),
                         ),
                       );
