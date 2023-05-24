@@ -78,21 +78,19 @@ class _SleepFormState extends State<SleepForm> {
   late String valueSelected = timeValue;
 
   void _valueHandler(value, key) {
-      if (key == "1") {
-        value1 = value;
-      } else if (key == '2') {
-        value2 = value;
-      } else if (key == '3') {
-        value3 = value;
-      } else if (key == '4') {
-        value4 = value;
-      } else if (key == '5') {
-        value5 = value;
-      } else if (key == '6') {
-        value6 = value;
-      }
-
-      
+    if (key == "1") {
+      value1 = value;
+    } else if (key == '2') {
+      value2 = value;
+    } else if (key == '3') {
+      value3 = value;
+    } else if (key == '4') {
+      value4 = value;
+    } else if (key == '5') {
+      value5 = value;
+    } else if (key == '6') {
+      value6 = value;
+    }
   }
 
   bool valueSelectorForWatch() {
@@ -138,7 +136,7 @@ class _SleepFormState extends State<SleepForm> {
     int length = _myDocCount.length;
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
-    
+
     print(value1);
     print(value2);
     print(value3);
@@ -301,9 +299,8 @@ class _SleepFormState extends State<SleepForm> {
                             ),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context).secondaryHeaderColor
-                            ),
+                                fontSize: 18,
+                                color: Theme.of(context).secondaryHeaderColor),
                           ),
                         ),
                       ),
@@ -402,12 +399,23 @@ class _SleepFormState extends State<SleepForm> {
                         height: 10,
                       ),
                       loading
-                          ? Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor))
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Theme.of(context).secondaryHeaderColor,
+                              ),
+                            )
                           : Center(
                               child: ElevatedButtonWithoutIcon(
                                 text: 'Submit',
                                 onPressedButton: () async {
-                                  _submitHandler(value1, value2, value3,value4,value5,value6);
+                                  _submitHandler(
+                                    value1,
+                                    value2,
+                                    value3,
+                                    value4,
+                                    value5,
+                                    value6,
+                                  );
                                 },
                               ),
                             ),

@@ -11,14 +11,15 @@ class SleepScoreFormInput extends StatefulWidget {
   TimeOfDay? initialValue;
   int? initialText;
 
-  SleepScoreFormInput(
-      {this.keya = '2',
-      this.question,
-      this.type,
-      this.onSubmit,
-      this.value,
-      this.initialValue,
-      this.initialText});
+  SleepScoreFormInput({
+    this.keya = '2',
+    this.question,
+    this.type,
+    this.onSubmit,
+    this.value,
+    this.initialValue,
+    this.initialText,
+  });
 
   @override
   State<SleepScoreFormInput> createState() => _SleepScoreFormInputState();
@@ -88,7 +89,8 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
                         : pickedDate.hour.toString();
                     String? minutes = pickedDate.minute.toString();
                     String? mode = something > 12 ? 'PM' : 'AM';
-                    _controller.text = '${hour.toString().padLeft(2,'0')}:${minutes.toString().padLeft(2,'0')} $mode';
+                    _controller.text =
+                        '${hour.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')} $mode';
                     widget.value!('$hour:$minutes $mode', widget.keya);
                   },
                 ),
