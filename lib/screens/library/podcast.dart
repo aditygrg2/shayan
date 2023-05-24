@@ -55,7 +55,7 @@ class Podcast extends StatelessWidget {
           ),
           FutureBuilder(builder: (context, snapshot) {
             if(!snapshot.hasData){
-              return Center(child: CircularProgressIndicator(),);
+              return const Center(child: CircularProgressIndicator(),);
             }
             return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
