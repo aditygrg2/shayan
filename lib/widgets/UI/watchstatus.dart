@@ -15,7 +15,6 @@ class WatchStatus extends StatefulWidget {
 }
 
 class _WatchStatusState extends State<WatchStatus> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,7 +27,10 @@ class _WatchStatusState extends State<WatchStatus> {
 
         bool status = await widget.valueSelector!();
 
-        await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).update({
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser?.uid)
+            .update({
           'isWatchConnected': true,
         });
 
@@ -59,7 +61,7 @@ class _WatchStatusState extends State<WatchStatus> {
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             border: Border.all(
               width: 2,
-              color: Colors.black,
+              color: Theme.of(context).dividerColor,
             ),
             color:
                 widget.status! ? Colors.green : Theme.of(context).canvasColor),
@@ -78,7 +80,9 @@ class _WatchStatusState extends State<WatchStatus> {
                 widget.status!
                     ? 'Connected to Google Fit'
                     : 'Connect to Google Fit',
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
               ),
             ),
           ],

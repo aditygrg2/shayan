@@ -21,7 +21,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                IconButton(icon: const Icon(Icons.add,color: Colors.black,size: 40,),onPressed: (){
+                IconButton(icon: Icon(Icons.add,color: Theme.of(context).iconTheme.color,size: 40,),onPressed: (){
                   setState(() {
                     widget.isWriting=!widget.isWriting;
                   });
@@ -115,13 +115,12 @@ class _ResolutionCardsState extends State<ResolutionCards> {
                         ),
                         cursorHeight: 20,
                         textAlign: TextAlign.left,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           labelText: 'Enter your notes here...',
                           alignLabelWithHint: false,
                           floatingLabelBehavior: FloatingLabelBehavior.never,
-                          fillColor: Colors.white,
+                          fillColor: Theme.of(context).primaryColor,
                           filled: true,
-                    
                           border: OutlineInputBorder(
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.all(Radius.circular(10))

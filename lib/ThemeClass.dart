@@ -5,17 +5,16 @@ class ThemeClass {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     canvasColor: const Color.fromRGBO(251, 145, 92, 1),
-    accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
-    cardColor: const Color.fromARGB(153, 248, 222, 55),
+    accentColor: Color.fromARGB(236, 251, 145, 92),
+    cardColor: const Color.fromRGBO(251, 145, 92, 1),
     fontFamily: 'Roboto',
-    secondaryHeaderColor: Colors.black,
+    secondaryHeaderColor: Color.fromRGBO(36, 37, 64, 1),
     brightness: Brightness.light,
-    iconTheme: const IconThemeData(
-      color: Colors.black
-    ),
+    iconTheme: const IconThemeData(color: Colors.black),
     highlightColor: Colors.white,
     buttonColor: const Color.fromRGBO(247, 219, 198, 1),
-    splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
+    splashColor: Colors.white,
+    dividerColor: Colors.black,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
@@ -70,36 +69,36 @@ class ThemeClass {
       ),
       labelSmall: TextStyle(
         fontSize: 10,
-        color: Colors.black
-      )
+        color: Colors.black,
+      ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
     scaffoldBackgroundColor: Color.fromRGBO(36, 37, 64, 1),
     primaryColor: Color.fromRGBO(36, 37, 64, 1),
-    appBarTheme:const AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: Color.fromRGBO(36, 37, 64, 1),
     ),
-    iconTheme:const IconThemeData(
-      color: Colors.white
+    iconTheme: const IconThemeData(
+      color: Colors.white,
     ),
     secondaryHeaderColor: Colors.white,
     brightness: Brightness.dark,
     canvasColor: const Color.fromRGBO(36, 37, 64, 1),
     highlightColor: Colors.amber,
     accentColor: Color.fromRGBO(36, 37, 64, 1),
-    cardColor: const Color.fromRGBO(71, 152, 146, 1),
+    cardColor: const Color.fromRGBO(114, 129, 233, 1),
+    splashColor: Color.fromRGBO(88, 203, 221, 1),
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
-    splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
-    
+    dividerColor: Color.fromRGBO(247, 219, 198, 1),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          const Color.fromRGBO(247, 219, 198, 1),
+          const Color.fromRGBO(133, 140, 190, 1),
         ),
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       ),
     ),
     radioTheme: RadioThemeData(
@@ -121,10 +120,11 @@ class ThemeClass {
       headlineSmall: TextStyle(
         fontSize: 15,
         fontFamily: 'OpenSans',
+        color: Colors.white,
       ),
       headlineMedium: TextStyle(
         fontSize: 20,
-        color: Colors.black,
+        color: Colors.white,
         fontWeight: FontWeight.w400,
         fontFamily: 'OpenSans',
       ),
@@ -151,8 +151,8 @@ class ThemeClass {
       ),
       labelSmall: TextStyle(
         fontSize: 10,
-        color: Colors.white
-      )
+        color: Colors.white,
+      ),
     ),
   );
 }

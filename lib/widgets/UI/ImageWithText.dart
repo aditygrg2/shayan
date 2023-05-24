@@ -11,7 +11,7 @@ class ImageWithText extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GridTile(
         footer: GridTileBar(
-          backgroundColor: Colors.black54,
+          backgroundColor: Theme.of(context).secondaryHeaderColor,
           title: Text(title,textAlign: TextAlign.center,),
         ),
         child: Image.network(

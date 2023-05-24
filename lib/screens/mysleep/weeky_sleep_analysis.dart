@@ -46,7 +46,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width - 20,
@@ -83,7 +83,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                         ),
                         maxY: 11,
                         groupsSpace: 12,
-                        backgroundColor: Colors.white,
+                        backgroundColor: Theme.of(context).primaryColor,
                         barTouchData: BarTouchData(
                             enabled: true,
                             touchTooltipData: BarTouchTooltipData(
@@ -92,7 +92,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                                 var y =
                                     chartProvider.getChartData[groupIndex].y;
                                 return BarTooltipItem(y.toString(),
-                                    const TextStyle(color: Colors.white));
+                                    TextStyle(color: Theme.of(context).primaryColor));
                               },
                             )),
                         barGroups: chartProvider.getChartData.map(

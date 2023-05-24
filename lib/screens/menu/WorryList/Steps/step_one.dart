@@ -86,9 +86,9 @@ class StepOne extends StatelessWidget {
                                       maxLines: 3,
                                       cursorHeight: 20,
                                       textAlign: TextAlign.left,
-                                      decoration: const InputDecoration(
+                                      decoration: InputDecoration(
                                         labelText: 'List your worry here!',
-                                        fillColor: Colors.white,
+                                        fillColor: Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {
@@ -105,9 +105,9 @@ class StepOne extends StatelessWidget {
                                       maxLines: 3,
                                       cursorHeight: 20,
                                       textAlign: TextAlign.left,
-                                      decoration: const InputDecoration(
+                                      decoration:  InputDecoration(
                                         labelText: 'List your situation here!',
-                                        fillColor: Colors.white,
+                                        fillColor: Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {
@@ -201,9 +201,9 @@ class StepOne extends StatelessWidget {
                                       maxLines: 3,
                                       cursorHeight: 20,
                                       textAlign: TextAlign.left,
-                                      decoration: const InputDecoration(
+                                      decoration:  InputDecoration(
                                         labelText: 'List your worry here!',
-                                        fillColor: Colors.white,
+                                        fillColor: Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {
@@ -220,9 +220,9 @@ class StepOne extends StatelessWidget {
                                       maxLines: 3,
                                       cursorHeight: 20,
                                       textAlign: TextAlign.left,
-                                      decoration: const InputDecoration(
+                                      decoration:  InputDecoration(
                                         labelText: 'List your situation here!',
-                                        fillColor: Colors.white,
+                                        fillColor: Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {

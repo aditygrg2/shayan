@@ -31,9 +31,9 @@ class SleepDietSuggestion extends StatelessWidget {
                 onPressed: () async {
                   await launchUrl(Uri.parse(e['link'].toString()));
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.insert_link_rounded,
-                  color: Colors.black,
+                  color: Theme.of(context).iconTheme.color,
                 ),
               ),
               const SizedBox(

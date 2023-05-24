@@ -94,16 +94,9 @@ class MenuScreen extends StatelessWidget {
         TmbDescriptionCards(
           title: "Community",
           subtitle:
-              "Engage with other people",
+              "Connect with a supportive community of sleep enthusiasts, where you can share experiences, exchange tips, and find encouragement on your path to better sleep.",
           image: "assets/library_community.png",
           route: CommunityScreen.routeName,
-        ),
-        TmbDescriptionCards(
-          title: "Store",
-          subtitle:
-              "Buy",
-          image: "assets/library_community.png",
-          route: StoreScreen.routeName,
         ),
         Container(
           width: MediaQuery.of(context).size.width - 20,

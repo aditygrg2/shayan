@@ -17,7 +17,7 @@ class BlockCards extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: Colors.black,
+            color: Theme.of(context).dividerColor,
             style: BorderStyle.solid,
             width: 2,
           ),

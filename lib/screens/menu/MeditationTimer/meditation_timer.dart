@@ -3,6 +3,7 @@ import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
@@ -21,7 +22,11 @@ class MeditationTimer extends StatefulWidget {
       'title': 'Default',
       'music': 'https://dl.sndup.net/bwnj/default.mp3'
     },
-    {'icon': Icons.forest, 'title': 'Forest', 'music': 'assets/forest.mp3'},
+    {
+      'icon': Icons.forest,
+      'title': 'Forest',
+      'music': 'https://dl.sndup.net/wgf4/summer_night.mp3',
+    },
     {
       'icon': Icons.nightlight,
       'title': 'Summer Night',
@@ -105,7 +110,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Theme.of(context).dividerColor),
                     ),
                     child: Column(children: [
                       Expanded(
@@ -130,7 +135,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                             ? BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 border: Border.all(
-                                  color: Colors.black,
+                                  color: Theme.of(context).dividerColor,
                                   width: 2,
                                 ),
                               )
@@ -177,9 +182,9 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           widget.isShowPicker = !widget.isShowPicker;
                         });
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.stop_rounded,
-                        color: Colors.black,
+                        color: Theme.of(context).iconTheme.color,
                       ),
                     ),
                   ),
@@ -220,7 +225,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                                 ? Icons.play_arrow
                                 : Icons.pause)
                             : Icons.play_arrow,
-                        color: Colors.black,
+                        color: Theme.of(context).iconTheme.color,
                       )),
                 ),
               ],
@@ -229,10 +234,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
           ListTileIconCreators(
             icon: Icons.shape_line_outlined,
             title: 'Check out meditation exercises',
-            onTap: () => Navigator.of(context).pushNamed(
-              MentalExerciseSolution.routeName,
-              arguments: 'MEDITATION',
-            ),
+            onTap: () =>
+                Navigator.of(context).pushNamed(MentalExercise.routeName),
           ),
           const SizedBox(
             height: 50,

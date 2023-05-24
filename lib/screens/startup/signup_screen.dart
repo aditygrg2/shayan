@@ -169,7 +169,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           key: const ValueKey('password'),
                           obscureText: true,
                           obscuringCharacter: '●',
-                          style: const TextStyle(color: Colors.black),
+                          style: TextStyle(color: Theme.of(context).secondaryHeaderColor),
                           decoration:
                               const InputDecoration(labelText: 'Password'),
                           onSaved: (value) {
@@ -241,11 +241,11 @@ class _SignupScreenState extends State<SignupScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Already have an account?',
                 style: TextStyle(shadows: [
                   Shadow(
-                    color: Colors.black,
+                    color: Theme.of(context).secondaryHeaderColor,
                     offset: Offset(0, -5),
                   ),
                 ], color: Colors.transparent),
@@ -255,19 +255,19 @@ class _SignupScreenState extends State<SignupScreen> {
                 onPressed: () {
                   Navigator.of(context).popAndPushNamed(LoginScreen.routeName);
                 },
-                child: const Text(
+                child: Text(
                   'Login',
                   style: TextStyle(
                       fontSize: 15,
                       shadows: [
                         Shadow(
-                          color: Colors.black,
+                          color: Theme.of(context).secondaryHeaderColor,
                           offset: Offset(0, -5),
                         ),
                       ],
                       color: Colors.transparent,
                       decoration: TextDecoration.underline,
-                      decorationColor: Colors.black),
+                      decorationColor: Theme.of(context).secondaryHeaderColor),
                 ),
               )
             ],

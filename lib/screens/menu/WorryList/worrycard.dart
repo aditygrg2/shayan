@@ -41,7 +41,7 @@ class Worrycard extends StatelessWidget {
           ),
         ),
         horizontalTitleGap: 10,
-        tileColor: Colors.white,
+        tileColor: Theme.of(context).primaryColor,
         // contentPadding: EdgeInsets.all(10),
         title: Container(
           padding: const EdgeInsets.symmetric(vertical: 10),

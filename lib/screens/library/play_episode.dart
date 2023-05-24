@@ -5,15 +5,16 @@ import 'package:provider/provider.dart';
 
 class PlayEpisode extends StatefulWidget {
   String index;
-  String episodeName = "Some Error Occured";
-  String description = "Sorry for incovenience";
+  String episodeName = "Something happened";
+  String description = "Sorry for inconvenience.";
   String episode;
   bool isPlaying = false;
-  PlayEpisode(
-      {required this.episodeName,
-      required this.description,
-      required this.index,
-      required this.episode});
+  PlayEpisode({
+    required this.episodeName,
+    required this.description,
+    required this.index,
+    required this.episode,
+  });
   @override
   State<PlayEpisode> createState() => _PlayEpisodeState();
 }
@@ -35,18 +36,18 @@ class _PlayEpisodeState extends State<PlayEpisode> {
                     child: Text(
                       "Episode ${widget.index}. ${widget.episodeName}",
                       style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                     ))),
             Container(
                 padding: const EdgeInsets.all(7),
                 child: IconButton(
                   onPressed: () {
-                    if(widget.isPlaying){
+                    if (widget.isPlaying) {
                       audioProvider.pause();
                       setState(() {
                         widget.isPlaying = false;
                       });
-                    }else{
+                    } else {
                       setState(() {
                         widget.isPlaying = true;
                       });
@@ -54,8 +55,12 @@ class _PlayEpisodeState extends State<PlayEpisode> {
                       audioProvider.play();
                     }
                   },
-                  icon: Icon(widget.isPlaying? Icons.pause_rounded: Icons.play_arrow_rounded,
-                      color: Colors.black, size: 32),
+                  icon: Icon(
+                      widget.isPlaying
+                          ? Icons.pause_rounded
+                          : Icons.play_arrow_rounded,
+                      color: Theme.of(context).iconTheme.color,
+                      size: 32),
                 )),
           ],
         ),
@@ -69,13 +74,17 @@ class _PlayEpisodeState extends State<PlayEpisode> {
         SizedBox(
           height: 10,
         ),
-        if(widget.isPlaying) AudioPlayerWithSlider(widget.episode,false),
+        if (widget.isPlaying) AudioPlayerWithSlider(widget.episode, false),
         Container(
           margin: EdgeInsets.all(8),
           height: 1,
           width: double.infinity,
           child: Text(''),
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).dividerColor,
+            ),
+          ),
         ),
       ],
     );

@@ -20,7 +20,7 @@ class _LibraryCardState extends State<LibraryCard> {
             bottomLeft: Radius.circular(15),
             bottomRight: Radius.circular(15)),
         border: Border.all(
-          color: Colors.black,
+          color: Theme.of(context).dividerColor,
         ),
       ),
       child: Column(

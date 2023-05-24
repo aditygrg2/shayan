@@ -68,9 +68,9 @@ class _InputBoxState extends State<InputBox> {
                     is24HourMode: false,
                     isShowSeconds: false,
                     normalTextStyle:
-                        const TextStyle(fontSize: 24, color: Colors.black54),
+                        TextStyle(fontSize: 24, color: Theme.of(context).disabledColor),
                     highlightedTextStyle:
-                        const TextStyle(fontSize: 28, color: Colors.black87),
+                         TextStyle(fontSize: 28, color: Theme.of(context).secondaryHeaderColor),
                     spacing: 45,
                     itemHeight: 80,
                     isForce2Digits: true,

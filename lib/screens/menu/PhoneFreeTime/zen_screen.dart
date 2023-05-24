@@ -68,10 +68,10 @@ class _ZenScreenState extends State<ZenScreen> {
                 Navigator.of(context).pop();
               },
               controller: controller,
-              textStyle: const TextStyle(
+              textStyle: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 37,
-                  color: Colors.white),
+                  color: Theme.of(context).primaryColor),
               isTimerTextShown: true,
               neumorphicEffect: true,
               duration: (args as int) * 60,
@@ -79,7 +79,7 @@ class _ZenScreenState extends State<ZenScreen> {
                 const Color.fromRGBO(255, 255, 255, 1),
                 Theme.of(context).canvasColor
               ]),
-              backgroudColor: Colors.black,
+              backgroudColor: Theme.of(context).secondaryHeaderColor,
               neonGradient: LinearGradient(
                 colors: [
                   const Color.fromRGBO(255, 255, 255, 1),

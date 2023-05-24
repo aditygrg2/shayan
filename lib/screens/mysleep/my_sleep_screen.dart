@@ -116,7 +116,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 2),
+              border: Border.all(color: Theme.of(context).dividerColor, width: 2),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
@@ -133,9 +133,9 @@ class _MySleepScreenState extends State<MySleepScreen> {
                   child: IconButton(
                     onPressed: () =>
                         Navigator.of(context).pushNamed(SleepForm.routeName),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_forward_rounded,
-                      color: Colors.black,
+                      color: Theme.of(context).iconTheme.color,
                       size: 30,
                     ),
                   ),

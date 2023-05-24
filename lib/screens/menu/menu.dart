@@ -15,11 +15,10 @@ class Menu extends StatelessWidget {
           radius: 0.3,
           focalRadius: 0.3,
           colors: [
-            Colors.white,
-            Theme.of(context).canvasColor,
+            Theme.of(context).splashColor,
+            Theme.of(context).cardColor,
           ],
         ),
-        border: Border.all(color: Colors.black),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),

@@ -247,8 +247,9 @@ class _MainState extends State<Main> {
                       once = false;
                       return SplashScreen();
                     }
-                    else
-                    return HomeScreen();
+                    else {
+                      return HomeScreen();
+                    }
                   } else {
                     return HomeScreen();
                   }
@@ -300,7 +301,6 @@ class _MainState extends State<Main> {
               MapScreen.routeName: (ctx) => MapScreen(),
               Sleepiness.routeName: (ctx) => Sleepiness(),
               StoreScreen.routeName: (ctx) => StoreScreen(),
-
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

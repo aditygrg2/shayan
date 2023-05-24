@@ -28,6 +28,7 @@ class _SleepFormState extends State<SleepForm> {
   String? value6;
   bool loading = false;
   bool status = false;
+  DateTime chooser = DateTime.now();
 
   final List<Map<dynamic, dynamic>> _inputQuestions = [
     {
@@ -285,9 +286,9 @@ class _SleepFormState extends State<SleepForm> {
                           Navigator.of(context)
                               .popAndPushNamed(HomeScreen.routeName);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.arrow_back_rounded,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 35,
                         ),
                       ),
@@ -307,14 +308,14 @@ class _SleepFormState extends State<SleepForm> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.calendar_month,
-                          color: Colors.blue,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                         onPressed: () {
                           showDatePicker(
                             context: context,
-                            initialDate: DateTime.now(),
+                            initialDate: chooser,
                             firstDate: DateTime.now().subtract(
                               const Duration(days: 30),
                             ),
@@ -324,6 +325,7 @@ class _SleepFormState extends State<SleepForm> {
                               if (value != null) {
                                 setState(
                                   () {
+                                    chooser = value;
                                     valueSelected = value.toString();
                                   },
                                 );

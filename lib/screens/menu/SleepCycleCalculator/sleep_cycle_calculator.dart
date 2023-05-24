@@ -98,7 +98,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
           ),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 2),
+              border: Border.all(color: Theme.of(context).dividerColor, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             margin: const EdgeInsets.all(20),

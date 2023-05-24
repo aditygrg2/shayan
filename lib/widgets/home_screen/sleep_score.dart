@@ -45,7 +45,7 @@ class _SleepScoreState extends State<SleepScore> {
                   Colors.amber
                 ],
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
             ),
           ),
           ElevatedButton(
