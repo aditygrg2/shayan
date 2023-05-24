@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/community_post.dart';
 import 'package:night_gschallenge/screens/library/community_post.dart';
+import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
@@ -27,66 +29,150 @@ class CommunityScreen extends StatelessWidget {
               ),
               IconButton(
                   onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      backgroundColor: Colors.transparent,
-                      builder: (context) {
-                        return Center(
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            height: 600,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  child: Text(
-                                   "Create Post",
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                    String title = "", description = "", image = "";
+                    final formKey = GlobalKey<FormState>();
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Scaffold(
+                          body: Container(
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 15),
+                            child: Center(
+                              child: Form(
+                                key: formKey,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 10),
+                                      child: const Text(
+                                        "Create Post",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    TextFormField(
+                                      decoration: const InputDecoration(
+                                          labelText: 'Post Title'),
+                                      validator: (String? value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please enter title of Post';
+                                        }
+                                        return null;
+                                      },
+                                      onSaved: (value) {
+                                        title = value!;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextFormField(
+                                      decoration: const InputDecoration(
+                                          labelText: 'Post Description'),
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please enter Description of your Post';
+                                        }
+                                        return null;
+                                      },
+                                      onSaved: (value) {
+                                        description = value!;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextFormField(
+                                      decoration: const InputDecoration(
+                                          labelText: 'Image'),
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please enter URL of the Image';
+                                        }
+                                        return null;
+                                      },
+                                      onSaved: (value) {
+                                        image = value!;
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        if (formKey.currentState!.validate()) {
+                                          formKey.currentState!.save();
+                                          String? user = FirebaseAuth.instance
+                                              .currentUser?.displayName;
+                                          if (user == null) {
+                                            Navigator.of(context)
+                                                .popUntil((route) => true);
+                                            Navigator.of(context).pushNamed(
+                                                LoginScreen.routeName);
+                                          } else {
+                                            showModalBottomSheet(
+                                              context: context,
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              builder: (context) {
+                                                return Container(
+                                                  height: MediaQuery.of(context)
+                                                      .size
+                                                      .height,
+                                                  child: Center(
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                    color: Theme.of(context)
+                                                        .secondaryHeaderColor,
+                                                  )),
+                                                );
+                                              },
+                                            );
+                                            FirebaseFirestore.instance
+                                                .collection("community")
+                                                .add({
+                                              'user': user,
+                                              'type': 'article',
+                                              'title': title,
+                                              'description': description,
+                                              'image': image,
+                                              'createdAt': Timestamp.now()
+                                            }).then((value) {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
+                                                content: Container(
+                                                  child: const Text(
+                                                      "Successfully created Post"),
+                                                ),
+                                              ));
+                                              Navigator.of(context).popUntil(
+                                                  ModalRoute.withName(
+                                                      CommunityScreen
+                                                          .routeName));
+                                            });
+                                          }
+                                        }
+                                      },
+                                      child: const Text('Submit'),
+                                    ),
+                                  ],
                                 ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  child: const Text(
-                                      "Enter Title of the post"),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  child: TextField(
-                                    // controller: timeController,
-                                    key: const ValueKey('1'),
-                                    onTap: () {
-                                    
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  child: const Text("Enter Task Name"),
-                                ),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 6),
-                                  child: TextField(
-                                    // controller: taskController,
-                                    key: const ValueKey('2'),
-                                  ),
-                                ),
-                                Center(child: Text("")),
-                              ],
+                              ),
                             ),
                           ),
-                        );
-                      },
+                        ),
+                      ),
                     );
                   },
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add,
                     color: Colors.black,
                     size: 32,
@@ -107,8 +193,8 @@ class CommunityScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 500,
                   padding: const EdgeInsets.all(15),
-                  child: Center(
-                      child: const Text(
+                  child: const Center(
+                      child: Text(
                     "No Posts Available",
                     style: TextStyle(fontSize: 22),
                   )),

@@ -12,7 +12,7 @@ class MusicPlayer extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
