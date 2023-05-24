@@ -44,7 +44,7 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
             return Container(
               width: double.infinity,
               height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(color: Colors.white),
+              decoration: const BoxDecoration(color: Colors.white),
               padding: const EdgeInsets.all(10),
               child: Center(
                 child: ElevatedButtonWithoutIcon(onPressedButton: (){

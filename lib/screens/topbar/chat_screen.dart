@@ -16,7 +16,7 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   final ScrollController _scrollController = ScrollController();
   void getMessage(String text) async {
-    var id = await FirebaseAuth.instance.currentUser?.uid;
+    var id = FirebaseAuth.instance.currentUser?.uid;
     var user =
         await FirebaseFirestore.instance.collection('users').doc(id).get();
 
