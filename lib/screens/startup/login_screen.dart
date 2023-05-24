@@ -107,10 +107,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           key: const ValueKey('password'),
                           obscureText: true,
                           obscuringCharacter: '●',
-                          style: const TextStyle(color: Colors.black),
-                          decoration: const InputDecoration(
-                              labelText: 'Password',
-                              suffixStyle: TextStyle(color: Colors.black)),
+                          style: TextStyle(
+                              color: Theme.of(context).secondaryHeaderColor),
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            suffixStyle: TextStyle(
+                              color: Theme.of(context).secondaryHeaderColor,
+                            ),
+                          ),
                           onSaved: (value) {
                             user_password = value!;
                           },
@@ -167,11 +171,11 @@ class _LoginScreenState extends State<LoginScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'New User?',
                 style: TextStyle(shadows: [
                   Shadow(
-                    color: Colors.black,
+                    color: Theme.of(context).secondaryHeaderColor,
                     offset: Offset(0, -5),
                   ),
                 ], color: Colors.transparent),
@@ -181,19 +185,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: () {
                   Navigator.of(context).popAndPushNamed(SignupScreen.routeName);
                 },
-                child: const Text(
+                child: Text(
                   'Create your account',
                   style: TextStyle(
                       fontSize: 15,
                       shadows: [
                         Shadow(
-                          color: Colors.black,
+                          color: Theme.of(context).secondaryHeaderColor,
                           offset: Offset(0, -5),
                         ),
                       ],
                       color: Colors.transparent,
                       decoration: TextDecoration.underline,
-                      decorationColor: Colors.black),
+                      decorationColor: Theme.of(context).secondaryHeaderColor),
                 ),
               )
             ],

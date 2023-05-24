@@ -70,16 +70,16 @@ class _ChatInputState extends State<ChatInput> {
               textCapitalization: TextCapitalization.sentences,
               autocorrect: true,
               enableSuggestions: true,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Write your message here...',
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).primaryColor,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),
                   borderSide: BorderSide(
-                    color: Colors.black,
+                    color: Theme.of(context).secondaryHeaderColor,
                     width: 3,
                   ),
                 ),
@@ -129,7 +129,7 @@ class _ChatInputState extends State<ChatInput> {
                             "Listening....",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Theme.of(context).secondaryHeaderColor,
                               fontWeight: FontWeight.normal,
                               fontSize: 32
                             ),
@@ -168,7 +168,7 @@ class _ChatInputState extends State<ChatInput> {
           ),
         ),
         IconButton(
-          color: Colors.black,
+          color: Theme.of(context).iconTheme.color,
           icon: const Icon(
             Icons.send,
           ),

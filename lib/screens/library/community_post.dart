@@ -131,7 +131,7 @@ class _CommunityPostState extends State<CommunityPost> {
                             widget.isLiked
                                 ? Icons.thumb_up
                                 : Icons.thumb_up_alt_outlined,
-                            color: Colors.black,
+                            color: Theme.of(context).iconTheme.color,
                           ),
                           onPressed: () {
                             setState(() {
@@ -150,7 +150,7 @@ class _CommunityPostState extends State<CommunityPost> {
                       IconButton(
                         icon: Icon(
                           Icons.comment,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                         onPressed: null,
                       ),
@@ -164,7 +164,7 @@ class _CommunityPostState extends State<CommunityPost> {
             ),
             Container(
               child: Text(""),
-              decoration: BoxDecoration(color: Colors.black),
+              decoration: BoxDecoration(color: Theme.of(context).dividerColor),
               height: 1,
               width: double.infinity,
             ),

@@ -77,13 +77,14 @@ class MentalExercise extends StatelessWidget {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                              color: Theme.of(context).canvasColor,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(30)),
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 2,
-                              )),
+                            color: Theme.of(context).canvasColor,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(30)),
+                            border: Border.all(
+                              color: Theme.of(context).dividerColor,
+                              width: 2,
+                            ),
+                          ),
                           width: double.infinity,
                           margin: const EdgeInsets.all(15),
                           padding: const EdgeInsets.all(15),
@@ -115,7 +116,10 @@ class MentalExercise extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                  child: Image.asset(card['image'].toString())),
+                                child: Image.asset(
+                                  card['image'].toString(),
+                                ),
+                              ),
                             ],
                           ),
                         ),

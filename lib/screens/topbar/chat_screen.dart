@@ -152,15 +152,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                     children: <Widget>[
                                       Text(
                                         chat['username'] ?? '',
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.black,
+                                          color: Theme.of(context).secondaryHeaderColor,
                                         ),
                                       ),
                                       Text(
                                         chat['value'],
-                                        style: const TextStyle(
-                                          color: Colors.black,
+                                        style: TextStyle(
+                                          color: Theme.of(context).secondaryHeaderColor,
                                         ),
                                         textAlign: condition
                                             ? TextAlign.end

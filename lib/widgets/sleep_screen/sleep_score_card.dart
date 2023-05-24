@@ -23,7 +23,7 @@ class SleepScoreCard extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.black,
+                color: Theme.of(context).dividerColor,
                 width: 2,
               ),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -34,9 +34,9 @@ class SleepScoreCard extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(300)),
-                      color: Colors.white,
+                      color: Theme.of(context).dividerColor,
                     ),
                     padding: const EdgeInsets.all(20.0),
                     child: Text(

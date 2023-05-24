@@ -533,7 +533,7 @@ class _MainFormState extends State<MainForm> {
                         },
                         icon: Icon(
                           Icons.arrow_back_rounded,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 35,
                         ),
                       ),

@@ -164,7 +164,7 @@ class SleepReportAnalysis extends StatelessWidget {
                                 ),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.black,
+                                    color: Theme.of(context).dividerColor,
                                   ),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(20),

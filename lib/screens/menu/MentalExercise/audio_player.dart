@@ -8,7 +8,7 @@ class AudioPlayerWithSlider extends StatefulWidget {
   String audio;
   bool isButtonNeeded = false;
   Duration progress = const Duration();
-  AudioPlayerWithSlider(this.audio,this.isButtonNeeded);
+  AudioPlayerWithSlider(this.audio, this.isButtonNeeded);
   @override
   State<AudioPlayerWithSlider> createState() => _AudioPlayerWithSliderState();
 }
@@ -41,7 +41,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
     }
     return WillPopScope(
       onWillPop: () {
-        if(widget.isPlaying) audioProvider.stop();
+        if (widget.isPlaying) audioProvider.stop();
         return Future(() => true);
       },
       child: audioProvider.duration.inMilliseconds > 0
@@ -60,8 +60,10 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                     onSeek: (value) {
                       audioProvider.seek(value);
                     },
-                    timeLabelTextStyle:
-                        TextStyle(fontSize: 15, color: Colors.black),
+                    timeLabelTextStyle: TextStyle(
+                      fontSize: 15,
+                      color: Theme.of(context).primaryColor,
+                    ),
                     timeLabelPadding: 15,
                     timeLabelType: TimeLabelType.remainingTime,
                   ),
@@ -69,17 +71,20 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                 const SizedBox(
                   height: 10,
                 ),
-              if (widget.isButtonNeeded)CircleAvatar(
-                  radius: 20,
-                  backgroundColor: Theme.of(context).canvasColor,
-                  child: IconButton(
-                    icon: Icon(
-                      widget.isPlaying ? Icons.pause : Icons.play_arrow_rounded,
-                      color: Colors.black,
+                if (widget.isButtonNeeded)
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Theme.of(context).canvasColor,
+                    child: IconButton(
+                      icon: Icon(
+                        widget.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow_rounded,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      onPressed: () => handlePlay(audioProvider),
                     ),
-                    onPressed: () => handlePlay(audioProvider),
                   ),
-                ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -89,11 +94,15 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
               padding: EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  Text("Loading...", style: TextStyle(fontSize: 15),),
+                  Text(
+                    "Loading...",
+                    style: TextStyle(fontSize: 15),
+                  ),
                   SizedBox(
                     height: 10,
                   ),
-                  CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                  CircularProgressIndicator(
+                      color: Theme.of(context).secondaryHeaderColor),
                 ],
               )),
     );

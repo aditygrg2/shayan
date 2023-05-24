@@ -36,7 +36,7 @@ class _WatchComponentState extends State<WatchComponent> {
             decoration: BoxDecoration(
               color: Theme.of(context).accentColor,
               borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: Colors.black),
+              border: Border.all(color: Theme.of(context).dividerColor),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -62,11 +62,11 @@ class _WatchComponentState extends State<WatchComponent> {
                 const SizedBox(
                   height: 10,
                 ),
-                const Text(
+                Text(
                   'Let\'s get your wearable connected. With a little bit of magic, your sleep data will automatically be pulled into your sleep tracker',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Theme.of(context).secondaryHeaderColor,
                     fontSize: 14,
                     fontFamily: 'Roboto',
                   ),
@@ -108,11 +108,11 @@ class _WatchComponentState extends State<WatchComponent> {
                                 ScaffoldMessenger.of(context)
                                     .clearMaterialBanners();
                               },
-                              child: const Text(
+                              child: Text(
                                 "Close",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black,
+                                  color: Theme.of(context).secondaryHeaderColor,
                                   fontSize: 15,
                                 ),
                               ),

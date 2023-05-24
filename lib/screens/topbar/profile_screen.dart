@@ -34,8 +34,8 @@ class ProfileInfo extends StatelessWidget {
           child: const Text(""),
           height: 1,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.black,
+          decoration: BoxDecoration(
+            color: Theme.of(context).dividerColor,
           ),
         )
       ]),
@@ -79,9 +79,9 @@ class ProfileScreen extends StatelessWidget {
                 top: 10,
                 left: MediaQuery.of(context).size.width / 2 - 90,
                 child: Container(
-                  child: const Icon(
+                  child: Icon(
                     Icons.person_outline_sharp,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                     size: 170,
                   ),
                 ),

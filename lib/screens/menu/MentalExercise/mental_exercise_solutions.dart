@@ -12,7 +12,6 @@ class MentalExerciseSolution extends StatelessWidget {
 
     final solution = Provider.of<MentalSolutionProvider>(context)
         .getSolution(args as String);
-    // get title  from routes
     return Scaffold(
       body: ListView(
         children: [

@@ -7,7 +7,7 @@ import 'package:neon_circular_timer/neon_circular_timer.dart';
 class CountDownTimerComponent extends StatefulWidget {
   DateTime datetime;
   AudioProvider audio;
-  CountDownTimerComponent(this.datetime,this.audio);
+  CountDownTimerComponent(this.datetime, this.audio);
   @override
   State<CountDownTimerComponent> createState() =>
       _CountDownTimerComponentState();
@@ -27,8 +27,7 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
       child: NeonCircularTimer(
         onComplete: () {
           widget.audio.stop().then((value) {
-
-           Navigator.of(context).pop();
+            Navigator.of(context).pop();
           });
         },
         textFormat: TextFormat.HH_MM_SS,
@@ -42,14 +41,17 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
         neumorphicEffect: true,
         outerStrokeColor: Colors.grey,
         innerFillGradient: LinearGradient(
-          colors: [Colors.white,Theme.of(context).canvasColor ],
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).canvasColor,
+          ],
         ),
         neonGradient: LinearGradient(colors: [
-          Theme.of(context).accentColor,
-          Theme.of(context).canvasColor
+          Theme.of(context).cardColor,
+          Theme.of(context).splashColor
         ]),
         strokeCap: StrokeCap.round,
-        innerFillColor: Colors.black12,
+        innerFillColor: Theme.of(context).primaryColor,
         backgroudColor: Theme.of(context).primaryColor,
         neonColor: Theme.of(context).accentColor,
       ),

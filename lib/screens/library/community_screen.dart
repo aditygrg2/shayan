@@ -174,7 +174,7 @@ class CommunityScreen extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.add,
-                    color: Colors.black,
+                    color: Theme.of(context).iconTheme.color,
                     size: 32,
                   ))
             ],

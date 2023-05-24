@@ -35,7 +35,7 @@ class _TimeDurationPickerState extends State<TimeDurationPicker> {
       },
       value: widget.time,
       hint: const Text('Select Duration'),
-      dropdownColor: Colors.white,
+      dropdownColor: Theme.of(context).primaryColor,
       focusColor: Theme.of(context).canvasColor,
     );
   }

@@ -18,7 +18,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
   Widget build(BuildContext context) {
     var textSpeech = Provider.of<FlutterTextSpeech>(context);
     return DropdownButton<String>(
-          dropdownColor: Colors.white,
+          dropdownColor: Theme.of(context).primaryColor,
           items: widget.voices
               .map<DropdownMenuItem<String>>((ele) => DropdownMenuItem<String>(
                     value: ele['name'] ,
