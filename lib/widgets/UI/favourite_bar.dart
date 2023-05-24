@@ -9,8 +9,10 @@ class FavouriteBar extends StatefulWidget {
 class _FavouriteBarState extends State<FavouriteBar> {
   @override
   Widget build(BuildContext context) {
+    var notificationBarHeight = MediaQuery.of(context).padding.top;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      padding:
+          EdgeInsets.fromLTRB(20,notificationBarHeight, 20, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,13 +27,19 @@ class _FavouriteBarState extends State<FavouriteBar> {
                 widget.isLiked
                     ? Icons.favorite
                     : Icons.favorite_outline_rounded,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
+                size: 24,
               )),
           IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(Icons.close_rounded, color: Colors.black)),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.close_rounded,
+              color: Theme.of(context).iconTheme.color,
+              size: 24,
+            ),
+          ),
         ],
       ),
     );

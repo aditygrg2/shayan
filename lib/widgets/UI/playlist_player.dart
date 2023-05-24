@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
+import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:provider/provider.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
@@ -47,16 +48,30 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                 height: 20,
               ),
               Container(
-                width: MediaQuery.of(context).size.width - 50,
-                height: 300,
+                width: 200,
+                height: 200,
                 // it will be changed to network image later when images are uploaded
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      widget.playlist[widget.index]['image'] as String,
-                      fit: BoxFit.cover,
-                    )),
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    widget.playlist[widget.index]['image'] as String,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  widget.playlist[widget.index]['title']!,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      fontFamily: 'Roboto'),
+                ),
+              ),
+              if (widget.playlist[widget.index].containsKey("description") &&
+                  widget.playlist[widget.index] != "")
+                Text(widget.playlist[widget.index]['description']!),
               const SizedBox(
                 height: 20,
               ),
@@ -70,8 +85,10 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                   onSeek: (value) {
                     audioProvider.seek(value);
                   },
-                  timeLabelTextStyle:
-                      const TextStyle(fontSize: 15, color: Colors.black),
+                  timeLabelTextStyle: TextStyle(
+                    fontSize: 15,
+                    color: Theme.of(context).secondaryHeaderColor,
+                  ),
                   timeLabelPadding: 15,
                   timeLabelType: TimeLabelType.remainingTime,
                 ),
@@ -79,77 +96,78 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
               const SizedBox(
                 height: 10,
               ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Theme.of(context).canvasColor,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.skip_previous_rounded,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            widget.index = widget.index - 1;
-                            if (widget.index == -1)
-                              widget.index = widget.playlist.length - 1;
-                            if (widget.isPlaying) audioProvider.stop();
-                            load = true;
-                          });
-                        },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(CircleBorder()),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).canvasColor,
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Theme.of(context).canvasColor,
-                      child: IconButton(
-                        icon: Icon(
-                          widget.isPlaying
-                              ? Icons.pause
-                              : Icons.play_arrow_rounded,
-                          color: Colors.black,
-                        ),
-                        onPressed: () => handlePlay(audioProvider),
+                    child: Icon(
+                      Icons.skip_previous_rounded,
+                      color: Theme.of(context).secondaryHeaderColor,
+                      size: 32,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        widget.index = widget.index - 1;
+                        if (widget.index == -1)
+                          widget.index = widget.playlist.length - 1;
+                        if (widget.isPlaying) audioProvider.stop();
+                        load = true;
+                      });
+                    },
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(CircleBorder()),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).canvasColor,
                       ),
                     ),
-                    CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Theme.of(context).canvasColor,
-                      child: IconButton(
-                        icon: const Icon(
-                          Icons.skip_next_rounded,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            widget.index = widget.index + 1;
-                            if (widget.index == widget.playlist.length)
-                              widget.index = 0;
-                            if (widget.isPlaying) audioProvider.stop();
-                            load = true;
-                          });
-                        },
+                    child: Icon(
+                        widget.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow_rounded,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        size: 32,
                       ),
-                    )
-                  ],
-                ),
+                    onPressed: () => handlePlay(audioProvider),
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(CircleBorder()),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                      backgroundColor: MaterialStateProperty.all(
+                        Theme.of(context).canvasColor,
+                      ),
+                    ),
+                    child: Icon(
+                        Icons.skip_next_rounded,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        size: 32,
+                      ),
+                    onPressed: () {
+                        setState(() {
+                          widget.index = widget.index + 1;
+                          if (widget.index == widget.playlist.length)
+                            widget.index = 0;
+                          if (widget.isPlaying) audioProvider.stop();
+                          load = true;
+                        });
+                      },
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
               ),
-              if (widget.playlist[widget.index].containsKey("description") &&
-                  widget.playlist[widget.index] != "")
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 11),
-                  child: Text(
-                      widget.playlist[widget.index]['description'].toString()),
-                  decoration: BoxDecoration(color: Colors.grey.shade700,borderRadius: BorderRadius.circular(15)),
-                ),
             ],
           )
         : Padding(
@@ -165,6 +183,7 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                 ),
                 CircularProgressIndicator(),
               ],
-            ));
+            ),
+          );
   }
 }
