@@ -93,6 +93,7 @@ class ThemeClass {
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
     splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
+    
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(

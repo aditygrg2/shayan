@@ -12,20 +12,11 @@ class MusicPlayer extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Colors.grey,
-            Colors.black,
-          ],
-        )),
+        decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: Column(
           children: [
-            FavouriteBar(), 
+            FavouriteBar(),
             PlayListPlayer(playlist),
-           
           ],
         ),
       ),
