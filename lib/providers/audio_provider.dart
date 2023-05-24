@@ -14,6 +14,7 @@ class AudioProvider extends ChangeNotifier {
   }
 
   Future load(String uri)async{
+    try{
     duration = Duration.zero;
     progress = Duration.zero;
     await player.setUrl(uri);
@@ -26,6 +27,10 @@ class AudioProvider extends ChangeNotifier {
       buffered = event;
       notifyListeners();
     }) ;
+    return true;
+    }catch(e){
+      return false;
+    }
   }
 
   void setAlarm(String url){

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/favourite_bar.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import './playlist_player.dart';
 
 class MusicPlayer extends StatelessWidget {

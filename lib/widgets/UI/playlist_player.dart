@@ -42,134 +42,142 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
       load = false;
     }
     return audioProvider.duration.inMilliseconds > 0
-        ? Column(
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: 200,
-                height: 200,
-                // it will be changed to network image later when images are uploaded
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset(
-                    widget.playlist[widget.index]['image'] as String,
-                    fit: BoxFit.cover,
+        ? WillPopScope(
+          onWillPop: () {
+            if(widget.isPlaying){
+              return audioProvider.stop().then((value) => true);
+            }
+            else return Future(() => true);
+          },
+          child: Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: 200,
+                  height: 200,
+                  // it will be changed to network image later when images are uploaded
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      widget.playlist[widget.index]['image'] as String,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  widget.playlist[widget.index]['title']!,
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: 'Roboto'),
-                ),
-              ),
-              if (widget.playlist[widget.index].containsKey("description") &&
-                  widget.playlist[widget.index] != "")
-                Text(widget.playlist[widget.index]['description']!),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
-                width: MediaQuery.of(context).size.width - 15,
-                child: ProgressBar(
-                  progress: audioProvider.progress,
-                  total: audioProvider.duration,
-                  buffered: audioProvider.buffered,
-                  onSeek: (value) {
-                    audioProvider.seek(value);
-                  },
-                  timeLabelTextStyle: TextStyle(
-                    fontSize: 15,
-                    color: Theme.of(context).secondaryHeaderColor,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.playlist[widget.index]['title']!,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Roboto'),
                   ),
-                  timeLabelPadding: 15,
-                  timeLabelType: TimeLabelType.remainingTime,
                 ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(CircleBorder()),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                      backgroundColor: MaterialStateProperty.all(
-                        Theme.of(context).canvasColor,
-                      ),
-                    ),
-                    child: Icon(
-                      Icons.skip_previous_rounded,
-                      color: Theme.of(context).secondaryHeaderColor,
-                      size: 32,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        widget.index = widget.index - 1;
-                        if (widget.index == -1)
-                          widget.index = widget.playlist.length - 1;
-                        if (widget.isPlaying) audioProvider.stop();
-                        load = true;
-                      });
+                if (widget.playlist[widget.index].containsKey("description") &&
+                    widget.playlist[widget.index] != "")
+                  Text(widget.playlist[widget.index]['description']!),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  width: MediaQuery.of(context).size.width - 15,
+                  child: ProgressBar(
+                    progress: audioProvider.progress,
+                    total: audioProvider.duration,
+                    buffered: audioProvider.buffered,
+                    onSeek: (value) {
+                      audioProvider.seek(value);
                     },
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(CircleBorder()),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                      backgroundColor: MaterialStateProperty.all(
-                        Theme.of(context).canvasColor,
-                      ),
+                    timeLabelTextStyle: TextStyle(
+                      fontSize: 15,
+                      color: Theme.of(context).secondaryHeaderColor,
                     ),
-                    child: Icon(
-                        widget.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow_rounded,
+                    timeLabelPadding: 15,
+                    timeLabelType: TimeLabelType.remainingTime,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(CircleBorder()),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).canvasColor,
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.skip_previous_rounded,
                         color: Theme.of(context).secondaryHeaderColor,
                         size: 32,
                       ),
-                    onPressed: () => handlePlay(audioProvider),
-                  ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(CircleBorder()),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(10)),
-                      backgroundColor: MaterialStateProperty.all(
-                        Theme.of(context).canvasColor,
-                      ),
-                    ),
-                    child: Icon(
-                        Icons.skip_next_rounded,
-                        color: Theme.of(context).secondaryHeaderColor,
-                        size: 32,
-                      ),
-                    onPressed: () {
+                      onPressed: () {
                         setState(() {
-                          widget.index = widget.index + 1;
-                          if (widget.index == widget.playlist.length)
-                            widget.index = 0;
+                          widget.index = widget.index - 1;
+                          if (widget.index == -1)
+                            widget.index = widget.playlist.length - 1;
                           if (widget.isPlaying) audioProvider.stop();
                           load = true;
                         });
                       },
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          )
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(CircleBorder()),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).canvasColor,
+                        ),
+                      ),
+                      child: Icon(
+                          widget.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow_rounded,
+                          color: Theme.of(context).secondaryHeaderColor,
+                          size: 32,
+                        ),
+                      onPressed: () => handlePlay(audioProvider),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(CircleBorder()),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(10)),
+                        backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).canvasColor,
+                        ),
+                      ),
+                      child: Icon(
+                          Icons.skip_next_rounded,
+                          color: Theme.of(context).secondaryHeaderColor,
+                          size: 32,
+                        ),
+                      onPressed: () {
+                          setState(() {
+                            widget.index = widget.index + 1;
+                            if (widget.index == widget.playlist.length)
+                              widget.index = 0;
+                            if (widget.isPlaying) audioProvider.stop();
+                            load = true;
+                          });
+                        },
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ],
+            ),
+        )
         : Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(

@@ -54,12 +54,12 @@ class MeditationTimer extends StatefulWidget {
 }
 
 class _MeditationTimerState extends State<MeditationTimer> {
-  void handleClick(AudioProvider audio) {
+  void handleClick(AudioProvider audio,BuildContext context) {
     audio.load(widget.options[widget.selectedIndex]['music']).then((value) {
+      Navigator.of(context).pop();
       setState(() {
         widget.isShowPicker = !widget.isShowPicker;
       });
-      Navigator.of(context).pop();
       audio.play();
     });
   }
@@ -96,7 +96,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   ),
                 ),
                 !widget.isShowPicker
-                    ? CountDownTimerComponent(DateTime(0), audio)
+                    ? CountDownTimerComponent(widget.datetime, audio)
                     : TimePicker(callBackDateTime),
               ],
             ),
@@ -216,7 +216,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                               );
                             },
                           );
-                          handleClick(audio);
+                          handleClick(audio,context);
                         }
                       },
                       icon: Icon(
