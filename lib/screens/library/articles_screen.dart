@@ -58,6 +58,36 @@ class ArticlesScreen extends StatelessWidget {
                       color: Theme.of(context).secondaryHeaderColor),
                 );
               }
+              if(snapshot.data?.exists==false){
+                return FutureBuilder(
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                          color: Theme.of(context).secondaryHeaderColor),
+                    );
+                  }
+                  return Column(
+                    children:
+                        (snapshot.data?.data()!['article'] as List<dynamic>)
+                            .map(
+                      (e) {
+                        return Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Article(
+                                image: e['image'],
+                                name: e['title'],
+                                description: e['description']));
+                      },
+                    ).toList(),
+                  );
+                },
+                future: FirebaseFirestore.instance
+                    .collection('article')
+                    .doc("healthy")
+                    .get(),
+              );
+              }
               if (snapshot.data?.get('diseaseType') == 'sleep deprivation') {
                 return FutureBuilder(
                   builder: (context, snapshot) {
