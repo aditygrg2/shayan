@@ -37,6 +37,7 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
               child: TextField(
                 controller: timeController,
+                autocorrect: true,
                 key: const ValueKey('1'),
                 onTap: () {
                   Navigator.of(context).push(showPicker(context: context, value: Time(hour: 0, minute: 0),onChange: (value){
@@ -56,6 +57,7 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
               child: TextField(
                 controller: taskController,
+                autocorrect: true,
                 key: const ValueKey('2'),
               ),
             ),

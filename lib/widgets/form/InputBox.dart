@@ -59,6 +59,7 @@ class _InputBoxState extends State<InputBox> {
                 if (widget.inputType == InputTypes.NumberInput)
                   TextField(
                     decoration: InputDecoration(labelText: widget.labels),
+                    autocorrect: true,
                     onChanged: (value) {
                       valueSelected = value;
                     },
@@ -109,6 +110,7 @@ class _InputBoxState extends State<InputBox> {
                       Expanded(
                         child: TextField(
                           decoration: InputDecoration(labelText: widget.labels),
+                          autocorrect: true,
                           controller: _controller,
                           onChanged: (value) {
                             valueSelected = value;

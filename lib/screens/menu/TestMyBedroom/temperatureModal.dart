@@ -8,7 +8,6 @@ class TemperatureModal extends StatelessWidget {
   Widget build(BuildContext context) {
     var data = Provider.of<WeatherProvider>(context).dataValue;
     var height = MediaQuery.of(context).size.height;
-
     return ListView(
       shrinkWrap: true,
       children: [

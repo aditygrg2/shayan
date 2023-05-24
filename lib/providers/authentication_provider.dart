@@ -31,6 +31,7 @@ class AuthenticationProvider extends ChangeNotifier {
           password: password,
         ).then((value) async {
           await value.user?.updateDisplayName(name);
+          await value.user!.sendEmailVerification();
           return value;
         });
       }

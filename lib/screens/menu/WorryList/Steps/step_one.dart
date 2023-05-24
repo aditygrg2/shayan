@@ -49,105 +49,109 @@ class StepOne extends StatelessWidget {
                       ),
                     ),
                     Center(
-                    child: ElevatedButtonWithoutIcon(
-                      text: 'Add worry',
-                      onPressedButton: () {
-                        showModalBottomSheet(
-                          backgroundColor: Colors.white,
-                          context: context,
-                          isScrollControlled: true,
-                          builder: (context) {
-                            return Container(
-                              padding: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).viewInsets.bottom,
-                                top: 20,
-                                left: 20,
-                                right: 20,
-                              ),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    const Text(
-                                      'Write down your worry here..',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                      child: ElevatedButtonWithoutIcon(
+                        text: 'Add worry',
+                        onPressedButton: () {
+                          showModalBottomSheet(
+                            backgroundColor: Colors.white,
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return Container(
+                                padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom,
+                                  top: 20,
+                                  left: 20,
+                                  right: 20,
+                                ),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Text(
+                                        'Write down your worry here..',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    TextField(
-                                      style: const TextStyle(
-                                        fontSize: 20,
+                                      const SizedBox(
+                                        height: 25,
                                       ),
-                                      maxLines: 3,
-                                      cursorHeight: 20,
-                                      textAlign: TextAlign.left,
-                                      decoration: InputDecoration(
-                                        labelText: 'List your worry here!',
-                                        fillColor: Theme.of(context).primaryColor,
-                                        filled: true,
-                                      ),
-                                      onChanged: (value) {
-                                        worry = value;
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    TextField(
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                      ),
-                                      maxLines: 3,
-                                      cursorHeight: 20,
-                                      textAlign: TextAlign.left,
-                                      decoration:  InputDecoration(
-                                        labelText: 'List your situation here!',
-                                        fillColor: Theme.of(context).primaryColor,
-                                        filled: true,
-                                      ),
-                                      onChanged: (value) {
-                                        situation = value;
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 25,
-                                    ),
-                                    Center(
-                                      child: ElevatedButtonWithoutIcon(
-                                        text: 'Submit',
-                                        onPressedButton: () {
-                                          Provider.of<WorryListProvider>(
-                                                  context,
-                                                  listen: false)
-                                              .addWorry(
-                                            {
-                                              'worry': worry,
-                                              'situation': situation,
-                                              'notes': []
-                                            },
-                                          );
-                                          Navigator.of(context).pop();
+                                      TextField(
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                        maxLines: 3,
+                                        autocorrect: true,
+                                        cursorHeight: 20,
+                                        textAlign: TextAlign.left,
+                                        decoration: InputDecoration(
+                                          labelText: 'List your worry here!',
+                                          fillColor:
+                                              Theme.of(context).primaryColor,
+                                          filled: true,
+                                        ),
+                                        onChanged: (value) {
+                                          worry = value;
                                         },
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 50,
-                                    ),
-                                  ],
+                                      const SizedBox(
+                                        height: 25,
+                                      ),
+                                      TextField(
+                                        style: const TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                        maxLines: 3,
+                                        autocorrect: true,
+                                        cursorHeight: 20,
+                                        textAlign: TextAlign.left,
+                                        decoration: InputDecoration(
+                                          labelText:
+                                              'List your situation here!',
+                                          fillColor:
+                                              Theme.of(context).primaryColor,
+                                          filled: true,
+                                        ),
+                                        onChanged: (value) {
+                                          situation = value;
+                                        },
+                                      ),
+                                      const SizedBox(
+                                        height: 25,
+                                      ),
+                                      Center(
+                                        child: ElevatedButtonWithoutIcon(
+                                          text: 'Submit',
+                                          onPressedButton: () {
+                                            Provider.of<WorryListProvider>(
+                                                    context,
+                                                    listen: false)
+                                                .addWorry(
+                                              {
+                                                'worry': worry,
+                                                'situation': situation,
+                                                'notes': []
+                                              },
+                                            );
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 50,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                    
                   ],
                 );
               }
@@ -200,10 +204,12 @@ class StepOne extends StatelessWidget {
                                       ),
                                       maxLines: 3,
                                       cursorHeight: 20,
+                                      autocorrect: true,
                                       textAlign: TextAlign.left,
-                                      decoration:  InputDecoration(
+                                      decoration: InputDecoration(
                                         labelText: 'List your worry here!',
-                                        fillColor: Theme.of(context).primaryColor,
+                                        fillColor:
+                                            Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {
@@ -218,11 +224,13 @@ class StepOne extends StatelessWidget {
                                         fontSize: 20,
                                       ),
                                       maxLines: 3,
+                                      autocorrect: true,
                                       cursorHeight: 20,
                                       textAlign: TextAlign.left,
-                                      decoration:  InputDecoration(
+                                      decoration: InputDecoration(
                                         labelText: 'List your situation here!',
-                                        fillColor: Theme.of(context).primaryColor,
+                                        fillColor:
+                                            Theme.of(context).primaryColor,
                                         filled: true,
                                       ),
                                       onChanged: (value) {

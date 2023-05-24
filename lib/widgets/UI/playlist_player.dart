@@ -1,7 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:night_gschallenge/screens/library/library_screen.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:provider/provider.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
@@ -10,7 +10,7 @@ class PlayListPlayer extends StatefulWidget {
   List<dynamic> playlist;
   Duration progress = const Duration();
   int index = 0;
-  PlayListPlayer({required this.playlist,this.index=0});
+  PlayListPlayer({required this.playlist, this.index = 0});
   @override
   State<PlayListPlayer> createState() => _PlayListPlayerState();
 }
@@ -39,22 +39,38 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
     var audioProvider = Provider.of<AudioProvider>(context);
     if (load) {
       audioProvider.load(widget.playlist[widget.index]['audio']).then((value) {
-        if(value==false){
-          showModalBottomSheet(context: context, isScrollControlled: true,builder: (context) {
-            return Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              decoration: const BoxDecoration(color: Colors.white),
-              padding: const EdgeInsets.all(10),
-              child: Center(
-                child: ElevatedButtonWithoutIcon(onPressedButton: (){
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },text: "Something wrong happened, Go Back!!",),
+        if (value == false) {
+          ScaffoldMessenger.of(context).showMaterialBanner(
+            MaterialBanner(
+              content: const Text(
+                "Sorry, something unexpected have occurred.",
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                ),
               ),
-            );
-          },);
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).clearMaterialBanners();
+                  },
+                  child: Text(
+                    "Close",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).secondaryHeaderColor,
+                      fontSize: 15,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+          Timer(
+              Duration(
+                seconds: 1,
+              ), () {
+            Navigator.of(context).pop();
+          });
           return;
         }
         if (widget.isPlaying) audioProvider.play();
@@ -63,13 +79,13 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
     }
     return audioProvider.duration.inMilliseconds > 0
         ? WillPopScope(
-          onWillPop: () {
-            if(widget.isPlaying){
-              return audioProvider.stop().then((value) => true);
-            }
-            else return Future(() => true);
-          },
-          child: Column(
+            onWillPop: () {
+              if (widget.isPlaying) {
+                return audioProvider.stop().then((value) => true);
+              } else
+                return Future(() => true);
+            },
+            child: Column(
               children: [
                 const SizedBox(
                   height: 20,
@@ -130,7 +146,8 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                     ElevatedButton(
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(const CircleBorder()),
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        padding:
+                            MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
@@ -153,42 +170,44 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                     ElevatedButton(
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(const CircleBorder()),
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        padding:
+                            MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
                       ),
                       child: Icon(
-                          widget.isPlaying
-                              ? Icons.pause
-                              : Icons.play_arrow_rounded,
-                          color: Theme.of(context).secondaryHeaderColor,
-                          size: 32,
-                        ),
+                        widget.isPlaying
+                            ? Icons.pause
+                            : Icons.play_arrow_rounded,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        size: 32,
+                      ),
                       onPressed: () => handlePlay(audioProvider),
                     ),
                     ElevatedButton(
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(const CircleBorder()),
-                        padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                        padding:
+                            MaterialStateProperty.all(const EdgeInsets.all(10)),
                         backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).canvasColor,
                         ),
                       ),
                       child: Icon(
-                          Icons.skip_next_rounded,
-                          color: Theme.of(context).secondaryHeaderColor,
-                          size: 32,
-                        ),
+                        Icons.skip_next_rounded,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        size: 32,
+                      ),
                       onPressed: () {
-                          setState(() {
-                            widget.index = widget.index + 1;
-                            if (widget.index == widget.playlist.length)
-                              widget.index = 0;
-                            if (widget.isPlaying) audioProvider.stop();
-                            load = true;
-                          });
-                        },
+                        setState(() {
+                          widget.index = widget.index + 1;
+                          if (widget.index == widget.playlist.length)
+                            widget.index = 0;
+                          if (widget.isPlaying) audioProvider.stop();
+                          load = true;
+                        });
+                      },
                     ),
                   ],
                 ),
@@ -197,14 +216,14 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                 ),
               ],
             ),
-        )
+          )
         : Padding(
             padding: EdgeInsets.all(10.0),
             child: Column(
               children: [
                 Text(
                   "Loading...",
-                  style:const  TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 15),
                 ),
                 SizedBox(
                   height: 10,

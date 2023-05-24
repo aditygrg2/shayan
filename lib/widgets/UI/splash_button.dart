@@ -6,7 +6,6 @@ class SplashButton extends StatelessWidget {
 
   SplashButton({this.text, this.onPressed});
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +23,13 @@ class SplashButton extends StatelessWidget {
               color: Theme.of(context).buttonColor,
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 64),
+              padding: const EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 64,
+              ),
               child: Text(
                 text!,
-                style: const TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 25, color: Theme.of(context).primaryColor),
               ),
             ),
           ),

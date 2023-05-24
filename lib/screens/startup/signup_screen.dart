@@ -45,6 +45,12 @@ class _SignupScreenState extends State<SignupScreen> {
           false,
           name: name!.trim(),
         );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("An email has been sent to you for verification."),
+          ),
+        );
       }
 
       if (FirebaseAuth.instance.currentUser != null) {
@@ -169,7 +175,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           key: const ValueKey('password'),
                           obscureText: true,
                           obscuringCharacter: '●',
-                          style: TextStyle(color: Theme.of(context).secondaryHeaderColor),
+                          style: TextStyle(
+                              color: Theme.of(context).secondaryHeaderColor),
                           decoration:
                               const InputDecoration(labelText: 'Password'),
                           onSaved: (value) {

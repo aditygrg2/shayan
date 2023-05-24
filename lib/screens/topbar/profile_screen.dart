@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
+import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
@@ -51,6 +53,10 @@ class ProfileScreen extends StatelessWidget {
   Map<String, dynamic> profile = {
     "Name": FirebaseAuth.instance.currentUser?.displayName,
     "Email ID": FirebaseAuth.instance.currentUser?.email,
+    "Verification Status":
+        FirebaseAuth.instance.currentUser?.emailVerified.toString() == "true"
+            ? "Successfully Verified"
+            : "Not Verified"
   };
   @override
   Widget build(BuildContext context) {
@@ -124,7 +130,10 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...profile.entries.map((e) {
-                  return ProfileInfo(e.key, e.value);
+                  return ProfileInfo(
+                    e.key,
+                    e.value,
+                  );
                 }).toList(),
                 ListTileIconCreators(
                   title: 'Logout',
@@ -132,7 +141,7 @@ class ProfileScreen extends StatelessWidget {
                   onTap: () {
                     FirebaseAuth.instance.signOut();
                     Navigator.of(context).popUntil((route) => route == "");
-                    Navigator.of(context).pushNamed(SplashScreen.routeName);
+                    Navigator.of(context).pushNamed(HomeScreen.routeName);
                   },
                 )
               ],
@@ -158,6 +167,21 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
               icon: Icons.signal_cellular_no_sim_sharp,
+            ),
+          if (currentUser != null && !FirebaseAuth.instance.currentUser!.emailVerified)
+            ListTileIconCreators(
+              title: 'Verify your email',
+              onTap: () async {
+                FirebaseAuth.instance.currentUser?.sendEmailVerification();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Email sent. Please check your spam folder."),
+                  ),
+                );
+                FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
+              },
+              icon: Icons.email,
             ),
         ],
       ),

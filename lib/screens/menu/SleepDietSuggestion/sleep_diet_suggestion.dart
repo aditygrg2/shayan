@@ -29,7 +29,10 @@ class SleepDietSuggestion extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () async {
-                  await launchUrl(Uri.parse(e['link'].toString()));
+                  await launchUrl(
+                    Uri.parse(e['link'].toString()),
+                    mode: LaunchMode.externalApplication,
+                  );
                 },
                 icon: Icon(
                   Icons.insert_link_rounded,
@@ -76,7 +79,8 @@ class SleepDietSuggestion extends StatelessWidget {
                         color: Theme.of(context).secondaryHeaderColor),
                   );
                 }
-                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'sleep deprivation') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'sleep deprivation') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -102,7 +106,8 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'apnea') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'apnea') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -129,7 +134,8 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data!.exists && snapshot.data?.get('diseaseType') == 'isnsomia') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'isnsomia') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
@@ -165,15 +171,15 @@ class SleepDietSuggestion extends StatelessWidget {
                       );
                     }
                     return Container(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
-                            ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
-                          ],
-                        ),
-                      );
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          DietWindow(snapshot.data?.data()!['tips']),
+                          ...dietArticle(
+                              context, snapshot.data?.data()!['tips'])
+                        ],
+                      ),
+                    );
                   },
                   future: FirebaseFirestore.instance
                       .collection('diet_suggestion')

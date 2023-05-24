@@ -4,14 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
-import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
+import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
-import 'package:night_gschallenge/screens/store/store_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_score.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
@@ -156,7 +154,8 @@ class _HomeBodyState extends State<HomeBody> {
                               decoration: BoxDecoration(
                                 color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(15),
-                                border: Border.all(color: Theme.of(context).dividerColor),
+                                border: Border.all(
+                                    color: Theme.of(context).dividerColor),
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -199,8 +198,49 @@ class _HomeBodyState extends State<HomeBody> {
                                   ),
                                   ElevatedButtonWithoutIcon(
                                     onPressedButton: () {
-                                      Navigator.of(context)
-                                          .pushNamed(MainForm.routeName);
+                                      bool loginStatus =
+                                          FirebaseAuth.instance.currentUser !=
+                                              null;
+
+                                      if (loginStatus)
+                                        Navigator.of(context)
+                                            .pushNamed(MainForm.routeName);
+                                      else {
+                                        ScaffoldMessenger.of(context)
+                                            .showMaterialBanner(
+                                          MaterialBanner(
+                                            content: const Text(
+                                              "You need to be signed in to get your plan!",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  ScaffoldMessenger.of(context)
+                                                      .clearMaterialBanners();
+                                                },
+                                                child: Text(
+                                                  "Close",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Theme.of(context)
+                                                        .secondaryHeaderColor,
+                                                    fontSize: 15,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        );
+                                        Navigator.of(context)
+                                            .pushNamed(LoginScreen.routeName)
+                                            .then((value) {
+                                          ScaffoldMessenger.of(context)
+                                              .clearMaterialBanners();
+                                        });
+                                      }
                                     },
                                     text: 'Get your plan',
                                   ),
@@ -213,7 +253,6 @@ class _HomeBodyState extends State<HomeBody> {
                     : WhatsNew(),
                 if (!isWatchConnected) WatchComponent(),
                 MusicSection(),
-                
               ],
             ),
           );

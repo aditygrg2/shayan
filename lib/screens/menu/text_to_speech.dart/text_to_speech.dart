@@ -81,6 +81,7 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                           children: [
                             TextField(
                               minLines: 8,
+                              autocorrect: true,
                               maxLines: 15,
                               controller: widget.textController,
                               decoration: const InputDecoration(

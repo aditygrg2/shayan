@@ -85,7 +85,7 @@ class ThemeClass {
     ),
     secondaryHeaderColor: Colors.white,
     brightness: Brightness.dark,
-    canvasColor: const Color.fromRGBO(36, 37, 64, 1),
+    canvasColor: const Color.fromRGBO(32, 33, 55, 1),
     highlightColor: Colors.amber,
     accentColor: Color.fromRGBO(36, 37, 64, 1),
     cardColor: const Color.fromRGBO(114, 129, 233, 1),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
+import 'package:provider/provider.dart';
 
 class TmbDescriptionCards extends StatelessWidget {
   final String? title;
@@ -13,16 +16,25 @@ class TmbDescriptionCards extends StatelessWidget {
     var widthi = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(route!);
+        Navigator.of(context).pushNamed(route!).then((value) {
+          if(route == LightPollution.routeName){
+            var lightProvider = Provider.of<LightProvider>(context, listen: false);
+            lightProvider.stopListening();
+            lightProvider.success = false;
+            lightProvider.state = false;
+            lightProvider.data_points = [];
+          }
+        });
       },
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).canvasColor,
-            borderRadius: const BorderRadius.all(Radius.circular(30)),
-            border: Border.all(
-              color: Theme.of(context).dividerColor,
-              width: 2,
-            )),
+          color: Theme.of(context).canvasColor,
+          borderRadius: const BorderRadius.all(Radius.circular(30)),
+          border: Border.all(
+            color: Theme.of(context).dividerColor,
+            width: 2,
+          ),
+        ),
         width: double.infinity,
         margin: const EdgeInsets.all(15),
         padding: const EdgeInsets.all(15),

@@ -1038,7 +1038,7 @@ packages:
     source: hosted
     version: "6.1.10"
   url_launcher_android:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher_android
       sha256: dd729390aa936bf1bdf5cd1bc7468ff340263f80a2c4f569416507667de8e3c8

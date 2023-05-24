@@ -48,11 +48,12 @@ class _TestMyBedroomState extends State<TestMyBedroom> {
             height: 20,
           ),
           TmbDescriptionCards(
-              title: 'Light Pollution',
-              subtitle:
-                  'Restricts the naturally timed rise of melatonin and delays the body\'s transition to sleep',
-              image: 'assets/light.png',
-              route: LightPollution.routeName),
+            title: 'Light Pollution',
+            subtitle:
+                'Restricts the naturally timed rise of melatonin and delays the body\'s transition to sleep',
+            image: 'assets/light.png',
+            route: LightPollution.routeName,
+          ),
           TmbDescriptionCards(
             title: 'Noise Pollution',
             subtitle:

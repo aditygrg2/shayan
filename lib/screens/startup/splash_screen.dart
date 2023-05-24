@@ -93,9 +93,6 @@ class SplashScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).accentColor)),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -107,9 +104,6 @@ class SplashScreen extends StatelessWidget {
                           Navigator.of(context).pushNamed(LoginScreen.routeName);
                         }),
                     ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).accentColor)),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(

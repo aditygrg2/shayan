@@ -88,8 +88,11 @@ class _LightPollutionState extends State<LightPollution> {
           Consumer<LightProvider>(
             builder: (context, value, child) {
               if (value.state && !value.success) {
-                _scrollController.animateTo(height,
-                    duration: Duration(seconds: 1), curve: Curves.linear);
+                _scrollController.animateTo(
+                  height,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.linear,
+                );
                 return MeasuringLight();
               } else if (value.success == true && value.state == false) {
                 return Center(

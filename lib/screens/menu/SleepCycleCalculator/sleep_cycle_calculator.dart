@@ -189,6 +189,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: TextField(
                         keyboardType: TextInputType.number,
+                        autocorrect: true,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Theme.of(context).canvasColor,
@@ -225,6 +226,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: TextField(
                         keyboardType: TextInputType.number,
+                        autocorrect: true,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Theme.of(context).canvasColor,
