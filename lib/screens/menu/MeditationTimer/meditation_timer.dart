@@ -4,7 +4,6 @@ import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
-import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
@@ -202,6 +201,10 @@ class _MeditationTimerState extends State<MeditationTimer> {
                             audio.pause();
                           }
                         } else {
+                          if(widget.datetime.compareTo( DateTime.parse('1900-12-24 00:00:00.000'))==0){
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Container(child: const Text("Please select Time Duration"),)));
+                            return;
+                          }
                           showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,
