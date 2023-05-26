@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -147,7 +148,7 @@ class _HomeBodyState extends State<HomeBody> {
                               height: 20,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 12,
                                 vertical: 15,
                               ),
@@ -163,10 +164,20 @@ class _HomeBodyState extends State<HomeBody> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: 50,
-                                    height: 50,
-                                    child: Image.asset('assets/cloud.png'),
-                                  ),
+                                      width: 50,
+                                      height: 50,
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            "https://i.ibb.co/T21P53F/cloud.png",
+                                        placeholder: (context, url) {
+                                          return Image.asset(
+                                            'assets/processloading.gif',
+                                          );
+                                        },
+                                        errorWidget: (context, url, error) {
+                                          return Icon(Icons.error);
+                                        },
+                                      )),
                                   SizedBox(
                                     height: 10,
                                   ),

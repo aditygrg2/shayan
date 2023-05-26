@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -336,16 +337,15 @@ class _MainFormState extends State<MainForm> {
         onPressedBack: _previousQuestion,
       ),
       InputBox(
-        key: Key('18'),
-        question:
-            'How would you rate your sleep quality?(Enter a number from 1 to 10)',
-        onPressedNext: _nextQuestion,
-        currentQuestion: _currentQuestion,
-        onPressedBack: _previousQuestion,
-        inputType: InputTypes.NumberInput,
-        max: 10,
-        min: 1
-      ),
+          key: Key('18'),
+          question:
+              'How would you rate your sleep quality?(Enter a number from 1 to 10)',
+          onPressedNext: _nextQuestion,
+          currentQuestion: _currentQuestion,
+          onPressedBack: _previousQuestion,
+          inputType: InputTypes.NumberInput,
+          max: 10,
+          min: 1),
       InputBox(
         key: Key('19'),
         question:
@@ -561,9 +561,19 @@ class _MainFormState extends State<MainForm> {
                         text: 'Plan Creation Form',
                       ),
                       Container(
-                        child: Image.asset('assets/form.gif'),
                         height: 150,
                         width: 150,
+                        child: CachedNetworkImage(
+                          imageUrl: "https://i.ibb.co/x8XHvdh/form.gif",
+                          placeholder: (context, url) {
+                            return Image.asset(
+                              'assets/processloading.gif',
+                            );
+                          },
+                          errorWidget: (context, url, error) {
+                            return Icon(Icons.error);
+                          },
+                        ),
                       ),
                       if (loading)
                         CircularProgressIndicator(

@@ -67,6 +67,7 @@ dependencies:
   google_maps_flutter: ^2.2.6
   google_maps_webservice: ^0.0.20-nullsafety.5
   url_launcher_android: any
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:
@@ -97,7 +98,6 @@ flutter:
   assets:
     - assets/login.gif
     - assets/splash.gif
-    - assets/sun.gif
     - assets/sleep_diet_suggestion.gif
     - assets/questionsleft.png
     - assets/checklist.png
@@ -128,7 +128,7 @@ flutter:
     - assets/scanload.gif
     - assets/goodlight.png
     - assets/badlight.png
-    - assets/
+    - assets/processloading.gif
     - assets/averagelight.png
     - assets/noisepollution.gif
     - assets/temperatures.gif
@@ -169,14 +169,9 @@ flutter:
     - assets/mental_exercises_1.png
     - assets/mental_exercises_2.png
     - assets/mental_exercises_3.png
-    - assets/cloud.png
     - assets/mental_exercises_4.png
     - assets/mental_exercises_5.png
     - assets/data.gif
-
-    - assets/good_night.gif
-    - assets/good_evening.gif
-
     - assets/slow_radio_podcast.jpg
     - assets/mantra_1.png
     - assets/mantra_2.png

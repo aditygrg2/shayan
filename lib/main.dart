@@ -67,7 +67,7 @@ import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'ThemeClass.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);

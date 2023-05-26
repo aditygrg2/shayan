@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedPageIndex = 0;
   bool loading = true;
 
-  void switchPageHandler(int selectedIndex){
+  void switchPageHandler(int selectedIndex) {
     setState(() {
       selectedPageIndex = selectedIndex;
     });
@@ -46,32 +46,27 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       bottomNavigationBar:
           BottomNavigator(_bottomTabHandler, selectedPageIndex),
-      body: ListView(
-        children: [
-          TopRow(),
-          GestureDetector(
-            onHorizontalDragEnd: (details) {
-              Velocity v = details.velocity;
-              if(v.pixelsPerSecond.dx > v.pixelsPerSecond.dy){
-                if(selectedPageIndex==0){
-
-                }
-                else{
-                  switchPageHandler(selectedPageIndex - 1);
-                }
-              }
-              else{
-                if(selectedPageIndex==4){
- 
-                }
-                else{
-                  switchPageHandler(selectedPageIndex + 1);
-                }
-              }
-            },
-            child: widget._pageList[selectedPageIndex],
-          )
-        ],
+      body: GestureDetector(
+        onHorizontalDragEnd: (details) {
+          Velocity v = details.velocity;
+          if (v.pixelsPerSecond.dx > v.pixelsPerSecond.dy) {
+            if (selectedPageIndex == 0) {
+            } else {
+              switchPageHandler(selectedPageIndex - 1);
+            }
+          } else {
+            if (selectedPageIndex == 4) {
+            } else {
+              switchPageHandler(selectedPageIndex + 1);
+            }
+          }
+        },
+        child: ListView(
+          children: [
+            TopRow(),
+            widget._pageList[selectedPageIndex],
+          ],
+        ),
       ),
     );
   }

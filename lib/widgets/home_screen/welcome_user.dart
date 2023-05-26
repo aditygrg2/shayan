@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
@@ -8,10 +9,72 @@ class WelcomeUser extends StatefulWidget {
   State<WelcomeUser> createState() => _WelcomeUserState();
 }
 
-class _WelcomeUserState extends State<WelcomeUser>{
+Widget getStatus(int hours) {
+  if (hours >3 && hours < 15) {
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/jwYkSJH/sun.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return Icon(Icons.error);
+        },
+      ),
+    );
+  }
+  else if(hours>15 && hours<20){
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/d4YTYn8/good-evening.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return Icon(Icons.error);
+        },
+      ),
+    );
+  }
+  else{
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/19WdBPf/good-night.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return Icon(Icons.error);
+        },
+      ),
+    );
+  }
+}
+
+class _WelcomeUserState extends State<WelcomeUser> {
   String quote = "Hope you had a restful night's sleep!";
   bool isLogin = FirebaseAuth.instance.currentUser != null;
   String? userId;
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +89,7 @@ class _WelcomeUserState extends State<WelcomeUser>{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Good ${hours < 20 ? (hours < 15 ? "Morning" : "Evening") : "Night"}${isLogin ? ',' : ''}",
+            "Good ${hours >3 && hours < 15 ? "Morning" : hours>15 && hours<20 ? "Evening" : "Night"}${isLogin ? ',' : ''}",
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(
@@ -37,16 +100,7 @@ class _WelcomeUserState extends State<WelcomeUser>{
               FirebaseAuth.instance.currentUser!.displayName!,
               style: TextStyle(fontSize: 25),
             ),
-          SizedBox(
-            height: 150,
-            width: double.infinity,
-            child: Image.asset(
-              hours < 20
-                  ? (hours < 15 ? "assets/sun.gif" : "assets/good_evening.gif")
-                  : "assets/good_night.gif",
-              fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
-            ),
-          )
+            getStatus(hours)
         ],
       ),
     );
