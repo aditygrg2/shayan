@@ -1,12 +1,9 @@
 import 'package:collection/collection.dart';
-import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/SleepinessCalculator/sleepModal.dart';
-import 'package:night_gschallenge/screens/menu/TestMyBedroom/noiseModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
-import 'package:night_gschallenge/widgets/form/InputBox.dart';
 
 class Sleepiness extends StatefulWidget {
   const Sleepiness({Key? key}) : super(key: key);

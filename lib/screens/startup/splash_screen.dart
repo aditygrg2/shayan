@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';

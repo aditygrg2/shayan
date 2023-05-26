@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_one.dart';
-import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_three.dart';
-import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_two.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';

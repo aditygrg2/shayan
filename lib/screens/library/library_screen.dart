@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
-import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/stories_screen.dart';

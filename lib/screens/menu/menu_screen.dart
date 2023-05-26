@@ -11,7 +11,6 @@ import 'package:night_gschallenge/screens/menu/SleepinessCalculator/Sleepiness.d
 import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
-import 'package:night_gschallenge/screens/store/store_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
 import './menu.dart';

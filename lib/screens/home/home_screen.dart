@@ -49,7 +49,28 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         children: [
           TopRow(),
-          widget._pageList[selectedPageIndex],
+          GestureDetector(
+            onHorizontalDragEnd: (details) {
+              Velocity v = details.velocity;
+              if(v.pixelsPerSecond.dx > v.pixelsPerSecond.dy){
+                if(selectedPageIndex==0){
+
+                }
+                else{
+                  switchPageHandler(selectedPageIndex - 1);
+                }
+              }
+              else{
+                if(selectedPageIndex==4){
+
+                }
+                else{
+                  switchPageHandler(selectedPageIndex + 1);
+                }
+              }
+            },
+            child: widget._pageList[selectedPageIndex],
+          )
         ],
       ),
     );
