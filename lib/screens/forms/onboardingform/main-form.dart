@@ -83,18 +83,25 @@ class _MainFormState extends State<MainForm> {
       });
     } else {
       var result = 'healthy';
-      var  disease = await FirebaseFirestore.instance.collection("planForm").doc(id).collection("stats").doc(id).get();
-      if(disease['apnea']>=20) result = 'apnea';
-      else if(disease['insomia']>=20) result = 'insomia';
-      else if(disease['sleep_deprivation']>=20) result = 'sleep deprivation';
+      var disease = await FirebaseFirestore.instance
+          .collection("planForm")
+          .doc(id)
+          .collection("stats")
+          .doc(id)
+          .get();
+      if (disease['apnea'] >= 20)
+        result = 'apnea';
+      else if (disease['insomia'] >= 20)
+        result = 'insomia';
+      else if (disease['sleep_deprivation'] >= 20) result = 'sleep deprivation';
       await FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .update(
         {
           'healthState': 'true',
-          'diseaseType':result,
-          'isReady':'false',
+          'diseaseType': result,
+          'isReady': 'false',
           'questionNumber': _currentQuestion + 1,
         },
       );
@@ -130,6 +137,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 30,
+        max: 220,
       ),
       InputBox(
         key: Key('3'),
@@ -138,6 +147,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 10,
+        max: 150,
       ),
       McqWidget(
         key: Key('4'),
@@ -332,6 +343,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        max: 10,
+        min: 1
       ),
       InputBox(
         key: Key('19'),
@@ -405,6 +418,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 0,
+        max: 500,
       ),
       InputBox(
         key: Key('26'),
@@ -509,8 +524,6 @@ class _MainFormState extends State<MainForm> {
       ),
     ];
 
-    // LEFT THIS SPACE EXPLICITLY
-
     return Scaffold(
       body: ListView(
         children: [
@@ -552,10 +565,13 @@ class _MainFormState extends State<MainForm> {
                         height: 150,
                         width: 150,
                       ),
-                      if (loading) CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                      if (loading)
+                        CircularProgressIndicator(
+                          color: Theme.of(context).secondaryHeaderColor,
+                        ),
                       if (!loading)
                         Text(
-                          'Question ${_currentQuestion + 1}',
+                          'Question ${_currentQuestion + 1}/34',
                           style: TextStyle(
                             fontSize: 16,
                           ),

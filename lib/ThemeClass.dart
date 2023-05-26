@@ -108,7 +108,7 @@ class ThemeClass {
       visualDensity: VisualDensity.comfortable,
     ),
     timePickerTheme: const TimePickerThemeData(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromRGBO(32, 33, 55, 1),
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(

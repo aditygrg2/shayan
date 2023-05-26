@@ -53,7 +53,7 @@ class MeditationTimer extends StatefulWidget {
 }
 
 class _MeditationTimerState extends State<MeditationTimer> {
-  void handleClick(AudioProvider audio,BuildContext context) {
+  void handleClick(AudioProvider audio, BuildContext context) {
     audio.load(widget.options[widget.selectedIndex]['music']).then((value) {
       Navigator.of(context).pop();
       setState(() {
@@ -191,15 +191,11 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   radius: 30,
                   backgroundColor: Theme.of(context).canvasColor,
                   child: IconButton(
-                      onPressed: () {
-                        if (!widget.isShowPicker) {
-                          if (controller.isPause) {
-                            controller.resume();
-                            audio.resume();
-                          } else {
-                            controller.pause();
-                            audio.pause();
-                          }
+                    onPressed: () {
+                      if (!widget.isShowPicker) {
+                        if (controller.isPause) {
+                          controller.resume();
+                          audio.resume();
                         } else {
                           if(widget.datetime.compareTo( DateTime.parse('1900-12-24 00:00:00.000'))==0){
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Container(child: const Text("Please select Time Duration"),)));
@@ -221,15 +217,34 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           );
                           handleClick(audio,context);
                         }
-                      },
-                      icon: Icon(
-                        !widget.isShowPicker
-                            ? (controller.isPause
-                                ? Icons.play_arrow
-                                : Icons.pause)
-                            : Icons.play_arrow,
-                        color: Theme.of(context).iconTheme.color,
-                      )),
+                      } else {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        handleClick(audio, context);
+                      }
+                    },
+                    icon: Icon(
+                      !widget.isShowPicker
+                          ? (controller.isPause
+                              ? Icons.play_arrow
+                              : Icons.pause)
+                          : Icons.play_arrow,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                  ),
                 ),
               ],
             ),
