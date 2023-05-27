@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/main.dart';
+import 'package:night_gschallenge/navigators/drawer_search.dart';
 import 'package:night_gschallenge/screens/store/store_screen.dart';
 import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
 import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
-
 
 class TopRow extends StatefulWidget {
   final bool? back;
@@ -33,6 +33,21 @@ class _TopRowState extends State<TopRow> {
             ? MainAxisAlignment.spaceBetween
             : MainAxisAlignment.end,
         children: [
+          if (!widget.back!)
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    showSearch(context: context, delegate: CustomDelegate());
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    color: Theme.of(context).iconTheme.color,
+                    size: 35,
+                  ),
+                ),
+              ],
+            ),
           if (widget.back!)
             Row(
               children: [
@@ -83,9 +98,11 @@ class _TopRowState extends State<TopRow> {
               ),
             ),
           if (!widget.back!)
-            IconButton(onPressed: () {
-              Navigator.of(context).pushNamed(StoreScreen.routeName);
-            }, icon: Icon(Icons.shop)),
+            IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(StoreScreen.routeName);
+                },
+                icon: Icon(Icons.shop)),
           if (!widget.back!)
             IconButton(
               onPressed: () {

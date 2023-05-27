@@ -1,10 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
+import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -54,11 +57,30 @@ class _SignupScreenState extends State<SignupScreen> {
       }
 
       if (FirebaseAuth.instance.currentUser != null) {
+        var spp = Provider.of<sharedPreferencesProvider>(context, listen: false);
+        bool isLaunchDone = spp.checkIfPresent('launch');
+        bool isModeSet = false;
+
+        if(isLaunchDone){
+          isModeSet = spp.getValue('launch', 'isModeSet') as bool;
+        }
+
         setState(() {
           loading = false;
         });
-        Navigator.of(context).pushNamedAndRemoveUntil(
-            HomeScreen.routeName, (Route<dynamic> route) => false);
+
+        if(isModeSet){
+          Navigator.of(context).pushNamedAndRemoveUntil(
+          HomeScreen.routeName,
+          (Route<dynamic> route) => false,
+        );
+        }
+        else{
+          Navigator.of(context).pushNamedAndRemoveUntil(
+          DefaultNightScreen.routeName,
+          (Route<dynamic> route) => false,
+        );
+        }
       }
     }
   }
@@ -265,16 +287,17 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Text(
                   'Login',
                   style: TextStyle(
-                      fontSize: 15,
-                      shadows: [
-                        Shadow(
-                          color: Theme.of(context).secondaryHeaderColor,
-                          offset: Offset(0, -5),
-                        ),
-                      ],
-                      color: Colors.transparent,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Theme.of(context).secondaryHeaderColor),
+                    fontSize: 15,
+                    shadows: [
+                      Shadow(
+                        color: Theme.of(context).secondaryHeaderColor,
+                        offset: Offset(0, -5),
+                      ),
+                    ],
+                    color: Colors.transparent,
+                    decoration: TextDecoration.underline,
+                    decorationColor: Theme.of(context).secondaryHeaderColor,
+                  ),
                 ),
               )
             ],

@@ -20,6 +20,7 @@ class Temperature extends StatefulWidget {
 class _TemperatureState extends State<Temperature> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool state = false;
+  bool loading = false;
   ScrollController _scrollController = ScrollController();
 
   @override
@@ -72,7 +73,7 @@ class _TemperatureState extends State<Temperature> {
           ),
 
           if (!state)
-            Center(
+            loading ? Center(child: CircularProgressIndicator()) : Center(
               child: ElevatedButtonWithoutIcon(
                 text: "Fetch Temperature",
                 onPressedButton: () async {
@@ -94,7 +95,13 @@ class _TemperatureState extends State<Temperature> {
                         },
                       );
                     } else if (permit == PermissionStatus.granted)  {
+                      setState(() {
+                        loading = true;
+                      });
                       await Provider.of<LocationProvider>(context, listen: false).initPlatformState();
+                      setState(() {
+                        loading = false;
+                      });
                       double latitude =  Provider.of<LocationProvider>(context, listen: false).latitude;
                       double longitude = Provider.of<LocationProvider>(context, listen: false).longitude;
 

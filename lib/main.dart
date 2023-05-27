@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,7 @@ import 'package:night_gschallenge/providers/mental_solution_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
+import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
@@ -56,6 +59,7 @@ import 'package:night_gschallenge/screens/mysleep/my_sleep_screen.dart';
 import 'package:night_gschallenge/screens/plan/PlanScreen.dart';
 import 'package:night_gschallenge/screens/menu/menu_screen.dart';
 import 'package:night_gschallenge/screens/menu/text_to_speech.dart/text_to_speech.dart';
+import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/store/store_screen.dart';
 import 'package:night_gschallenge/screens/topbar/chat_screen.dart';
 import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
@@ -63,6 +67,7 @@ import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/music_player.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'ThemeClass.dart';
@@ -78,12 +83,12 @@ class Main extends StatefulWidget {
   @override
   State<Main> createState() => _MainState();
 
-  static _MainState of(BuildContext context) => 
+  static _MainState of(BuildContext context) =>
       context.findAncestorStateOfType<_MainState>()!;
 }
 
 class _MainState extends State<Main> {
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.light;
   bool once = true;
 
   void changeTheme(ThemeMode themeMode) {
@@ -92,16 +97,8 @@ class _MainState extends State<Main> {
     });
   }
 
-  ThemeMode getTheme(){
-    if(_themeMode == ThemeMode.system){
-      if(Theme.of(context).brightness == Brightness.light){
-        _themeMode = ThemeMode.light;
-      }
-      else if(Theme.of(context).brightness == Brightness.dark){
-        _themeMode = ThemeMode.dark;
-      }
-    }
-    return _themeMode;
+  ThemeMode getTheme() {
+    return this._themeMode;
   }
 
   @override
@@ -111,7 +108,8 @@ class _MainState extends State<Main> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+            child: CircularProgressIndicator(
+                color: Theme.of(context).secondaryHeaderColor),
           );
         }
         return MultiProvider(
@@ -231,6 +229,11 @@ class _MainState extends State<Main> {
                 return StoreProvder();
               },
             ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return sharedPreferencesProvider();
+              },
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -243,11 +246,10 @@ class _MainState extends State<Main> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.active) {
                   if (!snapshot.hasData) {
-                    if(once){
+                    if (once) {
                       once = false;
                       return SplashScreen();
-                    }
-                    else {
+                    } else {
                       return HomeScreen();
                     }
                   } else {
@@ -255,7 +257,8 @@ class _MainState extends State<Main> {
                   }
                 }
                 return Scaffold(
-                  body: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                  body: CircularProgressIndicator(
+                      color: Theme.of(context).secondaryHeaderColor),
                 );
               },
             ),
@@ -301,6 +304,7 @@ class _MainState extends State<Main> {
               MapScreen.routeName: (ctx) => MapScreen(),
               Sleepiness.routeName: (ctx) => Sleepiness(),
               StoreScreen.routeName: (ctx) => StoreScreen(),
+              DefaultNightScreen.routeName: (ctx) => DefaultNightScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

@@ -83,7 +83,8 @@ class _HomeBodyState extends State<HomeBody> {
     return loading
         ? Center(
             child: CircularProgressIndicator(
-                color: Theme.of(context).secondaryHeaderColor),
+              color: Theme.of(context).secondaryHeaderColor,
+            ),
           )
         : Container(
             width: double.infinity,

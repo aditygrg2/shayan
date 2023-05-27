@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
+import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
@@ -35,15 +37,35 @@ class _LoginScreenState extends State<LoginScreen> {
       _formKey.currentState!.save();
 
       await Provider.of<AuthenticationProvider>(context, listen: false)
-          .submitAuthForm(user_email.trim(), user_password.trim(), true);
+          .submitAuthForm(
+        user_email.trim(),
+        user_password.trim(),
+        true,
+      );
     }
 
     if (FirebaseAuth.instance.currentUser != null) {
+      var spp = Provider.of<sharedPreferencesProvider>(context, listen: false);
+      bool isLaunchDone = spp.checkIfPresent('launch');
+      bool isModeSet = false;
+
+      if (isLaunchDone) isModeSet = spp.getValue('launch', 'isModeSet') as bool;
+
       setState(() {
         loading = false;
       });
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          HomeScreen.routeName, (Route<dynamic> route) => false);
+
+      if (isModeSet) {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          HomeScreen.routeName,
+          (Route<dynamic> route) => false,
+        );
+      } else {
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          DefaultNightScreen.routeName,
+          (Route<dynamic> route) => false,
+        );
+      }
     }
   }
 
@@ -193,8 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               controller: _controller,
                               autocorrect: true,
                               decoration: const InputDecoration(
-                                hintText: "Enter your email here"
-                              ),
+                                  hintText: "Enter your email here"),
                             ),
                           ),
                           Card(
@@ -205,16 +226,19 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () async {
                                 await FirebaseAuth.instance
                                     .sendPasswordResetEmail(
-                                        email: _controller.text)
+                                  email: _controller.text,
+                                )
                                     .onError((error, stackTrace) {
                                   message = error.toString();
-                                  print(error.toString());
-                                });
-                                ScaffoldMessenger.of(context).showSnackBar(
+                                  setState(() {});
+                                }).then((value) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(message),
                                     ),
                                   );
+                                });
+
                                 Navigator.of(context).pop();
                               },
                               text: "Submit",

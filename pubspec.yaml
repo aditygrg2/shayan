@@ -68,6 +68,7 @@ dependencies:
   google_maps_webservice: ^0.0.20-nullsafety.5
   url_launcher_android: any
   cached_network_image: ^3.2.3
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
   flutter_test:

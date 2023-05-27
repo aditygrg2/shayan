@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
@@ -44,21 +46,35 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
-  var currentUser = FirebaseAuth.instance.currentUser;
+class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String theme = "";
+
+  var currentUser = FirebaseAuth.instance.currentUser;
   String version = "v1.0";
 
-  Map<String, dynamic> profile = {
-    "Name": FirebaseAuth.instance.currentUser?.displayName,
-    "Email ID": FirebaseAuth.instance.currentUser?.email,
-    "Verification Status":
-        FirebaseAuth.instance.currentUser?.emailVerified.toString() == "true"
-            ? "Successfully Verified"
-            : "Not Verified"
-  };
   @override
   Widget build(BuildContext context) {
+    theme = Provider.of<sharedPreferencesProvider>(context)
+          .getValue('launch', 'mode')
+          .toString();
+
+    print(theme);
+    Map<String, dynamic> profile = {
+      "Name": FirebaseAuth.instance.currentUser?.displayName,
+      "Email ID": FirebaseAuth.instance.currentUser?.email,
+      "Verification Status":
+          FirebaseAuth.instance.currentUser?.emailVerified.toString() == "true"
+              ? "Successfully Verified"
+              : "Not Verified",
+      "Default Theme": theme == 'light' ? "Light Mode" : theme=="" ? "Not Set" : "Dark Mode" 
+    };
     return Scaffold(
       body: ListView(
         children: [
@@ -139,8 +155,11 @@ class ProfileScreen extends StatelessWidget {
                   icon: Icons.logout,
                   onTap: () {
                     FirebaseAuth.instance.signOut();
+                    Provider.of<sharedPreferencesProvider>(context,
+                            listen: false)
+                        .clear();
                     Navigator.of(context).popUntil((route) => route == "");
-                    Navigator.of(context).pushNamed(HomeScreen.routeName);
+                    Navigator.of(context).pushNamed(SplashScreen.routeName);
                   },
                 )
               ],
@@ -167,7 +186,8 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: Icons.signal_cellular_no_sim_sharp,
             ),
-          if (currentUser != null && !FirebaseAuth.instance.currentUser!.emailVerified)
+          if (currentUser != null &&
+              !FirebaseAuth.instance.currentUser!.emailVerified)
             ListTileIconCreators(
               title: 'Verify your email',
               onTap: () async {
@@ -182,6 +202,13 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: Icons.email,
             ),
+          ListTileIconCreators(
+            title: 'Set Default Theme',
+            onTap: () async {
+              Navigator.of(context).pushNamed(DefaultNightScreen.routeName);
+            },
+            icon: Icons.calendar_view_week_sharp,
+          ),
         ],
       ),
     );
