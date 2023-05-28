@@ -18,23 +18,26 @@ class SlidingCardRounded extends StatelessWidget {
             color: Colors.black,
             width: 2,
           ),
-          color: Colors.grey,
-          borderRadius: BorderRadius.all(
+          color: Colors.transparent,
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
         ),
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Column(
           children: [
             Container(
               height: 220,
               width: double.infinity,
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
-                child: Image.asset(
+                child: src.toString().contains("asset")? Image.asset(
+                  src,
+                  fit: BoxFit.cover,
+                ):Image.network(
                   src,
                   fit: BoxFit.cover,
                 ),
@@ -42,24 +45,30 @@ class SlidingCardRounded extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
                 decoration: BoxDecoration(
                   color: Theme.of(context).accentColor,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10)),
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      heading,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
                     Container(
+                    margin: const EdgeInsets.only(top: 10),
+                      width: double.infinity,
+                      child: Text(
+                        heading,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                        textAlign: TextAlign.start,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    
+
+                  if(subHeading!=null)  Container(
+                    margin: const EdgeInsets.only(top: 10),
                       width: double.infinity,
                       child: Text(
                         subHeading,

@@ -34,7 +34,7 @@ class ProductCategory extends StatelessWidget {
                     margin: const EdgeInsets.all(10),
                     child: SlidingCardRounded(
                       heading: e['title'],
-                      subHeading: "${e['price']}\n${e['description']}",
+                      subHeading: null,
                       src: e['image'],
                     ),
                   ),
