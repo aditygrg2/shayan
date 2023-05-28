@@ -40,7 +40,7 @@ class _LibraryCardState extends State<LibraryCard> {
                 ),
                 child: Image.network(
                   widget.src,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -53,7 +53,7 @@ class _LibraryCardState extends State<LibraryCard> {
                 bottomRight: Radius.circular(15),
               ),
             ),
-            padding: EdgeInsets.all(9),
+            padding: const EdgeInsets.all(9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,6 +66,7 @@ class _LibraryCardState extends State<LibraryCard> {
                 ),
                 Text(
                   widget.subHeading,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 12,
                   ),
