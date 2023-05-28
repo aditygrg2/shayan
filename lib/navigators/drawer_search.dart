@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
-import 'package:night_gschallenge/screens/library/article.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
 import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
@@ -11,7 +10,6 @@ import 'package:night_gschallenge/screens/library/stories_screen.dart';
 import 'package:night_gschallenge/screens/menu/Maps/google_map.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/meditation_timer.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
-import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy.dart';
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
 import 'package:night_gschallenge/screens/menu/SleepCycleCalculator/sleep_cycle_calculator.dart';
@@ -53,7 +51,14 @@ class CustomDelegate extends SearchDelegate<String> {
       "icon": Icons.chat_bubble
     },
     {
-      "query": ["Profile", "User Profile", "My Profile", "Revoke Google Fit ID", "Logout", "Verify your email"],
+      "query": [
+        "Profile",
+        "User Profile",
+        "My Profile",
+        "Revoke Google Fit ID",
+        "Logout",
+        "Verify your email"
+      ],
       "link": ProfileScreen.routeName,
       "icon": Icons.person
     },
@@ -253,20 +258,16 @@ class CustomDelegate extends SearchDelegate<String> {
         }
       }
     }
-
-    print(listToShow);
-    print(query.isNotEmpty);
-
     return (listToShow.isEmpty && query.isNotEmpty == true)
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: const [
               Icon(
                 Icons.not_listed_location_outlined,
                 size: 32,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Center(
                   child: Text(
                     "Uh-oh! No sleep-related results found. It's like searching for stars in daylight. Time to try another query or discover other soothing features within our app. Rest assured, we're here to help you catch those elusive Zzz's!",

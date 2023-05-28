@@ -1,11 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/main.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
 import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
 
@@ -78,9 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: ListView(
         children: [
-          Image.asset(
-            'assets/login.gif',
-            height: height / 3,
+          ImageCacher(
+            imagePath: "https://i.ibb.co/0FcmtJJ/animation-500-li7n6qa6.gif",
           ),
           SizedBox(
             height: 10,
@@ -206,8 +208,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           HomeScreenText(
                             text: "Reset your password",
                           ),
-                          Image.asset(
-                            'assets/login.gif',
+                          ImageCacher(
+                            imagePath: "https://i.ibb.co/SPRtttd/animation-640-li7n1arc.gif",
                           ),
                           Card(
                             color: Theme.of(context).primaryColor,

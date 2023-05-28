@@ -36,11 +36,9 @@ class AudioProvider extends ChangeNotifier {
     }
   }
 
-  void setAlarm(String url){
+  void playAsset(String url){
     player.setAsset(url);
     player.play();
-    alarmStarted = true;
-    notifyListeners();
   }
 
   dynamic play() async {

@@ -93,7 +93,7 @@ class _SignupScreenState extends State<SignupScreen> {
       body: ListView(
         children: [
           Image.asset(
-            'assets/signup.gif',
+            'assets/ln.gif',
           ),
           const SizedBox(
             height: 10,

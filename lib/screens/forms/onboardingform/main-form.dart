@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:night_gschallenge/widgets/form/mcq_widget.dart';
 
@@ -561,20 +562,11 @@ class _MainFormState extends State<MainForm> {
                         text: 'Plan Creation Form',
                       ),
                       Container(
-                        height: 150,
-                        width: 150,
-                        child: CachedNetworkImage(
-                          imageUrl: "https://i.ibb.co/x8XHvdh/form.gif",
-                          placeholder: (context, url) {
-                            return Image.asset(
-                              'assets/processloading.gif',
-                            );
-                          },
-                          errorWidget: (context, url, error) {
-                            return Icon(Icons.error);
-                          },
-                        ),
-                      ),
+                          height: 150,
+                          width: 150,
+                          child: ImageCacher(
+                            imagePath: "https://i.ibb.co/x8XHvdh/form.gif",
+                          )),
                       if (loading)
                         CircularProgressIndicator(
                           color: Theme.of(context).secondaryHeaderColor,

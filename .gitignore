@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+.env
 migrate_working_dir/
 assets/secretkey.json
 
@@ -45,3 +46,4 @@ app.*.map.json
 /android/app/release
 
 /windows
+

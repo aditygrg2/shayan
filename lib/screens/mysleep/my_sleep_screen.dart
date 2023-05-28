@@ -163,7 +163,7 @@ class _MySleepScreenState extends State<MySleepScreen> {
                   height: 20,
                 ),
                 const Text(
-                  'Share your sleep experince, daily haits and overall lifestyle patterns and manage your sleep',
+                  'Share your sleep experience, daily habits and overall lifestyle patterns and manage your sleep',
                   style: TextStyle(
                     fontSize: 18,
                   ),

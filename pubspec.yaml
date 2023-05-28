@@ -69,6 +69,7 @@ dependencies:
   url_launcher_android: any
   cached_network_image: ^3.2.3
   shared_preferences: ^2.0.18
+  flutter_background: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -145,6 +146,7 @@ flutter:
     - assets/meditation.png
     - assets/relaxation.png
     - assets/visualization.png
+    - assets/ln.gif
     - assets/worry.gif
     - assets/music_therapy_joyful.png
     - assets/music_therapy_worried.png

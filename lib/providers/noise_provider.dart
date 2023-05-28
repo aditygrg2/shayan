@@ -79,6 +79,12 @@ class NoiseProvider with ChangeNotifier {
       }
   }
 
+  void toggleSuccess(){
+    success = false;
+    state = false;
+    notifyListeners();
+  }
+
   Future<void> initPlatformState() async {
       start();
       state = true;
