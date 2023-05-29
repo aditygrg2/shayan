@@ -19,7 +19,7 @@ class LocationProvider extends ChangeNotifier {
     return _locationData.longitude!;
   }
 
-  void initialize() async {
+  Future initialize() async {
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
