@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/music_category_component.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class MusicGalleryScreen extends StatelessWidget {
@@ -11,25 +12,25 @@ class MusicGalleryScreen extends StatelessWidget {
       'title': "Ambient Sounds",
       "data": [
         {
-          "image": "assets/red.jpg",
+          "image": "https://i.ibb.co/2YGJ9TX/red.png",
           "title": "Red Noise",
           "description": "This is a great music that will relac your mind ",
           "audio": "https://dl.sndup.net/xtwm/red.mp3"
         },
         {
-          "image": "assets/pink.jpg",
+          "image": "https://i.ibb.co/z2qWXzF/pink.jpg",
           "title": "Pink Noise",
           "description": " ",
           "audio": "https://dl.sndup.net/tttm/pink.mp3"
         },
         {
-          "image": "assets/white.jpg",
+          "image": "https://i.ibb.co/mTBLJXz/temp-Image3fe-ZWO.jpg",
           "title": "White Noise",
           "description": " ",
           "audio": "https://dl.sndup.net/y3gp/white.mp3"
         },
         {
-          "image": "assets/grey.jpg",
+          "image": "https://i.ibb.co/Rz06zLM/grey.jpg",
           "title": "Grey Noise",
           "description": " ",
           "audio": "https://dl.sndup.net/gqqj/grey.mp3"
@@ -40,17 +41,17 @@ class MusicGalleryScreen extends StatelessWidget {
       'title': "Meditative Mantras",
       "data": [
         {
-          "image": "assets/mantra_1.png",
+          "image": "https://i.ibb.co/v1Hf7P4/mantra-1.png",
           "title": "Om Shanti",
           "description": "Peace of mind, body, and speech."
         },
         {
-          "image": "assets/mantra_2.png",
+          "image": "https://i.ibb.co/Rz4fRdz/mantra-2.png",
           "title": "I am That I Am",
           "description": "This is one of the Hebrew Torah's most famous lines"
         },
         {
-          "image": "assets/mantra_3.png",
+          "image": "https://i.ibb.co/jhz7jKj/mantra-3.pngg",
           "title": "I Love You",
           "description": "Forgiveness and reconciliation practice"
         },
@@ -60,12 +61,12 @@ class MusicGalleryScreen extends StatelessWidget {
       'title': "Sounds",
       "data": [
         {
-          "image": "assets/music_sounds.jpg",
+          "image": "https://i.ibb.co/Ms0r1SS/music-sounds.jpg",
           "title": "Peaceful Night",
           "description": "Deep Sleep Relaxation Sounds"
         },
         {
-          "image": "assets/beach_sounds.jpg",
+          "image": "https://i.ibb.co/6JKyWqX/beach-sounds.jpg",
           "title": "Beach Sounds",
           "description": "Ocean Waves Noise for Deep sleep"
         },
@@ -75,12 +76,12 @@ class MusicGalleryScreen extends StatelessWidget {
       'title': "Calming Tunes",
       "data": [
         {
-          "image": "assets/calming_tone1.jpg",
+          "image": "https://i.ibb.co/Tw2MNbR/calming-tone1.jpg",
           "title": "Moon",
           "description": "Full Moon Calming Music"
         },
         {
-          "image": "assets/calming_tone2.jpg",
+          "image": "https://i.ibb.co/5jppWpS/calming-tone2.jpg",
           "title": "Waterfall",
           "description": "Relaxing Music Sleep Waterfall"
         },
@@ -91,22 +92,22 @@ class MusicGalleryScreen extends StatelessWidget {
     {
       'heading': 'Fantasy',
       'subHeading': 'Imagine yourself in a world of peace.',
-      'src': 'assets/music_data_1.jpeg',
+      'src': 'https://i.ibb.co/v1QPv0M/music-data-1.jpg',
     },
     {
       'heading': 'Nature',
       'subHeading': 'Getting closed with nature',
-      'src': 'assets/music_data_2.jpg',
+      'src': 'https://i.ibb.co/cctK95B/music-data-2.jpg',
     },
     {
       'heading': 'Village Life',
       'subHeading': 'A day of the life at village.',
-      'src': 'assets/music_data_3.jpg',
+      'src': 'https://i.ibb.co/sVgHcp0/music-data-3.jpg',
     },
     {
       'heading': 'Good morning',
       'subHeading': 'Peaceful Morning with a cup of coffee',
-      'src': 'assets/music_data_4.jpg',
+      'src': 'https://i.ibb.co/9VQJ41n/music-data-4.jpg',
     },
   ];
   @override
@@ -123,7 +124,9 @@ class MusicGalleryScreen extends StatelessWidget {
           Container(
             width: 200,
             padding: EdgeInsets.all(10),
-            child: Image.asset("assets/library_music_categories_page.png",
+            child: ImageCacher(
+                imagePath:
+                    "https://i.ibb.co/J3fKWZR/library-music-categories-page.png",
                 fit: BoxFit.contain),
           ),
           ...categories.map((e) {

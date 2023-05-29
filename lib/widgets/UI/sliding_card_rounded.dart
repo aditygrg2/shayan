@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class SlidingCardRounded extends StatelessWidget {
   final heading;
@@ -30,18 +31,14 @@ class SlidingCardRounded extends StatelessWidget {
               height: 220,
               width: double.infinity,
               child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-                child: src.toString().contains("asset")? Image.asset(
-                  src,
-                  fit: BoxFit.cover,
-                ):Image.network(
-                  src,
-                  fit: BoxFit.cover,
-                ),
-              ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                  child: ImageCacher(
+                    imagePath: src,
+                    fit: BoxFit.cover,
+                  )),
             ),
             Expanded(
               child: Container(
@@ -56,7 +53,7 @@ class SlidingCardRounded extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                    margin: const EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       width: double.infinity,
                       child: Text(
                         heading,
@@ -65,18 +62,17 @@ class SlidingCardRounded extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    
-
-                  if(subHeading!=null)  Container(
-                    margin: const EdgeInsets.only(top: 10),
-                      width: double.infinity,
-                      child: Text(
-                        subHeading,
-                        style: Theme.of(context).textTheme.labelMedium,
-                        textAlign: TextAlign.start,
-                        overflow: TextOverflow.ellipsis,
+                    if (subHeading != null)
+                      Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        width: double.infinity,
+                        child: Text(
+                          subHeading,
+                          style: Theme.of(context).textTheme.labelMedium,
+                          textAlign: TextAlign.start,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),

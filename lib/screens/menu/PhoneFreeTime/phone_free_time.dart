@@ -3,6 +3,7 @@ import 'package:night_gschallenge/screens/menu/PhoneFreeTime/time_duration_picke
 import 'package:night_gschallenge/screens/menu/PhoneFreeTime/zen_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class PhoneFreeTime extends StatelessWidget {
@@ -79,8 +80,8 @@ class PhoneFreeTime extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.48,
                 height: 140,
-                child: Image.asset(
-                  "assets/phone_free_time.gif",
+                child: ImageCacher(
+                  imagePath: "https://i.ibb.co/nBG0tRP/phone-free-time.gif",
                   fit: BoxFit.cover,
                 ),
               ),

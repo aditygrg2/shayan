@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/chart_provider.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:provider/provider.dart';
 
 class WeeklySleepAnalysis extends StatefulWidget {
@@ -40,8 +41,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
           height: 10,
         ),
         loading
-            ? CircularProgressIndicator(
-                color: Theme.of(context).secondaryHeaderColor)
+            ? LoadingStateCreator()
             : Stack(
                 children: [
                   Container(

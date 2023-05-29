@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/music_category_component.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class StoryScreen extends StatelessWidget {
@@ -11,22 +12,19 @@ class StoryScreen extends StatelessWidget {
       'title': "Kids",
       "data": [
         {
-          "image": "assets/sleep_story_1.jpg",
+          "image": "https://i.ibb.co/WWfS1b1/sleep-story-1.jpg",
           "title": "Bedtime Stories",
-          "description":
-              "Healing Rays of the Sun..."
+          "description": "Healing Rays of the Sun..."
         },
         {
-          "image": "assets/sleep_story_3.jpg",
+          "image": "https://i.ibb.co/8660mzb/sleep-story-3.jpg",
           "title": "Castle on the ocean",
-          "description":
-              "An enchanting sleep meditation..."
+          "description": "An enchanting sleep meditation..."
         },
         {
-          "image": "assets/sleep_story_2.jpg",
+          "image": "https://i.ibb.co/GsVjFsX/sleep-story-2.webp",
           "title": "Magic Unicorn",
-          "description":
-              "Child clinicians point out the cognitive benefits..."
+          "description": "Child clinicians point out the cognitive benefits..."
         },
       ]
     },
@@ -34,22 +32,19 @@ class StoryScreen extends StatelessWidget {
       'title': "Adults",
       "data": [
         {
-          "image": "assets/sleep_story_6.jpg",
+          "image": "https://i.ibb.co/C7ms5Y4/sleep-story-6.jpg",
           "title": "The Cabin in the Woods",
-          "description":
-              "A Horror Movie About Horror Movies..."
+          "description": "A Horror Movie About Horror Movies..."
         },
         {
-          "image": "assets/sleep_story_5.jpg",
+          "image": "https://i.ibb.co/JK5y4Q5/sleep-story-5.jpg",
           "title": "The Gift of the Magi",
-          "description":
-              "The magi brought valuable gifts..."
+          "description": "The magi brought valuable gifts..."
         },
         {
-          "image": "assets/sleep_story_4.jpg",
+          "image": "https://i.ibb.co/QCckLhF/sleep-story-4.jpg",
           "title": "The Adventures of SherLock Holmes",
-          "description":
-              "World's most well known detectives..."
+          "description": "World's most well known detectives..."
         },
       ]
     },
@@ -94,7 +89,10 @@ class StoryScreen extends StatelessWidget {
           Container(
             width: 200,
             padding: EdgeInsets.all(10),
-            child: Image.asset("assets/story_library.jpg", fit: BoxFit.contain),
+            child: ImageCacher(
+              imagePath: "https://i.ibb.co/mCRrTQL/story-library.jpg",
+              fit: BoxFit.contain,
+            ),
           ),
           ...categories.map((e) {
             return MusicCategory(

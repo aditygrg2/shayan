@@ -6,6 +6,7 @@ import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart'
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
@@ -89,8 +90,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 200,
-                  child: Image.asset(
-                    "assets/meditation_timer_person.gif",
+                  child: ImageCacher(
+                    imagePath: "https://i.ibb.co/z8k8p2F/meditation-timer-person.gif",
                     fit: BoxFit.contain,
                   ),
                 ),

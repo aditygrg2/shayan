@@ -5,6 +5,8 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_temperatu
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperatureModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -41,8 +43,8 @@ class _TemperatureState extends State<Temperature> {
           Container(
             margin: const EdgeInsets.all(40),
             height: 200,
-            child: Image.asset(
-              'assets/temperatures.gif',
+            child: ImageCacher(
+              imagePath: "https://i.ibb.co/PNYhNrQ/temperatures.gif",
               fit: BoxFit.contain,
             ),
           ),
@@ -73,7 +75,7 @@ class _TemperatureState extends State<Temperature> {
           ),
 
           if (!state)
-            loading ? Center(child: CircularProgressIndicator()) : Center(
+            loading ? Center(child: LoadingStateCreator()) : Center(
               child: ElevatedButtonWithoutIcon(
                 text: "Fetch Temperature",
                 onPressedButton: () async {

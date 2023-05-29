@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class WatchCompanyProvider extends StatelessWidget {
   final String? title;
@@ -23,8 +24,8 @@ class WatchCompanyProvider extends StatelessWidget {
           splashColor: Theme.of(context).canvasColor,
           leading: Container(
             width: MediaQuery.of(context).size.width * 0.3,
-            child: Image.asset(
-              imagePath!,
+            child: ImageCacher(
+              imagePath: imagePath,
               fit: BoxFit.fitHeight,
             ),
           ),

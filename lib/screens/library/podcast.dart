@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:night_gschallenge/screens/library/library_card.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class Podcast extends StatelessWidget {
@@ -55,7 +56,7 @@ class Podcast extends StatelessWidget {
           ),
           FutureBuilder(builder: (context, snapshot) {
             if(!snapshot.hasData){
-              return const Center(child: CircularProgressIndicator(),);
+              return Center(child: LoadingStateCreator(),);
             }
             return GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_modal.dart';
 
 class WatchComponent extends StatefulWidget {
@@ -42,7 +43,9 @@ class _WatchComponentState extends State<WatchComponent> {
                 Container(
                   width: 70,
                   height: 70,
-                  child: Image.asset('assets/watch.png'),
+                  child: ImageCacher(
+                    imagePath: "https://i.ibb.co/yRCc7vC/watch.gif",
+                  ),
                 ),
                 const SizedBox(
                   height: 10,

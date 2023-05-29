@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class WatchStatus extends StatefulWidget {
@@ -68,8 +69,8 @@ class _WatchStatusState extends State<WatchStatus> {
         height: 50,
         child: Row(
           children: [
-            Image.asset(
-              'assets/gfit.png',
+            ImageCacher(
+              imagePath: "https://i.ibb.co/mGMPXfT/gfit.png",
               fit: BoxFit.cover,
             ),
             const SizedBox(

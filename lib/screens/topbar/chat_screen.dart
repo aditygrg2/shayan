@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/screens/topbar/chat_input.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -114,8 +115,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                     padding: const EdgeInsets.only(
                                       left: 8,
                                     ),
-                                    child: Image.asset(
-                                      'assets/bot.png',
+                                    child: ImageCacher(
+                                      imagePath: "https://i.ibb.co/LZsLBfP/bot.png",
                                       fit: BoxFit.cover,
                                     ),
                                   ),

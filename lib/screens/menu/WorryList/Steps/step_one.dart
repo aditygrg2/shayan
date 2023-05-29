@@ -5,6 +5,7 @@ import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_two.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrycard.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,7 @@ class StepOne extends StatelessWidget {
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: CircularProgressIndicator(),
+                  child: LoadingStateCreator(),
                 );
               }
               final docs = snapshot.data as QuerySnapshot;

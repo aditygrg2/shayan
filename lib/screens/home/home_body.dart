@@ -11,6 +11,7 @@ import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/home_screen/music_section.dart';
 import 'package:night_gschallenge/widgets/home_screen/sleep_score.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_component.dart';
@@ -81,11 +82,7 @@ class _HomeBodyState extends State<HomeBody> {
       once = false;
     }
     return loading
-        ? Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).secondaryHeaderColor,
-            ),
-          )
+        ? LoadingStateCreator()
         : Container(
             width: double.infinity,
             child: Column(

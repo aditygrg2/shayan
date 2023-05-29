@@ -23,17 +23,17 @@ class NoiseProvider with ChangeNotifier {
 
   final List<Map<String,String>> _modalData = [
     {
-      "image": "assets/goodlight.png",
+      "image": "https://i.ibb.co/ScJPjfK/goodlight.png",
       "heading" : "Sweet Dreams!",
       "subheading": "Sleep tight! Your environment noise level is optimal for a restful slumber.",
     },
     {
-      "image": "assets/averagelight.png",
+      "image": "https://i.ibb.co/FX6Tybs/averagelight.png",
       "heading" : "Sleep Tight!",
       "subheading": "A quiet hum in the air... Your environment noise level is suitable for sleeping, but for optimal conditions try to reduce the sound volumes",
     },
     {
-      "image": "assets/badlight.png",
+      "image": "https://i.ibb.co/ccyj6bW/badlight.png",
       "heading" : "Wake Up Call!",
       "subheading": "Wakey-wakey! Your environment noise level is too high for sleeping. Please look around and shut down the disturbances",
     },

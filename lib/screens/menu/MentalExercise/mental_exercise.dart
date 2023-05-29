@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
@@ -12,30 +13,30 @@ class MentalExercise extends StatelessWidget {
       'title': 'Visualization',
       'subtitle':
           'Involves creating a mental image or scenario that is soothing, calming, and peaceful',
-      "image": 'assets/visualization.png',
+      "image": 'https://i.ibb.co/fnK1H0N/visualization.png',
     },
     {
       'title': 'Progressive Muscle Relaxation',
       'subtitle': 'It makes user more aware of areas of tension in their body',
-      "image": 'assets/relaxation.png',
+      "image": 'https://i.ibb.co/y00Jr5V/relaxation.png',
     },
     {
       'title': 'Meditation',
       'subtitle':
           'Mental practice that involves focusing the mind on a particular object',
-      "image": 'assets/meditation.png',
+      "image": 'https://i.ibb.co/wdF7MXq/meditation.png',
     },
     {
       'title': 'Autogenic Relaxation',
       'subtitle':
           'Using self-suggestion to create a sense of relaxation and well-being in the body',
-      "image": 'assets/autogenic_relaxation.png',
+      "image": 'https://i.ibb.co/1rcxjYg/autogenic-relaxation.png',
     },
     {
       'title': 'Deep Breathing',
       'subtitle':
           'Relaxation technique that involves taking slow, deep breaths',
-      "image": 'assets/deep_breathing.png',
+      "image": 'https://i.ibb.co/PNt6zmD/deep-breathing.png',
     },
   ];
   static String routeName = '/mental-exercise';
@@ -51,7 +52,7 @@ class MentalExercise extends StatelessWidget {
           text: "Mental Exercises",
         ),
         MenuHeroImage(
-          image: 'assets/mentalExercises.gif',
+          image: 'https://i.ibb.co/1MJHrk7/mental-Exercises.gif',
         ),
         Container(
           child: Column(
@@ -116,8 +117,8 @@ class MentalExercise extends StatelessWidget {
                                 ),
                               ),
                               Expanded(
-                                child: Image.asset(
-                                  card['image'].toString(),
+                                child: ImageCacher(
+                                  imagePath: card['image'].toString(),
                                 ),
                               ),
                             ],

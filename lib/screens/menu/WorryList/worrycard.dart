@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:provider/provider.dart';
 
 class Worrycard extends StatelessWidget {
@@ -32,7 +33,7 @@ class Worrycard extends StatelessWidget {
             color: Colors.blue,
             size: 50,),onPressed: (){
               showBottomSheet(context: context, builder: (context) {
-                return Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor,),);
+                return Center(child: LoadingStateCreator(),);
               },backgroundColor: Colors.transparent);
               worryProvider.deleteWorry(id!).then((value) {
                 Navigator.of(context).pop();

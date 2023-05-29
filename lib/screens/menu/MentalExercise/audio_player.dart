@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:provider/provider.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 
@@ -101,8 +102,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                   SizedBox(
                     height: 10,
                   ),
-                  CircularProgressIndicator(
-                      color: Theme.of(context).secondaryHeaderColor),
+                  LoadingStateCreator(),
                 ],
               )),
     );

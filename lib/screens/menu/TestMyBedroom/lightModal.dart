@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class LightModal extends StatelessWidget {
@@ -23,7 +24,7 @@ class LightModal extends StatelessWidget {
             children: [
               Container(
                 height: height / 8,
-                child: Image.asset(data['image']!),
+                child: ImageCacher(imagePath: data['image']!),
               ),
               Text(
                 data['heading']!,

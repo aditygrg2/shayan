@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class MeasuringNoise extends StatefulWidget {
@@ -22,8 +23,8 @@ class _MeasuringNoiseState extends State<MeasuringNoise> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          Image.asset(
-            'assets/scanning_2.gif',
+          ImageCacher(
+            imagePath: "https://i.ibb.co/Y7Xyqmt/scanning-2.gif",
             fit: BoxFit.cover,
           ),
           Center(

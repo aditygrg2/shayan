@@ -19,28 +19,28 @@ class _LibraryScreenState extends State<LibraryScreen> {
       "title": "Podcasts",
       "subtitle":
           "Discover soothing podcasts that help you unwind, relax, and find peace before drifting off to sleep.",
-      "image": "assets/library_podcast.png",
+      "image": "https://i.ibb.co/SXydTqW/library-podcast.png",
       "route": Podcast.routeName,
     },
     {
       "title": "Articles",
       "subtitle":
           "Explore a collection of insightful articles that explore the science of sleep, dream interpretation, and tips for a restful night.",
-      "image": "assets/library_articles.png",
+      "image": "https://i.ibb.co/0Vs6HJH/library-articles.png",
       "route": ArticlesScreen.routeName,
     },
     {
       "title": "Stories",
       "subtitle":
           "Indulge in captivating stories that transport you to tranquil realms, lulling your mind into a state of serenity for a peaceful slumber.",
-      "image": "assets/library_stories.png",
+      "image": "https://i.ibb.co/mCRrTQL/story-library.jpg",
       "route": StoryScreen.routeName,
     },
     {
       "title": "Music",
       "subtitle":
           "Immerse yourself in a harmonious selection of ambient music designed to accompany your sleep journey and promote deep relaxation.",
-      "image": "assets/library_music.png",
+      "image": "https://i.ibb.co/0JJwwJK/library-music.png",
       "route": MusicGalleryScreen.routeName,
     }
   ];
