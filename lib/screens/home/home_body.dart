@@ -5,10 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
+import 'package:night_gschallenge/providers/store_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
+import 'package:night_gschallenge/screens/store/products_category.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
@@ -76,6 +78,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
+    final storeProvder = Provider.of<StoreProvder>(context,listen: false);
     var id = FirebaseAuth.instance.currentUser?.uid;
     if (once) {
       data();
@@ -264,6 +267,7 @@ class _HomeBodyState extends State<HomeBody> {
                     : WhatsNew(),
                 if (!isWatchConnected) const WatchComponent(),
                 MusicSection(),
+                ProductCategory(data: storeProvder.getCategories[0]['items'], type: storeProvder.getCategories[0]['type'])
               ],
             ),
           );

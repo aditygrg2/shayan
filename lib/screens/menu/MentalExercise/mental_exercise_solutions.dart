@@ -81,7 +81,7 @@ class MentalExerciseSolution extends StatelessWidget {
                         ),
                         ...(solution['tips'] as List).map((element) {
                           return ListTile(
-                            leading: Image.asset('assets/check-mark.png'),
+                            leading: Container(width: 40,height: 40,child: Image.asset('assets/check-mark.png',fit: BoxFit.cover,)),
                             subtitle: Text(element),
                           );
                         }).toList(),

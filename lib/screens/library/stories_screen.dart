@@ -84,11 +84,11 @@ class StoryScreen extends StatelessWidget {
             back: true,
           ),
           HomeScreenText(
-            text: "Story",
+            text: "Stories",
           ),
           Container(
             width: 200,
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: ImageCacher(
               imagePath: "https://i.ibb.co/mCRrTQL/story-library.jpg",
               fit: BoxFit.contain,

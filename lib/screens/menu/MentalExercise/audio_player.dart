@@ -52,8 +52,8 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                   height: 20,
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  width: MediaQuery.of(context).size.width - 15,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  width: MediaQuery.of(context).size.width - 30,
                   child: ProgressBar(
                     progress: audioProvider.progress,
                     total: audioProvider.duration,
@@ -61,10 +61,7 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
                     onSeek: (value) {
                       audioProvider.seek(value);
                     },
-                    timeLabelTextStyle: TextStyle(
-                      fontSize: 15,
-                      color: Theme.of(context).primaryColor,
-                    ),
+                    timeLabelTextStyle: Theme.of(context).textTheme.labelMedium,
                     timeLabelPadding: 15,
                     timeLabelType: TimeLabelType.remainingTime,
                   ),

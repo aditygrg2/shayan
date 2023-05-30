@@ -24,7 +24,7 @@ Widget getStatus(int hours) {
           );
         },
         errorWidget: (context, url, error) {
-          return Icon(Icons.error);
+          return const Icon(Icons.error);
         },
       ),
     );
@@ -43,7 +43,7 @@ Widget getStatus(int hours) {
           );
         },
         errorWidget: (context, url, error) {
-          return Icon(Icons.error);
+          return const Icon(Icons.error);
         },
       ),
     );
@@ -62,7 +62,7 @@ Widget getStatus(int hours) {
           );
         },
         errorWidget: (context, url, error) {
-          return Icon(Icons.error);
+          return const Icon(Icons.error);
         },
       ),
     );
@@ -89,7 +89,7 @@ class _WelcomeUserState extends State<WelcomeUser> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Good ${hours >3 && hours < 15 ? "Morning" : hours>15 && hours<20 ? "Evening" : "Night"}${isLogin ? ',' : ''}",
+            "Good ${hours >3 && hours < 15 ? "Morning" : hours>15 && hours<20 ? "Evening" : "Night"}",
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(

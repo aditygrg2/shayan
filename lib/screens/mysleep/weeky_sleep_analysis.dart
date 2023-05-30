@@ -25,11 +25,12 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   @override
   Widget build(BuildContext context) {
     final chartProvider = Provider.of<ChartProvider>(context);
-    bool data_available = false;
+    bool data_available = true;
     if (once) {
       once = false;
       getData(chartProvider);
-      data_available = chartProvider.data_NA_checker();
+      // data_available = chartProvider.data_NA_checker();
+      data_available = true;
     }
 
     return Column(
@@ -115,9 +116,9 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                     ),
                   ),
                   if(!data_available)
-                  Padding(
-                    padding: const EdgeInsets.all(32),
-                    child: const Center(
+                  const Padding(
+                    padding:  EdgeInsets.all(32),
+                    child:  Center(
                       child: Text(
                         "Fill out the sleep tracker to see the data here!",
                         textAlign: TextAlign.center,
