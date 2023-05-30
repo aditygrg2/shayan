@@ -13,7 +13,7 @@ import 'package:provider/provider.dart';
 class MeditationTimer extends StatefulWidget {
   static String routeName = '/meditation';
   bool isShowPicker;
-  late DateTime datetime;
+  DateTime datetime = DateTime.parse('1900-12-24 00:00:00.000');
   int selectedIndex;
   MeditationTimer({this.isShowPicker = true, this.selectedIndex = 0});
   List<Map<dynamic, dynamic>> options = [
@@ -97,14 +97,14 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   ),
                 ),
                 !widget.isShowPicker
-                    ? CountDownTimerComponent(widget.datetime, audio)
+                    ? CountDownTimerComponent(widget.datetime, audio,controller)
                     : TimePicker(callBackDateTime),
               ],
             ),
           ),
           Container(
             width: double.infinity,
-            height: 100,
+            height: !widget.isShowPicker ? 100 : 250,
             child: !widget.isShowPicker
                 ? Container(
                     margin: const EdgeInsets.all(10),
@@ -130,27 +130,34 @@ class _MeditationTimerState extends State<MeditationTimer> {
                       ],
                     ),
                   )
-                : ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                : GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 2),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(10),
-                        decoration: widget.selectedIndex == index
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Theme.of(context).dividerColor,
-                                  width: 2,
-                                ),
-                              )
-                            : null,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              widget.selectedIndex = index;
-                            });
-                          },
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            widget.selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          margin: const EdgeInsets.symmetric(horizontal: 7),
+                          padding: const EdgeInsets.all(4),
+                          decoration: widget.selectedIndex == index
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Theme.of(context).dividerColor,
+                                    width: 2,
+                                  ),
+                                )
+                              : null,
                           child: Column(children: [
                             Expanded(
                               child: Icon(
@@ -160,6 +167,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                             Expanded(
                               child: Text(
                                 widget.options[index]['title'],
+                                textAlign: TextAlign.center,
                               ),
                             )
                           ]),
@@ -182,7 +190,10 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     backgroundColor: Theme.of(context).canvasColor,
                     child: IconButton(
                       onPressed: () {
-                        audio.stop();
+                        audio.release();
+                        controller.removeListener(() {
+                          
+                        },);
                         setState(() {
                           widget.isShowPicker = !widget.isShowPicker;
                         });
@@ -203,32 +214,20 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           controller.resume();
                           audio.resume();
                         } else {
-                          if (widget.datetime.compareTo(
-                                  DateTime.parse('1900-12-24 00:00:00.000')) ==
-                              0) {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Container(
-                              child: const Text("Please select Time Duration"),
-                            )));
-                            return;
-                          }
-                          showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            builder: (context) {
-                              return Container(
-                                height: MediaQuery.of(context).size.height,
-                                child: Center(
-                                    child: CircularProgressIndicator(
-                                  color: Theme.of(context).secondaryHeaderColor,
-                                )),
-                              );
-                            },
-                          );
-                          handleClick(audio, context);
+                          controller.pause();
+                          audio.pause();
                         }
+                        setState(() {});
                       } else {
+                        if (widget.datetime.compareTo(
+                                DateTime.parse('1900-12-24 00:00:00.000')) ==
+                            0) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Container(
+                            child: const Text("Please select Time Duration"),
+                          )));
+                          return;
+                        }
                         showModalBottomSheet(
                           context: context,
                           isScrollControlled: true,
@@ -244,9 +243,10 @@ class _MeditationTimerState extends State<MeditationTimer> {
                             );
                           },
                         );
+                        controller.initialize();
                         handleClick(audio, context);
                       }
-                    },
+                    },  
                     icon: Icon(
                       !widget.isShowPicker
                           ? (controller.isPause

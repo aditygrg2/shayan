@@ -77,7 +77,7 @@ class MentalExercise extends StatelessWidget {
                           });
                         },
                         child: Container(
-                          height: 170,
+                          height: 185,
                           decoration: BoxDecoration(
                             color: Theme.of(context).canvasColor,
                             borderRadius:
@@ -99,21 +99,28 @@ class MentalExercise extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      card['title'].toString(),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleLarge,
+                                     Container(
+                                        height: 28,
+                                        child: Text(
+                                          card['title'].toString(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge,
+                                              overflow: TextOverflow.clip,
+                                        ),
+                                    
                                     ),
                                     const SizedBox(
                                       height: 10,
                                     ),
-                                    Text(
-                                      card['subtitle'].toString(),
-                                      overflow: TextOverflow.clip,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleMedium,
+                                    Expanded(
+                                      child: Text(
+                                        card['subtitle'].toString(),
+                                        overflow: TextOverflow.clip,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
                                     )
                                   ],
                                 ),

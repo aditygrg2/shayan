@@ -5,10 +5,11 @@ class ThemeClass {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     canvasColor: const Color.fromRGBO(251, 145, 92, 1),
-    accentColor: Color.fromARGB(236, 251, 145, 92),
+    accentColor: const Color.fromARGB(236, 251, 145, 92),
     cardColor: const Color.fromRGBO(251, 145, 92, 1),
+    hoverColor: const Color.fromARGB(255, 236, 201, 185),
     fontFamily: 'Roboto',
-    secondaryHeaderColor: Color.fromRGBO(36, 37, 64, 1),
+    secondaryHeaderColor: const Color.fromRGBO(36, 37, 64, 1),
     brightness: Brightness.light,
     iconTheme: const IconThemeData(color: Colors.black),
     highlightColor: Colors.white,
@@ -29,7 +30,7 @@ class ThemeClass {
       ),
       visualDensity: VisualDensity.comfortable,
     ),
-    timePickerTheme: TimePickerThemeData(
+    timePickerTheme: const TimePickerThemeData(
       backgroundColor: Colors.white,
     ),
     textTheme: const TextTheme(
@@ -75,8 +76,8 @@ class ThemeClass {
   );
 
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: Color.fromRGBO(36, 37, 64, 1),
-    primaryColor: Color.fromRGBO(36, 37, 64, 1),
+    scaffoldBackgroundColor: const Color.fromRGBO(36, 37, 64, 1),
+    primaryColor: const Color.fromRGBO(36, 37, 64, 1),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color.fromRGBO(36, 37, 64, 1),
     ),
@@ -87,12 +88,13 @@ class ThemeClass {
     brightness: Brightness.dark,
     canvasColor: const Color.fromRGBO(32, 33, 55, 1),
     highlightColor: Colors.amber,
-    accentColor: Color.fromRGBO(36, 37, 64, 1),
+    accentColor: const Color.fromRGBO(36, 37, 64, 1),
     cardColor: const Color.fromRGBO(114, 129, 233, 1),
-    splashColor: Color.fromRGBO(88, 203, 221, 1),
+    splashColor: const Color.fromRGBO(88, 203, 221, 1),
+    hoverColor: const Color.fromRGBO(88, 203, 221, 1),
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
-    dividerColor: Color.fromRGBO(247, 219, 198, 1),
+    dividerColor: const Color.fromRGBO(247, 219, 198, 1),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
