@@ -13,10 +13,12 @@ class WeeklySleepAnalysis extends StatefulWidget {
 class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   bool once = true;
   bool loading = true;
+  bool data_available = false;
 
   void getData(ChartProvider c) {
     c.getData().then((value) {
       setState(() {
+        data_available = c.data_NA_checker();
         loading = false;
       });
     });
@@ -25,12 +27,10 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   @override
   Widget build(BuildContext context) {
     final chartProvider = Provider.of<ChartProvider>(context);
-    bool data_available = true;
+
     if (once) {
       once = false;
       getData(chartProvider);
-      // data_available = chartProvider.data_NA_checker();
-      data_available = true;
     }
 
     return Column(
@@ -43,8 +43,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
         ),
         loading
             ? LoadingStateCreator()
-            : Stack(
-                children: [
+            : !data_available? 
                   Container(
                     decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
@@ -114,8 +113,8 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                         ).toList(),
                       ),
                     ),
-                  ),
-                  if(!data_available)
+                  )
+                  :
                   const Padding(
                     padding:  EdgeInsets.all(32),
                     child:  Center(
@@ -127,8 +126,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  
               )
       ],
     );

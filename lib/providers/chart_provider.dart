@@ -5,16 +5,17 @@ import 'package:night_gschallenge/providers/bar_data.dart';
 
 class ChartProvider extends ChangeNotifier {
   String? id = FirebaseAuth.instance.currentUser?.uid;
-  List<BarData>? showData = [];
+  List<BarData> showData = [];
 
-  List<double> data = [6, 8, 8, 4, 9, 11, 9];
+  List<double> data = [0,0,0,0,0,0,0];
 
   Future getData() async {
 
     try {
-    DateTime now = DateTime.now();
-      for (int i = 0; i < 7; i++) {
-        var date = now.subtract(Duration(days: i));
+    DateTime today = DateTime.now();
+    final lastweek = today.subtract(Duration(days: today.weekday+7));
+      for (int i = 1; i <= 7; i++) {
+        var date = lastweek.add(Duration(days: i));
         final doc = await FirebaseFirestore.instance
         .collection('sleepData')
         .doc(id)
@@ -22,7 +23,7 @@ class ChartProvider extends ChangeNotifier {
         .doc(date.toString().split(" ")[0])
         .get();
         if(doc.exists && (doc.data() as Map).containsKey("TST") && doc.data()!['TST']!=null){
-          double a = double.parse(doc.data()!['TST']);
+          double a = doc.data()!['TST']*1.0;
           while(a>8) a=a/8;
           data[date.weekday-1] = a;
         }
@@ -30,6 +31,7 @@ class ChartProvider extends ChangeNotifier {
           data[date.weekday-1] = 0;
         }
       }
+      print(data);
       List<BarData> barData = [
       BarData(
           color: Color.fromRGBO(69, 197, 197, data[0]),
@@ -69,6 +71,7 @@ class ChartProvider extends ChangeNotifier {
           y: data[6]),
     ];
     showData = barData;
+    print(showData);
     notifyListeners();
     } catch (err) {
       print(err);
@@ -77,11 +80,10 @@ class ChartProvider extends ChangeNotifier {
   }
 
   bool data_NA_checker(){
-    print(data.isEmpty);
-    return data.isEmpty;
+    return showData.isEmpty;
   }
 
   List<BarData> get getChartData {
-    return [...showData!];
+    return [...showData];
   }
 }
