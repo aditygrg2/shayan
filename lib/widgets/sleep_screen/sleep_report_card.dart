@@ -26,7 +26,6 @@ class SleepReportCard extends StatelessWidget {
                   children: [
                     Icon(
                       icon,
-                      color: Theme.of(context).canvasColor,
                       size: 50,
                     ),
                   ],

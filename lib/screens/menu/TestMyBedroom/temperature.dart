@@ -84,8 +84,7 @@ class _TemperatureState extends State<Temperature> {
                   } else {
                     var permit = await Permission.location.status;
 
-                    if (permit == PermissionStatus.permanentlyDenied ||
-                        permit == PermissionStatus.denied) {
+                    if (permit == PermissionStatus.permanentlyDenied) {
                       // ignore: use_build_context_synchronously
                       showDialog(
                         context: context,

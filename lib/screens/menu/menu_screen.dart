@@ -66,7 +66,7 @@ class MenuScreen extends StatelessWidget {
       'routes': Worrylist.routeName
     },
     {
-      'text': 'Smart Alarm',
+      'text': 'Sleep Recorder',
       'imagePath': 'assets/smartalarm.png',
       'routes': SmartAlarm.routeName
     },

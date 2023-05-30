@@ -147,7 +147,7 @@ class _SmartAlarmState extends State<SmartAlarm> {
             profile: true,
           ),
           HomeScreenText(
-            text: "Smart Alarm",
+            text: "Sleep Recordings",
           ),
           ImageCacher(
             imagePath: "https://i.ibb.co/3yf3gr0/Pngtree-clock-eps-8928529.png",
@@ -180,7 +180,7 @@ class _SmartAlarmState extends State<SmartAlarm> {
                 return Padding(
                   padding: EdgeInsets.all(5),
                   child: Text(
-                    "Smart Alarm is Off",
+                    "Sleep Recording is Off",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Theme.of(context).secondaryHeaderColor,
@@ -193,18 +193,19 @@ class _SmartAlarmState extends State<SmartAlarm> {
           ),
 
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Center(
                   child: ElevatedButtonWithoutIcon(
-                    text: "Start Alarm",
+                    text: "Start Recording",
                     onPressedButton: () async {
                       var permit = await Permission.microphone.status;
 
-                      if (permit == PermissionStatus.permanentlyDenied ||
-                          permit == PermissionStatus.denied) {
+                      await Permission.microphone.status;
+
+                      if (permit == PermissionStatus.permanentlyDenied) {
                         // ignore: use_build_context_synchronously
                         showDialog(
                           context: context,
@@ -258,7 +259,7 @@ class _SmartAlarmState extends State<SmartAlarm> {
                                 FlutterBackgroundAndroidConfig(
                               notificationTitle: "App is running in background",
                               notificationText:
-                                  "Smart Alarm is analyzing your surroundings",
+                                  "Sleep Recording is analyzing your surroundings",
                               notificationImportance:
                                   AndroidNotificationImportance.Default,
                               notificationIcon: AndroidResource(
@@ -321,13 +322,10 @@ class _SmartAlarmState extends State<SmartAlarm> {
                   ),
                 ),
 
-                // The value shown in db now, is the value average of room right now. Irrespective of noise, now here feedback can be shown but the user should be able to continue
-
                 Center(
                   child: ElevatedButtonWithoutIcon(
-                    text: "Stop Alarm",
+                    text: "Stop Recording",
                     onPressedButton: () async {
-                      // show that alarm has been set, dim the lights, and ask user if he wants to play something
                       if (await recorder.isRecording()) {
                         _noiseSubscription2.cancel();
                       } else {

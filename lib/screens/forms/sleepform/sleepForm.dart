@@ -137,13 +137,6 @@ class _SleepFormState extends State<SleepForm> {
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
 
-    print(value1);
-    print(value2);
-    print(value3);
-    print(value4);
-    print(value5);
-    print(value6);
-
     await sleepElements.getData(
       value1,
       value2,
@@ -197,7 +190,6 @@ class _SleepFormState extends State<SleepForm> {
     }
 
     // This is not supporting average currently, like if same date data is changed, the average needs to remove the previous data.
-    // Can be done later.
     final value =
         await FirebaseFirestore.instance.collection('sleepData').doc(id).get();
 

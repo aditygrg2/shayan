@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:night_gschallenge/providers/location_provider.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:provider/provider.dart';
@@ -55,9 +56,7 @@ class _MapScreenState extends State<MapScreen> {
           FutureBuilder(
             builder: (context, snapshot) {
               if (snapshot.connectionState != ConnectionState.done) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return LoadingStateCreator();
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -7,7 +7,6 @@ class AudioProvider extends ChangeNotifier {
   Duration duration = const Duration();
   Duration progress = const Duration();
   Duration buffered = const Duration();
-  bool alarmStarted = false;
 
   AudioProvider(){
     player.setLoopMode(LoopMode.all).then((value) {});
@@ -46,7 +45,6 @@ class AudioProvider extends ChangeNotifier {
   }
 
   Future stop() async {
-    alarmStarted = false;
     await player.stop();
     notifyListeners();
   }

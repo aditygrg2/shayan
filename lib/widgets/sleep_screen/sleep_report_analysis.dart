@@ -149,8 +149,8 @@ class SleepReportAnalysis extends StatelessWidget {
                           ),
                           Expanded(
                             child: Container(
-                              child: Image.asset(
-                                'assets/checklist.png',
+                              child: ImageCacher(
+                                imagePath: "https://i.ibb.co/NKVXXvS/checklist.png",
                                 fit: BoxFit.cover,
                               ),
                             ),

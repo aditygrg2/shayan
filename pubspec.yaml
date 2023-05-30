@@ -107,9 +107,12 @@ flutter:
     - assets/sleep_diet.png
     - assets/test_my_environment.png
     - assets/worry_list.png
+    - assets/splash_screen.png
     - assets/loading.gif
     - assets/sleepiness.png
     - assets/maps.png
+    - assets/ellipse_splash_screen_left.png
+    - assets/ellipse_splash_screen_right.png
     - assets/smartalarm.png
     - assets/processloading.gif
     - assets/loadingcanvasdark.gif

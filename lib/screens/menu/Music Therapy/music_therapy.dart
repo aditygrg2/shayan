@@ -174,7 +174,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
                   child: Text(
                     "What's your Mood?",
                     textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        fontFamily: 'Roboto'),
                   ),
                 ),
                 const SizedBox(
@@ -182,14 +185,15 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
-                  height: 500,
+                  height: therapies.length/2 * 120,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 4 / 2,
-                            crossAxisSpacing: 10),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 4 / 2,
+                      crossAxisSpacing: 10,
+                    ),
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return GestureDetector(
@@ -248,7 +252,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
                           ),
                           child: Text(
                             therapies[index]['mood'],
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.black),
                           ),
                         ),
                       );

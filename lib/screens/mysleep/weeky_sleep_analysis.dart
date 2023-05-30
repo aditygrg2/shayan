@@ -119,7 +119,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                     padding: const EdgeInsets.all(32),
                     child: const Center(
                       child: Text(
-                        "No data available",
+                        "Fill out the sleep tracker to see the data here!",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,

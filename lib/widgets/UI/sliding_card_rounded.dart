@@ -16,7 +16,7 @@ class SlidingCardRounded extends StatelessWidget {
         width: 250,
         decoration: BoxDecoration(
           border: Border.all(
-            color: Colors.black,
+            color: Theme.of(context).dividerColor,
             width: 2,
           ),
           color: Colors.transparent,
@@ -31,14 +31,15 @@ class SlidingCardRounded extends StatelessWidget {
               height: 220,
               width: double.infinity,
               child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                  child: ImageCacher(
-                    imagePath: src,
-                    fit: BoxFit.cover,
-                  )),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                child: ImageCacher(
+                  imagePath: src,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
             Expanded(
               child: Container(
@@ -46,8 +47,12 @@ class SlidingCardRounded extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).accentColor,
                   borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  border: Border.all(
+                    color: Theme.of(context).dividerColor,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

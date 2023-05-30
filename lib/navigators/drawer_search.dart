@@ -187,7 +187,7 @@ class CustomDelegate extends SearchDelegate<String> {
       "icon": Icons.sentiment_very_dissatisfied
     },
     {
-      "query": ["Smart Alarm", "Intelligent Alarm", "Advanced Alarm Clock"],
+      "query": ["Smart Recorder", "Intelligent Sleep Recorder", "Advanced Sleep Recording"],
       "link": SmartAlarm.routeName,
       "icon": Icons.alarm
     },

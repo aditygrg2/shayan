@@ -37,7 +37,8 @@ class SleepScoreCard extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(300)),
-                      color: Theme.of(context).dividerColor,
+                      border: Border.all(color: Theme.of(context).dividerColor),
+                      color: Theme.of(context).primaryColor,
                     ),
                     padding: const EdgeInsets.all(20.0),
                     child: Text(

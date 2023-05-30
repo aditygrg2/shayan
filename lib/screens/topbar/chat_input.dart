@@ -94,8 +94,7 @@ class _ChatInputState extends State<ChatInput> {
           onPressed: () async {
             var permit = await Permission.microphone.status;
 
-            if (permit == PermissionStatus.permanentlyDenied ||
-                permit == PermissionStatus.denied) {
+            if (permit == PermissionStatus.permanentlyDenied) {
               // ignore: use_build_context_synchronously
               showDialog(
                 context: context,

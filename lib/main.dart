@@ -299,11 +299,11 @@ class _MainState extends State<Main> {
               StoryScreen.routeName: (ctx) => StoryScreen(),
               SmartAlarm.routeName: (ctx) => SmartAlarm(),
               MusicPlayer.routeName: (ctx) => MusicPlayer(),
-              ArticleViewer.routeName: (ctx) => ArticleViewer(),
+              ArticleViewer.routeName: (ctx) => const ArticleViewer(),
               MapScreen.routeName: (ctx) => MapScreen(),
-              Sleepiness.routeName: (ctx) => Sleepiness(),
-              StoreScreen.routeName: (ctx) => StoreScreen(),
-              DefaultNightScreen.routeName: (ctx) => DefaultNightScreen(),
+              Sleepiness.routeName: (ctx) => const Sleepiness(),
+              StoreScreen.routeName: (ctx) => const StoreScreen(),
+              DefaultNightScreen.routeName: (ctx) => const DefaultNightScreen(),
             },
             onUnknownRoute: (settings) {
               return MaterialPageRoute(

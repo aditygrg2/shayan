@@ -74,19 +74,29 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                         height: 10,
                       ),
                       Container(
-                        decoration: const BoxDecoration(
-                            color: Color.fromRGBO(241, 243, 242, 1)),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          border: Border.all(
+                            color: Theme.of(context).dividerColor,
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         padding: const EdgeInsets.all(10),
                         child: Column(
                           children: [
                             TextField(
                               minLines: 8,
-                              autocorrect: true,
+                              autocorrect: false,
                               maxLines: 15,
                               controller: widget.textController,
-                              decoration: const InputDecoration(
-                                  hintText: 'Enter Text For Speech',
-                                  border: InputBorder.none),
+                              decoration: InputDecoration(
+                                hintText: 'Enter Text For Speech',
+                                hintStyle: TextStyle(
+                                    color:
+                                        Theme.of(context).secondaryHeaderColor),
+                                fillColor: Theme.of(context).primaryColor,
+                              ),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,8 +142,11 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                     child: FutureBuilder(
                                       builder: (context, snapshot) {
                                         if (!snapshot.hasData) {
-                                          widget.voicesMap = [{'name':'Select Language'}];
-                                        }else widget.voicesMap = snapshot.data;
+                                          widget.voicesMap = [
+                                            {'name': 'Select Language'}
+                                          ];
+                                        } else
+                                          widget.voicesMap = snapshot.data;
                                         return DropDownMenu(widget.voicesMap);
                                       },
                                       future: Provider.of<FlutterTextSpeech>(
@@ -183,9 +196,6 @@ class _TextToSpeechComponentState extends State<TextToSpeechComponent> {
                                     mainAxisSpacing: 10),
                             itemBuilder: (context, index) {
                               return ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Theme.of(context).accentColor)),
                                 onPressed: () {
                                   if (widget.options[index] == 'Speak') {
                                     textSpeech
