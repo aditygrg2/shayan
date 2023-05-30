@@ -15,9 +15,13 @@ class TimeContainer extends StatelessWidget {
           margin: const EdgeInsets.all(15),
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-              color: Theme.of(context).canvasColor,
-              borderRadius: const BorderRadius.all(Radius.circular(19)),
-              border: Border.all(color: Colors.amber, width: 1)),
+            color: Theme.of(context).canvasColor,
+            borderRadius: const BorderRadius.all(Radius.circular(19)),
+            border: Border.all(
+              color: Theme.of(context).dividerColor,
+              width: 1,
+            ),
+          ),
           child: Column(
             children: [
               if (box['recommended'])

@@ -77,6 +77,7 @@ class MentalExercise extends StatelessWidget {
                           });
                         },
                         child: Container(
+                          height: 170,
                           decoration: BoxDecoration(
                             color: Theme.of(context).canvasColor,
                             borderRadius:
@@ -109,6 +110,7 @@ class MentalExercise extends StatelessWidget {
                                     ),
                                     Text(
                                       card['subtitle'].toString(),
+                                      overflow: TextOverflow.clip,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium,

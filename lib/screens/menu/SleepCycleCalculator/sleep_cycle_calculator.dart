@@ -264,10 +264,13 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
             height: 20,
           ),
           if (data && !settingsOn)
-            Text(
-              'If you go to bed at ${(startDate.hour % 12).toString().padLeft(2, '0')}:${startDate.minute.toString().padLeft(2, '0')} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
-              style: Theme.of(context).textTheme.labelLarge,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'If you go to bed at ${(startDate.hour % 12).toString().padLeft(2, '0')}:${startDate.minute.toString().padLeft(2, '0')} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
+                style: Theme.of(context).textTheme.labelLarge,
+                textAlign: TextAlign.center,
+              ),
             ),
           const SizedBox(
             height: 20,

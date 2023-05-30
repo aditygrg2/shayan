@@ -91,7 +91,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   width: MediaQuery.of(context).size.width - 20,
                   height: 200,
                   child: ImageCacher(
-                    imagePath: "https://i.ibb.co/z8k8p2F/meditation-timer-person.gif",
+                    imagePath:
+                        "https://i.ibb.co/z8k8p2F/meditation-timer-person.gif",
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -110,20 +111,24 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Theme.of(context).dividerColor),
-                    ),
-                    child: Column(children: [
-                      Expanded(
-                        child: Icon(
-                          widget.options[widget.selectedIndex]['icon'],
-                        ),
+                      border: Border.all(
+                        color: Theme.of(context).dividerColor,
                       ),
-                      Expanded(
-                        child: Text(
-                          widget.options[widget.selectedIndex]['title'],
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            widget.options[widget.selectedIndex]['icon'],
+                          ),
                         ),
-                      )
-                    ]),
+                        Expanded(
+                          child: Text(
+                            widget.options[widget.selectedIndex]['title'],
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 : ListView.builder(
                     scrollDirection: Axis.horizontal,
@@ -198,8 +203,13 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           controller.resume();
                           audio.resume();
                         } else {
-                          if(widget.datetime.compareTo( DateTime.parse('1900-12-24 00:00:00.000'))==0){
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Container(child: const Text("Please select Time Duration"),)));
+                          if (widget.datetime.compareTo(
+                                  DateTime.parse('1900-12-24 00:00:00.000')) ==
+                              0) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Container(
+                              child: const Text("Please select Time Duration"),
+                            )));
                             return;
                           }
                           showModalBottomSheet(
@@ -216,7 +226,7 @@ class _MeditationTimerState extends State<MeditationTimer> {
                               );
                             },
                           );
-                          handleClick(audio,context);
+                          handleClick(audio, context);
                         }
                       } else {
                         showModalBottomSheet(

@@ -20,7 +20,7 @@ class _TimePickerState extends State<TimePicker> {
           color: Theme.of(context).canvasColor,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: const Color.fromRGBO(250, 195, 68, 1),
+            color: Theme.of(context).dividerColor,
           ),
         ),
         child: TimePickerSpinner(

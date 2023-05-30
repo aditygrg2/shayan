@@ -31,12 +31,16 @@ class SleepScoreCard extends StatelessWidget {
               color: Theme.of(context).canvasColor,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(300)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(300),
+                      ),
                       border: Border.all(color: Theme.of(context).dividerColor),
                       color: Theme.of(context).primaryColor,
                     ),

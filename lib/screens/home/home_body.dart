@@ -93,16 +93,18 @@ class _HomeBodyState extends State<HomeBody> {
                         sleepscore: sleepScore,
                       )
                     : Container(
-                        margin: EdgeInsets.all(15),
-                        padding: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Theme.of(context).dividerColor,
-                              width: 2,
-                            ),
-                            color: Theme.of(context).canvasColor,
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          border: Border.all(
+                            color: Theme.of(context).dividerColor,
+                            width: 2,
+                          ),
+                          color: Theme.of(context).canvasColor,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
                         child: GestureDetector(
                           onTap: () {
                             if (id == null) {
@@ -122,7 +124,7 @@ class _HomeBodyState extends State<HomeBody> {
                                       ? 'Generate your sleep score'
                                       : 'Sleep better, create an account now!',
                                   textAlign: TextAlign.start,
-                                  style: TextStyle(fontSize: 18),
+                                  style: const TextStyle(fontSize: 18),
                                 ),
                               ),
                               Icon(
@@ -136,13 +138,13 @@ class _HomeBodyState extends State<HomeBody> {
                       ),
                 id == null
                     ? Container(
-                        padding: EdgeInsets.all(15),
+                        padding: const EdgeInsets.all(15),
                         child: Column(
                           children: [
                             HomeScreenText(
                               text: 'Start your journey',
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Container(
@@ -173,10 +175,10 @@ class _HomeBodyState extends State<HomeBody> {
                                           );
                                         },
                                         errorWidget: (context, url, error) {
-                                          return Icon(Icons.error);
+                                          return const Icon(Icons.error);
                                         },
                                       )),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Row(
@@ -193,16 +195,16 @@ class _HomeBodyState extends State<HomeBody> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Container(
-                                    child: Text(
+                                    child: const Text(
                                       'Start your journey to better sleep. Let\'s create your sleep plan',
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   ElevatedButtonWithoutIcon(
@@ -211,10 +213,10 @@ class _HomeBodyState extends State<HomeBody> {
                                           FirebaseAuth.instance.currentUser !=
                                               null;
 
-                                      if (loginStatus)
+                                      if (loginStatus) {
                                         Navigator.of(context)
                                             .pushNamed(MainForm.routeName);
-                                      else {
+                                      } else {
                                         ScaffoldMessenger.of(context)
                                             .showMaterialBanner(
                                           MaterialBanner(
@@ -260,7 +262,7 @@ class _HomeBodyState extends State<HomeBody> {
                         ),
                       )
                     : WhatsNew(),
-                if (!isWatchConnected) WatchComponent(),
+                if (!isWatchConnected) const WatchComponent(),
                 MusicSection(),
               ],
             ),

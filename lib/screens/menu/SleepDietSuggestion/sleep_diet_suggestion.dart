@@ -120,9 +120,13 @@ class SleepDietSuggestion extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: Column(
                           children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
+                            DietWindow(
+                              snapshot.data?.data()!['tips'],
+                            ),
                             ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
+                              context,
+                              snapshot.data?.data()!['tips'],
+                            )
                           ],
                         ),
                       );
@@ -146,9 +150,13 @@ class SleepDietSuggestion extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: Column(
                           children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
+                            DietWindow(
+                              snapshot.data?.data()!['tips'],
+                            ),
                             ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
+                              context,
+                              snapshot.data?.data()!['tips'],
+                            )
                           ],
                         ),
                       );
@@ -171,9 +179,13 @@ class SleepDietSuggestion extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                       child: Column(
                         children: [
-                          DietWindow(snapshot.data?.data()!['tips']),
+                          DietWindow(
+                            snapshot.data?.data()!['tips'],
+                          ),
                           ...dietArticle(
-                              context, snapshot.data?.data()!['tips'])
+                            context,
+                            snapshot.data?.data()!['tips'],
+                          )
                         ],
                       ),
                     );
@@ -215,8 +227,9 @@ class DietWindow extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
                 color: Theme.of(context).accentColor,
-                border:
-                    Border.all(color: const Color.fromRGBO(250, 195, 68, 1)),
+                border: Border.all(
+                  color: Theme.of(context).dividerColor,
+                ),
                 borderRadius: BorderRadius.circular(10)),
             child: Text(e['description'] as String),
           ),
