@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class Menu extends StatelessWidget {
   final String text;
@@ -12,12 +11,10 @@ class Menu extends StatelessWidget {
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        gradient: RadialGradient(
-          radius: 0.3,
-          focalRadius: 0.3,
+        gradient: LinearGradient(
           colors: [
-            Theme.of(context).splashColor,
             Theme.of(context).cardColor,
+            Theme.of(context).hoverColor,
           ],
         ),
         borderRadius: const BorderRadius.all(

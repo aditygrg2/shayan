@@ -7,7 +7,8 @@ import 'package:neon_circular_timer/neon_circular_timer.dart';
 class CountDownTimerComponent extends StatefulWidget {
   DateTime datetime;
   AudioProvider audio;
-  CountDownTimerComponent(this.datetime, this.audio);
+  CountDownProvider controller;
+  CountDownTimerComponent(this.datetime, this.audio,this.controller);
   @override
   State<CountDownTimerComponent> createState() =>
       _CountDownTimerComponentState();
@@ -22,7 +23,7 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<CountDownProvider>(context).controller;
+
     return Center(
       child: NeonCircularTimer(
         onComplete: () {
@@ -33,8 +34,8 @@ class _CountDownTimerComponentState extends State<CountDownTimerComponent> {
         textFormat: TextFormat.HH_MM_SS,
         width: 250,
         isReverse: true,
-        textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 37),
-        controller: controller,
+        textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 37),
+        controller:widget.controller.controller,
         duration: getTime,
         strokeWidth: 6,
         isTimerTextShown: true,

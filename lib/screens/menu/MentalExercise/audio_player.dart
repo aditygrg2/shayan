@@ -92,14 +92,14 @@ class _AudioPlayerWithSliderState extends State<AudioPlayerWithSlider> {
               ],
             )
           : Padding(
-              padding: EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Loading...",
                     style: TextStyle(fontSize: 15),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   LoadingStateCreator(),
