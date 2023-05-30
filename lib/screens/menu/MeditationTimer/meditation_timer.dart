@@ -111,20 +111,24 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Theme.of(context).dividerColor),
-                    ),
-                    child: Column(children: [
-                      Expanded(
-                        child: Icon(
-                          widget.options[widget.selectedIndex]['icon'],
-                        ),
+                      border: Border.all(
+                        color: Theme.of(context).dividerColor,
                       ),
-                      Expanded(
-                        child: Text(
-                          widget.options[widget.selectedIndex]['title'],
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            widget.options[widget.selectedIndex]['icon'],
+                          ),
                         ),
-                      )
-                    ]),
+                        Expanded(
+                          child: Text(
+                            widget.options[widget.selectedIndex]['title'],
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 : GridView.builder(
                     gridDelegate:
@@ -210,8 +214,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
                           controller.resume();
                           audio.resume();
                         } else {
-                          audio.pause();
                           controller.pause();
+                          audio.pause();
                         }
                         setState(() {});
                       } else {

@@ -17,8 +17,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
-  final places =
-      GoogleMapsPlaces(apiKey: "Your-key");
+  final places = GoogleMapsPlaces(apiKey: "Your-key");
 
   Future getLocation(BuildContext context, LocationProvider location) async {
     await Provider.of<LocationProvider>(context, listen: false)
@@ -71,7 +70,9 @@ class _MapScreenState extends State<MapScreen> {
                           child: const Text(
                             "Search Near by",
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         DropdownButton(
@@ -102,7 +103,9 @@ class _MapScreenState extends State<MapScreen> {
                     width: 200,
                     height: 500,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     child: GoogleMap(
                       compassEnabled: true,
                       // gestureRecognizers: 5,
@@ -111,8 +114,10 @@ class _MapScreenState extends State<MapScreen> {
                       rotateGesturesEnabled: true,
                       markers: widget.set,
                       initialCameraPosition: CameraPosition(
-                        target: LatLng(locationProvider.latitude,
-                            locationProvider.longitude),
+                        target: LatLng(
+                          locationProvider.latitude,
+                          locationProvider.longitude,
+                        ),
                         zoom: 12.0,
                       ),
                       onMapCreated: (GoogleMapController controller) {
