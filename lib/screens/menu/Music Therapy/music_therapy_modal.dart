@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class MusicTherapyModal extends StatefulWidget {
   Map<dynamic, dynamic> therapy = {};
@@ -32,8 +33,8 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
           Container(
             width: 100,
             height: 150,
-            child: Image.asset(
-              widget.therapy['image'],
+            child: ImageCacher(
+              imagePath: widget.therapy['image'],
               fit: BoxFit.cover,
             ),
           ),

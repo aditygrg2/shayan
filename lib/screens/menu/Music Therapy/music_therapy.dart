@@ -4,6 +4,7 @@ import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy_modal.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Tense',
       'color': const Color.fromRGBO(219, 74, 72, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/ptzd/music_therapy_tensed_tune.mp3',
@@ -31,7 +32,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Excited',
       'color': const Color.fromRGBO(234, 162, 71, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'http://dl.sndup.net/q4b2/music_therapy_excited_tune.mp3',
@@ -43,7 +44,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Relaxed',
       'color': const Color.fromRGBO(108, 187, 226, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune':
@@ -56,7 +57,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Sad',
       'color': const Color.fromRGBO(160, 161, 163, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/wbrt/music_therapy_sad_tune.mp3',
@@ -68,7 +69,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Bored',
       'color': const Color.fromRGBO(252, 244, 122, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/ww73/music_therapy_bored_tune.mp3',
@@ -80,7 +81,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Joyful',
       'color': const Color.fromRGBO(233, 167, 157, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/bz7n/music_therapy_joyful_tune.mp3',
@@ -91,7 +92,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Attentive',
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'color': const Color.fromRGBO(129, 193, 108, 1),
       'tunes': [
         {
@@ -104,7 +105,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Worried',
       'color': const Color.fromRGBO(187, 137, 196, 1),
-      'image': 'assets/music_therapy_worried.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/qvhr/music_therapy_worried_tune.mp3',
@@ -116,7 +117,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Sleepy',
       'color': const Color.fromRGBO(77, 78, 159, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
           'tune':
@@ -129,7 +130,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Neutral',
       'color': const Color.fromARGB(255, 217, 210, 210),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/vbk3/music_therapy_neutral_tune.mp3',
@@ -160,8 +161,8 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 150,
-                  child: Image.asset(
-                    'assets/music_therapy.gif',
+                  child: ImageCacher(
+                    imagePath: "https://i.ibb.co/RN9pvPw/music-therapy.gif",
                     fit: BoxFit.contain,
                   ),
                 ),

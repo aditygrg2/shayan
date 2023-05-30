@@ -5,6 +5,7 @@ import 'package:night_gschallenge/providers/community_post.dart';
 import 'package:night_gschallenge/screens/library/community_post.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
@@ -44,6 +45,7 @@ class CommunityScreen extends StatelessWidget {
                                 key: formKey,
                                 child: Column(
                                   children: [
+                                    TopRow(back: true,),
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 10),
@@ -127,12 +129,7 @@ class CommunityScreen extends StatelessWidget {
                                                   height: MediaQuery.of(context)
                                                       .size
                                                       .height,
-                                                  child: Center(
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                    color: Theme.of(context)
-                                                        .secondaryHeaderColor,
-                                                  )),
+                                                  child: LoadingStateCreator(),
                                                 );
                                               },
                                             );
@@ -189,10 +186,7 @@ class CommunityScreen extends StatelessWidget {
           FutureBuilder(
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(
-                  child: CircularProgressIndicator(
-                      color: Theme.of(context).secondaryHeaderColor),
-                );
+                return LoadingStateCreator();
               }
               final docs = snapshot.data?.docs;
               if (docs!.isEmpty) {

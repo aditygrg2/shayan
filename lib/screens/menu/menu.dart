@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class Menu extends StatelessWidget {
   final String text;
@@ -42,7 +43,7 @@ class Menu extends StatelessWidget {
             ),
             child: Image.asset(
               imagePath,
-            ),
+            )
           ),
         ],
       ),

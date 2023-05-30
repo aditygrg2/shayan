@@ -10,7 +10,7 @@ class WeatherProvider extends ChangeNotifier {
 
   final List<Map<String, String>> _modalData = [
     {
-      "image": "assets/lowtemperature.png",
+      "image": "https://i.ibb.co/0FKjVR8/lowtemperature.png",
       "heading": "Agh, it's too cold!",
       "subheading":
           "Looks like the temperature outside is lower than the recommended temperature for sleep. Make sure to adjust AC to a highertemperature, wear warm pjamas or cover yourself with a warm blanket.",
@@ -19,7 +19,7 @@ class WeatherProvider extends ChangeNotifier {
       "temperatureUnit": "",
     },
     {
-      "image": "assets/goodtemperature.png",
+      "image": "https://i.ibb.co/dBWPFnp/goodtemperature.png",
       "heading": "You gotta love the weather!",
       "subheading":
           "Looks like the temperature is perfect for sleep. Try opening a window to get some fresh air flowing and have a sleepy night!",
@@ -28,7 +28,7 @@ class WeatherProvider extends ChangeNotifier {
       "temperatureUnit": "",
     },
     {
-      "image": "assets/hightemperature.png",
+      "image": "https://i.ibb.co/6JJLGws/hightemperature.png",
       "heading": "Agh, it's too hot!",
       "subheading":
           "Looks like the temperature outside is higher than the recommended temperature for sleep. Make sure to adjust AC to a lower temperature, wear lightweight,breathable pjamas or cover yourself with a thin blanket.",
@@ -37,7 +37,7 @@ class WeatherProvider extends ChangeNotifier {
       "temperatureUnit": "",
     },
     {
-      "image": "assets/error.png",
+      "image": "https://i.ibb.co/hXz2mNb/error.png",
       "heading": "Something unexpected occurred",
       "subheading":
           "We apologize, but we couldn't get the weather data you requested. Maybe try asking the sun directly?",

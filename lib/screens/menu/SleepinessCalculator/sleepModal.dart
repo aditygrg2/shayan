@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class SleepModal extends StatelessWidget {
   dynamic data;
@@ -20,7 +21,7 @@ class SleepModal extends StatelessWidget {
         children: [
           Container(
             height: 150,
-            child: Image.asset(data['image']!),
+            child: ImageCacher(imagePath: data['image']!),
           ),
           Text(
             data['heading']!,

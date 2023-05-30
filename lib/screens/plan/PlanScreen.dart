@@ -9,6 +9,8 @@ import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_analysis.dart';
 import '../../widgets/UI/home_screen_heading.dart';
@@ -77,7 +79,7 @@ class _PlanScreenState extends State<PlanScreen> {
                 child: Column(
                   children: [
                     MenuHeroImage(
-                      image: 'assets/mantra_2.png',
+                      image: 'https://i.ibb.co/Rz4fRdz/mantra-2.png',
                     ),
                     const SizedBox(
                       height: 20,
@@ -113,8 +115,7 @@ class _PlanScreenState extends State<PlanScreen> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 if (once) getQuestion();
                 return Center(
-                  child: CircularProgressIndicator(
-                      color: Theme.of(context).secondaryHeaderColor),
+                  child: LoadingStateCreator(),
                 );
               }
 
@@ -133,7 +134,8 @@ class _PlanScreenState extends State<PlanScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Image.asset('assets/checklist.png'),
+                      ImageCacher(
+                          imagePath: 'https://i.ibb.co/NKVXXvS/checklist.png'),
                       const SizedBox(
                         height: 20,
                       ),
@@ -197,9 +199,7 @@ class _PlanScreenState extends State<PlanScreen> {
                             future: timelineProvider.fetchTimeline(),
                             builder: (context, snapshot) {
                               if (!snapshot.hasData) {
-                                return Center(
-                                  child: Image.asset('assets/loading.gif'),
-                                );
+                                return LoadingStateCreator();
                               }
                               var timeline = snapshot.data;
 
@@ -293,8 +293,8 @@ class _PlanScreenState extends State<PlanScreen> {
                     Container(
                       width: 180,
                       height: 180,
-                      child: Image.asset(
-                        "assets/my_plan.png",
+                      child: ImageCacher(
+                        imagePath: "https://i.ibb.co/DwZKcy4/my-plan.png",
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -470,7 +470,6 @@ class _PlanScreenState extends State<PlanScreen> {
                               ),
                             ),
                           ),
-                          Image.asset('assets/questionsleft.png'),
                         ],
                       ),
                       const SizedBox(

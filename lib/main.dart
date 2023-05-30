@@ -66,8 +66,8 @@ import 'package:night_gschallenge/screens/topbar/profile_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/music_player.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import './screens/home/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'ThemeClass.dart';
@@ -75,7 +75,8 @@ import 'ThemeClass.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  );
   runApp(Main());
 }
 
@@ -108,8 +109,7 @@ class _MainState extends State<Main> {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(
-                color: Theme.of(context).secondaryHeaderColor),
+            child: LoadingStateCreator(),
           );
         }
         return MultiProvider(
@@ -257,8 +257,7 @@ class _MainState extends State<Main> {
                   }
                 }
                 return Scaffold(
-                  body: CircularProgressIndicator(
-                      color: Theme.of(context).secondaryHeaderColor),
+                  body: LoadingStateCreator(),
                 );
               },
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class SleepScoreCard extends StatelessWidget {
   final String? text;
@@ -52,8 +53,8 @@ class SleepScoreCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Image.asset(
-              'assets/kid.png',
+            child: ImageCacher(
+              imagePath: 'https://i.ibb.co/BTCSgLs/kid.png',
               fit: BoxFit.cover,
             ),
           ),

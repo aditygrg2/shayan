@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -66,8 +68,8 @@ class SleepDietSuggestion extends StatelessWidget {
               width: 200,
               height: 200,
               alignment: Alignment.center,
-              child: Image.asset(
-                'assets/sleep_diet_suggestion.gif',
+              child: ImageCacher(
+                imagePath: "https://i.ibb.co/v38qMq2/sleep-diet-suggestion.gif",
                 fit: BoxFit.cover,
               ),
             ),
@@ -75,8 +77,7 @@ class SleepDietSuggestion extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(
-                        color: Theme.of(context).secondaryHeaderColor),
+                    child: LoadingStateCreator(),
                   );
                 }
                 if (snapshot.data!.exists &&
@@ -85,8 +86,7 @@ class SleepDietSuggestion extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
                       return Container(
@@ -112,8 +112,7 @@ class SleepDietSuggestion extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
 
@@ -140,8 +139,7 @@ class SleepDietSuggestion extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
                       return Container(
@@ -166,8 +164,7 @@ class SleepDietSuggestion extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(
-                            color: Theme.of(context).secondaryHeaderColor),
+                        child: LoadingStateCreator(),
                       );
                     }
                     return Container(

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/article_viewer.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 
 class CommunityPost extends StatefulWidget {
   bool isLiked = false;
@@ -77,13 +78,13 @@ class _CommunityPostState extends State<CommunityPost> {
             },
             child: Container(
               decoration: BoxDecoration(
-                  color: Theme.of(context).buttonColor,
+                  color: Theme.of(context).canvasColor,
                   borderRadius: BorderRadius.circular(12)),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
                 decoration: BoxDecoration(
-                    color: Theme.of(context).buttonColor,
+                    color: Theme.of(context).canvasColor,
                     borderRadius: BorderRadius.circular(16)),
                 child: Row(
                   children: [
@@ -187,11 +188,7 @@ class _CommunityPostState extends State<CommunityPost> {
                 FutureBuilder(
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: Theme.of(context).secondaryHeaderColor,
-                        ),
-                      );
+                      return LoadingStateCreator();
                     }
                     final doc = snapshot.data?.docs;
                     return Column(

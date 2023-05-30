@@ -4,6 +4,7 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_noise.dar
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/noiseModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -41,8 +42,8 @@ class _NoisePollutionState extends State<NoisePollution> {
           Container(
             margin: const EdgeInsets.all(40),
             height: 200,
-            child: Image.asset(
-              'assets/noisepollution.gif',
+            child: ImageCacher(
+              imagePath: "https://i.ibb.co/51w6g2Q/noisepollution.gif",
               fit: BoxFit.contain,
             ),
           ),

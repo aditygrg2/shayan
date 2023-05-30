@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class MenuHeroImage extends StatelessWidget {
   String? image;
@@ -9,8 +10,8 @@ class MenuHeroImage extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(40),
       height: 200,
-      child: Image.asset(
-        image!,
+      child: ImageCacher(
+        imagePath: image!,
         fit: BoxFit.contain,
       ),
     );

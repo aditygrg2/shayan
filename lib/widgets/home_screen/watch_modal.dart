@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/home_screen/watch_company_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -45,11 +46,11 @@ class _WatchModalState extends State<WatchModal> {
                   height: 30,
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                    child: Image.asset(
-                  'assets/gfit.png',
-                  fit: BoxFit.cover,
-                )),
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    child: ImageCacher(
+                      imagePath: "https://i.ibb.co/mGMPXfT/gfit.png",
+                      fit: BoxFit.cover,
+                    )),
                 const SizedBox(
                   height: 30,
                 ),
@@ -83,48 +84,47 @@ class _WatchModalState extends State<WatchModal> {
 
   void providersComingSoon() async {
     showModalBottomSheet(
-        backgroundColor: Theme.of(context).primaryColor,
-        context: context,
-        builder: (context) {
-          return Container(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                const Text(
-                  'Coming Soon',
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                  textAlign: TextAlign.center,
+      backgroundColor: Theme.of(context).primaryColor,
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              const Text(
+                'Coming Soon',
+                style: TextStyle(
+                  fontSize: 30,
                 ),
-                const SizedBox(
-                  height: 30,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              ImageCacher(
+                imagePath: "https://i.ibb.co/0rvkT4M/watch.png",
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                'Thank you for trying out. New providers will be updated soon.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 16,
                 ),
-                Image.asset(
-                  'assets/watch.png'),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Text(
-                  'Thank you for trying out. New providers will be updated soon.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButtonWithoutIcon(
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButtonWithoutIcon(
                   text: 'Close',
-                  onPressedButton: () =>
-                      Navigator.of(context).pop()
-                  ),
-              ],
-            ),
-          );
-        },
-      );
+                  onPressedButton: () => Navigator.of(context).pop()),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -132,25 +132,25 @@ class _WatchModalState extends State<WatchModal> {
     List<Map<String, dynamic>> watch_list = [
       {
         'title': 'Google Fit',
-        'imagePath': 'assets/gfit.png',
+        'imagePath': "https://i.ibb.co/mGMPXfT/gfit.png",
         'subtitle': 'Connect to Google Fit via Google Authentication',
         'onPressed': fetchProvider
       },
       {
         'title': 'Samsung Health',
-        'imagePath': 'assets/samsunghealth.png',
+        'imagePath': 'https://i.ibb.co/gWrhkFJ/samsunghealth.webp',
         'subtitle': 'Connect to Samsung Health',
         'onPressed': providersComingSoon
       },
       {
         'title': 'Garmin',
-        'imagePath': 'assets/garmin.png',
+        'imagePath': 'https://i.ibb.co/VTNy8jy/garmin.png',
         'subtitle': 'Login to your garmin account',
         'onPressed': providersComingSoon
       },
       {
         'title': 'Fitbit',
-        'imagePath': 'assets/fitbit.png',
+        'imagePath': 'https://i.ibb.co/FhQ4BK0/fitbit.png',
         'subtitle': 'Login to your fitbit account',
         'onPressed': providersComingSoon
       },

@@ -66,11 +66,13 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
             ),
           );
           Timer(
-              Duration(
+              const Duration(
                 seconds: 1,
               ), () {
+            ScaffoldMessenger.of(context).clearMaterialBanners();
             Navigator.of(context).pop();
           });
+
           return;
         }
         if (widget.isPlaying) audioProvider.play();
@@ -106,7 +108,7 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     widget.playlist[widget.index]['title']!,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         fontFamily: 'Roboto'),
@@ -218,12 +220,12 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
             ),
           )
         : Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
-              children: [
+              children: const [
                 Text(
                   "Loading...",
-                  style: const TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 15),
                 ),
                 SizedBox(
                   height: 10,

@@ -9,6 +9,8 @@ import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_analysis.dart';
@@ -74,7 +76,8 @@ class _MySleepScreenState extends State<MySleepScreen> {
     return Column(
       children: [
         HomeScreenText(text: 'Sleep Score'),
-        if (loading) CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+        if (loading)
+          LoadingStateCreator(),
         if (!loading && isSS)
           SleepScoreCard(
             text: informativeText(sleepscore!),
@@ -116,7 +119,8 @@ class _MySleepScreenState extends State<MySleepScreen> {
             margin: const EdgeInsets.all(15),
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              border: Border.all(color: Theme.of(context).dividerColor, width: 2),
+              border:
+                  Border.all(color: Theme.of(context).dividerColor, width: 2),
               borderRadius: const BorderRadius.all(
                 Radius.circular(10),
               ),
@@ -156,8 +160,14 @@ class _MySleepScreenState extends State<MySleepScreen> {
             ),
             child: Column(
               children: [
-                MenuHeroImage(
-                  image: 'assets/data.gif',
+                Container(
+                  margin: const EdgeInsets.all(40),
+                  height: 200,
+                  child: ImageCacher(
+                    imagePath: "https://i.ibb.co/stjgZ0w/data.gif",
+                    fit: BoxFit.contain,
+                    isCanvas: true,
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -178,10 +188,10 @@ class _MySleepScreenState extends State<MySleepScreen> {
                         id != null ? 'Get your sleep data' : 'Login to proceed',
                     onPressedButton: () {
                       if (id != null)
-                        Navigator.of(context).pushNamed(SleepForm.routeName).then((value) {
-                          setState(() {
-                            
-                          });
+                        Navigator.of(context)
+                            .pushNamed(SleepForm.routeName)
+                            .then((value) {
+                          setState(() {});
                         });
                       else
                         Navigator.of(context).pushNamedAndRemoveUntil(

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/Steps/step_one.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/menuHeroImage.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
@@ -61,8 +63,7 @@ class _WorrylistState extends State<Worrylist> {
     if (validator == 0) {
       return Scaffold(
         body: Center(
-            child: CircularProgressIndicator(
-                color: Theme.of(context).secondaryHeaderColor)),
+            child: LoadingStateCreator()),
       );
     } else if (validator == 1) {
       return Scaffold(
@@ -89,7 +90,7 @@ class _WorrylistState extends State<Worrylist> {
                 ),
               ),
               MenuHeroImage(
-                image: 'assets/worry.gif',
+                image: 'https://i.ibb.co/1RPgXjb/worry.gif',
               ),
               const SizedBox(
                 height: 20,
@@ -115,7 +116,7 @@ class _WorrylistState extends State<Worrylist> {
               ),
               ..._steps.map((step) {
                 return ListTile(
-                  leading: Image.asset('assets/check-mark.png'),
+                  leading: ImageCacher(imagePath:'assets/check-mark.png'),
                   title: Text(step),
                 );
               }),
@@ -143,7 +144,6 @@ class _WorrylistState extends State<Worrylist> {
       ));
     }
 
-    return CircularProgressIndicator(
-        color: Theme.of(context).secondaryHeaderColor);
+    return LoadingStateCreator();
   }
 }

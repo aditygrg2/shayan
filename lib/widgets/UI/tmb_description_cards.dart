@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/light_pollution.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class TmbDescriptionCards extends StatelessWidget {
@@ -51,7 +52,7 @@ class TmbDescriptionCards extends StatelessWidget {
                       title!,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(
@@ -61,7 +62,10 @@ class TmbDescriptionCards extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: Image.asset(image!)),
+              Expanded(child: ImageCacher(
+                imagePath: image,
+                isCanvas: true,
+              )),
             ],
           ),
         ),

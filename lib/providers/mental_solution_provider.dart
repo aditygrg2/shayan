@@ -6,7 +6,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'Progressive Muscle Relaxation',
       'subtitle':
           'By systematically tensing and relaxing different muscle groups, it makes you more aware of areas of tension in their body and learn to release that tension through intentional relaxation techniques.',
-      'image': 'assets/mental_exercises_4.png',
+      'image': 'https://i.ibb.co/t3f0XGT/mental-exercises-4.png',
       'audio': 'https://dl.sndup.net/t2v3/pmr_2.mp3',
       'description':
           'Progressive Muscle Relaxation (PMR) is a relaxation technique that involves tensing and relaxing specific muscle groups in a systematic way. The goal of PMR is to help individuals release physical tension and promote relaxation throughout the body.',
@@ -24,7 +24,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'Visualization',
       'subtitle':
           'Involves creating a mental image or scenario that is soothing, calming, and peaceful, which can help promote feelings of relaxation and calmness that are conducive to sleep.',
-      'image': 'assets/visualization.png',
+      'image': 'https://i.ibb.co/fnK1H0N/visualization.png',
       'audio': 'https://dl.sndup.net/zksp/visualization.mp3',
       'description':
           ' By incorporating this technique into a regular bedtime routine, one can create a peaceful and calming environment that promotes restful sleep.',
@@ -42,7 +42,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'Meditation',
       'subtitle':
           'A mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
-      'image': 'assets/mental_exercises_3.png',
+      'image': 'https://i.ibb.co/2S4LYP3/mental-exercises-3.png',
       'audio': 'https://dl.sndup.net/xt5w/meditation.mp3',
       'description':
           'Meditation is a technique that has been practiced for thousands of years, primarily for its mental, emotional, and spiritual benefits. It involves focusing one\'s attention on a particular object, thought, or activity to calm the mind and promote relaxation.',
@@ -59,7 +59,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'Autogenic Relaxation',
       'subtitle':
           'Using self-suggestion to create a sense of relaxation and well-being in the body.involves repeating a set of phrases or mental images that are designed to create feelings of warmth, heaviness, and relaxation in different parts of the bod',
-      'image': 'assets/mental_exercises_2.png',
+      'image': 'https://i.ibb.co/mz9tgFT/mental-exercises-2.png',
       'audio': "https://dl.sndup.net/tx9c/autogenic_relaxation.mp3",
       'description':
           'It involves a series of self-induced sensations of warmth, heaviness, and relaxation in different parts of the body, which can promote a deep state of relaxation and reduce stress and anxiety.It is a non-invasive and self-directed technique that can be practiced almost anywhere, making it a popular choice for anyone looking to manage stress and promote relaxation in their daily life.',
@@ -76,7 +76,7 @@ class MentalSolutionProvider extends ChangeNotifier {
       'title': 'Deep Breathing',
       'subtitle':
           'A mental practice that involves focusing the mind on a particular object, thought, or activity to achieve a state of calmness, relaxation, and mental clarity',
-      'image': 'assets/mental_exercises_5.png',
+      'image': 'https://i.ibb.co/5kLCRYN/mental-exercises-5.png',
       'audio': 'https://dl.sndup.net/sh7n/deep-breathing_G21xtl28.mp3',
       'description':
           'Deep breathing is a relaxation technique that involves taking slow, deep breaths from the diaphragm rather than shallow breaths from the chest.It can help to slow down your heart rate, lower your blood pressure, and promote a sense of calm and relaxation in both the mind and body.',

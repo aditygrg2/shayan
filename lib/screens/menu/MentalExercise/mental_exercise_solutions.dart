@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import './audio_player.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
@@ -61,9 +62,10 @@ class MentalExerciseSolution extends StatelessWidget {
                         Container(
                           width: MediaQuery.of(context).size.width - 150,
                           height: 250,
-                          child: Image.asset(
-                            solution['image'],
+                          child: ImageCacher(
+                            imagePath: solution['image'],
                             fit: BoxFit.contain,
+                            isCanvas: true,
                           ),
                         ),
                         Container(

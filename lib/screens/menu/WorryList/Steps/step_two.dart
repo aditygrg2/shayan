@@ -41,7 +41,7 @@ class _StepTwoState extends State<StepTwo> {
                 ),
               ),
               MenuHeroImage(
-                image: 'assets/worry.gif',
+                image: 'https://i.ibb.co/1RPgXjb/worry.gif',
               ),
               const SizedBox(
                 height: 20,

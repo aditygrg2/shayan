@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/worry_list_provider.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:provider/provider.dart';
 
 class ResolutionCards extends StatefulWidget {
@@ -32,7 +33,7 @@ class _ResolutionCardsState extends State<ResolutionCards> {
           ,
           FutureBuilder(builder: (context, snapshot) {
             if(!snapshot.hasData){
-              return Center(child: CircularProgressIndicator(),);
+              return Center(child: LoadingStateCreator(),);
             }
             final doc = snapshot.data as QuerySnapshot;
             return Column(

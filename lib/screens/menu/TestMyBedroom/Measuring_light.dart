@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class MeasuringLight extends StatefulWidget {
@@ -22,8 +23,8 @@ class _MeasuringLightState extends State<MeasuringLight> {
               style: Theme.of(context).textTheme.headlineSmall,
             ),
           ),
-          Image.asset(
-            'assets/scanning.gif',
+          ImageCacher(
+            imagePath: "https://i.ibb.co/jkH6Gjn/scanning.gif",
             fit: BoxFit.cover,
           ),
           Center(

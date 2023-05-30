@@ -102,7 +102,7 @@ class _TopRowState extends State<TopRow> {
                 onPressed: () {
                   Navigator.of(context).pushNamed(StoreScreen.routeName);
                 },
-                icon: Icon(Icons.shop)),
+                icon: const Icon(Icons.shop)),
           if (!widget.back!)
             IconButton(
               onPressed: () {
@@ -125,8 +125,8 @@ class _TopRowState extends State<TopRow> {
                 });
               },
               icon: brightness == ThemeMode.dark
-                  ? Icon(Icons.light_mode)
-                  : Icon(Icons.dark_mode),
+                  ? const Icon(Icons.light_mode)
+                  : const Icon(Icons.dark_mode),
             ),
         ],
       ),

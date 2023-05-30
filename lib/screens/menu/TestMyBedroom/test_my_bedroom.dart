@@ -51,21 +51,21 @@ class _TestMyBedroomState extends State<TestMyBedroom> {
             title: 'Light Pollution',
             subtitle:
                 'Restricts the naturally timed rise of melatonin and delays the body\'s transition to sleep',
-            image: 'assets/light.png',
+            image: 'https://i.ibb.co/xYnG0Tn/light.png',
             route: LightPollution.routeName,
           ),
           TmbDescriptionCards(
             title: 'Noise Pollution',
             subtitle:
                 'Restricts the naturally timed rise of melatonin and delays the body\'s transition to sleep',
-            image: 'assets/noise.png',
+            image: 'https://i.ibb.co/rsmgxyK/noise.png',
             route: NoisePollution.routeName,
           ),
           TmbDescriptionCards(
             title: 'Temperature Check',
             subtitle:
                 'Restricts the naturally timed rise of melatonin and delays the body\'s transition to sleep',
-            image: 'assets/temperature.png',
+            image: 'https://i.ibb.co/9WZ2K07/temperature.png',
             route: Temperature.routeName,
           )
         ],

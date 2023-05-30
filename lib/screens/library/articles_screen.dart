@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/article.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class ArticlesScreen extends StatelessWidget {
@@ -54,47 +55,15 @@ class ArticlesScreen extends StatelessWidget {
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return Center(
-                  child: CircularProgressIndicator(
-                      color: Theme.of(context).secondaryHeaderColor),
+                  child: LoadingStateCreator(),
                 );
               }
-              if(snapshot.data?.exists==false){
-                return FutureBuilder(
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                          color: Theme.of(context).secondaryHeaderColor),
-                    );
-                  }
-                  return Column(
-                    children:
-                        (snapshot.data?.data()!['article'] as List<dynamic>)
-                            .map(
-                      (e) {
-                        return Container(
-                            padding: const EdgeInsets.all(10),
-                            child: Article(
-                                image: e['image'],
-                                name: e['title'],
-                                description: e['description']));
-                      },
-                    ).toList(),
-                  );
-                },
-                future: FirebaseFirestore.instance
-                    .collection('article')
-                    .doc("healthy")
-                    .get(),
-              );
-              }
-              if (snapshot.data?.get('diseaseType') == 'sleep deprivation') {
+              if (snapshot.data?.exists == false) {
                 return FutureBuilder(
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(
-                            color: Theme.of(context).secondaryHeaderColor),
+                        child: LoadingStateCreator(),
                       );
                     }
                     return Column(
@@ -108,6 +77,37 @@ class ArticlesScreen extends StatelessWidget {
                                   image: e['image'],
                                   name: e['title'],
                                   description: e['description']));
+                        },
+                      ).toList(),
+                    );
+                  },
+                  future: FirebaseFirestore.instance
+                      .collection('article')
+                      .doc("healthy")
+                      .get(),
+                );
+              }
+              if (snapshot.data?.get('diseaseType') == 'sleep deprivation') {
+                return FutureBuilder(
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: LoadingStateCreator(),
+                      );
+                    }
+                    return Column(
+                      children:
+                          (snapshot.data?.data()!['article'] as List<dynamic>)
+                              .map(
+                        (e) {
+                          return Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Article(
+                              image: e['image'],
+                              name: e['title'],
+                              description: e['description'],
+                            ),
+                          );
                         },
                       ).toList(),
                     );
@@ -123,8 +123,7 @@ class ArticlesScreen extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(
-                            color: Theme.of(context).secondaryHeaderColor),
+                        child: LoadingStateCreator(),
                       );
                     }
 
@@ -134,11 +133,13 @@ class ArticlesScreen extends StatelessWidget {
                               .map(
                         (e) {
                           return Container(
-                              padding: const EdgeInsets.all(10),
-                              child: Article(
-                                  image: e['image'],
-                                  name: e['title'],
-                                  description: e['description']));
+                            padding: const EdgeInsets.all(10),
+                            child: Article(
+                              image: e['image'],
+                              name: e['title'],
+                              description: e['description'],
+                            ),
+                          );
                         },
                       ).toList(),
                     );
@@ -154,8 +155,7 @@ class ArticlesScreen extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(
-                            color: Theme.of(context).secondaryHeaderColor),
+                        child: LoadingStateCreator(),
                       );
                     }
                     return Column(
@@ -184,8 +184,7 @@ class ArticlesScreen extends StatelessWidget {
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
                     return Center(
-                      child: CircularProgressIndicator(
-                          color: Theme.of(context).secondaryHeaderColor),
+                      child: LoadingStateCreator(),
                     );
                   }
                   return Column(

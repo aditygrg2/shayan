@@ -6,6 +6,7 @@ import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:night_gschallenge/widgets/form/mcq_widget.dart';
 
@@ -568,9 +569,7 @@ class _MainFormState extends State<MainForm> {
                             imagePath: "https://i.ibb.co/x8XHvdh/form.gif",
                           )),
                       if (loading)
-                        CircularProgressIndicator(
-                          color: Theme.of(context).secondaryHeaderColor,
-                        ),
+                        LoadingStateCreator(),
                       if (!loading)
                         Text(
                           'Question ${_currentQuestion + 1}/34',

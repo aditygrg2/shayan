@@ -89,7 +89,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
             text: 'Sleep Cycle Calculator',
           ),
           MenuHeroImage(
-            image: 'assets/sleepcyclecalculator.gif',
+            image: 'https://i.ibb.co/0F425yw/sleepcyclecalculator.gif',
           ),
           InformativeText(
             text:

@@ -35,19 +35,19 @@ class _SleepinessState extends State<Sleepiness> {
       'heading': 'You are most likely getting enough sleep',
       'subheading':
           "However, if you have noticed a change in your normal sleep routine, do add in your sleep tracker.",
-      'image': 'assets/article_5.jpg'
+      'image': 'https://i.ibb.co/Yd10rfY/articles-sleep-disorder.png'
     },
     {
       'heading': 'Your may be suffering from excessive daytime sleepiness',
       'subheading':
           'Please fill out the plan form, or ask a sleep trainer for help.',
-      'image': 'assets/article_5.jpg'
+      'image': 'https://i.ibb.co/Yd10rfY/articles-sleep-disorder.png'
     },
     {
       'heading': 'You are dangerously sleepy',
       'subheading':
           'Please signup to our Plan to improve your conditions and track sleep. You can schedule an appointment too.',
-      'image': 'assets/article_5.jpg'
+      'image': 'https://i.ibb.co/ZYX6VNy/articles-sleep-issues.png'
     }
   ];
   final List<int?> _answerList = [0, 0, 0, 0, 0, 0, 0, 0];
@@ -76,7 +76,7 @@ class _SleepinessState extends State<Sleepiness> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +89,7 @@ class _SleepinessState extends State<Sleepiness> {
                       Text(
                         value,
                         textAlign: TextAlign.start,
-                        style: TextStyle(fontSize: 17),
+                        style: const TextStyle(fontSize: 17),
                       ),
                       DropdownButton(
                         items: [
@@ -109,7 +109,7 @@ class _SleepinessState extends State<Sleepiness> {
                         key: UniqueKey(),
                         value: _answerList[indi],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       )
                     ],
