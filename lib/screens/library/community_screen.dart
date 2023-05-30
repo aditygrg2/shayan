@@ -93,7 +93,7 @@ class CommunityScreen extends StatelessWidget {
                                     ),
                                     TextFormField(
                                       decoration: const InputDecoration(
-                                          labelText: 'Image'),
+                                          labelText: 'Image(URL)'),
                                       validator: (value) {
                                         // if (value!.isEmpty) {
                                         //   return 'Please enter URL of the Image';

@@ -30,7 +30,7 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               child: Text(
                 (widget.index == -1 ? "Add" : "Edit") + " Timeline Task",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ),
             Container(
@@ -74,6 +74,11 @@ class _AddEditTimelineState extends State<AddEditTimeline> {
               child: ElevatedButtonWithoutIcon(
                 text: widget.index == -1 ? "Add" : "Edit",
                 onPressedButton: () {
+                  if(timeController.text==""){
+                    Navigator.of(context).pop();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Container(child: const Text("Please Pick a Time"),)));
+                    return;
+                  }
                   if (widget.index == -1) {
                     timelineProvider.addTimeline(
                       timeController.text,
