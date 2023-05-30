@@ -42,7 +42,7 @@ class _SleepScoreState extends State<SleepScore> {
               linearGradient: LinearGradient(
                 colors: [
                   Theme.of(context).splashColor,
-                  Theme.of(context).cardColor,
+                  Theme.of(context).shadowColor,
                 ],
               ),
               backgroundColor: Theme.of(context).primaryColor,

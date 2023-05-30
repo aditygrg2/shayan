@@ -14,9 +14,12 @@ class ThemeClass {
     brightness: Brightness.light,
     iconTheme: const IconThemeData(color: Colors.black),
     highlightColor: Colors.white,
+    shadowColor: Colors.amberAccent,
     buttonColor: const Color.fromRGBO(247, 219, 198, 1),
-    splashColor: Colors.white,
+    splashColor: Colors.amber,
     dividerColor: Colors.black,
+    unselectedWidgetColor: Color.fromRGBO(0, 0, 0, 0.87),
+    selectedRowColor: Color.fromRGBO(0, 0, 0, 0.37),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
@@ -97,6 +100,9 @@ class ThemeClass {
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
     dividerColor: const Color.fromRGBO(247, 219, 198, 1),
+    shadowColor: const Color.fromRGBO(114, 129, 233, 1),
+    unselectedWidgetColor: Color.fromRGBO(255, 255, 255, 0.87),
+    selectedRowColor: Color.fromRGBO(255, 255, 255, 0.37),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
@@ -128,7 +134,7 @@ class ThemeClass {
       ),
       headlineMedium: TextStyle(
         fontSize: 20,
-        color: Colors.white,
+        color: Color.fromRGBO(255, 255, 255, 0.87),
         fontWeight: FontWeight.w400,
         fontFamily: 'OpenSans',
       ),

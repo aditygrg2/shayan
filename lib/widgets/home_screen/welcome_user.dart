@@ -10,7 +10,7 @@ class WelcomeUser extends StatefulWidget {
 }
 
 Widget getStatus(int hours) {
-  if (hours >3 && hours < 15) {
+  if (hours > 3 && hours < 15) {
     return SizedBox(
       height: 150,
       width: double.infinity,
@@ -28,8 +28,7 @@ Widget getStatus(int hours) {
         },
       ),
     );
-  }
-  else if(hours>15 && hours<20){
+  } else if (hours > 15 && hours < 20) {
     return SizedBox(
       height: 150,
       width: double.infinity,
@@ -47,8 +46,7 @@ Widget getStatus(int hours) {
         },
       ),
     );
-  }
-  else{
+  } else {
     return SizedBox(
       height: 150,
       width: double.infinity,
@@ -74,8 +72,6 @@ class _WelcomeUserState extends State<WelcomeUser> {
   bool isLogin = FirebaseAuth.instance.currentUser != null;
   String? userId;
 
-  
-
   @override
   Widget build(BuildContext context) {
     var hours = DateTime.now().hour;
@@ -98,9 +94,12 @@ class _WelcomeUserState extends State<WelcomeUser> {
           if (isLogin)
             Text(
               FirebaseAuth.instance.currentUser!.displayName!,
-              style: TextStyle(fontSize: 25),
+              style: TextStyle(
+                fontSize: 25,
+                color: Theme.of(context).unselectedWidgetColor,
+              ),
             ),
-            getStatus(hours)
+          getStatus(hours)
         ],
       ),
     );

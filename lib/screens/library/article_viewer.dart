@@ -19,7 +19,7 @@ print(article);
             back: true,
           ),
           HomeScreenText(
-            text: 'Article ',
+            text: 'Articles',
           ),
           Container(child: Text(article['title'] as String,style:const TextStyle(fontSize: 25),),padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),),
          if(article.containsKey("image") && article['image']!=null) Container(

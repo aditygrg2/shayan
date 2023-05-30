@@ -20,8 +20,9 @@ class Article extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
-            color: Theme.of(context).buttonColor,
-            borderRadius: BorderRadius.circular(16)),
+          color: Theme.of(context).buttonColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: Row(
           children: [
             Container(
@@ -30,7 +31,7 @@ class Article extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: ImageCacher(
-                  imagePath:image,
+                  imagePath: image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -50,7 +51,9 @@ class Article extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       description,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: TextStyle(
+                        color: Theme.of(context).hoverColor
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
