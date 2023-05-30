@@ -8,9 +8,14 @@ import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/providers/store_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
+import 'package:night_gschallenge/screens/menu/Maps/google_map.dart';
+import 'package:night_gschallenge/screens/menu/PhoneFreeTime/phone_free_time.dart';
+import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
 import 'package:night_gschallenge/screens/store/products_category.dart';
+import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
+import 'package:night_gschallenge/widgets/UI/credits.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
@@ -78,7 +83,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
-    final storeProvder = Provider.of<StoreProvder>(context,listen: false);
+    final storeProvder = Provider.of<StoreProvder>(context, listen: false);
     var id = FirebaseAuth.instance.currentUser?.uid;
     if (once) {
       data();
@@ -266,8 +271,36 @@ class _HomeBodyState extends State<HomeBody> {
                       )
                     : WhatsNew(),
                 if (!isWatchConnected) const WatchComponent(),
+                ListTileIconCreators(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(SmartAlarm.routeName);
+                  },
+                  icon: Icons.emergency_recording_rounded,
+                  title: "Record your daily snorings",
+                ),
                 MusicSection(),
-                ProductCategory(data: storeProvder.getCategories[0]['items'], type: storeProvder.getCategories[0]['type'])
+                ListTileIconCreators(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(PhoneFreeTime.routeName);
+                  },
+                  icon: Icons.phone_disabled_sharp,
+                  title: "Go Phone Free",
+                ),
+                ProductCategory(
+                    data: storeProvder.getCategories[0]['items'],
+                    type: storeProvder.getCategories[0]['type']),
+                ListTileIconCreators(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Credits();
+                      },
+                    );
+                  },
+                  icon: Icons.apps,
+                  title: "Thank you for using Shayan",
+                ),
               ],
             ),
           );

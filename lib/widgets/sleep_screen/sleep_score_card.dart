@@ -38,7 +38,7 @@ class SleepScoreCard extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(300),
                       ),
                       border: Border.all(color: Theme.of(context).dividerColor),

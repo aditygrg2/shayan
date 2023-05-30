@@ -57,7 +57,10 @@ class TmbDescriptionCards extends StatelessWidget {
                     ),
                     Text(
                       subtitle!,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Roboto'
+                      ),
                     ),
                   ],
                 ),
