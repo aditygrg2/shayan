@@ -12,6 +12,7 @@ import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/dialog_flow_provider.dart';
 import 'package:night_gschallenge/providers/flutter_ttx.dart';
 import 'package:night_gschallenge/providers/mental_solution_provider.dart';
+import 'package:night_gschallenge/providers/music_provider.dart';
 import 'package:night_gschallenge/providers/noise_provider.dart';
 import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
@@ -232,6 +233,11 @@ class _MainState extends State<Main> {
             ChangeNotifierProvider(
               create: (context) {
                 return sharedPreferencesProvider();
+              },
+            ),
+            ChangeNotifierProvider(
+              create: (context) {
+                return MusicProvider();
               },
             ),
           ],

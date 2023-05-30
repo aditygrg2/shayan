@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
 import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
 
 class ProductCategory extends StatelessWidget {
@@ -10,13 +11,7 @@ class ProductCategory extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          child: Text(
-            type,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-        ),
+        HomeScreenText(text: "Shop by Category",),
         Container(
           height: 380,
           width: MediaQuery.of(context).size.width - 20,
