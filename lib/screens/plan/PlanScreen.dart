@@ -198,7 +198,7 @@ class _PlanScreenState extends State<PlanScreen> {
                           FutureBuilder(
                             future: timelineProvider.fetchTimeline(),
                             builder: (context, snapshot) {
-                              if (!snapshot.hasData) {
+                              if (snapshot.connectionState == ConnectionState.waiting) {
                                 return LoadingStateCreator();
                               }
                               var timeline = snapshot.data;
@@ -231,8 +231,10 @@ class _PlanScreenState extends State<PlanScreen> {
                                                   task: e['task'],
                                                   time: e['time'],
                                                 );
-                                        } else
+                                        } else{
+
                                           return null;
+                                        }
                                       })
                                       .toList()
                                       .where((element) => element != null)
@@ -443,7 +445,7 @@ class _PlanScreenState extends State<PlanScreen> {
                       HomeScreenText(
                         text: "My Plan",
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
