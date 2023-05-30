@@ -59,135 +59,139 @@ class _ChatScreenState extends State<ChatScreen> {
     var id = FirebaseAuth.instance.currentUser?.uid;
     var notificationBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          Container(
-            margin: EdgeInsets.only(
-              left: 15,
-              top: notificationBarHeight,
-            ),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Icon(
-                    Icons.arrow_back_rounded,
-                    size: 35,
+        Container(width: double.infinity,height: double.infinity,child: Image.asset("assets/chatbg.jpg",fit: BoxFit.contain,),),
+        Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                left: 15,
+                top: notificationBarHeight,
+              ),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Icon(
+                      Icons.arrow_back_rounded,
+                      size: 35,
+                    ),
                   ),
-                ),
-                HomeScreenText(text: 'Chat with Sleep Trainer'),
-              ],
+                  HomeScreenText(text: 'Chat with Sleep Trainer'),
+                ],
+              ),
             ),
-          ),
-          id==null ? Container(
-            child: Text('Sign in to access this page!'),
-          ) : Expanded(
-            child: StreamBuilder(
-              stream: FirebaseFirestore.instance
-                  .collection('chats')
-                  .doc(id)
-                  .collection('messages')
-                  .orderBy('timestamps')
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) return const Text("No data");
-
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Text('Please wait..');
-                }
-                return ListView(
-                  controller: _scrollController,
-                  children: [
-                    ...snapshot.data!.docs.map(
-                      (chat) {
-                        bool condition = chat['user'] != 'dialogflow';
-                        return Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: (condition)
-                                  ? MainAxisAlignment.end
-                                  : MainAxisAlignment.start,
-                              children: <Widget>[
-                                if (!condition)
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                      left: 8,
-                                    ),
-                                    child: ImageCacher(
-                                      imagePath: "https://i.ibb.co/LZsLBfP/bot.png",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: condition
-                                        ? Colors.amber
-                                        : Theme.of(context).canvasColor,
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: const Radius.circular(12),
-                                      topRight: const Radius.circular(12),
-                                      bottomLeft: !condition
-                                          ? const Radius.circular(0)
-                                          : const Radius.circular(12),
-                                      bottomRight: condition
-                                          ? const Radius.circular(0)
-                                          : const Radius.circular(12),
-                                    ),
-                                  ),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 10,
-                                    horizontal: 16,
-                                  ),
-                                  margin: const EdgeInsets.symmetric(
-                                    vertical: 16,
-                                    horizontal: 8,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: condition
-                                        ? CrossAxisAlignment.end
-                                        : CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text(
-                                        chat['username'] ?? '',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Theme.of(context).secondaryHeaderColor,
-                                        ),
+            id==null ? Container(
+              child: const Text('Sign in to access this page!'),
+            ) : Expanded(
+              child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('chats')
+                    .doc(id)
+                    .collection('messages')
+                    .orderBy('timestamps')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return const Text("No data");
+      
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Text('Please wait..');
+                  }
+                  return ListView(
+                    controller: _scrollController,
+                    children: [
+                      ...snapshot.data!.docs.map(
+                        (chat) {
+                          bool condition = chat['user'] != 'dialogflow';
+                          return Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: (condition)
+                                    ? MainAxisAlignment.end
+                                    : MainAxisAlignment.start,
+                                children: <Widget>[
+                                  if (!condition)
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 8,
                                       ),
-                                      Text(
-                                        chat['value'],
-                                        style: TextStyle(
-                                          color: Theme.of(context).secondaryHeaderColor,
-                                        ),
-                                        textAlign: condition
-                                            ? TextAlign.end
-                                            : TextAlign.start,
+                                      child: ImageCacher(
+                                        imagePath: "https://i.ibb.co/LZsLBfP/bot.png",
+                                        fit: BoxFit.cover,
                                       ),
-                                    ],
+                                    ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: condition
+                                          ? Colors.amber
+                                          : Theme.of(context).canvasColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: const Radius.circular(12),
+                                        topRight: const Radius.circular(12),
+                                        bottomLeft: !condition
+                                            ? const Radius.circular(0)
+                                            : const Radius.circular(12),
+                                        bottomRight: condition
+                                            ? const Radius.circular(0)
+                                            : const Radius.circular(12),
+                                      ),
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.6,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 10,
+                                      horizontal: 16,
+                                    ),
+                                    margin: const EdgeInsets.symmetric(
+                                      vertical: 16,
+                                      horizontal: 8,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: condition
+                                          ? CrossAxisAlignment.end
+                                          : CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          chat['username'] ?? '',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Theme.of(context).secondaryHeaderColor,
+                                          ),
+                                        ),
+                                        Text(
+                                          chat['value'],
+                                          style: TextStyle(
+                                            color: Theme.of(context).secondaryHeaderColor,
+                                          ),
+                                          textAlign: condition
+                                              ? TextAlign.end
+                                              : TextAlign.start,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
-                    )
-                  ],
-                );
-              },
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      )
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          if(id!=null)
-          ChatInput(
-            getMessage: getMessage,
-            controller: _scrollController,
-          )
-        ],
-      ),
+            if(id!=null)
+            ChatInput(
+              getMessage: getMessage,
+              controller: _scrollController,
+            )
+          ],
+        ),
+        ],)
     );
   }
 }
