@@ -185,7 +185,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
-                  height: therapies.length/2 * 120,
+                  height: therapies.length / 2 * 120,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -252,7 +252,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
                           ),
                           child: Text(
                             therapies[index]['mood'],
-                            style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.black),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(color: Colors.black),
                           ),
                         ),
                       );
