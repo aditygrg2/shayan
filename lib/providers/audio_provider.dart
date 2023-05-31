@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
-
 class AudioProvider extends ChangeNotifier {
   AudioPlayer player = AudioPlayer();
   Duration duration = const Duration();
   Duration progress = const Duration();
   Duration buffered = const Duration();
 
-  AudioProvider(){
+  AudioProvider() {
     player.setLoopMode(LoopMode.all).then((value) {});
   }
 
-  Future load(String? uri)async{
-    if(uri==null){
+  Future load(String? uri) async {
+    if (uri == null) {
       return Future(() => false);
     }
-    try{
-    duration = Duration.zero;
-    progress = Duration.zero;
-    await player.setUrl(uri);
-    duration = player.duration!;
-    player.positionStream.listen((element) {
-      progress = element;
-      notifyListeners();
-    });
-    player.bufferedPositionStream.listen((event) {
-      buffered = event;
-      notifyListeners();
-    }) ;
-    return true;
-    }catch(e){
+    try {
+      duration = Duration.zero;
+      progress = Duration.zero;
+      await player.setUrl(uri);
+      duration = player.duration!;
+      player.positionStream.listen((element) {
+        progress = element;
+        notifyListeners();
+      });
+      player.bufferedPositionStream.listen((event) {
+        buffered = event;
+        notifyListeners();
+      });
+      return true;
+    } catch (e) {
       return false;
     }
   }
 
-  void playAsset(String url){
+  void playAsset(String url) {
+    AudioPlayer.clearAssetCache();
     player.setAsset(url);
     player.play();
   }
@@ -50,11 +50,11 @@ class AudioProvider extends ChangeNotifier {
   }
 
   dynamic pause() async {
-     await player.pause();
+    await player.pause();
   }
 
   dynamic resume() async {
-     await player.play();
+    await player.play();
   }
 
   void release() async {

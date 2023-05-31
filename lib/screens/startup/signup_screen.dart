@@ -5,6 +5,7 @@ import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/splash_button.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -92,8 +93,8 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: ListView(
         children: [
-          Image.asset(
-            'assets/ln.gif',
+          ImageCacher(
+            imagePath: 'https://i.ibb.co/1rbvWTH/output-onlinegiftools-25-1.gif',
           ),
           const SizedBox(
             height: 10,

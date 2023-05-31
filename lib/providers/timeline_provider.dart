@@ -11,8 +11,15 @@ class TimelineProvider extends ChangeNotifier {
   }
 
   Future editTimeline(int index, String time, String task) async {
-    timeline[index] = {"time": time, "task": task};
-    timeline.sort((a, b) => (a['time'] as String).compareTo(b['time']));
+    timeline[index] = {
+      "time": time,
+      "task": task,
+    };
+    timeline.sort(
+      (a, b) => (a['time'] as String).compareTo(
+        b['time'],
+      ),
+    );
     try {
       await FirebaseFirestore.instance
           .collection("timeline")
@@ -29,8 +36,15 @@ class TimelineProvider extends ChangeNotifier {
   }
 
   Future addTimeline(String time, String task) async {
-    timeline.add({"time": time, "task": task});
-    timeline.sort((a, b) => (a['time'] as String).compareTo(b['time']));
+    timeline.add({
+      "time": time,
+      "task": task,
+    });
+    timeline.sort(
+      (a, b) => (a['time'] as String).compareTo(
+        b['time'],
+      ),
+    );
     try {
       await FirebaseFirestore.instance
           .collection("timeline")

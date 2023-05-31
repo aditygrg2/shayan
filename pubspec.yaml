@@ -107,7 +107,9 @@ flutter:
     - assets/sleep_diet.png
     - assets/test_my_environment.png
     - assets/worry_list.png
-    - assets/splash_screen.png
+    - assets/app-logo.png
+    - assets/dark_splash_1.png
+    - assets/dark_splash_2.png
     - assets/loading.gif
     - assets/sleepiness.png
     - assets/maps.png

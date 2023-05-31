@@ -59,9 +59,17 @@ class _ChatScreenState extends State<ChatScreen> {
     var id = FirebaseAuth.instance.currentUser?.uid;
     var notificationBarHeight = MediaQuery.of(context).padding.top;
     return Scaffold(
-      body: Stack(
-        children: [
-        Container(width: double.infinity,height: double.infinity,child: Image.asset("assets/bota.png",fit: BoxFit.contain,),),
+        body: Stack(
+      children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Image.asset(
+            "assets/bota.png",
+            fit: BoxFit.contain,
+            opacity: const AlwaysStoppedAnimation(.4),
+          ),
+        ),
         Column(
           children: [
             Container(
@@ -84,114 +92,123 @@ class _ChatScreenState extends State<ChatScreen> {
                 ],
               ),
             ),
-            id==null ? Container(
-              child: const Text('Sign in to access this page!'),
-            ) : Expanded(
-              child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection('chats')
-                    .doc(id)
-                    .collection('messages')
-                    .orderBy('timestamps')
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) return const Text("No data");
-      
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Text('Please wait..');
-                  }
-                  return ListView(
-                    controller: _scrollController,
-                    children: [
-                      ...snapshot.data!.docs.map(
-                        (chat) {
-                          bool condition = chat['user'] != 'dialogflow';
-                          return Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: (condition)
-                                    ? MainAxisAlignment.end
-                                    : MainAxisAlignment.start,
-                                children: <Widget>[
-                                  if (!condition)
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 8,
-                                      ),
-                                      child: ImageCacher(
-                                        imagePath: "https://i.ibb.co/LZsLBfP/bot.png",
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: condition
-                                          ? Theme.of(context).buttonColor
-                                          : const Color.fromRGBO(143, 227, 221, 1),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: const Radius.circular(12),
-                                        topRight: const Radius.circular(12),
-                                        bottomLeft: !condition
-                                            ? const Radius.circular(0)
-                                            : const Radius.circular(12),
-                                        bottomRight: condition
-                                            ? const Radius.circular(0)
-                                            : const Radius.circular(12),
-                                      ),
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.6,
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                      horizontal: 16,
-                                    ),
-                                    margin: const EdgeInsets.symmetric(
-                                      vertical: 16,
-                                      horizontal: 8,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: condition
-                                          ? CrossAxisAlignment.end
-                                          : CrossAxisAlignment.start,
+            id == null
+                ? Container(
+                    child: const Text('Sign in to access this page!'),
+                  )
+                : Expanded(
+                    child: StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection('chats')
+                          .doc(id)
+                          .collection('messages')
+                          .orderBy('timestamps')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) return const Text("No data");
+
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Text('Please wait..');
+                        }
+                        return ListView(
+                          controller: _scrollController,
+                          children: [
+                            ...snapshot.data!.docs.map(
+                              (chat) {
+                                bool condition = chat['user'] != 'dialogflow';
+                                return Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: (condition)
+                                          ? MainAxisAlignment.end
+                                          : MainAxisAlignment.start,
                                       children: <Widget>[
-                                        Text(
-                                          chat['username'] ?? '',
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black,
+                                        if (!condition)
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              left: 8,
+                                            ),
+                                            child: ImageCacher(
+                                              imagePath:
+                                                  "https://i.ibb.co/LZsLBfP/bot.png",
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
-                                        ),
-                                        Text(
-                                          chat['value'],
-                                          style: const TextStyle(
-                                            color: Colors.black,
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: condition
+                                                ? Theme.of(context).buttonColor
+                                                : const Color.fromRGBO(
+                                                    143, 227, 221, 1),
+                                            borderRadius: BorderRadius.only(
+                                              topLeft:
+                                                  const Radius.circular(12),
+                                              topRight:
+                                                  const Radius.circular(12),
+                                              bottomLeft: !condition
+                                                  ? const Radius.circular(0)
+                                                  : const Radius.circular(12),
+                                              bottomRight: condition
+                                                  ? const Radius.circular(0)
+                                                  : const Radius.circular(12),
+                                            ),
                                           ),
-                                          textAlign: condition
-                                              ? TextAlign.end
-                                              : TextAlign.start,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.6,
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 10,
+                                            horizontal: 16,
+                                          ),
+                                          margin: const EdgeInsets.symmetric(
+                                            vertical: 16,
+                                            horizontal: 8,
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: condition
+                                                ? CrossAxisAlignment.end
+                                                : CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                chat['username'] ?? '',
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                              Text(
+                                                chat['value'],
+                                                style: const TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                                textAlign: condition
+                                                    ? TextAlign.end
+                                                    : TextAlign.start,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          );
-                        },
-                      )
-                    ],
-                  );
-                },
-              ),
-            ),
-            if(id!=null)
-            ChatInput(
-              getMessage: getMessage,
-              controller: _scrollController,
-            )
+                                  ],
+                                );
+                              },
+                            )
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+            if (id != null)
+              ChatInput(
+                getMessage: getMessage,
+                controller: _scrollController,
+              )
           ],
         ),
-        ],)
-    );
+      ],
+    ));
   }
 }

@@ -101,7 +101,7 @@ class StoryScreen extends StatelessWidget {
             width: 200,
             padding: const EdgeInsets.all(10),
             child: ImageCacher(
-              imagePath: "https://i.ibb.co/mCRrTQL/story-library.jpg",
+              imagePath: "https://i.ibb.co/VW2NxnH/stories.png",
               fit: BoxFit.contain,
             ),
           ),

@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 
 class ResolutionCardWithComment extends StatefulWidget {
   bool isWriting = false;
-  String worry,situation;
+  String worry, situation;
   String id;
   final notes;
-  ResolutionCardWithComment(this.id,this.worry,this.situation,this.notes);
+  ResolutionCardWithComment(this.id, this.worry, this.situation, this.notes);
   @override
   State<ResolutionCardWithComment> createState() =>
       _ResolutionCardWithCommentState();
@@ -84,24 +84,45 @@ class _ResolutionCardWithCommentState extends State<ResolutionCardWithComment> {
             ),
           ),
           if (widget.notes.length > 0)
-            ...widget.notes.map((note) {
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: ListTile(
-                    leading: const Icon(
-                      Icons.sticky_note_2_outlined,
-                      color: Colors.amber,
-                      size: 40,
+            ...widget.notes.map(
+              (note) {
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(20),
                     ),
-                    title: Text(note),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.sticky_note_2_outlined,
+                        color: Theme.of(context).iconTheme.color,
+                        size: 40,
+                      ),
+                      title: Text(note),
+                    ),
                   ),
+                );
+              },
+            ),
+          if (widget.notes.length == 0)
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              );
-            }),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.sticky_note_2_outlined,
+                    color: Theme.of(context).iconTheme.color,
+                    size: 40,
+                  ),
+                  title: Text("No notes available"),
+                ),
+              ),
+            ),
           const SizedBox(
             height: 10,
           ),
@@ -130,7 +151,9 @@ class _ResolutionCardWithCommentState extends State<ResolutionCardWithComment> {
                     onSubmitted: (value) {
                       var list = widget.notes as List;
                       list.add(value);
-                      worryProvider.updateWorryList(widget.id, list).then((value) {
+                      worryProvider
+                          .updateWorryList(widget.id, list)
+                          .then((value) {
                         controller.clear();
                         setState(() {
                           widget.isWriting = false;

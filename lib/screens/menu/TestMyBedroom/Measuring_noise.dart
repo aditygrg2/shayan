@@ -24,7 +24,7 @@ class _MeasuringNoiseState extends State<MeasuringNoise> {
             ),
           ),
           ImageCacher(
-            imagePath: "https://i.ibb.co/Y7Xyqmt/scanning-2.gif",
+            imagePath: "https://i.ibb.co/Bqjg50W/output-onlinegiftools-28.gif",
             fit: BoxFit.cover,
           ),
           Center(

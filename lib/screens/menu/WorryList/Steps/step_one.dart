@@ -54,7 +54,6 @@ class StepOne extends StatelessWidget {
                         text: 'Add worry',
                         onPressedButton: () {
                           showModalBottomSheet(
-                            backgroundColor: Colors.white,
                             context: context,
                             isScrollControlled: true,
                             builder: (context) {
@@ -71,7 +70,7 @@ class StepOne extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       const Text(
-                                        'Write down your worry here..',
+                                        'Add Worry',
                                         style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -89,7 +88,7 @@ class StepOne extends StatelessWidget {
                                         cursorHeight: 20,
                                         textAlign: TextAlign.left,
                                         decoration: InputDecoration(
-                                          labelText: 'List your worry here!',
+                                          labelText: 'List down your worry here',
                                           fillColor:
                                               Theme.of(context).primaryColor,
                                           filled: true,
@@ -111,7 +110,7 @@ class StepOne extends StatelessWidget {
                                         textAlign: TextAlign.left,
                                         decoration: InputDecoration(
                                           labelText:
-                                              'List your situation here!',
+                                              'List down your situtation here!',
                                           fillColor:
                                               Theme.of(context).primaryColor,
                                           filled: true,
@@ -173,7 +172,6 @@ class StepOne extends StatelessWidget {
                       text: 'Add worry',
                       onPressedButton: () {
                         showModalBottomSheet(
-                          backgroundColor: Colors.white,
                           context: context,
                           isScrollControlled: true,
                           builder: (context) {

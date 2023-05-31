@@ -42,46 +42,44 @@ class SlidingCardRounded extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).accentColor,
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
-                  ),
-                  border: Border.all(
-                    color: Theme.of(context).dividerColor,
-                  ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(18),
+                  bottomRight: Radius.circular(18),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      width: double.infinity,
-                      child: Text(
-                        heading,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                        textAlign: TextAlign.start,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    if (subHeading != null)
+                child: Container(
+                  color: Theme.of(context).buttonColor,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Container(
                         margin: const EdgeInsets.only(top: 10),
                         width: double.infinity,
                         child: Text(
-                          subHeading,
-                          style: Theme.of(context).textTheme.labelMedium,
+                          heading,
+                          style: Theme.of(context).textTheme.headlineMedium,
                           textAlign: TextAlign.start,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                  ],
+                      if (subHeading != null)
+                        Container(
+                          margin: const EdgeInsets.only(top: 10),
+                          width: double.infinity,
+                          child: Text(
+                            subHeading,
+                            style: Theme.of(context).textTheme.labelMedium,
+                            textAlign: TextAlign.start,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
