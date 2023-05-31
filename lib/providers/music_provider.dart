@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MusicProvider extends ChangeNotifier{
+class MusicProvider extends ChangeNotifier {
   List<Map<dynamic, dynamic>> categories = [
     {
       'title': "Ambient Sounds",
@@ -37,17 +37,20 @@ class MusicProvider extends ChangeNotifier{
         {
           "image": "https://i.ibb.co/v1Hf7P4/mantra-1.png",
           "title": "Om Shanti",
-          "description": "Peace of mind, body, and speech."
+          "description": "Peace of mind, body, and speech.",
+          "audio": "https://dl.sndup.net/qyzm/title.mp3"
         },
         {
           "image": "https://i.ibb.co/Rz4fRdz/mantra-2.png",
           "title": "I am That I Am",
-          "description": "This is one of the Hebrew Torah's most famous lines"
+          "description": "This is one of the Hebrew Torah's most famous lines",
+          "audio": "https://dl.sndup.net/mypm/title2.mp3"
         },
         {
           "image": "https://i.ibb.co/jhz7jKj/mantra-3.pngg",
           "title": "I Love You",
-          "description": "Forgiveness and reconciliation practice"
+          "description": "Forgiveness and reconciliation practice",
+          "audio": "https://dl.sndup.net/hfqr/Peaceful%20Guiter.mp3"
         },
       ]
     },
@@ -57,13 +60,15 @@ class MusicProvider extends ChangeNotifier{
         {
           "image": "https://i.ibb.co/Ms0r1SS/music-sounds.jpg",
           "title": "Peaceful Night",
-          "description": "Deep Sleep Relaxation Sounds"
+          "description": "Deep Sleep Relaxation Sounds",
+          "audio": "https://dl.sndup.net/tmbf/Peaceful%20-%20Instrumental.mp3"
         },
         {
           "image": "https://i.ibb.co/6JKyWqX/beach-sounds.jpg",
           "title": "Beach Sounds",
-          "description": "Ocean Waves Noise for Deep sleep"
-        },
+          "description": "Ocean Waves Noise for Deep sleep",
+          "audio": "https://dl.sndup.net/k9k6/title3.mp3"
+        }
       ]
     },
     {
@@ -72,12 +77,14 @@ class MusicProvider extends ChangeNotifier{
         {
           "image": "https://i.ibb.co/Tw2MNbR/calming-tone1.jpg",
           "title": "Moon",
-          "description": "Full Moon Calming Music"
+          "description": "Full Moon Calming Music",
+          "audio": "https://dl.sndup.net/p6vg/Peaceful.mp3"
         },
         {
           "image": "https://i.ibb.co/5jppWpS/calming-tone2.jpg",
           "title": "Waterfall",
-          "description": "Relaxing Music Sleep Waterfall"
+          "description": "Relaxing Music Sleep Waterfall",
+          "audio": "https://dl.sndup.net/tqxh/Peaceful%20Rain.mp3"
         },
       ]
     },
@@ -105,10 +112,11 @@ class MusicProvider extends ChangeNotifier{
     },
   ];
 
-  List<Map<String,String>> get getMusic{
+  List<Map<String, String>> get getMusic {
     return [..._musicData];
-  } 
-  List<Map<dynamic, dynamic>> get getCategory{
+  }
+
+  List<Map<dynamic, dynamic>> get getCategory {
     return [...categories];
-  } 
+  }
 }
