@@ -40,7 +40,7 @@ class MeditationTimer extends StatefulWidget {
     {
       'icon': Icons.fireplace,
       'title': 'Stove Fire',
-      'music': 'https://dl.sndup.net/q9rv/stove_fire.mp3'
+      'music': 'https://dl.sndup.net/nny9/stove_fire.mp3'
     },
   ];
 
