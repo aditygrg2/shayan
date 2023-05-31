@@ -89,7 +89,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
             text: 'Sleep Cycle Calculator',
           ),
           MenuHeroImage(
-            image: 'assets/sleepcyclecalculator.gif',
+            image: 'https://i.ibb.co/0F425yw/sleepcyclecalculator.gif',
           ),
           InformativeText(
             text:
@@ -98,7 +98,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
           ),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 2),
+              border: Border.all(color: Theme.of(context).dividerColor, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(20)),
             ),
             margin: const EdgeInsets.all(20),
@@ -189,6 +189,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: TextField(
                         keyboardType: TextInputType.number,
+                        autocorrect: true,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Theme.of(context).canvasColor,
@@ -225,6 +226,7 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
                       width: MediaQuery.of(context).size.width * 0.3,
                       child: TextField(
                         keyboardType: TextInputType.number,
+                        autocorrect: true,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Theme.of(context).canvasColor,
@@ -262,10 +264,13 @@ class _SleepCycleCalculatorState extends State<SleepCycleCalculator> {
             height: 20,
           ),
           if (data && !settingsOn)
-            Text(
-              'If you go to bed at ${(startDate.hour % 12).toString().padLeft(2, '0')}:${startDate.minute.toString().padLeft(2, '0')} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
-              style: Theme.of(context).textTheme.labelLarge,
-              textAlign: TextAlign.center,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'If you go to bed at ${(startDate.hour % 12).toString().padLeft(2, '0')}:${startDate.minute.toString().padLeft(2, '0')} ${startDate.hour > 12 ? 'PM' : 'AM'}, you should try to put alarm at one of the following times: ',
+                style: Theme.of(context).textTheme.labelLarge,
+                textAlign: TextAlign.center,
+              ),
             ),
           const SizedBox(
             height: 20,

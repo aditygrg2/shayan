@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:night_gschallenge/screens/library/library_card.dart';
 import 'package:night_gschallenge/screens/library/podcast_play_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 
 class Podcast extends StatelessWidget {
@@ -55,25 +56,25 @@ class Podcast extends StatelessWidget {
           ),
           FutureBuilder(builder: (context, snapshot) {
             if(!snapshot.hasData){
-              return Center(child: CircularProgressIndicator(),);
+              return Center(child: LoadingStateCreator(),);
             }
             return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 10,
               crossAxisSpacing: 10,
               childAspectRatio: 1.7 / 3,
             ),
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.all(10),
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(10),
             itemBuilder: (context, index) {
               Map<String,dynamic>? doc =  snapshot.data?.docs[index].data();
               return GestureDetector(
                 onTap: () {
                   Navigator.of(context).pushNamed(
                     PodcastScreenPlay.routeName,
-                    arguments: doc
+                    arguments: doc['podcast']
                   );
                 },
                 child: Container(

@@ -43,7 +43,8 @@ class PodcastScreenPlay extends StatelessWidget {
   static String routeName = '/podcast-play';
   @override
   Widget build(BuildContext context) {
-    final podcast = (ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>)['podcast'];
+    final podcast =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       body: Container(
         // padding: EdgeInsets.all(10),
@@ -61,65 +62,64 @@ class PodcastScreenPlay extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Container(
+                        width: 80,
                         child: Image.network(
                           podcast['image'],
-                          fit: BoxFit.contain,
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 8,
                     ),
-                    Expanded(
-                      // width: MediaQuery.of(context).size.width-170,
-                      // padding: EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              padding: const EdgeInsets.all(3),
-                              child: Expanded(
-                                child: Text(
-                                  podcast['title'],
-                                  style:
-                                      Theme.of(context).textTheme.headlineSmall,
-                                ),
-                              )),
-                          Container(
-                            padding: const EdgeInsets.all(3),
-                            child: Expanded(
-                              child: Text(
-                                podcast['description'],
-                                style: Theme.of(context).textTheme.bodySmall,
-                              ),
-                            ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width-128,
+                          padding: const EdgeInsets.all(3),
+                          child: Text(
+                            podcast['title'],
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.headlineSmall,
                           ),
-                        ],
-                      ),
-                    )
+                        ),
+                        Container(
+                          width:MediaQuery.of(context).size.width-128,
+                          padding: const EdgeInsets.all(3),
+                          child: Text(
+                            podcast['description'],
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              child: Text("All Episodes"),
+              child: const Text("All Episodes"),
             ),
-            ...(podcast['episodes']as List).map((e) {
-              int index = (podcast['episodes']as List).indexWhere((element) => element.toString()==e.toString());
+            ...(podcast['episodes'] as List).map((e) {
+              int index = (podcast['episodes'] as List)
+                  .indexWhere((element) => element.toString() == e.toString());
               return Container(
-                padding:const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 child: PlayEpisode(
                   description: e['description'],
                   episodeName: e['title'],
-                  index: (index+1).toString(),
-                  episode: e['episode'],
+                  index: index,
+                  episodes: podcast['episodes'],
                 ),
               );
             }).toList(),

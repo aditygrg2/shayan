@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_disease_provider.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/form/InputBox.dart';
 import 'package:night_gschallenge/widgets/form/mcq_widget.dart';
 
@@ -83,18 +86,25 @@ class _MainFormState extends State<MainForm> {
       });
     } else {
       var result = 'healthy';
-      var  disease = await FirebaseFirestore.instance.collection("planForm").doc(id).collection("stats").doc(id).get();
-      if(disease['apnea']>=20) result = 'apnea';
-      else if(disease['insomia']>=20) result = 'insomia';
-      else if(disease['sleep_deprivation']>=20) result = 'sleep deprivation';
+      var disease = await FirebaseFirestore.instance
+          .collection("planForm")
+          .doc(id)
+          .collection("stats")
+          .doc(id)
+          .get();
+      if (disease['apnea'] >= 20)
+        result = 'apnea';
+      else if (disease['insomia'] >= 20)
+        result = 'insomia';
+      else if (disease['sleep_deprivation'] >= 20) result = 'sleep deprivation';
       await FirebaseFirestore.instance
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser?.uid)
           .update(
         {
           'healthState': 'true',
-          'diseaseType':result,
-          'isReady':'false',
+          'diseaseType': result,
+          'isReady': 'false',
           'questionNumber': _currentQuestion + 1,
         },
       );
@@ -130,6 +140,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 30,
+        max: 220,
       ),
       InputBox(
         key: Key('3'),
@@ -138,6 +150,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 10,
+        max: 150,
       ),
       McqWidget(
         key: Key('4'),
@@ -325,14 +339,15 @@ class _MainFormState extends State<MainForm> {
         onPressedBack: _previousQuestion,
       ),
       InputBox(
-        key: Key('18'),
-        question:
-            'How would you rate your sleep quality?(Enter a number from 1 to 10)',
-        onPressedNext: _nextQuestion,
-        currentQuestion: _currentQuestion,
-        onPressedBack: _previousQuestion,
-        inputType: InputTypes.NumberInput,
-      ),
+          key: Key('18'),
+          question:
+              'How would you rate your sleep quality?(Enter a number from 1 to 10)',
+          onPressedNext: _nextQuestion,
+          currentQuestion: _currentQuestion,
+          onPressedBack: _previousQuestion,
+          inputType: InputTypes.NumberInput,
+          max: 10,
+          min: 1),
       InputBox(
         key: Key('19'),
         question:
@@ -405,6 +420,8 @@ class _MainFormState extends State<MainForm> {
         currentQuestion: _currentQuestion,
         onPressedBack: _previousQuestion,
         inputType: InputTypes.NumberInput,
+        min: 0,
+        max: 500,
       ),
       InputBox(
         key: Key('26'),
@@ -509,8 +526,6 @@ class _MainFormState extends State<MainForm> {
       ),
     ];
 
-    // LEFT THIS SPACE EXPLICITLY
-
     return Scaffold(
       body: ListView(
         children: [
@@ -533,7 +548,7 @@ class _MainFormState extends State<MainForm> {
                         },
                         icon: Icon(
                           Icons.arrow_back_rounded,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 35,
                         ),
                       ),
@@ -548,14 +563,16 @@ class _MainFormState extends State<MainForm> {
                         text: 'Plan Creation Form',
                       ),
                       Container(
-                        child: Image.asset('assets/form.gif'),
-                        height: 150,
-                        width: 150,
-                      ),
-                      if (loading) CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                          height: 150,
+                          width: 150,
+                          child: ImageCacher(
+                            imagePath: "https://i.ibb.co/x8XHvdh/form.gif",
+                          )),
+                      if (loading)
+                        LoadingStateCreator(),
                       if (!loading)
                         Text(
-                          'Question ${_currentQuestion + 1}',
+                          'Question ${_currentQuestion + 1}/34',
                           style: TextStyle(
                             fontSize: 16,
                           ),

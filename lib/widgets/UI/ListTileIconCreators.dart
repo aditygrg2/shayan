@@ -17,7 +17,7 @@ class ListTileIconCreators extends StatelessWidget {
           decoration: BoxDecoration(
             color: Theme.of(context).accentColor,
             border: Border.all(
-              color: Colors.black,
+              color: Theme.of(context).dividerColor,
               width: 1
             ),
             borderRadius: const BorderRadius.all(Radius.circular(10),),
@@ -28,7 +28,7 @@ class ListTileIconCreators extends StatelessWidget {
             ),
             leading: Icon(
               icon!,
-              color: Colors.black,
+              color: Theme.of(context).iconTheme.color,
               size: 30,
             ),
           ),

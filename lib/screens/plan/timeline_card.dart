@@ -31,9 +31,9 @@ class TimelineCard extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: Theme.of(context).dividerColor),
         borderRadius: BorderRadius.circular(10),
-        color: isActive 
+        color: isActive
             ? Theme.of(context).canvasColor
             : Theme.of(context).buttonColor,
       ),
@@ -48,9 +48,9 @@ class TimelineCard extends StatelessWidget {
                         Icons.star,
                         color: Colors.yellow[400],
                       )
-                    : const Icon(
+                    : Icon(
                         Icons.timer_outlined,
-                        color: Colors.black,
+                        color: Theme.of(context).secondaryHeaderColor,
                       ),
               ),
               const SizedBox(
@@ -64,7 +64,8 @@ class TimelineCard extends StatelessWidget {
                     child: Container(
                   alignment: Alignment.centerRight,
                   child: IconButton(
-                    icon: const Icon(Icons.arrow_forward, color: Colors.black),
+                    icon: Icon(Icons.arrow_forward,
+                        color: Theme.of(context).iconTheme.color),
                     onPressed: () {
                       Navigator.of(context)
                           .pushNamed(suggestion!['route'].toString());
@@ -77,7 +78,8 @@ class TimelineCard extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 5),
             width: double.infinity,
             height: 1,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+            decoration: BoxDecoration(
+                border: Border.all(color: Theme.of(context).dividerColor)),
             child: const Text(""),
           ),
           Container(
@@ -93,22 +95,24 @@ class TimelineCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   task,
-                  style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 16),
                 ),
               ),
               IconButton(
-                icon: const Icon(
+                icon: Icon(
                   Icons.edit,
-                  color: Colors.black,
+                  color: Theme.of(context).iconTheme.color,
                 ),
                 onPressed: () {
                   showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return SingleChildScrollView(
-                            child: AddEditTimeline(index));
-                      },
-                      backgroundColor: Colors.white);
+                    context: context,
+                    builder: (context) {
+                      return SingleChildScrollView(
+                          child: AddEditTimeline(index));
+                    },
+                    backgroundColor: Theme.of(context).primaryColor,
+                  );
                 },
               )
             ],

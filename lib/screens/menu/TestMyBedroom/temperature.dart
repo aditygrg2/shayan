@@ -5,6 +5,8 @@ import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_temperatu
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/temperatureModal.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -20,6 +22,7 @@ class Temperature extends StatefulWidget {
 class _TemperatureState extends State<Temperature> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool state = false;
+  bool loading = false;
   ScrollController _scrollController = ScrollController();
 
   @override
@@ -40,8 +43,8 @@ class _TemperatureState extends State<Temperature> {
           Container(
             margin: const EdgeInsets.all(40),
             height: 200,
-            child: Image.asset(
-              'assets/temperatures.gif',
+            child: ImageCacher(
+              imagePath: "https://i.ibb.co/PNYhNrQ/temperatures.gif",
               fit: BoxFit.contain,
             ),
           ),
@@ -72,7 +75,7 @@ class _TemperatureState extends State<Temperature> {
           ),
 
           if (!state)
-            Center(
+            loading ? Center(child: LoadingStateCreator()) : Center(
               child: ElevatedButtonWithoutIcon(
                 text: "Fetch Temperature",
                 onPressedButton: () async {
@@ -81,8 +84,7 @@ class _TemperatureState extends State<Temperature> {
                   } else {
                     var permit = await Permission.location.status;
 
-                    if (permit == PermissionStatus.permanentlyDenied ||
-                        permit == PermissionStatus.denied) {
+                    if (permit == PermissionStatus.permanentlyDenied) {
                       // ignore: use_build_context_synchronously
                       showDialog(
                         context: context,
@@ -94,7 +96,13 @@ class _TemperatureState extends State<Temperature> {
                         },
                       );
                     } else if (permit == PermissionStatus.granted)  {
+                      setState(() {
+                        loading = true;
+                      });
                       await Provider.of<LocationProvider>(context, listen: false).initPlatformState();
+                      setState(() {
+                        loading = false;
+                      });
                       double latitude =  Provider.of<LocationProvider>(context, listen: false).latitude;
                       double longitude = Provider.of<LocationProvider>(context, listen: false).longitude;
 

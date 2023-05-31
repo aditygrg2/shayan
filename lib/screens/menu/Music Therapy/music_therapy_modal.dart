@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class MusicTherapyModal extends StatefulWidget {
   Map<dynamic, dynamic> therapy = {};
   bool isPlaying = false;
-  MusicTherapyModal(this.therapy);
+  AudioProvider audioProvider;
+  MusicTherapyModal(this.therapy, this.audioProvider);
 
   @override
   State<MusicTherapyModal> createState() => _MusicTherapyModalState();
@@ -14,7 +15,6 @@ class MusicTherapyModal extends StatefulWidget {
 class _MusicTherapyModalState extends State<MusicTherapyModal> {
   @override
   Widget build(BuildContext context) {
-    var audioPlayer = Provider.of<AudioProvider>(context, listen: false);
     return Center(
       child: Column(
         children: [
@@ -24,7 +24,7 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
               icon: const Icon(Icons.close),
               onPressed: () {
                 if (widget.isPlaying) {
-                  audioPlayer.stop();
+                  widget.audioProvider.stop();
                 }
                 Navigator.of(context).pop();
               },
@@ -33,8 +33,8 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
           Container(
             width: 100,
             height: 150,
-            child: Image.asset(
-              widget.therapy['image'],
+            child: ImageCacher(
+              imagePath: widget.therapy['image'],
               fit: BoxFit.cover,
             ),
           ),
@@ -55,7 +55,9 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
             width: MediaQuery.of(context).size.width - 20,
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
               margin: const EdgeInsets.all(5),
               padding: const EdgeInsets.all(10),
               child: ListTile(
@@ -68,12 +70,12 @@ class _MusicTherapyModalState extends State<MusicTherapyModal> {
                     icon: Icon(widget.isPlaying
                         ? Icons.pause
                         : Icons.play_arrow_rounded),
-                    onPressed: ()  {
-                       if (!widget.isPlaying) {
-                           audioPlayer.play();
-                        } else {
-                          audioPlayer.stop();
-                        }
+                    onPressed: () {
+                      if (!widget.isPlaying) {
+                        widget.audioProvider.play();
+                      } else {
+                        widget.audioProvider.stop();
+                      }
                       setState(() {
                         widget.isPlaying = !widget.isPlaying;
                       });

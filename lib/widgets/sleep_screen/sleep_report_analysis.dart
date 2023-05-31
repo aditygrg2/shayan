@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/sleep_report_data_provider.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/sleep_screen/sleep_report_card.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +41,7 @@ class SleepReportAnalysis extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+            child: LoadingStateCreator(),
           );
         }
         if (snapshot.data?.get('healthState') == 'NA') {
@@ -56,7 +58,10 @@ class SleepReportAnalysis extends StatelessWidget {
               children: [
                 Container(
                   height: 150,
-                  child: Image.asset("assets/music_therapy_joyful.png"),
+                  child: ImageCacher(
+                    imagePath:
+                        "https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png",
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -107,7 +112,7 @@ class SleepReportAnalysis extends StatelessWidget {
                 }
               } else if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
-                  child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor),
+                  child: LoadingStateCreator(),
                 );
               }
               return Scaffold(
@@ -144,8 +149,8 @@ class SleepReportAnalysis extends StatelessWidget {
                           ),
                           Expanded(
                             child: Container(
-                              child: Image.asset(
-                                'assets/checklist.png',
+                              child: ImageCacher(
+                                imagePath: "https://i.ibb.co/NKVXXvS/checklist.png",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -164,7 +169,7 @@ class SleepReportAnalysis extends StatelessWidget {
                                 ),
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: Colors.black,
+                                    color: Theme.of(context).dividerColor,
                                   ),
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(20),

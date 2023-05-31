@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:neon_circular_timer/neon_circular_timer.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/providers/screen_brightness_provider.dart';
@@ -27,7 +26,6 @@ class _ZenScreenState extends State<ZenScreen> {
     VolumeController().setVolume(0);
     final args = ModalRoute.of(context)!.settings.arguments;
     var controller = Provider.of<CountDownProvider>(context).controller;
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []) ;
     return WillPopScope(
       onWillPop: () async {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -44,7 +42,6 @@ class _ZenScreenState extends State<ZenScreen> {
                     .then((value) {
                   Navigator.of(context)
                       .popUntil(ModalRoute.withName(PhoneFreeTime.routeName));
-                      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
                 });
               },
               child: const Text(
@@ -68,10 +65,10 @@ class _ZenScreenState extends State<ZenScreen> {
                 Navigator.of(context).pop();
               },
               controller: controller,
-              textStyle: const TextStyle(
+              textStyle: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 37,
-                  color: Colors.white),
+                  color: Theme.of(context).primaryColor),
               isTimerTextShown: true,
               neumorphicEffect: true,
               duration: (args as int) * 60,
@@ -79,7 +76,7 @@ class _ZenScreenState extends State<ZenScreen> {
                 const Color.fromRGBO(255, 255, 255, 1),
                 Theme.of(context).canvasColor
               ]),
-              backgroudColor: Colors.black,
+              backgroudColor: Theme.of(context).secondaryHeaderColor,
               neonGradient: LinearGradient(
                 colors: [
                   const Color.fromRGBO(255, 255, 255, 1),
@@ -92,7 +89,6 @@ class _ZenScreenState extends State<ZenScreen> {
             ElevatedButtonWithoutIcon(text: "Can't Sleep?",onPressedButton: (){
               brightnessProvider.resetBrightness();
               VolumeController().setVolume(100);
-              SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
               Navigator.of(context).pop();
               Navigator.of(context).pushNamed(MentalExercise.routeName);
             },)

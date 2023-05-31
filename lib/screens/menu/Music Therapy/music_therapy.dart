@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/menu/Music%20Therapy/music_therapy_modal.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
+import 'package:provider/provider.dart';
 
 class MusicTherapy extends StatefulWidget {
   static String routeName = '/music-therapy';
@@ -17,7 +20,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Tense',
       'color': const Color.fromRGBO(219, 74, 72, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/ptzd/music_therapy_tensed_tune.mp3',
@@ -29,10 +32,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Excited',
       'color': const Color.fromRGBO(234, 162, 71, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
-          'tune': 'https://dl.sndup.net/bz7n/music_therapy_joyful_tune.mp3',
+          'tune': 'http://dl.sndup.net/q4b2/music_therapy_excited_tune.mp3',
           'title': 'Excited Tune',
           'image': ''
         },
@@ -41,7 +44,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Relaxed',
       'color': const Color.fromRGBO(108, 187, 226, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune':
@@ -54,7 +57,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Sad',
       'color': const Color.fromRGBO(160, 161, 163, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/wbrt/music_therapy_sad_tune.mp3',
@@ -66,7 +69,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Bored',
       'color': const Color.fromRGBO(252, 244, 122, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/ww73/music_therapy_bored_tune.mp3',
@@ -78,7 +81,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Joyful',
       'color': const Color.fromRGBO(233, 167, 157, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/BC6ZNZS/music-therapy-joyful.png',
       'tunes': [
         {
           'tune': 'https://dl.sndup.net/bz7n/music_therapy_joyful_tune.mp3',
@@ -89,11 +92,11 @@ class _MusicTherapyState extends State<MusicTherapy> {
     },
     {
       'mood': 'Attentive',
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'color': const Color.fromRGBO(129, 193, 108, 1),
       'tunes': [
         {
-          'tune': 'https://dl.sndup.net/grh6/Attentive.mp3',
+          'tune': 'https://dl.sndup.net/chqt/music_therapy_attentive_tune.mp3',
           'title': 'Attentive Tune',
           'image': ''
         },
@@ -102,10 +105,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Worried',
       'color': const Color.fromRGBO(187, 137, 196, 1),
-      'image': 'assets/music_therapy_worried.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
-          'tune': 'https://dl.sndup.net/ptzd/music_therapy_tensed_tune.mp3',
+          'tune': 'https://dl.sndup.net/qvhr/music_therapy_worried_tune.mp3',
           'title': 'Worried Tune',
           'image': ''
         },
@@ -114,7 +117,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Sleepy',
       'color': const Color.fromRGBO(77, 78, 159, 1),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
           'tune':
@@ -127,10 +130,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
     {
       'mood': 'Neutral',
       'color': const Color.fromARGB(255, 217, 210, 210),
-      'image': 'assets/music_therapy_joyful.png',
+      'image': 'https://i.ibb.co/9ZR2snd/music-therapy-worried.png',
       'tunes': [
         {
-          'tune': 'https://dl.sndup.net/fby4/Neutral%20Milk%20Hotel.mp3',
+          'tune': 'https://dl.sndup.net/vbk3/music_therapy_neutral_tune.mp3',
           'title': 'Neutral',
           'image': ''
         },
@@ -140,6 +143,7 @@ class _MusicTherapyState extends State<MusicTherapy> {
 
   @override
   Widget build(BuildContext context) {
+    final audioProvider = Provider.of<AudioProvider>(context);
     return Scaffold(
       body: ListView(
         children: [
@@ -157,8 +161,8 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 150,
-                  child: Image.asset(
-                    'assets/music_therapy.gif',
+                  child: ImageCacher(
+                    imagePath: "https://i.ibb.co/RN9pvPw/music-therapy.gif",
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -170,7 +174,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
                   child: Text(
                     "What's your Mood?",
                     textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headlineMedium,
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).secondaryHeaderColor,
+                        fontFamily: 'Roboto'),
                   ),
                 ),
                 const SizedBox(
@@ -178,23 +185,53 @@ class _MusicTherapyState extends State<MusicTherapy> {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
-                  height: 500,
+                  height: therapies.length / 2 * 120,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            childAspectRatio: 4 / 2,
-                            crossAxisSpacing: 10),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 4 / 2,
+                      crossAxisSpacing: 10,
+                    ),
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          setState(() {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) {
+                              return Container(
+                                height: MediaQuery.of(context).size.height,
+                                child: Center(
+                                    child: CircularProgressIndicator(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                )),
+                              );
+                            },
+                          );
+                          audioProvider
+                              .load(therapies[index]['tunes'][0]['tune'])
+                              .then((value) {
+                            if (value == false) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                content: Container(
+                                  child: const Text("Some error occured"),
+                                ),
+                              ));
+                              Navigator.of(context).pop();
+                              return;
+                            }
+                            Navigator.of(context).pop();
+
                             showModalBottomSheet(
                               context: context,
                               builder: (context) {
-                                return MusicTherapyModal(therapies[index]);
+                                return MusicTherapyModal(
+                                    therapies[index], audioProvider);
                               },
                               backgroundColor: therapies[index]['color'],
                             );
@@ -215,7 +252,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
                           ),
                           child: Text(
                             therapies[index]['mood'],
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(color: Colors.black),
                           ),
                         ),
                       );

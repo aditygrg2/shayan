@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:night_gschallenge/providers/sleep_elements_provider.dart';
 import 'package:night_gschallenge/screens/forms/sleepform/sleepForm.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/home_screen_view_all.dart';
 import 'package:night_gschallenge/widgets/UI/property_card.dart';
 import 'package:provider/provider.dart';
 

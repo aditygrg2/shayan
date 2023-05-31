@@ -3,6 +3,7 @@ import 'package:night_gschallenge/providers/light_provider.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/Measuring_light.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/lightModal.dart';
 import 'package:provider/provider.dart';
@@ -36,8 +37,8 @@ class _LightPollutionState extends State<LightPollution> {
           Container(
             margin: const EdgeInsets.all(40),
             height: 200,
-            child: Image.asset(
-              'assets/scanload.gif',
+            child: ImageCacher(
+              imagePath: "https://i.ibb.co/nc1k7Np/scanload.gif",
               fit: BoxFit.contain,
             ),
           ),
@@ -88,8 +89,11 @@ class _LightPollutionState extends State<LightPollution> {
           Consumer<LightProvider>(
             builder: (context, value, child) {
               if (value.state && !value.success) {
-                _scrollController.animateTo(height,
-                    duration: Duration(seconds: 1), curve: Curves.linear);
+                _scrollController.animateTo(
+                  height,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.linear,
+                );
                 return MeasuringLight();
               } else if (value.success == true && value.state == false) {
                 return Center(

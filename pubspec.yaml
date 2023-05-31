@@ -34,7 +34,6 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
   intl: ^0.18.0
   percent_indicator: ^4.2.3
   health: ^4.6.0
@@ -60,15 +59,17 @@ dependencies:
   dialog_flowtter: ^0.3.3
   fl_chart: ^0.61.0
   bottom_drawer: ^0.0.5
-  flutter_cache_manager: any
   just_audio: ^0.9.32
   record: any
   audio_video_progress_bar: ^0.9.0
   path_provider: any
   collection: any
-  alarm: ^1.0.5
   google_maps_flutter: ^2.2.6
   google_maps_webservice: ^0.0.20-nullsafety.5
+  url_launcher_android: any
+  cached_network_image: ^3.2.3
+  shared_preferences: ^2.0.18
+  flutter_background: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -97,138 +98,28 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/login.gif
-    - assets/splash.gif
-    - assets/sun.gif
-    - assets/sleep_diet_suggestion.gif
-    - assets/questionsleft.png
-    - assets/checklist.png
-    - assets/kid.png
-    - assets/form.gif
     - assets/meditation_timer.png
     - assets/mental_exercises.png
     - assets/nap_timer.png
-    - assets/samsunghealth.png
-    - assets/gfit.png
-    - assets/fitbit.png
-    - assets/garmin.png
     - assets/phone_free.png
     - assets/podcasts_stories.png
-    - assets/sleep_achievement.png
     - assets/sleep_cycle_calculator.png
     - assets/sleep_diet.png
     - assets/test_my_environment.png
     - assets/worry_list.png
-    - assets/loading.gif
-    - assets/temperature.png
-    - assets/noise.png
-    - assets/bot.png
-    - assets/logout.png
-    - assets/login_menu.png
-    - assets/light.png
-    - assets/signup.gif
-    - assets/scanload.gif
-    - assets/goodlight.png
-    - assets/badlight.png
-    - assets/
-    - assets/averagelight.png
-    - assets/noisepollution.gif
-    - assets/temperatures.gif
-    - assets/lowtemperature.png
-    - assets/hightemperature.png
-    - assets/goodtemperature.png
-    - assets/error.png
-    - assets/beach.mp3
-    - assets/default.mp3
-    - assets/forest.mp3
-    - assets/stove_fire.mp3
-    - assets/summer_night.mp3
-    - assets/summer_rain.mp3
-    - assets/check-mark.png
-    - assets/sleepcyclecalculator.gif
-    - assets/mentalExercises.gif
-    - assets/deep_breathing.png
-    - assets/autogenic_relaxation.png
-    - assets/meditation.png
-    - assets/relaxation.png
-    - assets/visualization.png
-    - assets/worry.gif
-    - assets/music_therapy_joyful.png
-    - assets/music_therapy_worried.png
-    - assets/watch.png
-    - assets/music_therapy.gif
-    - assets/library_articles.png
-    - assets/library_community.png
-    - assets/library_music.png
-    - assets/library_podcast.png
-    - assets/library_stories.png
-    - assets/phone_free_time.gif
-    - assets/articles_sleep_disorder.png
-    - assets/articles_sleep_issues.png
-    - assets/my_plan.png
-    - assets/meditation_timer_person.gif
-    - assets/library_music_categories_page.png
-    - assets/watch.gif
-    - assets/my_sleep_report.gif
     - assets/splash_screen.png
+    - assets/loading.gif
+    - assets/sleepiness.png
+    - assets/maps.png
     - assets/ellipse_splash_screen_left.png
     - assets/ellipse_splash_screen_right.png
+    - assets/smartalarm.png
+    - assets/processloading.gif
+    - assets/loadingcanvasdark.gif
+    - assets/check-mark.png
+    - assets/ln.gif
+    - assets/chatbg.jpg
     - assets/secretkey.json
-    - assets/mental_exercises_1.png
-    - assets/mental_exercises_2.png
-    - assets/mental_exercises_3.png
-    - assets/cloud.png
-    - assets/mental_exercises_4.png
-    - assets/mental_exercises_5.png
-    - assets/data.gif
-
-    - assets/good_night.gif
-    - assets/good_evening.gif
-
-    - assets/slow_radio_podcast.jpg
-    - assets/mantra_1.png
-    - assets/mantra_2.png
-    - assets/mantra_3.png
-    - assets/article_1.jpg
-    - assets/article_2.jpg
-    - assets/article_3.jpg
-    - assets/article_4.jpg
-    - assets/article_5.jpg
-    - assets/story_library.jpg
-    - assets/beach_sounds.jpg
-    - assets/calming_tone1.jpg
-    - assets/calming_tone2.jpg
-    - assets/music_data_1.jpeg
-    - assets/music_data_2.jpg
-    - assets/music_data_3.jpg
-    - assets/music_data_4.jpg
-    - assets/music_sounds.jpg
-    - assets/music_sounds.jpg
-    - assets/beach_sounds.jpg
-    - assets/calming_tone1.jpg
-    - assets/calming_tone2.jpg
-    - assets/music_data_1.jpeg
-    - assets/music_data_2.jpg
-    - assets/music_data_3.jpg
-    - assets/music_data_4.jpg
-    - assets/sleep_story_1.jpg
-    - assets/sleep_story_2.jpg
-    - assets/sleep_story_3.jpg
-    - assets/sleep_story_4.jpg
-    - assets/sleep_story_5.jpg
-    - assets/sleep_story_6.jpg
-    - assets/community_image_1.jpg
-    - assets/community_image_2.jpg
-    - assets/community_image_3.jpg
-    - assets/home_image_1.jpg
-    - assets/home_image_2.jpg
-    - assets/home_image_3.jpg
-    - assets/home_image_4.jpg
-    - assets/red.jpg
-    - assets/white.jpg
-    - assets/grey.jpg
-    - assets/pink.jpg
-    - assets/scanning.gif
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -18,4 +18,8 @@ class SmartAlarmProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  void notifyEveryone(){
+    notifyListeners();
+  }
 }

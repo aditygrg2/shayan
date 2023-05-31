@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/article_viewer.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class Article extends StatelessWidget {
   String image;
@@ -12,15 +13,16 @@ class Article extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(ArticleViewer.routeName, arguments: {
           'image': image,
-          'name': name,
+          'title': name,
           'description': description
         });
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
-            color: Theme.of(context).buttonColor,
-            borderRadius: BorderRadius.circular(16)),
+          color: Theme.of(context).buttonColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: Row(
           children: [
             Container(
@@ -28,8 +30,8 @@ class Article extends StatelessWidget {
               height: 120,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  image,
+                child: ImageCacher(
+                  imagePath: image,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -49,7 +51,9 @@ class Article extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Text(
                       description,
-                      style: Theme.of(context).textTheme.bodySmall,
+                      style: TextStyle(
+                        color: Theme.of(context).hoverColor
+                      ),
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

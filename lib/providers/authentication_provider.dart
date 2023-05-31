@@ -29,7 +29,11 @@ class AuthenticationProvider extends ChangeNotifier {
         authResult = await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
-        );
+        ).then((value) async {
+          await value.user?.updateDisplayName(name);
+          await value.user!.sendEmailVerification();
+          return value;
+        });
       }
 
       if (!isLogin) {

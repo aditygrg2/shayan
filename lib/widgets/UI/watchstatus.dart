@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class WatchStatus extends StatefulWidget {
@@ -15,7 +16,6 @@ class WatchStatus extends StatefulWidget {
 }
 
 class _WatchStatusState extends State<WatchStatus> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -28,7 +28,10 @@ class _WatchStatusState extends State<WatchStatus> {
 
         bool status = await widget.valueSelector!();
 
-        await FirebaseFirestore.instance.collection('users').doc(FirebaseAuth.instance.currentUser?.uid).update({
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser?.uid)
+            .update({
           'isWatchConnected': true,
         });
 
@@ -59,15 +62,15 @@ class _WatchStatusState extends State<WatchStatus> {
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             border: Border.all(
               width: 2,
-              color: Colors.black,
+              color: Theme.of(context).dividerColor,
             ),
             color:
                 widget.status! ? Colors.green : Theme.of(context).canvasColor),
         height: 50,
         child: Row(
           children: [
-            Image.asset(
-              'assets/gfit.png',
+            ImageCacher(
+              imagePath: "https://i.ibb.co/mGMPXfT/gfit.png",
               fit: BoxFit.cover,
             ),
             const SizedBox(
@@ -78,7 +81,9 @@ class _WatchStatusState extends State<WatchStatus> {
                 widget.status!
                     ? 'Connected to Google Fit'
                     : 'Connect to Google Fit',
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
               ),
             ),
           ],

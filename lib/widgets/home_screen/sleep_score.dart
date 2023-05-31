@@ -41,11 +41,11 @@ class _SleepScoreState extends State<SleepScore> {
               ),
               linearGradient: LinearGradient(
                 colors: [
-                  Theme.of(context).buttonColor,
-                  Colors.amber
+                  Theme.of(context).splashColor,
+                  Theme.of(context).shadowColor,
                 ],
               ),
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
             ),
           ),
           ElevatedButton(

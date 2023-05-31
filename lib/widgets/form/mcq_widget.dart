@@ -44,6 +44,7 @@ class _McqWidgetState extends State<McqWidget> {
                 ...widget.options!.map((e) {
                   return ListTile(
                     leading: Radio(
+                      splashRadius: 10,
                       value: widget.options?.indexOf(e),
                       groupValue: valueSelected,
                       onChanged: (value) {

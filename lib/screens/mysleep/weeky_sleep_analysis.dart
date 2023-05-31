@@ -2,6 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/chart_provider.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:provider/provider.dart';
 
 class WeeklySleepAnalysis extends StatefulWidget {
@@ -12,10 +13,12 @@ class WeeklySleepAnalysis extends StatefulWidget {
 class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   bool once = true;
   bool loading = true;
+  bool data_available = false;
 
   void getData(ChartProvider c) {
     c.getData().then((value) {
       setState(() {
+        data_available = c.data_NA_checker();
         loading = false;
       });
     });
@@ -24,11 +27,10 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
   @override
   Widget build(BuildContext context) {
     final chartProvider = Provider.of<ChartProvider>(context);
-    bool data_available = false;
+
     if (once) {
       once = false;
       getData(chartProvider);
-      data_available = chartProvider.data_NA_checker();
     }
 
     return Column(
@@ -40,13 +42,11 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
           height: 10,
         ),
         loading
-            ? CircularProgressIndicator(
-                color: Theme.of(context).secondaryHeaderColor)
-            : Stack(
-                children: [
+            ? LoadingStateCreator()
+            : !data_available? 
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10)),
                     padding: const EdgeInsets.all(10),
                     width: MediaQuery.of(context).size.width - 20,
@@ -83,7 +83,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                         ),
                         maxY: 11,
                         groupsSpace: 12,
-                        backgroundColor: Colors.white,
+                        backgroundColor: Theme.of(context).primaryColor,
                         barTouchData: BarTouchData(
                             enabled: true,
                             touchTooltipData: BarTouchTooltipData(
@@ -92,7 +92,7 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                                 var y =
                                     chartProvider.getChartData[groupIndex].y;
                                 return BarTooltipItem(y.toString(),
-                                    const TextStyle(color: Colors.white));
+                                    TextStyle(color: Theme.of(context).primaryColor));
                               },
                             )),
                         barGroups: chartProvider.getChartData.map(
@@ -113,21 +113,20 @@ class _WeeklySleepAnalysisState extends State<WeeklySleepAnalysis> {
                         ).toList(),
                       ),
                     ),
-                  ),
-                  if(!data_available)
-                  Padding(
-                    padding: const EdgeInsets.all(32),
-                    child: const Center(
+                  )
+                  :
+                  const Padding(
+                    padding:  EdgeInsets.all(32),
+                    child:  Center(
                       child: Text(
-                        "No data available",
+                        "Fill out the sleep tracker to see the data here!",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  
               )
       ],
     );

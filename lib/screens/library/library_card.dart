@@ -14,20 +14,20 @@ class _LibraryCardState extends State<LibraryCard> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),
             bottomLeft: Radius.circular(15),
             bottomRight: Radius.circular(15)),
         border: Border.all(
-          color: Colors.black,
+          color: Theme.of(context).dividerColor,
         ),
       ),
       child: Column(
         children: [
           Expanded(
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
                 
@@ -40,7 +40,7 @@ class _LibraryCardState extends State<LibraryCard> {
                 ),
                 child: Image.network(
                   widget.src,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
@@ -48,25 +48,26 @@ class _LibraryCardState extends State<LibraryCard> {
           Container(
             decoration: BoxDecoration(
               color: Theme.of(context).buttonColor,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(15),
                 bottomRight: Radius.circular(15),
               ),
             ),
-            padding: EdgeInsets.all(9),
+            padding: const EdgeInsets.all(9),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.heading,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   widget.subHeading,
-                  style: TextStyle(
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
                     fontSize: 12,
                   ),
                 )

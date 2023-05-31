@@ -9,8 +9,8 @@ class ArticleViewer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final article =
-        ModalRoute.of(context)?.settings.arguments as Map<String, String>;
-    print('object');
+        ModalRoute.of(context)?.settings.arguments as Map<String,dynamic>;
+print(article);
 
     return Scaffold(
       body: ListView(
@@ -19,15 +19,15 @@ class ArticleViewer extends StatelessWidget {
             back: true,
           ),
           HomeScreenText(
-            text: 'Article ',
+            text: 'Articles',
           ),
-          Container(child: Text(article['name'] as String,style: TextStyle(fontSize: 25),),padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),),
-          Container(
+          Container(child: Text(article['title'] as String,style:const TextStyle(fontSize: 25),),padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),),
+         if(article.containsKey("image") && article['image']!=null) Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                article['image'] as String,
+              child: Image.network(
+                article['image'],
                 fit: BoxFit.cover,
               ),
             ),
@@ -36,7 +36,7 @@ class ArticleViewer extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
             child: Text(
               article['description'] as String,
-              style: TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 17),
             ),
           )
         ],

@@ -5,17 +5,21 @@ class ThemeClass {
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     canvasColor: const Color.fromRGBO(251, 145, 92, 1),
-    accentColor: const Color.fromRGBO(251, 145, 92, 0.85),
-    cardColor: const Color.fromARGB(153, 248, 222, 55),
+    accentColor: const Color.fromARGB(236, 251, 145, 92),
+    cardColor: const Color.fromRGBO(251, 145, 92, 1),
+    hoverColor: const Color.fromARGB(255, 236, 201, 185),
+    bottomAppBarColor: const Color.fromARGB(236, 251, 145, 92),
     fontFamily: 'Roboto',
-    secondaryHeaderColor: Colors.black,
+    secondaryHeaderColor: const Color.fromRGBO(36, 37, 64, 1),
     brightness: Brightness.light,
-    iconTheme: IconThemeData(
-      color: Colors.black
-    ),
+    iconTheme: const IconThemeData(color: Colors.black),
     highlightColor: Colors.white,
+    shadowColor: Colors.amberAccent,
     buttonColor: const Color.fromRGBO(247, 219, 198, 1),
-    splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
+    splashColor: Colors.amber,
+    dividerColor: Colors.black,
+    unselectedWidgetColor: Color.fromRGBO(0, 0, 0, 0.87),
+    selectedRowColor: Color.fromRGBO(0, 0, 0, 0.37),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
@@ -30,7 +34,7 @@ class ThemeClass {
       ),
       visualDensity: VisualDensity.comfortable,
     ),
-    timePickerTheme: TimePickerThemeData(
+    timePickerTheme: const TimePickerThemeData(
       backgroundColor: Colors.white,
     ),
     textTheme: const TextTheme(
@@ -70,35 +74,41 @@ class ThemeClass {
       ),
       labelSmall: TextStyle(
         fontSize: 10,
-        color: Colors.black
-      )
+        color: Colors.black,
+      ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.black,
-    primaryColor: Colors.black,
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.black,
+    scaffoldBackgroundColor: const Color.fromRGBO(36, 37, 64, 1),
+    primaryColor: const Color.fromRGBO(36, 37, 64, 1),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color.fromRGBO(36, 37, 64, 1),
     ),
-    iconTheme: IconThemeData(
-      color: Colors.white
+    iconTheme: const IconThemeData(
+      color: Colors.white,
     ),
     secondaryHeaderColor: Colors.white,
     brightness: Brightness.dark,
-    canvasColor: const Color.fromRGBO(204, 97, 93, 1),
+    canvasColor: const Color.fromRGBO(32, 33, 55, 1),
     highlightColor: Colors.amber,
-    accentColor: Color.fromRGBO(224, 221, 148, 1),
-    cardColor: const Color.fromRGBO(71, 152, 146, 1),
+    accentColor: const Color.fromRGBO(36, 37, 64, 1),
+    cardColor: const Color.fromRGBO(114, 129, 233, 1),
+    splashColor: const Color.fromRGBO(88, 203, 221, 1),
+    hoverColor: const Color.fromRGBO(88, 203, 221, 1),
+    bottomAppBarColor: Color.fromARGB(255, 145, 150, 190),
     fontFamily: 'Roboto',
     buttonColor: const Color.fromRGBO(252, 235, 93, 1),
-    splashColor: const Color.fromRGBO(251, 167, 14, 0.5),
+    dividerColor: const Color.fromRGBO(247, 219, 198, 1),
+    shadowColor: const Color.fromRGBO(114, 129, 233, 1),
+    unselectedWidgetColor: Color.fromRGBO(255, 255, 255, 0.87),
+    selectedRowColor: Color.fromRGBO(255, 255, 255, 0.37),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color>(
-          const Color.fromRGBO(247, 219, 198, 1),
+          const Color.fromRGBO(133, 140, 190, 1),
         ),
-        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
       ),
     ),
     radioTheme: RadioThemeData(
@@ -107,8 +117,8 @@ class ThemeClass {
       ),
       visualDensity: VisualDensity.comfortable,
     ),
-    timePickerTheme: TimePickerThemeData(
-      backgroundColor: Colors.white,
+    timePickerTheme: const TimePickerThemeData(
+      backgroundColor: Color.fromRGBO(32, 33, 55, 1),
     ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
@@ -120,10 +130,11 @@ class ThemeClass {
       headlineSmall: TextStyle(
         fontSize: 15,
         fontFamily: 'OpenSans',
+        color: Colors.white,
       ),
       headlineMedium: TextStyle(
         fontSize: 20,
-        color: Colors.black,
+        color: Color.fromRGBO(255, 255, 255, 0.87),
         fontWeight: FontWeight.w400,
         fontFamily: 'OpenSans',
       ),
@@ -150,8 +161,8 @@ class ThemeClass {
       ),
       labelSmall: TextStyle(
         fontSize: 10,
-        color: Colors.white
-      )
+        color: Colors.white,
+      ),
     ),
   );
 }

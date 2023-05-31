@@ -11,14 +11,15 @@ class SleepScoreFormInput extends StatefulWidget {
   TimeOfDay? initialValue;
   int? initialText;
 
-  SleepScoreFormInput(
-      {this.keya = '2',
-      this.question,
-      this.type,
-      this.onSubmit,
-      this.value,
-      this.initialValue,
-      this.initialText});
+  SleepScoreFormInput({
+    this.keya = '2',
+    this.question,
+    this.type,
+    this.onSubmit,
+    this.value,
+    this.initialValue,
+    this.initialText,
+  });
 
   @override
   State<SleepScoreFormInput> createState() => _SleepScoreFormInputState();
@@ -27,6 +28,7 @@ class SleepScoreFormInput extends StatefulWidget {
 class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
   TextEditingController _controller = TextEditingController();
   TextEditingController _controller2 = TextEditingController();
+  final formGlobalKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +79,8 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
               Navigator.of(context).push(
                 showPicker(
                   context: context,
+                  blurredBackground: true,
+                  themeData: ThemeData(),
                   value: Time(
                     hour: TimeOfDay.now().hour,
                     minute: TimeOfDay.now().minute,
@@ -88,39 +92,50 @@ class _SleepScoreFormInputState extends State<SleepScoreFormInput> {
                         : pickedDate.hour.toString();
                     String? minutes = pickedDate.minute.toString();
                     String? mode = something > 12 ? 'PM' : 'AM';
-                    _controller.text = '${hour.toString().padLeft(2,'0')}:${minutes.toString().padLeft(2,'0')} $mode';
+                    _controller.text =
+                        '${hour.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')} $mode';
                     widget.value!('$hour:$minutes $mode', widget.keya);
                   },
                 ),
               );
             },
             controller: _controller,
-            keyboardType: TextInputType.emailAddress,
+            readOnly: true,
             decoration: InputDecoration(
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Theme.of(context).canvasColor,
+                  color: Theme.of(context).disabledColor,
                   width: 2,
                 ),
               ),
             ),
           ),
         if (widget.type == InputTypes.NumberInput)
-          TextFormField(
-            key: ValueKey(widget.keya),
-            controller: _controller2,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).canvasColor,
-                  width: 2,
+          Form(
+            key: formGlobalKey,
+            child: TextFormField(
+              key: ValueKey(widget.keya),
+              controller: _controller2,
+              keyboardType: TextInputType.number,
+              validator: (value) {
+                if (!value!.contains(RegExp('^[0-9]*\$'))) {
+                  return "Not a valid number";
+                }
+              },
+              decoration: InputDecoration(
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).disabledColor,
+                    width: 2,
+                  ),
                 ),
               ),
+              onChanged: (newValue) {
+                if (formGlobalKey.currentState!.validate()) {
+                  widget.value!(newValue, widget.keya);
+                }
+              },
             ),
-            onChanged: (newValue) {
-              widget.value!(newValue, widget.keya);
-            },
           ),
       ],
     );

@@ -3,17 +3,22 @@ import 'package:just_audio/just_audio.dart';
 
 
 class AudioProvider extends ChangeNotifier {
-  AudioPlayer player = new AudioPlayer();
-  Duration duration = Duration();
-  Duration progress = Duration();
-  Duration buffered = Duration();
-  bool alarmStarted = false;
+  AudioPlayer player = AudioPlayer();
+  Duration duration = const Duration();
+  Duration progress = const Duration();
+  Duration buffered = const Duration();
 
+  AudioProvider(){
+    player.setLoopMode(LoopMode.all).then((value) {});
+  }
 
-  void load(String uri)async{
+  Future load(String? uri)async{
+    if(uri==null){
+      return Future(() => false);
+    }
+    try{
     duration = Duration.zero;
     progress = Duration.zero;
-    await player.setLoopMode(LoopMode.all);
     await player.setUrl(uri);
     duration = player.duration!;
     player.positionStream.listen((element) {
@@ -24,21 +29,22 @@ class AudioProvider extends ChangeNotifier {
       buffered = event;
       notifyListeners();
     }) ;
+    return true;
+    }catch(e){
+      return false;
+    }
   }
 
-  void setAlarm(String url){
+  void playAsset(String url){
     player.setAsset(url);
     player.play();
-    alarmStarted = true;
-    notifyListeners();
   }
 
   dynamic play() async {
     await player.play();
   }
 
-  dynamic stop() async {
-    alarmStarted = false;
+  Future stop() async {
     await player.stop();
     notifyListeners();
   }

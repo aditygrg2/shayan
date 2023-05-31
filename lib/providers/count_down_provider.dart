@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:neon_circular_timer/neon_circular_timer.dart';
 class CountDownProvider extends ChangeNotifier{
 
-  final CountDownController controller = new CountDownController();
+  CountDownController controller = CountDownController();
   bool isPause = false;
 
+  void initialize(){
+    controller = CountDownController();
+    isPause = false;
+  }
   void start(){
     controller.start();
     isPause =false;

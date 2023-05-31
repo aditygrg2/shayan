@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:night_gschallenge/screens/menu/MentalExercise/audio_player.dart';
 import 'package:provider/provider.dart';
-
+import '../../widgets/UI/music_player.dart';
 class PlayEpisode extends StatefulWidget {
-  String index;
-  String episodeName = "Some Error Occured";
-  String description = "Sorry for incovenience";
-  String episode;
-  bool isPlaying = false;
-  PlayEpisode(
-      {required this.episodeName,
-      required this.description,
-      required this.index,
-      required this.episode});
+  int index;
+  String episodeName = "Something happened";
+  String description = "Sorry for inconvenience.";
+  List<dynamic> episodes;
+
+  PlayEpisode({
+    required this.episodeName,
+    required this.description,
+    required this.index,
+    required this.episodes,
+  });
   @override
   State<PlayEpisode> createState() => _PlayEpisodeState();
 }
@@ -33,34 +33,25 @@ class _PlayEpisodeState extends State<PlayEpisode> {
                 child: Container(
                     padding: const EdgeInsets.all(7),
                     child: Text(
-                      "Episode ${widget.index}. ${widget.episodeName}",
+                      "Episode ${widget.index+1}. ${widget.episodeName}",
                       style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                          const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                     ))),
             Container(
                 padding: const EdgeInsets.all(7),
                 child: IconButton(
                   onPressed: () {
-                    if(widget.isPlaying){
-                      audioProvider.pause();
-                      setState(() {
-                        widget.isPlaying = false;
-                      });
-                    }else{
-                      setState(() {
-                        widget.isPlaying = true;
-                      });
-                      audioProvider.load(widget.episode);
-                      audioProvider.play();
-                    }
+                    Navigator.of(context).pushNamed(MusicPlayer.routeName,arguments: {'playlist':widget.episodes,'index':widget.index});
                   },
-                  icon: Icon(widget.isPlaying? Icons.pause_rounded: Icons.play_arrow_rounded,
-                      color: Colors.black, size: 32),
+                  icon: Icon(
+                       Icons.play_arrow_rounded,
+                      color: Theme.of(context).iconTheme.color,
+                      size: 32),
                 )),
           ],
         ),
         Container(
-          padding: EdgeInsets.all(7),
+          padding: const EdgeInsets.all(7),
           child: Text(
             widget.description,
             style: Theme.of(context).textTheme.bodySmall,
@@ -69,13 +60,16 @@ class _PlayEpisodeState extends State<PlayEpisode> {
         SizedBox(
           height: 10,
         ),
-        if(widget.isPlaying) AudioPlayerWithSlider(widget.episode,false),
         Container(
           margin: EdgeInsets.all(8),
           height: 1,
           width: double.infinity,
           child: Text(''),
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).dividerColor,
+            ),
+          ),
         ),
       ],
     );

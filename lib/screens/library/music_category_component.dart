@@ -26,10 +26,16 @@ class MusicCategory extends StatelessWidget {
             shrinkWrap: true,
             children: [
               ...data.map((e) {
+                int index = data.indexOf(e);
                 return GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(MusicPlayer.routeName, arguments: data);
+                    Navigator.of(context).pushNamed(MusicPlayer.routeName,
+                        arguments: {
+                          'playlist': data,
+                          'index': index
+                        }).then((va) {
+                      ScaffoldMessenger.of(context).clearMaterialBanners();
+                    });
                   },
                   child: Container(
                     width: 250,
@@ -50,11 +56,3 @@ class MusicCategory extends StatelessWidget {
     );
   }
 }
-
-// 
-
-// LibraryCard(
-//                         heading: data[0]['title'],
-//                         subHeading: data[0]['description'],
-//                         src: data[0]['image'],
-//                       )

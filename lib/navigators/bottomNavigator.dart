@@ -48,7 +48,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
     return NavigationBarTheme(
       data: NavigationBarThemeData(
         height: 100,
-        indicatorColor: Theme.of(context).canvasColor,
+        indicatorColor: Theme.of(context).bottomAppBarColor,
         labelTextStyle: MaterialStateProperty.all(
           const TextStyle(
             fontSize: 10,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:bottom_drawer/bottom_drawer.dart';
 import 'package:night_gschallenge/screens/home/home_screen.dart';
 import 'package:night_gschallenge/screens/startup/login_screen.dart';
 import 'package:night_gschallenge/screens/startup/signup_screen.dart';
@@ -93,9 +92,6 @@ class SplashScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).accentColor)),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -107,9 +103,6 @@ class SplashScreen extends StatelessWidget {
                           Navigator.of(context).pushNamed(LoginScreen.routeName);
                         }),
                     ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Theme.of(context).accentColor)),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
@@ -130,41 +123,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
-
-// Image.asset(
-//             'assets/splash.gif',
-//           ),
-//           Center(
-//             child: Text(
-//               'App Name',
-//               style: TextStyle(
-//                 fontSize: 40,
-//               ),
-//             ),
-//           ),
-//           SizedBox(
-//             height: 50,
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.all(18.0),
-//             child: Text(
-//               'Bringing light to your night: The ultimate solution for after-hours productivity and entertainment.',
-//               textAlign: TextAlign.center,
-//               style: TextStyle(
-//                 fontSize: 15,
-//               ),
-//             ),
-//           ),
-//           SplashButton(
-//             text: 'Login',
-//             onPressed: () {
-//               Navigator.of(context).pushNamed(LoginScreen.routeName);
-//             },
-//           ),
-//           SplashButton(
-//             text: 'Signup',
-//             onPressed: () {
-//               Navigator.of(context).pushNamed(SignupScreen.routeName);
-//             },
-//           ),

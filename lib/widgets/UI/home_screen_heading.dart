@@ -16,7 +16,9 @@ class HomeScreenText extends StatelessWidget {
         children: [
           Text(
             text,
-            style: theme,
+            style: theme ?? TextStyle(
+              color: Theme.of(context).secondaryHeaderColor
+            ),
           ),
         ],
       ),

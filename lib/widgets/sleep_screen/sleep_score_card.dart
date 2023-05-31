@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 
 class SleepScoreCard extends StatelessWidget {
   final String? text;
@@ -23,20 +24,25 @@ class SleepScoreCard extends StatelessWidget {
             ),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.black,
+                color: Theme.of(context).dividerColor,
                 width: 2,
               ),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: Theme.of(context).canvasColor,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                   child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(300)),
-                      color: Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(300),
+                      ),
+                      border: Border.all(color: Theme.of(context).dividerColor),
+                      color: Theme.of(context).primaryColor,
                     ),
                     padding: const EdgeInsets.all(20.0),
                     child: Text(
@@ -52,8 +58,8 @@ class SleepScoreCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: Image.asset(
-              'assets/kid.png',
+            child: ImageCacher(
+              imagePath: 'https://i.ibb.co/BTCSgLs/kid.png',
               fit: BoxFit.cover,
             ),
           ),

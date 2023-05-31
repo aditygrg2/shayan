@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
+import 'package:night_gschallenge/widgets/UI/loadingStateCreator.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,11 +31,14 @@ class SleepDietSuggestion extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () async {
-                  await launchUrl(Uri.parse(e['link'].toString()));
+                  await launchUrl(
+                    Uri.parse(e['link'].toString()),
+                    mode: LaunchMode.externalApplication,
+                  );
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.insert_link_rounded,
-                  color: Colors.black,
+                  color: Theme.of(context).iconTheme.color,
                 ),
               ),
               const SizedBox(
@@ -63,8 +68,8 @@ class SleepDietSuggestion extends StatelessWidget {
               width: 200,
               height: 200,
               alignment: Alignment.center,
-              child: Image.asset(
-                'assets/sleep_diet_suggestion.gif',
+              child: ImageCacher(
+                imagePath: "https://i.ibb.co/v38qMq2/sleep-diet-suggestion.gif",
                 fit: BoxFit.cover,
               ),
             ),
@@ -72,17 +77,16 @@ class SleepDietSuggestion extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return Center(
-                    child: CircularProgressIndicator(
-                        color: Theme.of(context).secondaryHeaderColor),
+                    child: LoadingStateCreator(),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'sleep deprivation') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'sleep deprivation') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
                       return Container(
@@ -102,13 +106,13 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'apnea') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'apnea') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
 
@@ -116,9 +120,13 @@ class SleepDietSuggestion extends StatelessWidget {
                         padding: const EdgeInsets.all(12),
                         child: Column(
                           children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
+                            DietWindow(
+                              snapshot.data?.data()!['tips'],
+                            ),
                             ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
+                              context,
+                              snapshot.data?.data()!['tips'],
+                            )
                           ],
                         ),
                       );
@@ -129,22 +137,26 @@ class SleepDietSuggestion extends StatelessWidget {
                         .get(),
                   );
                 }
-                if (snapshot.data?.get('diseaseType') == 'isnsomia') {
+                if (snapshot.data!.exists &&
+                    snapshot.data?.get('diseaseType') == 'isnsomia') {
                   return FutureBuilder(
                     builder: (context, snapshot) {
                       if (!snapshot.hasData) {
                         return Center(
-                          child: CircularProgressIndicator(
-                              color: Theme.of(context).secondaryHeaderColor),
+                          child: LoadingStateCreator(),
                         );
                       }
                       return Container(
                         padding: const EdgeInsets.all(12),
                         child: Column(
                           children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
+                            DietWindow(
+                              snapshot.data?.data()!['tips'],
+                            ),
                             ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
+                              context,
+                              snapshot.data?.data()!['tips'],
+                            )
                           ],
                         ),
                       );
@@ -160,20 +172,23 @@ class SleepDietSuggestion extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(
-                            color: Theme.of(context).secondaryHeaderColor),
+                        child: LoadingStateCreator(),
                       );
                     }
                     return Container(
-                        padding: const EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            DietWindow(snapshot.data?.data()!['tips']),
-                            ...dietArticle(
-                                context, snapshot.data?.data()!['tips'])
-                          ],
-                        ),
-                      );
+                      padding: const EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          DietWindow(
+                            snapshot.data?.data()!['tips'],
+                          ),
+                          ...dietArticle(
+                            context,
+                            snapshot.data?.data()!['tips'],
+                          )
+                        ],
+                      ),
+                    );
                   },
                   future: FirebaseFirestore.instance
                       .collection('diet_suggestion')
@@ -212,8 +227,9 @@ class DietWindow extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
                 color: Theme.of(context).accentColor,
-                border:
-                    Border.all(color: const Color.fromRGBO(250, 195, 68, 1)),
+                border: Border.all(
+                  color: Theme.of(context).dividerColor,
+                ),
                 borderRadius: BorderRadius.circular(10)),
             child: Text(e['description'] as String),
           ),

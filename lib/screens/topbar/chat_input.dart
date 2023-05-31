@@ -1,10 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
 import 'package:night_gschallenge/widgets/UI/permissionModal.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:speech_to_text/speech_recognition_result.dart';
 
@@ -70,16 +68,16 @@ class _ChatInputState extends State<ChatInput> {
               textCapitalization: TextCapitalization.sentences,
               autocorrect: true,
               enableSuggestions: true,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Write your message here...',
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).primaryColor,
                 filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),
                   borderSide: BorderSide(
-                    color: Colors.black,
+                    color: Theme.of(context).secondaryHeaderColor,
                     width: 3,
                   ),
                 ),
@@ -96,8 +94,7 @@ class _ChatInputState extends State<ChatInput> {
           onPressed: () async {
             var permit = await Permission.microphone.status;
 
-            if (permit == PermissionStatus.permanentlyDenied ||
-                permit == PermissionStatus.denied) {
+            if (permit == PermissionStatus.permanentlyDenied) {
               // ignore: use_build_context_synchronously
               showDialog(
                 context: context,
@@ -129,7 +126,7 @@ class _ChatInputState extends State<ChatInput> {
                             "Listening....",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Theme.of(context).secondaryHeaderColor,
                               fontWeight: FontWeight.normal,
                               fontSize: 32
                             ),
@@ -168,7 +165,7 @@ class _ChatInputState extends State<ChatInput> {
           ),
         ),
         IconButton(
-          color: Colors.black,
+          color: Theme.of(context).iconTheme.color,
           icon: const Icon(
             Icons.send,
           ),

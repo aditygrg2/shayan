@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/authentication_provider.dart';
@@ -9,22 +9,73 @@ class WelcomeUser extends StatefulWidget {
   State<WelcomeUser> createState() => _WelcomeUserState();
 }
 
-class _WelcomeUserState extends State<WelcomeUser>
-    with TickerProviderStateMixin {
-  String greeting = 'Good ';
+Widget getStatus(int hours) {
+  if (hours > 3 && hours < 15) {
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/jwYkSJH/sun.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return const Icon(Icons.error);
+        },
+      ),
+    );
+  } else if (hours > 15 && hours < 20) {
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/d4YTYn8/good-evening.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return const Icon(Icons.error);
+        },
+      ),
+    );
+  } else {
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: "https://i.ibb.co/19WdBPf/good-night.gif",
+        fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+        placeholder: (context, url) {
+          return Image.asset(
+            'assets/processloading.gif',
+            fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
+          );
+        },
+        errorWidget: (context, url, error) {
+          return const Icon(Icons.error);
+        },
+      ),
+    );
+  }
+}
 
+class _WelcomeUserState extends State<WelcomeUser> {
   String quote = "Hope you had a restful night's sleep!";
-
-  String animation = 'dummy animation';
-
-  bool isLogin = FirebaseAuth.instance.currentUser!=null;
+  bool isLogin = FirebaseAuth.instance.currentUser != null;
   String? userId;
 
-  // one Animation according to day night
   @override
   Widget build(BuildContext context) {
-    var hours= DateTime.now().hour;
-    if(isLogin){
+    var hours = DateTime.now().hour;
+    if (isLogin) {
       userId = Provider.of<AuthenticationProvider>(context).getId();
     }
     return Container(
@@ -34,39 +85,21 @@ class _WelcomeUserState extends State<WelcomeUser>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            greeting+"${hours<20?(hours<15?"Morning":"Evening"):"Night"},",
+            "Good ${hours >3 && hours < 15 ? "Morning" : hours>15 && hours<20 ? "Evening" : "Night"}",
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(
             height: 10,
           ),
           if (isLogin)
-            FutureBuilder(
-              future: FirebaseFirestore.instance
-                  .collection('users')
-                  .doc(userId)
-                  .get(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Text(
-                    snapshot.data?['name'],
-                    style: TextStyle(fontSize: 25),
-                  );
-                }
-
-                return const Text(
-                  'User',
-                  style: TextStyle(fontSize: 25),
-                );
-              },
+            Text(
+              FirebaseAuth.instance.currentUser!.displayName!,
+              style: TextStyle(
+                fontSize: 25,
+                color: Theme.of(context).unselectedWidgetColor,
+              ),
             ),
-          SizedBox(
-            height: 150,
-            width: double.infinity,
-            child: Image.asset( hours<20?(hours<15?"assets/sun.gif":"assets/good_evening.gif"):"assets/good_night.gif",
-              fit:hours>=20?BoxFit.contain: BoxFit.cover,
-            ),
-          )
+          getStatus(hours)
         ],
       ),
     );

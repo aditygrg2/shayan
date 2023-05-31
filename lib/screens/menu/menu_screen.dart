@@ -12,7 +12,7 @@ import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
 import 'package:night_gschallenge/screens/menu/TestMyBedroom/test_my_bedroom.dart';
 import 'package:night_gschallenge/screens/menu/WorryList/worrylist.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
-import 'package:night_gschallenge/widgets/UI/tmb_description_cards.dart';
+import 'package:night_gschallenge/widgets/UI/pageBlocks.dart';
 import './menu.dart';
 import './text_to_speech.dart/text_to_speech.dart';
 
@@ -55,7 +55,6 @@ class MenuScreen extends StatelessWidget {
       'imagePath': 'assets/mental_exercises.png',
       'routes': MentalExercise.routeName
     },
-    {'text': 'Sleep Achievement', 'imagePath': 'assets/sleep_achievement.png'},
     {
       'text': 'Music Therapy',
       'imagePath': 'assets/podcasts_stories.png',
@@ -67,18 +66,18 @@ class MenuScreen extends StatelessWidget {
       'routes': Worrylist.routeName
     },
     {
-      'text': 'Smart Alarm',
-      'imagePath': 'assets/worry_list.png',
+      'text': 'Sleep Recorder',
+      'imagePath': 'assets/smartalarm.png',
       'routes': SmartAlarm.routeName
     },
     {
       'text': 'Maps',
-      'imagePath': 'assets/worry_list.png',
+      'imagePath': 'assets/maps.png',
       'routes': MapScreen.routeName
     },
     {
-      'text':'Daytime Sleepiness Calculator',
-      'imagePath': 'assets/worry_list.png',
+      'text': 'Daytime Sleepiness Calculator',
+      'imagePath': 'assets/sleepiness.png',
       'routes': Sleepiness.routeName
     }
   ];
@@ -91,19 +90,12 @@ class MenuScreen extends StatelessWidget {
     return Column(
       children: [
         HomeScreenText(text: 'More'),
-        TmbDescriptionCards(
+        PageBlocks(
+         onTap: () {
+            Navigator.of(context).pushNamed(CommunityScreen.routeName);
+          },
+          image: 'assets/library_community.png',
           title: "Community",
-          subtitle:
-              "Engage with other people",
-          image: "assets/library_community.png",
-          route: CommunityScreen.routeName,
-        ),
-        TmbDescriptionCards(
-          title: "Store",
-          subtitle:
-              "Buy",
-          image: "assets/library_community.png",
-          route: CommunityScreen.routeName,
         ),
         Container(
           width: MediaQuery.of(context).size.width - 20,
@@ -133,9 +125,7 @@ class MenuScreen extends StatelessWidget {
           padding: const EdgeInsets.all(6.0),
           child: Text(
             "Shayan v1.0 • Google Solution Challenge 2023",
-            style: TextStyle(
-              color: Theme.of(context).secondaryHeaderColor
-            ),
+            style: TextStyle(color: Theme.of(context).secondaryHeaderColor),
           ),
         )
       ],

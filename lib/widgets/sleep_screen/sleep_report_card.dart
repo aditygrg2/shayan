@@ -14,7 +14,8 @@ class SleepReportCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
+            padding: EdgeInsets.all(5),
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
@@ -23,15 +24,15 @@ class SleepReportCard extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
                       icon,
-                      color: Theme.of(context).canvasColor,
                       size: 50,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
@@ -40,17 +41,17 @@ class SleepReportCard extends StatelessWidget {
                     Text(
                       heading!,
                       textAlign: TextAlign.start,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(
@@ -61,14 +62,14 @@ class SleepReportCard extends StatelessWidget {
                       child: Text(
                         value!,
                         textAlign: TextAlign.start,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/screens/library/articles_screen.dart';
-import 'package:night_gschallenge/screens/library/community_screen.dart';
 import 'package:night_gschallenge/screens/library/music_gallery_screen.dart';
 import 'package:night_gschallenge/screens/library/podcast.dart';
 import 'package:night_gschallenge/screens/library/stories_screen.dart';
@@ -19,29 +18,29 @@ class _LibraryScreenState extends State<LibraryScreen> {
     {
       "title": "Podcasts",
       "subtitle":
-          "Podcast subtitle TBA",
-      "image": "assets/library_podcast.png",
+          "Discover soothing podcasts that help you unwind, relax, and find peace before drifting off to sleep.",
+      "image": "https://i.ibb.co/SXydTqW/library-podcast.png",
       "route": Podcast.routeName,
     },
     {
       "title": "Articles",
       "subtitle":
-          "Articles Subtitle TBA",
-      "image": "assets/library_articles.png",
+          "Explore a collection of insightful articles that explore the science of sleep, dream interpretation, and tips for a restful night.",
+      "image": "https://i.ibb.co/0Vs6HJH/library-articles.png",
       "route": ArticlesScreen.routeName,
     },
     {
       "title": "Stories",
       "subtitle":
-          "Stories Subtitle TBA",
-      "image": "assets/library_stories.png",
+          "Indulge in captivating stories that transport you to tranquil realms, lulling your mind into a state of serenity for a peaceful slumber.",
+      "image": "https://i.ibb.co/mCRrTQL/story-library.jpg",
       "route": StoryScreen.routeName,
     },
     {
       "title": "Music",
       "subtitle":
-          "Music Subtitle TBA",
-      "image": "assets/library_music.png",
+          "Immerse yourself in a harmonious selection of ambient music designed to accompany your sleep journey and promote deep relaxation.",
+      "image": "https://i.ibb.co/0JJwwJK/library-music.png",
       "route": MusicGalleryScreen.routeName,
     }
   ];
@@ -54,10 +53,11 @@ class _LibraryScreenState extends State<LibraryScreen> {
         ),
         ...libraryCards.map((ele) {
           return TmbDescriptionCards(
-              title: ele['title'],
-              subtitle: ele['subtitle'],
-              image: ele['image'],
-              route: ele['route']);
+            title: ele['title'],
+            subtitle: ele['subtitle'],
+            image: ele['image'],
+            route: ele['route'],
+          );
         }).toList(),
       ],
     );

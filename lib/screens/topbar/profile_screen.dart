@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/shared_preferences_provider.dart';
 import 'package:night_gschallenge/providers/watch_provider.dart';
+import 'package:night_gschallenge/screens/home/home_screen.dart';
+import 'package:night_gschallenge/screens/startup/default_night_screen.dart';
 import 'package:night_gschallenge/screens/startup/splash_screen.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
@@ -34,8 +37,8 @@ class ProfileInfo extends StatelessWidget {
           child: const Text(""),
           height: 1,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Colors.black,
+          decoration: BoxDecoration(
+            color: Theme.of(context).dividerColor,
           ),
         )
       ]),
@@ -43,29 +46,40 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-class ProfileScreen extends StatelessWidget {
-  var currentUser = FirebaseAuth.instance.currentUser;
+class ProfileScreen extends StatefulWidget {
   static const routeName = '/profile';
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String theme = "";
+
+  var currentUser = FirebaseAuth.instance.currentUser;
   String version = "v1.0";
 
-  Map<String, dynamic> profile = {
-    "Name": "Aditya",
-    "Email ID": FirebaseAuth.instance.currentUser?.email,
-    "Age": "15 years",
-    "Weight": "70 Kg",
-    "Height": "170 cm",
-  };
   @override
   Widget build(BuildContext context) {
+    theme = Provider.of<sharedPreferencesProvider>(context)
+          .getValue('launch', 'mode')
+          .toString();
+
+    print(theme);
+    Map<String, dynamic> profile = {
+      "Name": FirebaseAuth.instance.currentUser?.displayName,
+      "Email ID": FirebaseAuth.instance.currentUser?.email,
+      "Verification Status":
+          FirebaseAuth.instance.currentUser?.emailVerified.toString() == "true"
+              ? "Successfully Verified"
+              : "Not Verified",
+      "Default Theme": theme == 'light' ? "Light Mode" : theme=="" ? "Not Set" : "Dark Mode" 
+    };
     return Scaffold(
       body: ListView(
         children: [
           Stack(
             children: [
-              TopRow(
-                back: true,
-                profile: false,
-              ),
               Positioned(
                 child: Container(
                   child: const Text(""),
@@ -78,16 +92,21 @@ class ProfileScreen extends StatelessWidget {
                           bottomRight: Radius.circular(800))),
                 ),
               ),
+              TopRow(
+                back: true,
+                profile: false,
+              ),
               Positioned(
-                  top: 10,
-                  left: MediaQuery.of(context).size.width / 2 - 90,
-                  child: Container(
-                    child: const Icon(
-                      Icons.person_outline_sharp,
-                      color: Colors.black,
-                      size: 170,
-                    ),
-                  ))
+                top: 10,
+                left: MediaQuery.of(context).size.width / 2 - 90,
+                child: Container(
+                  child: Icon(
+                    Icons.person_outline_sharp,
+                    color: Theme.of(context).iconTheme.color,
+                    size: 170,
+                  ),
+                ),
+              )
             ],
           ),
           if (currentUser == null)
@@ -126,13 +145,19 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...profile.entries.map((e) {
-                  return ProfileInfo(e.key, e.value);
+                  return ProfileInfo(
+                    e.key,
+                    e.value,
+                  );
                 }).toList(),
                 ListTileIconCreators(
                   title: 'Logout',
                   icon: Icons.logout,
                   onTap: () {
                     FirebaseAuth.instance.signOut();
+                    Provider.of<sharedPreferencesProvider>(context,
+                            listen: false)
+                        .clear();
                     Navigator.of(context).popUntil((route) => route == "");
                     Navigator.of(context).pushNamed(SplashScreen.routeName);
                   },
@@ -161,8 +186,29 @@ class ProfileScreen extends StatelessWidget {
               },
               icon: Icons.signal_cellular_no_sim_sharp,
             ),
-
-          
+          if (currentUser != null &&
+              !FirebaseAuth.instance.currentUser!.emailVerified)
+            ListTileIconCreators(
+              title: 'Verify your email',
+              onTap: () async {
+                FirebaseAuth.instance.currentUser?.sendEmailVerification();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Email sent. Please check your spam folder."),
+                  ),
+                );
+                FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
+              },
+              icon: Icons.email,
+            ),
+          ListTileIconCreators(
+            title: 'Set Default Theme',
+            onTap: () async {
+              Navigator.of(context).pushNamed(DefaultNightScreen.routeName);
+            },
+            icon: Icons.calendar_view_week_sharp,
+          ),
         ],
       ),
     );

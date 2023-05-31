@@ -28,6 +28,7 @@ class _SleepFormState extends State<SleepForm> {
   String? value6;
   bool loading = false;
   bool status = false;
+  DateTime chooser = DateTime.now();
 
   final List<Map<dynamic, dynamic>> _inputQuestions = [
     {
@@ -77,21 +78,19 @@ class _SleepFormState extends State<SleepForm> {
   late String valueSelected = timeValue;
 
   void _valueHandler(value, key) {
-      if (key == "1") {
-        value1 = value;
-      } else if (key == '2') {
-        value2 = value;
-      } else if (key == '3') {
-        value3 = value;
-      } else if (key == '4') {
-        value4 = value;
-      } else if (key == '5') {
-        value5 = value;
-      } else if (key == '6') {
-        value6 = value;
-      }
-
-      
+    if (key == "1") {
+      value1 = value;
+    } else if (key == '2') {
+      value2 = value;
+    } else if (key == '3') {
+      value3 = value;
+    } else if (key == '4') {
+      value4 = value;
+    } else if (key == '5') {
+      value5 = value;
+    } else if (key == '6') {
+      value6 = value;
+    }
   }
 
   bool valueSelectorForWatch() {
@@ -137,13 +136,6 @@ class _SleepFormState extends State<SleepForm> {
     int length = _myDocCount.length;
 
     var sleepElements = Provider.of<SleepElements>(context, listen: false);
-    
-    print(value1);
-    print(value2);
-    print(value3);
-    print(value4);
-    print(value5);
-    print(value6);
 
     await sleepElements.getData(
       value1,
@@ -198,7 +190,6 @@ class _SleepFormState extends State<SleepForm> {
     }
 
     // This is not supporting average currently, like if same date data is changed, the average needs to remove the previous data.
-    // Can be done later.
     final value =
         await FirebaseFirestore.instance.collection('sleepData').doc(id).get();
 
@@ -285,9 +276,9 @@ class _SleepFormState extends State<SleepForm> {
                           Navigator.of(context)
                               .popAndPushNamed(HomeScreen.routeName);
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.arrow_back_rounded,
-                          color: Colors.black,
+                          color: Theme.of(context).iconTheme.color,
                           size: 35,
                         ),
                       ),
@@ -300,21 +291,20 @@ class _SleepFormState extends State<SleepForm> {
                             ),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 18,
-                              color: Theme.of(context).secondaryHeaderColor
-                            ),
+                                fontSize: 18,
+                                color: Theme.of(context).secondaryHeaderColor),
                           ),
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.calendar_month,
-                          color: Colors.blue,
+                          color: Theme.of(context).iconTheme.color,
                         ),
                         onPressed: () {
                           showDatePicker(
                             context: context,
-                            initialDate: DateTime.now(),
+                            initialDate: chooser,
                             firstDate: DateTime.now().subtract(
                               const Duration(days: 30),
                             ),
@@ -324,6 +314,7 @@ class _SleepFormState extends State<SleepForm> {
                               if (value != null) {
                                 setState(
                                   () {
+                                    chooser = value;
                                     valueSelected = value.toString();
                                   },
                                 );
@@ -400,12 +391,23 @@ class _SleepFormState extends State<SleepForm> {
                         height: 10,
                       ),
                       loading
-                          ? Center(child: CircularProgressIndicator(color: Theme.of(context).secondaryHeaderColor))
+                          ? Center(
+                              child: CircularProgressIndicator(
+                                color: Theme.of(context).secondaryHeaderColor,
+                              ),
+                            )
                           : Center(
                               child: ElevatedButtonWithoutIcon(
                                 text: 'Submit',
                                 onPressedButton: () async {
-                                  _submitHandler(value1, value2, value3,value4,value5,value6);
+                                  _submitHandler(
+                                    value1,
+                                    value2,
+                                    value3,
+                                    value4,
+                                    value5,
+                                    value6,
+                                  );
                                 },
                               ),
                             ),

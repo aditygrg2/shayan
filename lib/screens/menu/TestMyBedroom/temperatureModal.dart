@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:night_gschallenge/providers/weather_provider.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_button_without_icon.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:provider/provider.dart';
 
 class TemperatureModal extends StatelessWidget {
@@ -8,7 +9,6 @@ class TemperatureModal extends StatelessWidget {
   Widget build(BuildContext context) {
     var data = Provider.of<WeatherProvider>(context).dataValue;
     var height = MediaQuery.of(context).size.height;
-
     return ListView(
       shrinkWrap: true,
       children: [
@@ -26,7 +26,7 @@ class TemperatureModal extends StatelessWidget {
             children: [
               Container(
                 height: height / 6,
-                child: Image.asset(data['image']!),
+                child: ImageCacher(imagePath:data['image']!),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 20),

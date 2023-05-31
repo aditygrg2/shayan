@@ -15,9 +15,9 @@ class PropertyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: color,
+        color: Theme.of(context).primaryColor,
         border: Border.all(
-          color: const Color.fromRGBO(250, 195, 68, 1),
+          color: Theme.of(context).dividerColor,
           width: 0.9,
         ),
         borderRadius: BorderRadius.circular(12),

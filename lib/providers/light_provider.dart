@@ -15,17 +15,17 @@ class LightProvider with ChangeNotifier{
 
   final List<Map<String,String>> _modalData = [
     {
-      "image": "assets/goodlight.png",
+      "image": "https://i.ibb.co/ScJPjfK/goodlight.png",
       "heading" : "Great! Your average lux is below 05",
       "subheading": "You got the perfect bedroom light intensity for sleep! Happy sleeping",
     },
     {
-      "image": "assets/averagelight.png",
+      "image": "https://i.ibb.co/FX6Tybs/averagelight.png",
       "heading" : "Good! Your average lux is between 05 and 20",
       "subheading": "Your bedroom light intensity is good for sleeping,try to keep it under 5 for best conditions",
     },
     {
-      "image": "assets/badlight.png",
+      "image": "https://i.ibb.co/ccyj6bW/badlight.png",
       "heading" : "Your average lux is above 20. You can do better!",
       "subheading": "Your bedroom light intensity is not apt for sleeping, improve to keep it below 20",
     },

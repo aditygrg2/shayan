@@ -3,16 +3,17 @@ import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/providers/count_down_provider.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/count_down_timer.dart';
 import 'package:night_gschallenge/screens/menu/MeditationTimer/time_picker.dart';
-import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise_solutions.dart';
+import 'package:night_gschallenge/screens/menu/MentalExercise/mental_exercise.dart';
 import 'package:night_gschallenge/widgets/UI/ListTileIconCreators.dart';
 import 'package:night_gschallenge/widgets/UI/home_screen_heading.dart';
+import 'package:night_gschallenge/widgets/UI/image_cacher.dart';
 import 'package:night_gschallenge/widgets/UI/top_row.dart';
 import 'package:provider/provider.dart';
 
 class MeditationTimer extends StatefulWidget {
   static String routeName = '/meditation';
   bool isShowPicker;
-  late DateTime datetime;
+  DateTime datetime = DateTime.parse('1900-12-24 00:00:00.000');
   int selectedIndex;
   MeditationTimer({this.isShowPicker = true, this.selectedIndex = 0});
   List<Map<dynamic, dynamic>> options = [
@@ -21,7 +22,11 @@ class MeditationTimer extends StatefulWidget {
       'title': 'Default',
       'music': 'https://dl.sndup.net/bwnj/default.mp3'
     },
-    {'icon': Icons.forest, 'title': 'Forest', 'music': 'assets/forest.mp3'},
+    {
+      'icon': Icons.forest,
+      'title': 'Forest',
+      'music': 'https://dl.sndup.net/wgf4/summer_night.mp3',
+    },
     {
       'icon': Icons.nightlight,
       'title': 'Summer Night',
@@ -49,9 +54,13 @@ class MeditationTimer extends StatefulWidget {
 }
 
 class _MeditationTimerState extends State<MeditationTimer> {
-  void handleClick() {
-    setState(() {
-      widget.isShowPicker = !widget.isShowPicker;
+  void handleClick(AudioProvider audio, BuildContext context) {
+    audio.load(widget.options[widget.selectedIndex]['music']).then((value) {
+      Navigator.of(context).pop();
+      setState(() {
+        widget.isShowPicker = !widget.isShowPicker;
+      });
+      audio.play();
     });
   }
 
@@ -81,67 +90,86 @@ class _MeditationTimerState extends State<MeditationTimer> {
                 Container(
                   width: MediaQuery.of(context).size.width - 20,
                   height: 200,
-                  child: Image.asset(
-                    "assets/meditation_timer_person.gif",
+                  child: ImageCacher(
+                    imagePath:
+                        "https://i.ibb.co/z8k8p2F/meditation-timer-person.gif",
                     fit: BoxFit.contain,
                   ),
                 ),
                 !widget.isShowPicker
-                    ? CountDownTimerComponent(widget.datetime)
+                    ? CountDownTimerComponent(widget.datetime, audio,controller)
                     : TimePicker(callBackDateTime),
               ],
             ),
           ),
           Container(
             width: double.infinity,
-            height: 100,
+            height: !widget.isShowPicker ? 100 : 250,
             child: !widget.isShowPicker
                 ? Container(
                     margin: const EdgeInsets.all(10),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey),
-                    ),
-                    child: Column(children: [
-                      Expanded(
-                        child: Icon(
-                          widget.options[widget.selectedIndex]['icon'],
-                        ),
+                      border: Border.all(
+                        color: Theme.of(context).dividerColor,
                       ),
-                      Expanded(
-                        child: Text(
-                          widget.options[widget.selectedIndex]['title'],
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            widget.options[widget.selectedIndex]['icon'],
+                          ),
                         ),
-                      )
-                    ]),
+                        Expanded(
+                          child: Text(
+                            widget.options[widget.selectedIndex]['title'],
+                          ),
+                        )
+                      ],
+                    ),
                   )
-                : ListView.builder(
-                    scrollDirection: Axis.horizontal,
+                : GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 2),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(10),
-                        padding: const EdgeInsets.all(10),
-                        decoration: widget.selectedIndex == index
-                            ? BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                border: Border.all(
-                                  color: Colors.black,
-                                  width: 2,
-                                ),
-                              )
-                            : null,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              widget.selectedIndex = index;
-                            });
-                          },
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            widget.selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          margin: const EdgeInsets.symmetric(horizontal: 7),
+                          padding: const EdgeInsets.all(4),
+                          decoration: widget.selectedIndex == index
+                              ? BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                    color: Theme.of(context).dividerColor,
+                                    width: 2,
+                                  ),
+                                )
+                              : null,
                           child: Column(children: [
                             Expanded(
-                                child: Icon(widget.options[index]['icon'])),
+                              child: Icon(
+                                widget.options[index]['icon'],
+                              ),
+                            ),
                             Expanded(
-                                child: Text(widget.options[index]['title']))
+                              child: Text(
+                                widget.options[index]['title'],
+                                textAlign: TextAlign.center,
+                              ),
+                            )
                           ]),
                         ),
                       );
@@ -162,14 +190,17 @@ class _MeditationTimerState extends State<MeditationTimer> {
                     backgroundColor: Theme.of(context).canvasColor,
                     child: IconButton(
                       onPressed: () {
-                        audio.stop();
+                        audio.release();
+                        controller.removeListener(() {
+                          
+                        },);
                         setState(() {
                           widget.isShowPicker = !widget.isShowPicker;
                         });
                       },
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.stop_rounded,
-                        color: Colors.black,
+                        color: Theme.of(context).iconTheme.color,
                       ),
                     ),
                   ),
@@ -177,28 +208,54 @@ class _MeditationTimerState extends State<MeditationTimer> {
                   radius: 30,
                   backgroundColor: Theme.of(context).canvasColor,
                   child: IconButton(
-                      onPressed: () {
-                        if (!widget.isShowPicker) {
-                          if (controller.isPause) {
-                            controller.resume();
-                            audio.resume();
-                          } else {
-                            controller.pause();
-                            audio.pause();
-                          }
+                    onPressed: () {
+                      if (!widget.isShowPicker) {
+                        if (controller.isPause) {
+                          controller.resume();
+                          audio.resume();
                         } else {
-                          handleClick();
-                          audio.play();
+                          controller.pause();
+                          audio.pause();
                         }
-                      },
-                      icon: Icon(
-                        !widget.isShowPicker
-                            ? (controller.isPause
-                                ? Icons.play_arrow
-                                : Icons.pause)
-                            : Icons.play_arrow,
-                        color: Colors.black,
-                      )),
+                        setState(() {});
+                      } else {
+                        if (widget.datetime.compareTo(
+                                DateTime.parse('1900-12-24 00:00:00.000')) ==
+                            0) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Container(
+                            child: const Text("Please select Time Duration"),
+                          )));
+                          return;
+                        }
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  color: Theme.of(context).secondaryHeaderColor,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        controller.initialize();
+                        handleClick(audio, context);
+                      }
+                    },  
+                    icon: Icon(
+                      !widget.isShowPicker
+                          ? (controller.isPause
+                              ? Icons.play_arrow
+                              : Icons.pause)
+                          : Icons.play_arrow,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -206,10 +263,8 @@ class _MeditationTimerState extends State<MeditationTimer> {
           ListTileIconCreators(
             icon: Icons.shape_line_outlined,
             title: 'Check out meditation exercises',
-            onTap: () => Navigator.of(context).pushNamed(
-              MentalExerciseSolution.routeName,
-              arguments: 'MEDITATION',
-            ),
+            onTap: () =>
+                Navigator.of(context).pushNamed(MentalExercise.routeName),
           ),
           const SizedBox(
             height: 50,

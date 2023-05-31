@@ -1,6 +1,7 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
+import 'package:intl/intl.dart';
 import 'package:night_gschallenge/screens/forms/onboardingform/main-form.dart';
 import 'package:night_gschallenge/widgets/UI/elevated_buttons_with_icon.dart';
 import 'package:night_gschallenge/widgets/UI/time_boxes.dart';
@@ -12,16 +13,20 @@ class InputBox extends StatefulWidget {
   InputTypes? inputType;
   int? currentQuestion;
   final String? labels;
+  int max;
+  int min;
 
-  InputBox({
-    Key? key,
-    this.question,
-    this.onPressedNext,
-    this.onPressedBack,
-    this.inputType,
-    this.currentQuestion,
-    this.labels,
-  }) : super(key: key);
+  InputBox(
+      {Key? key,
+      this.question,
+      this.onPressedNext,
+      this.onPressedBack,
+      this.inputType,
+      this.currentQuestion,
+      this.labels,
+      this.max = -1,
+      this.min = -1})
+      : super(key: key);
 
   @override
   State<InputBox> createState() => _InputBoxState();
@@ -30,6 +35,7 @@ class InputBox extends StatefulWidget {
 class _InputBoxState extends State<InputBox> {
   TimeOfDay startDate = TimeOfDay.now();
   String? valueSelected = '';
+  final formGlobalKey = GlobalKey<FormState>();
   TextEditingController _controller = TextEditingController();
 
   @override
@@ -57,20 +63,45 @@ class _InputBoxState extends State<InputBox> {
             Column(
               children: [
                 if (widget.inputType == InputTypes.NumberInput)
-                  TextField(
-                    decoration: InputDecoration(labelText: widget.labels),
-                    onChanged: (value) {
-                      valueSelected = value;
-                    },
+                  Form(
+                    key: formGlobalKey,
+                    child: TextFormField(
+                      decoration: InputDecoration(labelText: widget.labels),
+                      keyboardType: TextInputType.number,
+                      autocorrect: true,
+                      textAlign: TextAlign.center,
+                      validator: (value) {
+                        if(!value!.contains(RegExp('^[0-9]*\$'))){
+                          return "Not a valid number";
+                        }
+                        if (widget.min != -1 && widget.max != -1) {
+                          if (int.parse(value!) > widget.max) {
+                            return "Enter value less than ${widget.max}";
+                          } else if (int.parse(value) < widget.min) {
+                            return "Enter value more than ${widget.min}";
+                          }
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        if(formGlobalKey.currentState!.validate()){
+                          valueSelected = value;
+                        }
+                      },
+                    ),
                   ),
                 if (widget.inputType == InputTypes.HourMinuteInput)
                   TimePickerSpinner(
                     is24HourMode: false,
                     isShowSeconds: false,
-                    normalTextStyle:
-                        const TextStyle(fontSize: 24, color: Colors.black54),
-                    highlightedTextStyle:
-                        const TextStyle(fontSize: 28, color: Colors.black87),
+                    normalTextStyle: TextStyle(
+                      fontSize: 24,
+                      color: Theme.of(context).disabledColor,
+                    ),
+                    highlightedTextStyle: TextStyle(
+                      fontSize: 28,
+                      color: Theme.of(context).secondaryHeaderColor,
+                    ),
                     spacing: 45,
                     itemHeight: 80,
                     isForce2Digits: true,
@@ -86,9 +117,9 @@ class _InputBoxState extends State<InputBox> {
                     minutes: startDate.minute.toString(),
                     meridian: startDate.hour > 12 ? 'PM' : 'AM',
                     onTap: () {
-                      Navigator.of(context).push(
-                      showPicker(
+                      Navigator.of(context).push(showPicker(
                         context: context,
+                        accentColor: Theme.of(context).canvasColor,
                         value: Time(
                           hour: startDate.hour,
                           minute: startDate.minute,
@@ -109,7 +140,25 @@ class _InputBoxState extends State<InputBox> {
                       Expanded(
                         child: TextField(
                           decoration: InputDecoration(labelText: widget.labels),
+                          readOnly: true,
+                          onTap: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime(2000, 1, 1),
+                              firstDate: DateTime(1900, 1, 1),
+                              lastDate: DateTime.now().subtract(
+                                const Duration(days: 18 * 365),
+                              ),
+                            ).then((value) {
+                              setState(() {
+                                _controller.text =
+                                    DateFormat.yMMMMd('en_US').format(value!);
+                              });
+                            });
+                          },
+                          autocorrect: true,
                           controller: _controller,
+                          textAlign: TextAlign.center,
                           onChanged: (value) {
                             valueSelected = value;
                           },
@@ -129,9 +178,9 @@ class _InputBoxState extends State<InputBox> {
                               const Duration(days: 18 * 365),
                             ),
                           ).then((value) {
-                            valueSelected = value.toString();
                             setState(() {
-                              _controller.text = value.toString();
+                              _controller.text =
+                                  DateFormat.yMMMMd('en_US').format(value!);
                             });
                           });
                         },

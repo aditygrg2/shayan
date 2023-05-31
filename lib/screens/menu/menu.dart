@@ -11,15 +11,12 @@ class Menu extends StatelessWidget {
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-        gradient: RadialGradient(
-          radius: 0.3,
-          focalRadius: 0.3,
+        gradient: LinearGradient(
           colors: [
-            Colors.white,
-            Theme.of(context).canvasColor,
+            Theme.of(context).cardColor,
+            Theme.of(context).hoverColor,
           ],
         ),
-        border: Border.all(color: Colors.black),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
@@ -43,7 +40,7 @@ class Menu extends StatelessWidget {
             ),
             child: Image.asset(
               imagePath,
-            ),
+            )
           ),
         ],
       ),
