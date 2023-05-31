@@ -12,27 +12,27 @@ class StoryScreen extends StatelessWidget {
       'title': "Kids",
       "data": [
         {
-          "image": "assets/sleep_story_1.jpg",
+          "image": "https://i.ibb.co/WWfS1b1/sleep-story-1.jpg",
           "title": "Bedtime Stories",
           "description": "Healing Rays of the Sun..."
         },
         {
-          "image": "assets/sleep_story_3.jpg",
+          "image": "https://i.ibb.co/8660mzb/sleep-story-3.jpg",
           "title": "Castle on the ocean",
           "description": "An enchanting sleep meditation..."
         },
         {
-          "image": "assets/sleep_story_2.jpg",
+          "image": "https://i.ibb.co/GsVjFsX/sleep-story-2.webp",
           "title": "Magic Unicorn",
           "description": "Child clinicians point out the cognitive benefits..."
         },
         {
-          "image": "assets/sleep_story_9.jpg",
+          "image": "https://i.ibb.co/fQZm5xc/sleep-story-9.png",
           "title": "Goldilocks and the three bears",
           "description": "Once upon a time there were three bears who lived..."
         },
         {
-          "image": "assets/sleep_story_10.jpg",
+          "image": "https://i.ibb.co/c8gMbJx/sleep-story-10.png",
           "title": "Aladdin And the Magic Lamp",
           "description":
               "As a last goodbye to their life on the camel train, Aladdin..."
@@ -43,29 +43,19 @@ class StoryScreen extends StatelessWidget {
       'title': "Adults",
       "data": [
         {
-          "image": "assets/sleep_story_6.jpg",
+          "image": "https://i.ibb.co/C7ms5Y4/sleep-story-6.jpg",
           "title": "The Cabin in the Woods",
           "description": "A Horror Movie About Horror Movies..."
         },
         {
-          "image": "assets/sleep_story_5.jpg",
+          "image": "https://i.ibb.co/JK5y4Q5/sleep-story-5.jpg",
           "title": "The Gift of the Magi",
           "description": "The magi brought valuable gifts..."
         },
         {
-          "image": "assets/sleep_story_4.jpg",
+          "image": "https://i.ibb.co/QCckLhF/sleep-story-4.jpg",
           "title": "The Adventures of SherLock Holmes",
           "description": "World's most well known detectives..."
-        },
-        {
-          "image": "assets/sleep_story_7.png",
-          "title": "Karma",
-          "description": "The relationship between a person's mental..."
-        },
-        {
-          "image": "assets/sleep_story_8.png",
-          "title": "The midnight library",
-          "description": "Between life and death there is a library..."
         }
       ]
     },

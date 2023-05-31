@@ -117,8 +117,8 @@ flutter:
     - assets/processloading.gif
     - assets/loadingcanvasdark.gif
     - assets/check-mark.png
+    - assets/bota.png
     - assets/ln.gif
-    - assets/chatbg.jpg
     - assets/secretkey.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

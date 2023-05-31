@@ -94,21 +94,25 @@ class MusicProvider extends ChangeNotifier {
       'heading': 'Fantasy',
       'subHeading': 'Imagine yourself in a world of peace.',
       'src': 'https://i.ibb.co/v1QPv0M/music-data-1.jpg',
+      "audio": ""
     },
     {
       'heading': 'Nature',
       'subHeading': 'Getting closed with nature',
       'src': 'https://i.ibb.co/cctK95B/music-data-2.jpg',
+      "audio": ""
     },
     {
       'heading': 'Village Life',
       'subHeading': 'A day of the life at village.',
       'src': 'https://i.ibb.co/sVgHcp0/music-data-3.jpg',
+      "audio": ""
     },
     {
       'heading': 'Good morning',
       'subHeading': 'Peaceful Morning with a cup of coffee',
       'src': 'https://i.ibb.co/9VQJ41n/music-data-4.jpg',
+      "audio": ""
     },
   ];
 

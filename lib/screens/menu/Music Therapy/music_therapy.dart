@@ -175,9 +175,10 @@ class _MusicTherapyState extends State<MusicTherapy> {
                     "What's your Mood?",
                     textAlign: TextAlign.left,
                     style: TextStyle(
-                        fontSize: 20,
-                        color: Theme.of(context).secondaryHeaderColor,
-                        fontFamily: 'Roboto'),
+                      fontSize: 20,
+                      color: Theme.of(context).secondaryHeaderColor,
+                      fontFamily: 'Roboto',
+                    ),
                   ),
                 ),
                 const SizedBox(

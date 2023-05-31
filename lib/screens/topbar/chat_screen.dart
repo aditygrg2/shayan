@@ -61,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       body: Stack(
         children: [
-        Container(width: double.infinity,height: double.infinity,child: Image.asset("assets/chatbg.jpg",fit: BoxFit.contain,),),
+        Container(width: double.infinity,height: double.infinity,child: Image.asset("assets/bota.png",fit: BoxFit.contain,),),
         Column(
           children: [
             Container(
@@ -126,8 +126,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                   Container(
                                     decoration: BoxDecoration(
                                       color: condition
-                                          ? Colors.amber
-                                          : Theme.of(context).canvasColor,
+                                          ? Theme.of(context).buttonColor
+                                          : const Color.fromRGBO(143, 227, 221, 1),
                                       borderRadius: BorderRadius.only(
                                         topLeft: const Radius.circular(12),
                                         topRight: const Radius.circular(12),
@@ -156,15 +156,15 @@ class _ChatScreenState extends State<ChatScreen> {
                                       children: <Widget>[
                                         Text(
                                           chat['username'] ?? '',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: Theme.of(context).secondaryHeaderColor,
+                                            color: Colors.black,
                                           ),
                                         ),
                                         Text(
                                           chat['value'],
-                                          style: TextStyle(
-                                            color: Theme.of(context).secondaryHeaderColor,
+                                          style: const TextStyle(
+                                            color: Colors.black,
                                           ),
                                           textAlign: condition
                                               ? TextAlign.end
