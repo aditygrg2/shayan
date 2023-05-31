@@ -10,7 +10,7 @@ class MusicGalleryScreen extends StatelessWidget {
   static String routeName = '/music-gallery';
   @override
   Widget build(BuildContext context) {
-    final musicProvider = Provider.of<MusicProvider>(context,listen: false);
+    final musicProvider = Provider.of<MusicProvider>(context, listen: false);
     return Scaffold(
       body: ListView(
         children: [
@@ -24,9 +24,10 @@ class MusicGalleryScreen extends StatelessWidget {
             width: 200,
             padding: EdgeInsets.all(10),
             child: ImageCacher(
-                imagePath:
-                    "https://i.ibb.co/J3fKWZR/library-music-categories-page.png",
-                fit: BoxFit.contain),
+              imagePath:
+                  "https://i.ibb.co/J3fKWZR/library-music-categories-page.png",
+              fit: BoxFit.contain,
+            ),
           ),
           ...musicProvider.getCategory.map((e) {
             return MusicCategory(

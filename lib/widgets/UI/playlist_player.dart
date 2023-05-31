@@ -65,17 +65,10 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
               ],
             ),
           );
-          Timer(
-              const Duration(
-                seconds: 1,
-              ), () {
-            ScaffoldMessenger.of(context).clearMaterialBanners();
-            Navigator.of(context).pop();
-          });
-
-          return;
+          Provider.of<AudioProvider>(context, listen: false).release();
+          Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).clearMaterialBanners();
         }
-        if (widget.isPlaying) audioProvider.play();
         load = false;
       });
     }
@@ -159,7 +152,9 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                         color: Theme.of(context).secondaryHeaderColor,
                         size: 32,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        await Provider.of<AudioProvider>(context, listen: false)
+                            .release();
                         setState(() {
                           widget.index = widget.index - 1;
                           if (widget.index == -1)
@@ -201,7 +196,9 @@ class _PlayListPlayerState extends State<PlayListPlayer> {
                         color: Theme.of(context).secondaryHeaderColor,
                         size: 32,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+                        await Provider.of<AudioProvider>(context, listen: false)
+                            .release();
                         setState(() {
                           widget.index = widget.index + 1;
                           if (widget.index == widget.playlist.length)

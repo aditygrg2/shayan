@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:night_gschallenge/providers/audio_provider.dart';
 import 'package:night_gschallenge/widgets/UI/music_player.dart';
 import 'package:night_gschallenge/widgets/UI/sliding_card_rounded.dart';
+import 'package:provider/provider.dart';
 
 class MusicCategory extends StatelessWidget {
   List<Map<dynamic, dynamic>> data;
@@ -33,8 +35,9 @@ class MusicCategory extends StatelessWidget {
                         arguments: {
                           'playlist': data,
                           'index': index
-                        }).then((va) {
+                        }).then((va) async {
                       ScaffoldMessenger.of(context).clearMaterialBanners();
+                      await Provider.of<AudioProvider>(context, listen: false).release();
                     });
                   },
                   child: Container(

@@ -12,6 +12,7 @@ class AudioProvider extends ChangeNotifier {
   }
 
   Future load(String? uri) async {
+    player = AudioPlayer();
     if (uri == null) {
       return Future(() => false);
     }
@@ -35,7 +36,6 @@ class AudioProvider extends ChangeNotifier {
   }
 
   void playAsset(String url) {
-    AudioPlayer.clearAssetCache();
     player.setAsset(url);
     player.play();
   }
@@ -57,7 +57,7 @@ class AudioProvider extends ChangeNotifier {
     await player.play();
   }
 
-  void release() async {
+  Future release() async {
     await player.stop();
   }
 
