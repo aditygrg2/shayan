@@ -80,7 +80,10 @@ class ChartProvider extends ChangeNotifier {
   }
 
   bool data_NA_checker(){
-    return showData.isEmpty;
+    for(int i=0;i<7;i++){
+      if(data[i]!=0) return false;
+    }
+    return true;
   }
 
   List<BarData> get getChartData {

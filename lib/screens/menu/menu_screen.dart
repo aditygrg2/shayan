@@ -26,14 +26,24 @@ class MenuScreen extends StatelessWidget {
       'routes': TestMyBedroom.routeName
     },
     {
+      'text': 'Meditation Timer',
+      'imagePath': 'assets/meditation_timer.png',
+      'routes': MeditationTimer.routeName
+    },
+    {
       'text': 'Phone-Free time',
       'imagePath': 'assets/phone_free.png',
       'routes': PhoneFreeTime.routeName,
     },
     {
-      'text': 'Meditation Timer',
-      'imagePath': 'assets/meditation_timer.png',
-      'routes': MeditationTimer.routeName
+      'text': 'Sleep Cycle Calculator',
+      'imagePath': 'assets/sleep_cycle_calculator.png',
+      'routes': SleepCycleCalculator.routeName
+    },
+    {
+      'text': 'Music Therapy',
+      'imagePath': 'assets/podcasts_stories.png',
+      'routes': MusicTherapy.routeName
     },
     {
       'text': 'Listen to your stories',
@@ -41,9 +51,19 @@ class MenuScreen extends StatelessWidget {
       'routes': TextToSpeechComponent.routeName
     },
     {
-      'text': 'Sleep Cycle Calculator',
-      'imagePath': 'assets/sleep_cycle_calculator.png',
-      'routes': SleepCycleCalculator.routeName
+      'text': 'Sleep Recorder',
+      'imagePath': 'assets/smartalarm.png',
+      'routes': SmartAlarm.routeName
+    },
+    {
+      'text': 'Worry List',
+      'imagePath': 'assets/worry_list.png',
+      'routes': Worrylist.routeName
+    },
+    {
+      'text': 'Maps',
+      'imagePath': 'assets/maps.png',
+      'routes': MapScreen.routeName
     },
     {
       'text': 'Sleep Diet Suggestions',
@@ -54,26 +74,6 @@ class MenuScreen extends StatelessWidget {
       'text': 'Mental Exercises',
       'imagePath': 'assets/mental_exercises.png',
       'routes': MentalExercise.routeName
-    },
-    {
-      'text': 'Music Therapy',
-      'imagePath': 'assets/podcasts_stories.png',
-      'routes': MusicTherapy.routeName
-    },
-    {
-      'text': 'Worry List',
-      'imagePath': 'assets/worry_list.png',
-      'routes': Worrylist.routeName
-    },
-    {
-      'text': 'Sleep Recorder',
-      'imagePath': 'assets/smartalarm.png',
-      'routes': SmartAlarm.routeName
-    },
-    {
-      'text': 'Maps',
-      'imagePath': 'assets/maps.png',
-      'routes': MapScreen.routeName
     },
     {
       'text': 'Daytime Sleepiness Calculator',
