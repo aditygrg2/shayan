@@ -24,7 +24,7 @@ class _MeasuringLightState extends State<MeasuringLight> {
             ),
           ),
           ImageCacher(
-            imagePath: "https://i.ibb.co/jkH6Gjn/scanning.gif",
+            imagePath: "https://i.ibb.co/18QJbkV/output-onlinegiftools-29.gif",
             fit: BoxFit.cover,
           ),
           Center(

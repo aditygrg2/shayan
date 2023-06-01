@@ -51,7 +51,7 @@ Widget getStatus(int hours) {
       height: 150,
       width: double.infinity,
       child: CachedNetworkImage(
-        imageUrl: "https://i.ibb.co/19WdBPf/good-night.gif",
+        imageUrl: "https://i.ibb.co/nBxhtTc/output-onlinegiftools-27.gif",
         fit: hours >= 20 ? BoxFit.contain : BoxFit.cover,
         placeholder: (context, url) {
           return Image.asset(

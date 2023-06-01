@@ -107,7 +107,9 @@ flutter:
     - assets/sleep_diet.png
     - assets/test_my_environment.png
     - assets/worry_list.png
-    - assets/splash_screen.png
+    - assets/app-logo.png
+    - assets/dark_splash_1.png
+    - assets/dark_splash_2.png
     - assets/loading.gif
     - assets/sleepiness.png
     - assets/maps.png
@@ -117,8 +119,8 @@ flutter:
     - assets/processloading.gif
     - assets/loadingcanvasdark.gif
     - assets/check-mark.png
+    - assets/bota.png
     - assets/ln.gif
-    - assets/chatbg.jpg
     - assets/secretkey.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

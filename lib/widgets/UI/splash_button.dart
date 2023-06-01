@@ -29,7 +29,10 @@ class SplashButton extends StatelessWidget {
               ),
               child: Text(
                 text!,
-                style: TextStyle(fontSize: 25, color: Theme.of(context).primaryColor),
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Theme.of(context).secondaryHeaderColor,
+                ),
               ),
             ),
           ),

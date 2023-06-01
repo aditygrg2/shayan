@@ -82,15 +82,15 @@ class _LoginScreenState extends State<LoginScreen> {
       body: ListView(
         children: [
           ImageCacher(
-            imagePath: "https://i.ibb.co/0FcmtJJ/animation-500-li7n6qa6.gif",
+            imagePath: "https://i.ibb.co/BnKw3WH/output-onlinegiftools-24-1.gif",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           HomeScreenText(
             text: 'Welcome Back',
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Form(
@@ -170,7 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           SplashButton(
@@ -189,7 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
               }
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           GestureDetector(
@@ -197,63 +197,78 @@ class _LoginScreenState extends State<LoginScreen> {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        border: Border.all(
-                            width: 0, color: Theme.of(context).dividerColor)),
-                    child: Form(
-                      child: Column(
-                        children: [
-                          HomeScreenText(
-                            text: "Reset your password",
+                  return Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          border: Border.all(
+                              width: 0, color: Theme.of(context).dividerColor)),
+                      child: Form(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              HomeScreenText(
+                                text: "Reset your password",
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              ImageCacher(
+                                imagePath: "https://i.ibb.co/51MCGcC/output-onlinegiftools-26-1.gif",
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Card(
+                                color: Theme.of(context).primaryColor,
+                                child: TextField(
+                                  controller: _controller,
+                                  autocorrect: true,
+                                  decoration: const InputDecoration(
+                                      hintText: "Enter your email here"),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Card(
+                                elevation: 0,
+                                color: Theme.of(context).primaryColor,
+                                borderOnForeground: false,
+                                child: SplashButton(
+                                  onPressed: () async {
+                                    await FirebaseAuth.instance
+                                        .sendPasswordResetEmail(
+                                      email: _controller.text,
+                                    )
+                                        .onError((error, stackTrace) {
+                                      message = error.toString();
+                                      setState(() {});
+                                    }).then((value) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                          content: Text(message),
+                                        ),
+                                      );
+                                    });
+                                          
+                                    Navigator.of(context).pop();
+                                  },
+                                  text: "Submit",
+                                ),
+                              )
+                            ],
                           ),
-                          ImageCacher(
-                            imagePath: "https://i.ibb.co/SPRtttd/animation-640-li7n1arc.gif",
-                          ),
-                          Card(
-                            color: Theme.of(context).primaryColor,
-                            child: TextField(
-                              controller: _controller,
-                              autocorrect: true,
-                              decoration: const InputDecoration(
-                                  hintText: "Enter your email here"),
-                            ),
-                          ),
-                          Card(
-                            elevation: 0,
-                            color: Theme.of(context).primaryColor,
-                            borderOnForeground: false,
-                            child: SplashButton(
-                              onPressed: () async {
-                                await FirebaseAuth.instance
-                                    .sendPasswordResetEmail(
-                                  email: _controller.text,
-                                )
-                                    .onError((error, stackTrace) {
-                                  message = error.toString();
-                                  setState(() {});
-                                }).then((value) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(message),
-                                    ),
-                                  );
-                                });
-
-                                Navigator.of(context).pop();
-                              },
-                              text: "Submit",
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                   );
                 },
               );
             },
-            child: Center(
+            child: const Center(
               child: Text("Forgot your password?"),
             ),
           ),
@@ -268,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 style: TextStyle(shadows: [
                   Shadow(
                     color: Theme.of(context).secondaryHeaderColor,
-                    offset: Offset(0, -5),
+                    offset: const Offset(0, -5),
                   ),
                 ], color: Colors.transparent),
                 textAlign: TextAlign.center,
@@ -284,7 +299,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shadows: [
                       Shadow(
                         color: Theme.of(context).secondaryHeaderColor,
-                        offset: Offset(0, -5),
+                        offset: const Offset(0, -5),
                       ),
                     ],
                     color: Colors.transparent,

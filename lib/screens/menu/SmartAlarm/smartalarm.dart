@@ -47,26 +47,29 @@ class _SmartAlarmState extends State<SmartAlarm> {
   List<double> alarm_average_points = [];
 
   void deleteRecordings(fileName) async {
-
     Directory? appDir = await syspaths.getExternalStorageDirectory();
 
-    if(appDir==null){
+    if (appDir == null) {
       print("No path exists");
-    }    
+    }
 
     String path = appDir!.path;
-    try{
-      File("$fileName").delete();
+    try {
+      File("${fileName.toString().substring(0, fileName.toString().length - 1)}").delete();
 
-      var smartProvider = Provider.of<SmartAlarmProvider>(context, listen: false);
+      var smartProvider =
+          Provider.of<SmartAlarmProvider>(context, listen: false);
 
       smartProvider.files.removeWhere((element) {
-            print(element.toString() == fileName);
+        print(element.toString() == fileName);
         return element.toString() == fileName;
       });
 
       smartProvider.notifyEveryone();
-    } catch(e){
+      setState(() {
+        
+      });
+    } catch (e) {
       print(e);
     }
   }
@@ -74,17 +77,10 @@ class _SmartAlarmState extends State<SmartAlarm> {
   void checkAfterStartRecording(NoiseReading noiseReading) async {
     average_points.add(noiseReading.meanDecibel);
     alarm_average_points.add(noiseReading.meanDecibel);
-    print(noiseReading.meanDecibel);
     _noiseSubscription2.pause();
 
     if (average_points.length > 50) {
       double average = average_points.sum / average_points.length;
-
-      print("Average: ");
-      print(average);
-      print("Recorded Average");
-      print(recordedAverage);
-
       if (average < (recordedAverage + modifier) &&
           noiseReading.meanDecibel < recordedAverage) {
         if (await recorder.isRecording()) {
@@ -110,15 +106,12 @@ class _SmartAlarmState extends State<SmartAlarm> {
 
   void onData(NoiseReading noiseReading) async {
     _noiseSubscription.pause();
-    print(noiseReading.meanDecibel);
     dbOnScreen = noiseReading.meanDecibel;
     alarm_average_points.add(dbOnScreen);
 
     if (dbOnScreen > recordedAverage + modifier) {
-      print("dbOnScreen is higher than average, event cancelled");
       _noiseSubscription.cancel();
       appDir = await syspaths.getExternalStorageDirectory();
-      print(appDir.path);
       appDir = await Directory(appDir.path).create(recursive: true);
 
       if (!await recorder.isRecording()) {
@@ -130,7 +123,6 @@ class _SmartAlarmState extends State<SmartAlarm> {
       _noiseMeter2 = NoiseMeter();
       _noiseSubscription2 =
           _noiseMeter.noiseStream.listen(checkAfterStartRecording);
-      print("Another event started");
     }
 
     _noiseSubscription.resume();
@@ -178,7 +170,7 @@ class _SmartAlarmState extends State<SmartAlarm> {
                 );
               } else {
                 return Padding(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   child: Text(
                     "Sleep Recording is Off",
                     textAlign: TextAlign.center,
@@ -193,7 +185,10 @@ class _SmartAlarmState extends State<SmartAlarm> {
           ),
 
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 5,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -230,18 +225,19 @@ class _SmartAlarmState extends State<SmartAlarm> {
                                       Navigator.of(context).pop(),
                                 ),
                               ],
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.battery_charging_full_outlined,
                                 size: 50,
                               ),
                               elevation: 20,
                               title: Center(
-                                  child: Text(
-                                "Plug in your device",
-                                style:
-                                    Theme.of(context).textTheme.headlineLarge,
-                              )),
-                              content: Text(
+                                child: Text(
+                                  "Plug in your device",
+                                  style:
+                                      Theme.of(context).textTheme.headlineLarge,
+                                ),
+                              ),
+                              content: const Text(
                                 'Plug in your device and keep it as close as possible. Once done, tap on continue.',
                                 textAlign: TextAlign.center,
                               ),
@@ -288,28 +284,31 @@ class _SmartAlarmState extends State<SmartAlarm> {
                                                 Navigator.of(context).pop(),
                                           ),
                                         ],
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.battery_charging_full_outlined,
                                           size: 50,
                                         ),
                                         elevation: 20,
                                         title: Center(
-                                            child: Text(
-                                          "Allow the app to be run on background",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headlineLarge,
-                                        )),
-                                        content: Text(
+                                          child: Text(
+                                            "Allow the app to be run on background",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headlineLarge,
+                                          ),
+                                        ),
+                                        content: const Text(
                                           'This app needs to be run on background in order to analyze your sleep correctly.',
                                           textAlign: TextAlign.center,
                                         ),
                                       );
                                     },
-                                  ).then((value) async {
-                                    await FlutterBackground
-                                        .enableBackgroundExecution();
-                                  });
+                                  ).then(
+                                    (value) async {
+                                      await FlutterBackground
+                                          .enableBackgroundExecution();
+                                    },
+                                  );
                                 }
                               },
                             );
@@ -321,7 +320,6 @@ class _SmartAlarmState extends State<SmartAlarm> {
                     },
                   ),
                 ),
-
                 Center(
                   child: ElevatedButtonWithoutIcon(
                     text: "Stop Recording",
@@ -332,11 +330,14 @@ class _SmartAlarmState extends State<SmartAlarm> {
                         _noiseSubscription.cancel();
                       }
                       recorder.stop();
-                      FlutterBackground.initialize().then((value) async {
-                        if (value) {
-                          await FlutterBackground.disableBackgroundExecution();
-                        }
-                      });
+                      FlutterBackground.initialize().then(
+                        (value) async {
+                          if (value) {
+                            await FlutterBackground
+                                .disableBackgroundExecution();
+                          }
+                        },
+                      );
                       Provider.of<NoiseProvider>(context, listen: false)
                           .toggleSuccess();
                     },
@@ -353,13 +354,16 @@ class _SmartAlarmState extends State<SmartAlarm> {
           Consumer<SmartAlarmProvider>(
             builder: (context, value, child) {
               if (value.files.length == 0) {
-                return Text("No recordings available");
+                return const Text("No recordings available");
               }
 
               return Column(
                 children: [
                   ...value.files.map(
-                    (values) => SmartPlayers(values.toString(), deleteRecordings),
+                    (values) => SmartPlayers(
+                      values.toString(),
+                      deleteRecordings,
+                    ),
                   )
                 ],
               );

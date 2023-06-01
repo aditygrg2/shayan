@@ -1,8 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:night_gschallenge/providers/audio_provider.dart';
-import 'package:night_gschallenge/providers/smart_alarm_provider.dart';
-import 'package:night_gschallenge/screens/menu/SmartAlarm/smartalarm.dart';
+
 import 'package:provider/provider.dart';
 
 class SmartPlayers extends StatefulWidget {
@@ -42,10 +43,7 @@ class _SmartPlayersState extends State<SmartPlayers> {
                   ),
                   Text(
                     "Time : ${DateFormat.jm('en_US').format(parsedDate)}",
-                  ),
-                  Text(
-                    "Duration : TBA",
-                  ),
+                  )
                 ],
               ),
             ),
@@ -58,20 +56,23 @@ class _SmartPlayersState extends State<SmartPlayers> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   IconButton(
-                    onPressed: () {
+                    onPressed: () async {
                       var audioProvider =
                           Provider.of<AudioProvider>(context, listen: false);
+
                       if (playing) {
                         audioProvider.pause();
                         setState(() {
                           playing = false;
                         });
                       } else {
-                        audioProvider.playAsset(widget.fileName
+                        var string = widget.fileName
                             .replaceAll('\'', '')
                             .replaceAll('File:', '')
                             .trim()
-                            .substring(1));
+                            .substring(1);
+                        string = string.substring(0, string.length - 1);
+                        audioProvider.playAsset(string);
                         setState(() {
                           playing = true;
                         });
@@ -82,13 +83,17 @@ class _SmartPlayersState extends State<SmartPlayers> {
                   IconButton(
                     onPressed: () {
                       setState(() {
-                        widget.deleteRecordings(widget.fileName
-                            .replaceAll('File:', '')
-                            .trim()
-                            .substring(1));
+                        widget.deleteRecordings(
+                          widget.fileName
+                              .replaceAll('File:', '')
+                              .trim()
+                              .substring(1),
+                        );
                       });
                     },
-                    icon: Icon(Icons.delete),
+                    icon: Icon(
+                      Icons.delete,
+                    ),
                   )
                 ],
               ),

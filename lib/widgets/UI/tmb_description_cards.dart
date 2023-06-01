@@ -18,8 +18,9 @@ class TmbDescriptionCards extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(route!).then((value) {
-          if(route == LightPollution.routeName){
-            var lightProvider = Provider.of<LightProvider>(context, listen: false);
+          if (route == LightPollution.routeName) {
+            var lightProvider =
+                Provider.of<LightProvider>(context, listen: false);
             lightProvider.stopListening();
             lightProvider.success = false;
             lightProvider.state = false;
@@ -57,18 +58,17 @@ class TmbDescriptionCards extends StatelessWidget {
                     ),
                     Text(
                       subtitle!,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontFamily: 'Roboto'
-                      ),
+                      style: TextStyle(fontSize: 14, fontFamily: 'Roboto'),
                     ),
                   ],
                 ),
               ),
-              Expanded(child: ImageCacher(
-                imagePath: image,
-                isCanvas: true,
-              )),
+              Expanded(
+                child: ImageCacher(
+                  imagePath: image,
+                  isCanvas: true,
+                ),
+              ),
             ],
           ),
         ),

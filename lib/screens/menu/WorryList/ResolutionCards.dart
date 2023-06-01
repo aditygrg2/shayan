@@ -27,9 +27,16 @@ class _ResolutionCardsState extends State<ResolutionCards> {
               final doc = snapshot.data as QuerySnapshot;
               return Column(
                 children: [
-                  ...doc.docs.map((e) {
-                    return ResolutionCardWithComment(e.id,e['worry'],e['situation'],e['notes']);
-                  })
+                  ...doc.docs.map(
+                    (e) {
+                      return ResolutionCardWithComment(
+                        e.id,
+                        e['worry'],
+                        e['situation'],
+                        e['notes'],
+                      );
+                    },
+                  ),
                 ],
               );
             },

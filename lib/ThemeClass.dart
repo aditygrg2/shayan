@@ -98,7 +98,7 @@ class ThemeClass {
     hoverColor: const Color.fromRGBO(88, 203, 221, 1),
     bottomAppBarColor: Color.fromARGB(255, 145, 150, 190),
     fontFamily: 'Roboto',
-    buttonColor: const Color.fromRGBO(252, 235, 93, 1),
+    buttonColor: const Color.fromRGBO(133, 140, 190, 1),
     dividerColor: const Color.fromRGBO(247, 219, 198, 1),
     shadowColor: const Color.fromRGBO(114, 129, 233, 1),
     unselectedWidgetColor: Color.fromRGBO(255, 255, 255, 0.87),

@@ -14,11 +14,9 @@ class _LibraryCardState extends State<LibraryCard> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(15),
-            topRight: Radius.circular(15),
-            bottomLeft: Radius.circular(15),
-            bottomRight: Radius.circular(15)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(15),
+        ),
         border: Border.all(
           color: Theme.of(context).dividerColor,
         ),
@@ -30,7 +28,6 @@ class _LibraryCardState extends State<LibraryCard> {
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(15),
                 topRight: Radius.circular(15),
-                
               ),
               child: Container(
                 height: 200,

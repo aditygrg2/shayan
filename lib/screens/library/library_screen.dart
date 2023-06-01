@@ -40,7 +40,7 @@ class _LibraryScreenState extends State<LibraryScreen> {
       "title": "Music",
       "subtitle":
           "Immerse yourself in a harmonious selection of ambient music designed to accompany your sleep journey and promote deep relaxation.",
-      "image": "https://i.ibb.co/0JJwwJK/library-music.png",
+      "image": "https://i.ibb.co/NSW5LRG/5667566-58057-removebg-preview-1.png",
       "route": MusicGalleryScreen.routeName,
     }
   ];
