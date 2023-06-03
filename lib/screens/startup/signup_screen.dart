@@ -94,7 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
       body: ListView(
         children: [
           ImageCacher(
-            imagePath: 'https://i.ibb.co/1rbvWTH/output-onlinegiftools-25-1.gif',
+            imagePath: 'https://i.ibb.co/cD7V2h4/sign-up.png',
           ),
           const SizedBox(
             height: 10,

@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: ListView(
         children: [
           ImageCacher(
-            imagePath: "https://i.ibb.co/BnKw3WH/output-onlinegiftools-24-1.gif",
+            imagePath: "https://i.ibb.co/pbzpQj7/login.png",
           ),
           const SizedBox(
             height: 10,

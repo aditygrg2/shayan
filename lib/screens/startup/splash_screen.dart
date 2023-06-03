@@ -58,9 +58,11 @@ class SplashScreen extends StatelessWidget {
             left: 0,
             width: 80,
             child: Container(
-              child: Image.asset(_theme == ThemeMode.light
-                  ? "assets/ellipse_splash_screen_left.png"
-                  : "assets/dark_splash_1.png"),
+              child: Image.asset(
+                _theme == ThemeMode.light
+                    ? "assets/ellipse_splash_screen_left.png"
+                    : "assets/dark_splash_1.png",
+              ),
             ),
           ),
           Positioned(
@@ -68,9 +70,11 @@ class SplashScreen extends StatelessWidget {
             width: 140,
             top: 0,
             child: Container(
-              child: Image.asset(_theme == ThemeMode.light
-                  ? "assets/ellipse_splash_screen_right.png"
-                  : "assets/dark_splash_2.png"),
+              child: Image.asset(
+                _theme == ThemeMode.light
+                    ? "assets/ellipse_splash_screen_right.png"
+                    : "assets/dark_splash_2.png",
+              ),
             ),
           ),
           Positioned(
@@ -110,16 +114,17 @@ class SplashScreen extends StatelessWidget {
                         Navigator.of(context).pushNamed(LoginScreen.routeName);
                       }),
                   ElevatedButton(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Text(
-                          "Signup",
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Signup",
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(SignupScreen.routeName);
-                      }),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(SignupScreen.routeName);
+                    },
+                  ),
                 ],
               ),
             ),
