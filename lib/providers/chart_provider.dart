@@ -71,7 +71,6 @@ class ChartProvider extends ChangeNotifier {
           y: data[6]),
     ];
     showData = barData;
-    print(showData);
     notifyListeners();
     } catch (err) {
       print(err);

@@ -54,7 +54,7 @@ class SleepElements extends ChangeNotifier {
      if(data==null){
       return -1;
     }
-    return data['SS'];
+    return data['SS'].round();
   }
 
   int get sleepEfficiency {
@@ -68,21 +68,21 @@ class SleepElements extends ChangeNotifier {
     if(data==null){
       return -1;
     }
-    return data['TST'];
+    return data['TST'].round();
   }
 
   int get timeInBed {
      if(data==null){
       return -1;
     }
-    return data['TIB'];
+    return data['TIB'].round();
   }
 
   int get awakenings {
      if(data==null){
       return -1;
     }
-    return data['WFN'];
+    return data['WFN'].round();
   }
 
   bool get isSleepScorePresent {

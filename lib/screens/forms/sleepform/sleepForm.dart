@@ -198,17 +198,17 @@ class _SleepFormState extends State<SleepForm> {
     if (value['TST'] > 8) {
       sleepScore += 35;
     } else {
-      sleepScore += (((value['TST'] as int) / 8) * 35).toInt();
+      sleepScore += (((value['TST'].round() as int) / 8) * 35).toInt();
     }
 
     if (value['SL'] < 10) {
       sleepScore += 20;
     } else {
       var increment = value['SL'] - 10;
-      sleepScore += (20 - ((increment as int) / 20)).toInt();
+      sleepScore += (20 - ((increment.round() as int) / 20)).toInt();
     }
 
-    int sleepCycles = ((value['TST'] as int) / 90).toInt();
+    int sleepCycles = ((value['TST'].round() as int) / 90).toInt();
     if (sleepCycles >= 5) {
       sleepScore += 20;
     } else {
@@ -221,7 +221,7 @@ class _SleepFormState extends State<SleepForm> {
       sleepScore += 10;
     } else {
       if (value['WASO'] < 100) {
-        sleepScore += (10 - (value['WASO'] / 10)).toInt();
+        sleepScore += (10 - (value['WASO'].round() / 10)).toInt();
       }
     }
 
@@ -229,7 +229,7 @@ class _SleepFormState extends State<SleepForm> {
       sleepScore += 10;
     } else {
       if (value['WASO'] < 100) {
-        sleepScore += (10 - (value['WASO'] / 10)).toInt();
+        sleepScore += (10 - (value['WASO'].round() / 10)).toInt();
       }
     }
 
